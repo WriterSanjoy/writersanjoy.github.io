@@ -239,6 +239,48 @@ body{font-family:'Hind Siliguri','Noto Sans Bengali',sans-serif;background:var(-
 .cfsub:hover{background:#6e1414;transform:translateY(-1px)}
 .cfok{display:none;background:var(--teal-p);border:1px solid rgba(26,95,90,.22);border-radius:var(--r);padding:.95rem 1.15rem;font-family:'Noto Serif Bengali',serif;font-size:.88rem;color:var(--teal);margin-top:.9rem}
 
+
+/* ── PUBLISHER CARD ENHANCED ── */
+.pub-card{background:var(--paper-w);border:1px solid var(--bdr);border-radius:var(--r-lg);overflow:hidden}
+.pub-card-head{background:var(--ink);padding:.6rem 1.1rem;display:flex;align-items:center;gap:.5rem}
+.pub-card-head span{font-family:'Hind Siliguri','Noto Sans Bengali',sans-serif;font-size:.78rem;font-weight:600;color:var(--gold-l);letter-spacing:.04em}
+.pub-card-body{padding:1rem 1.1rem;display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.pub-field{display:flex;flex-direction:column;gap:2px}
+.pub-field-label{font-family:'Hind Siliguri','Noto Sans Bengali',sans-serif;font-size:.65rem;color:var(--ink-mu);text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+.pub-field-val{font-family:'Hind Siliguri','Noto Sans Bengali',sans-serif;font-size:.82rem;color:var(--ink-lt);font-weight:500}
+.pub-field-val a{color:var(--teal);text-decoration:none}
+.pub-field-val a:hover{text-decoration:underline}
+.pub-field.full{grid-column:1/-1}
+
+/* ── PRICE TABS ── */
+.price-tabs{display:flex;gap:0;border:1.5px solid var(--bdr-s);border-radius:var(--r);overflow:hidden}
+.price-tab{flex:1;padding:.7rem .5rem;text-align:center;cursor:pointer;border:none;background:var(--paper-w);transition:all .2s;display:flex;flex-direction:column;align-items:center;gap:3px}
+.price-tab:first-child{border-right:1.5px solid var(--bdr-s)}
+.price-tab.active{background:var(--ink);color:#fff}
+.price-tab .pt-icon{font-size:1.3rem}
+.price-tab .pt-label{font-family:'Hind Siliguri','Noto Sans Bengali',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.03em}
+.price-tab .pt-price{font-family:'Hind Siliguri','Noto Sans Bengali',sans-serif;font-size:.92rem;font-weight:700;color:var(--red)}
+.price-tab.active .pt-price{color:var(--gold-l)}
+.price-tab .pt-avail{font-family:'Hind Siliguri','Noto Sans Bengali',sans-serif;font-size:.65rem;opacity:.7}
+
+/* ── DELIVERY INFO BOX ── */
+.delivery-box{background:var(--teal-p);border:1px solid rgba(26,95,90,.2);border-radius:var(--r);padding:.85rem 1rem}
+.delivery-box-head{font-family:'Hind Siliguri','Noto Sans Bengali',sans-serif;font-size:.78rem;font-weight:700;color:var(--teal);margin-bottom:.5rem;display:flex;align-items:center;gap:.35rem}
+.delivery-steps{list-style:none;display:flex;flex-direction:column;gap:.3rem}
+.delivery-steps li{font-family:'Hind Siliguri','Noto Sans Bengali',sans-serif;font-size:.76rem;color:var(--teal);display:flex;align-items:flex-start;gap:.4rem;line-height:1.5}
+.delivery-steps li::before{content:'→';font-weight:700;flex-shrink:0;margin-top:.05rem}
+
+/* ── ENHANCED BUY MODAL ── */
+.modal-tabs{display:flex;border-bottom:1px solid var(--bdr-s);margin-bottom:1.1rem}
+.modal-tab{flex:1;padding:.55rem;text-align:center;font-family:'Hind Siliguri','Noto Sans Bengali',sans-serif;font-size:.8rem;font-weight:600;cursor:pointer;border:none;background:none;color:var(--ink-mu);border-bottom:2px solid transparent;transition:all .18s}
+.modal-tab.active{color:var(--red);border-bottom-color:var(--red)}
+.modal-pane{display:none}.modal-pane.active{display:block}
+.modal-note-kindle{background:#fff8f0;border:1px solid #ffcc88;border-radius:var(--r);padding:.7rem .85rem;font-family:'Hind Siliguri','Noto Sans Bengali',sans-serif;font-size:.74rem;color:#7a4500;line-height:1.6;margin-top:.7rem}
+.modal-note-google{background:#f0f4ff;border:1px solid #aabbff;border-radius:var(--r);padding:.7rem .85rem;font-family:'Hind Siliguri','Noto Sans Bengali',sans-serif;font-size:.74rem;color:#0a2a7a;line-height:1.6;margin-top:.7rem}
+.modal-note-hard{background:#f5f5f0;border:1px solid var(--bdr-s);border-radius:var(--r);padding:.7rem .85rem;font-family:'Hind Siliguri','Noto Sans Bengali',sans-serif;font-size:.74rem;color:var(--ink-md);line-height:1.6;margin-top:.7rem}
+.fg-helper{font-family:'Hind Siliguri','Noto Sans Bengali',sans-serif;font-size:.7rem;color:var(--ink-mu);margin-top:.2rem}
+.modal-price-badge{display:inline-block;background:var(--red);color:#fff;font-family:'Hind Siliguri','Noto Sans Bengali',sans-serif;font-size:.85rem;font-weight:700;padding:.3rem .85rem;border-radius:100px;margin-bottom:1rem}
+
 /* ── COMING SOON ── */
 .cmpg{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;text-align:center;padding:4rem 2rem}
 .cmic{font-size:3.5rem;margin-bottom:1.4rem;opacity:.45}
@@ -679,13 +721,78 @@ body{font-family:'Hind Siliguri','Noto Sans Bengali',sans-serif;background:var(-
           <div class="mti"><span class="ml">ধরন</span><span class="mv">সমকালীন উপন্যাস</span></div>
         </div>
         <div class="bksum">কলকাতার পূর্ব প্রান্তের তথ্যপ্রযুক্তি শিল্পতালুকে হাজার হাজার তরুণ-তরুণী "কেরিয়ার" নামের অদৃশ্য সাপ-লুডো খেলায় নেমেছে। পদোন্নতির স্বপ্ন দেখতে দেখতে তারা কোথায় হারিয়ে যায়?</div>
-        <div class="pubr"><div class="pubic">📖</div><div><div class="pubn">বইয়ের হাট (Boierhut)</div><div class="pubi">ডিজিটাল প্রকাশনা · ebook.boierhut.com</div></div></div>
+        <!-- ── PRICE TABS ── -->
+        <div class="price-tabs">
+          <div class="price-tab active" id="tab-digital" onclick="switchPriceTab('digital','nabadiganter')">
+            <span class="pt-icon">📱</span>
+            <span class="pt-label">ডিজিটাল</span>
+            <span class="pt-price">₹৯৯</span>
+            <span class="pt-avail">ebook · Kindle · PDF</span>
+          </div>
+          <div class="price-tab" id="tab-hard" onclick="switchPriceTab('hard','nabadiganter')">
+            <span class="pt-icon">📗</span>
+            <span class="pt-label">হার্ডবাইন্ড</span>
+            <span class="pt-price">₹২৯৯</span>
+            <span class="pt-avail">ডাক যোগে / সংগ্রহ</span>
+          </div>
+        </div>
+
+        <!-- ── PUBLISHER CARD ── -->
+        <div class="pub-card">
+          <div class="pub-card-head">📖 <span>প্রকাশক বিবরণ</span></div>
+          <div class="pub-card-body">
+            <div class="pub-field full">
+              <span class="pub-field-label">প্রকাশনা</span>
+              <span class="pub-field-val">বইয়ের হাট (Boierhut)</span>
+            </div>
+            <div class="pub-field">
+              <span class="pub-field-label">ফোন</span>
+              <span class="pub-field-val"><a href="tel:+91XXXXXXXXXX">+91 XXXX-XXXXXX</a></span>
+            </div>
+            <div class="pub-field">
+              <span class="pub-field-label">ইমেল</span>
+              <span class="pub-field-val"><a href="mailto:publisher@boierhut.com">publisher@boierhut.com</a></span>
+            </div>
+            <div class="pub-field full">
+              <span class="pub-field-label">ঠিকানা</span>
+              <span class="pub-field-val">প্রকাশকের পূর্ণ ঠিকানা এখানে লিখুন, কলকাতা</span>
+            </div>
+            <div class="pub-field">
+              <span class="pub-field-label">ওয়েবসাইট</span>
+              <span class="pub-field-val"><a href="https://ebook.boierhut.com" target="_blank">ebook.boierhut.com</a></span>
+            </div>
+            <div class="pub-field">
+              <span class="pub-field-label">ISBN</span>
+              <span class="pub-field-val">978-XX-XXXX-XXX-X</span>
+            </div>
+          </div>
+        </div>
         <div class="pvbox">
           <div class="pvhd" onclick="tpv(this)"><div class="pvhdl">👁 ১০% বিনামূল্যে পড়ুন</div><span class="pvtog">▼ খুলুন</span></div>
           <div class="pvbd"><p>লোকে বলে SDF। সরকারি নাম নবদিগন্ত। কলকাতা মহানগরীর পূর্ব প্রান্তে দিগন্ত বিস্তৃত এক লবণাক্ত জলাভূমিতে গড়ে উঠেছে তথ্যপ্রযুক্তি শিল্প। প্রতি বছর হাজার হাজার তরুণ-তরুণী সেইসব সফটওয়্যার কারখানায় চাকরি শুরু করে।</p><div class="pvwm">⋯ প্রথম ১০% অংশ। সম্পূর্ণ পড়তে কিনুন।</div></div>
         </div>
+        <!-- ── DELIVERY INFO ── -->
+        <div class="delivery-box" id="delivery-digital-nabadiganter">
+          <div class="delivery-box-head">📦 ডিজিটাল ডেলিভারি — কীভাবে পাবেন</div>
+          <ul class="delivery-steps">
+            <li>নিচের বোতামে কিনুন — আপনার নাম, ইমেল ও ফরম্যাট দিন</li>
+            <li>Amazon Kindle-এ পেতে আপনার Kindle ইমেল দিন (yourname@kindle.com) — বই সরাসরি লাইব্রেরিতে যাবে</li>
+            <li>Google Play Books-এ পেতে Google ইমেল দিন — ফাইল পাঠাবো, একটি ক্লিকে আপলোড হবে</li>
+            <li>EPUB / PDF — যেকোনো ডিভাইসে পড়া যাবে</li>
+          </ul>
+        </div>
+        <div class="delivery-box" id="delivery-hard-nabadiganter" style="display:none;background:#f5f0e8;border-color:rgba(26,18,8,.15)">
+          <div class="delivery-box-head" style="color:var(--ink-lt)">📦 হার্ডবাইন্ড ডেলিভারি — কীভাবে পাবেন</div>
+          <ul class="delivery-steps" style="color:var(--ink-lt)">
+            <li>অর্ডার করুন — নাম, ঠিকানা ও ফোন নম্বর দিন</li>
+            <li>পেমেন্ট নিশ্চিত হলে ৩-৫ কার্যদিবসের মধ্যে ডাকে পাঠানো হবে</li>
+            <li>প্রকাশকের কাছ থেকে সরাসরি সংগ্রহ করা যাবে</li>
+            <li>বাল্ক অর্ডারে ছাড় পেতে সরাসরি যোগাযোগ করুন</li>
+          </ul>
+        </div>
+
         <div class="bkacts">
-          <button class="bbtn bb-pri" onclick="obm('নবদিগন্তের অভিমন্যুরা','৯৯')">🛒 সরাসরি কিনুন</button>
+          <button class="bbtn bb-pri" id="buy-btn-nabadiganter" onclick="obm('নবদিগন্তের অভিমন্যুরা','৯৯','digital')">🛒 সরাসরি কিনুন</button>
           <span class="bbdiv">অথবা</span>
           <a class="bbtn bb-amz" href="https://www.amazon.in/dp/B08CY9M4V2/" target="_blank">Amazon</a>
           <a class="bbtn bb-goo" href="https://play.google.com/store/books/details?id=Nua9DwAAQBAJ" target="_blank">Google Books</a>
@@ -749,19 +856,72 @@ body{font-family:'Hind Siliguri','Noto Sans Bengali',sans-serif;background:var(-
 <div class="sfoot">© সঞ্জয় মণ্ডল</div>
 </div>
 
-<!-- BUY MODAL -->
+<!-- ════ BUY MODAL ════ -->
 <div class="mov" id="bmod">
-  <div class="mbox">
+  <div class="mbox" style="max-width:500px">
     <button class="mx" onclick="cbm()">×</button>
-    <h2 id="mt"></h2>
-    <div class="msub" id="mp"></div>
-    <div class="fg"><label>আপনার নাম</label><input type="text" id="mn" placeholder="পুরো নাম"></div>
-    <div class="fg"><label>ইমেল ঠিকানা</label><input type="email" id="me" placeholder="yourname@email.com"></div>
-    <div class="fg"><label>ডেলিভারি ফরম্যাট</label>
-      <select id="mf"><option value="">বেছে নিন...</option><option value="kindle">Amazon Kindle (.mobi / .epub)</option><option value="google">Google Books / Play Books</option><option value="epub">সরাসরি EPUB ফাইল</option><option value="pdf">PDF ফাইল</option></select>
+    <h2 id="mt" style="margin-bottom:.2rem"></h2>
+    <div class="modal-price-badge" id="mp"></div>
+
+    <!-- FORMAT TABS -->
+    <div class="modal-tabs">
+      <button class="modal-tab active" id="mtab-digital" onclick="switchModalTab('digital')">📱 ডিজিটাল</button>
+      <button class="modal-tab" id="mtab-kindle" onclick="switchModalTab('kindle')">📖 Kindle</button>
+      <button class="modal-tab" id="mtab-google" onclick="switchModalTab('google')">📗 Google</button>
+      <button class="modal-tab" id="mtab-hard" onclick="switchModalTab('hard')">📦 হার্ডকপি</button>
     </div>
-    <div class="mnote">💡 পেমেন্টের পর আপনার পছন্দের ফরম্যাটে বইটি ইমেলে পাঠানো হবে।</div>
-    <div class="macts"><button class="bbtn bb-pri" style="flex:1" onclick="sbm()">পেমেন্ট করুন →</button><button class="bbtn bb-out" onclick="cbm()">বাতিল</button></div>
+
+    <!-- PANE: Digital (EPUB/PDF) -->
+    <div class="modal-pane active" id="mpane-digital">
+      <div class="fg"><label>আপনার নাম *</label><input type="text" id="mn-d" placeholder="পুরো নাম লিখুন"></div>
+      <div class="fg"><label>ইমেল ঠিকানা *</label><input type="email" id="me-d" placeholder="yourname@email.com">
+        <div class="fg-helper">এই ইমেলে EPUB / PDF ফাইল পাঠানো হবে</div>
+      </div>
+      <div class="fg"><label>ফরম্যাট</label>
+        <select id="mf-d">
+          <option value="epub">EPUB (সব ডিভাইসে চলে)</option>
+          <option value="pdf">PDF ফাইল</option>
+        </select>
+      </div>
+      <div class="modal-note-hard">📧 পেমেন্টের পর ২৪ ঘন্টার মধ্যে আপনার ইমেলে ফাইল পাঠানো হবে।</div>
+    </div>
+
+    <!-- PANE: Kindle -->
+    <div class="modal-pane" id="mpane-kindle">
+      <div class="fg"><label>আপনার নাম *</label><input type="text" id="mn-k" placeholder="পুরো নাম লিখুন"></div>
+      <div class="fg"><label>সাধারণ ইমেল *</label><input type="email" id="me-k" placeholder="yourname@gmail.com">
+        <div class="fg-helper">অর্ডার নিশ্চিতকরণের জন্য</div>
+      </div>
+      <div class="fg"><label>Kindle ইমেল *</label><input type="email" id="mk-k" placeholder="yourname@kindle.com">
+        <div class="fg-helper">Amazon → Manage Devices → Email থেকে পাবেন। বই সরাসরি Kindle লাইব্রেরিতে যাবে।</div>
+      </div>
+      <div class="modal-note-kindle">📖 <strong>কীভাবে Kindle ইমেল পাবেন:</strong> Amazon.in → Accounts → Manage Content and Devices → Devices → আপনার Kindle সিলেক্ট করুন → Email দেখুন।</div>
+    </div>
+
+    <!-- PANE: Google Play Books -->
+    <div class="modal-pane" id="mpane-google">
+      <div class="fg"><label>আপনার নাম *</label><input type="text" id="mn-g" placeholder="পুরো নাম লিখুন"></div>
+      <div class="fg"><label>Google অ্যাকাউন্ট ইমেল *</label><input type="email" id="me-g" placeholder="yourname@gmail.com">
+        <div class="fg-helper">যে Gmail দিয়ে Play Books ব্যবহার করেন</div>
+      </div>
+      <div class="modal-note-google">📗 <strong>ডেলিভারি প্রক্রিয়া:</strong> পেমেন্টের পর আপনার ইমেলে EPUB ফাইল পাঠানো হবে। Google Play Books → Upload → ফাইল আপলোড করুন — ৩০ সেকেন্ডে আপনার লাইব্রেরিতে যোগ হবে।</div>
+    </div>
+
+    <!-- PANE: Hardcopy -->
+    <div class="modal-pane" id="mpane-hard">
+      <div class="fg"><label>পুরো নাম *</label><input type="text" id="mn-h" placeholder="প্রাপকের নাম"></div>
+      <div class="fg"><label>মোবাইল নম্বর *</label><input type="tel" id="mtel-h" placeholder="+91 XXXXX XXXXX"></div>
+      <div class="fg"><label>ইমেল</label><input type="email" id="me-h" placeholder="yourname@email.com (ঐচ্ছিক)"></div>
+      <div class="fg"><label>পূর্ণ ঠিকানা *</label>
+        <textarea id="madr-h" placeholder="বাড়ি নং, রাস্তা, এলাকা, শহর, পিন কোড" style="width:100%;padding:.55rem .85rem;border:1px solid var(--bdr-s);border-radius:var(--r);font-family:'Hind Siliguri',sans-serif;font-size:.87rem;background:#fff;color:var(--ink);outline:none;min-height:80px;resize:vertical"></textarea>
+      </div>
+      <div class="modal-note-hard">📦 <strong>ডাক ডেলিভারি:</strong> পেমেন্টের ৩-৫ কার্যদিবসের মধ্যে Speed Post / Courier-এ পাঠানো হবে। Tracking নম্বর SMS / ইমেলে দেওয়া হবে।</div>
+    </div>
+
+    <div class="macts" style="margin-top:1.1rem">
+      <button class="bbtn bb-pri" style="flex:1" onclick="sbm()">✓ অর্ডার নিশ্চিত করুন</button>
+      <button class="bbtn bb-out" onclick="cbm()">বাতিল</button>
+    </div>
   </div>
 </div>
 
@@ -839,15 +999,91 @@ function tpv(hd){
   t.textContent=o?'▼ খুলুন':'▲ বন্ধ করুন';
 }
 
-// ── BUY MODAL ──
-let BT='';
-function obm(t,p){BT=t;document.getElementById('mt').textContent=t;document.getElementById('mp').textContent='মূল্য: ₹'+p+' · নিরাপদ পেমেন্ট';document.getElementById('bmod').classList.add('open');document.body.style.overflow='hidden';}
-function cbm(){document.getElementById('bmod').classList.remove('open');document.body.style.overflow='';}
-function sbm(){
-  const n=document.getElementById('mn').value.trim();const e=document.getElementById('me').value.trim();const f=document.getElementById('mf').value;
-  if(!n||!e||!f){alert('অনুগ্রহ করে সমস্ত তথ্য পূরণ করুন।');return;}
-  alert('ধন্যবাদ '+n+'!\n\nবই: '+BT+'\nফরম্যাট: '+f+'\nইমেল: '+e+'\n\nশীঘ্রই নিশ্চিতকরণ পাঠানো হবে।');cbm();
+// ── PRICE TAB SWITCHER (per book) ──
+function switchPriceTab(type, bookId){
+  // tab UI
+  document.getElementById('tab-digital').classList.toggle('active', type==='digital');
+  document.getElementById('tab-hard').classList.toggle('active', type==='hard');
+  // delivery info
+  const dd=document.getElementById('delivery-digital-'+bookId);
+  const dh=document.getElementById('delivery-hard-'+bookId);
+  if(dd) dd.style.display = type==='digital'?'':'none';
+  if(dh) dh.style.display = type==='hard'?'':'none';
+  // update buy button
+  const btn=document.getElementById('buy-btn-'+bookId);
+  if(btn){
+    if(type==='digital'){ btn.textContent='🛒 ডিজিটাল কিনুন'; btn.onclick=()=>obm('নবদিগন্তের অভিমন্যুরা','৯৯','digital'); }
+    else { btn.textContent='📦 হার্ডকপি অর্ডার করুন'; btn.onclick=()=>obm('নবদিগন্তের অভিমন্যুরা','২৯৯','hard'); }
+  }
 }
+
+// ── BUY MODAL ──
+let BT='', BType='digital';
+let currentModalTab='digital';
+
+function obm(title, price, type){
+  BT=title; BType=type||'digital';
+  document.getElementById('mt').textContent=title;
+  document.getElementById('mp').textContent='মূল্য: ₹'+price;
+  document.getElementById('bmod').classList.add('open');
+  document.body.style.overflow='hidden';
+  switchModalTab(BType);
+}
+
+function switchModalTab(tab){
+  currentModalTab=tab;
+  ['digital','kindle','google','hard'].forEach(t=>{
+    const btn=document.getElementById('mtab-'+t);
+    const pane=document.getElementById('mpane-'+t);
+    if(btn) btn.classList.toggle('active',t===tab);
+    if(pane) pane.classList.toggle('active',t===tab);
+  });
+}
+
+function cbm(){
+  document.getElementById('bmod').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+function sbm(){
+  const tab=currentModalTab;
+  let name='', email='', extra='', valid=true, msg='';
+
+  if(tab==='digital'){
+    name=document.getElementById('mn-d').value.trim();
+    email=document.getElementById('me-d').value.trim();
+    const fmt=document.getElementById('mf-d').value;
+    if(!name||!email){valid=false;}
+    extra='ফরম্যাট: '+fmt;
+    msg='ধন্যবাদ '+name+'!\n\nবই: '+BT+'\n'+extra+'\nইমেল: '+email+'\n\n২৪ ঘন্টার মধ্যে ফাইল পাঠানো হবে।';
+  } else if(tab==='kindle'){
+    name=document.getElementById('mn-k').value.trim();
+    email=document.getElementById('me-k').value.trim();
+    const kindle=document.getElementById('mk-k').value.trim();
+    if(!name||!email||!kindle){valid=false;}
+    extra='Kindle ইমেল: '+kindle;
+    msg='ধন্যবাদ '+name+'!\n\nবই: '+BT+'\nKindle ইমেল: '+kindle+'\n\nপেমেন্টের পর সরাসরি আপনার Kindle লাইব্রেরিতে পাঠানো হবে।';
+  } else if(tab==='google'){
+    name=document.getElementById('mn-g').value.trim();
+    email=document.getElementById('me-g').value.trim();
+    if(!name||!email){valid=false;}
+    extra='Google ইমেল: '+email;
+    msg='ধন্যবাদ '+name+'!\n\nবই: '+BT+'\n'+extra+'\n\nEPUB ফাইল ইমেলে পাঠানো হবে। Google Play Books-এ আপলোড করুন।';
+  } else if(tab==='hard'){
+    name=document.getElementById('mn-h').value.trim();
+    const tel=document.getElementById('mtel-h').value.trim();
+    const adr=document.getElementById('madr-h').value.trim();
+    if(!name||!tel||!adr){valid=false;}
+    msg='ধন্যবাদ '+name+'!\n\nবই: '+BT+' (হার্ডকপি)\nফোন: '+tel+'\nঠিকানা: '+adr+'\n\n৩-৫ কার্যদিবসের মধ্যে ডাকে পাঠানো হবে।';
+  }
+
+  if(!valid){ alert('অনুগ্রহ করে সমস্ত * চিহ্নিত তথ্য পূরণ করুন।'); return; }
+
+  // In production: send to your backend / Razorpay / Instamojo here
+  alert(msg);
+  cbm();
+}
+
 document.getElementById('bmod').addEventListener('click',function(e){if(e.target===this)cbm();});
 
 // ── CONTACT ──
