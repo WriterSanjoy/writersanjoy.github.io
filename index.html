@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>সঞ্জয় মণ্ডল — লেখক</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@300;400;500;600;700&family=Noto+Sans+Bengali:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#1a1208;--ink-lt:#3d3020;--ink-md:#6b5a45;--ink-mu:#9a8a76;
+  --paper:#faf8f4;--paper-w:#f5f1e8;--paper-d:#ede8de;
+  --gold:#b8860b;--gold-l:#d4a017;--gold-p:#fdf4d8;
+  --red:#8b1a1a;--teal:#1a5f5a;--teal-p:#e8f5f4;
+  --bdr:rgba(26,18,8,.12);--bdr-s:rgba(26,18,8,.22);
+  --r:4px;--r-lg:8px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Serif Bengali',Georgia,serif;background:var(--paper);color:var(--ink);line-height:1.8;font-size:16px;min-height:100vh}
+.page{display:none;animation:fi .3s ease}
+.page.active{display:block}
+@keyframes fi{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+/* NAV */
+#snav{background:var(--ink);padding:0 2.5rem;position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;height:58px;box-shadow:0 2px 16px rgba(0,0,0,.35)}
+.nbrand{font-family:'Noto Serif Bengali',serif;font-size:1.05rem;font-weight:700;color:var(--gold-l);text-decoration:none;cursor:pointer}
+.nlinks{display:flex;list-style:none}
+.nlinks li button{font-family:'Noto Sans Bengali',sans-serif;font-size:.82rem;color:rgba(255,255,255,.62);background:none;border:none;cursor:pointer;padding:.4rem 1rem;transition:color .2s;border-bottom:2px solid transparent}
+.nlinks li button:hover{color:#fff}
+.nlinks li button.act{color:var(--gold-l);border-bottom-color:var(--gold-l)}
+.nburg{display:none;background:none;border:none;color:#fff;font-size:1.4rem;cursor:pointer;padding:.3rem}
+.mmenu{display:none;background:#0e0c08;position:fixed;top:58px;left:0;right:0;z-index:199;border-top:1px solid rgba(255,255,255,.08)}
+.mmenu.open{display:block}
+.mmenu button{display:block;width:100%;text-align:left;font-family:'Noto Sans Bengali',sans-serif;font-size:.95rem;color:rgba(255,255,255,.72);background:none;border:none;cursor:pointer;padding:.7rem 1.75rem;border-bottom:1px solid rgba(255,255,255,.05)}
+.mmenu button:hover{color:var(--gold-l)}
+/* FOOTER */
+.sfoot{background:var(--ink);color:rgba(255,255,255,.32);font-family:'Noto Sans Bengali',sans-serif;font-size:.75rem;text-align:center;padding:1.75rem 2rem;letter-spacing:.04em}
+.sfoot a{color:var(--gold-l);text-decoration:none}
+/* PAGE HEADER */
+.phdr{background:var(--ink);padding:2.5rem 2rem}
+.phdr h1{font-family:'Noto Serif Bengali',serif;font-size:clamp(1.5rem,4vw,2.4rem);font-weight:700;color:#fff;line-height:1.25}
+.phdr p{font-family:'Noto Sans Bengali',sans-serif;font-size:.84rem;color:rgba(255,255,255,.42);margin-top:.3rem}
+/* ─ HOME ─ */
+.hhero{background:var(--ink);min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:4rem 2rem;position:relative;overflow:hidden}
+.hhero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 48px,rgba(184,134,11,.04) 48px,rgba(184,134,11,.04) 49px)}
+.hhero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 50% 85%,rgba(184,134,11,.08),transparent 70%)}
+.hinner{position:relative;z-index:1;max-width:820px}
+.horn{color:var(--gold);font-size:1.5rem;letter-spacing:.7rem;margin-bottom:1.5rem;opacity:.55}
+.hen{font-family:'Noto Sans Bengali',sans-serif;font-size:.95rem;color:rgba(255,255,255,.3);letter-spacing:.22em;margin-bottom:.6rem;font-weight:300}
+.hbn{font-family:'Noto Serif Bengali',serif;font-size:clamp(2.4rem,6vw,4.4rem);font-weight:700;color:#fff;line-height:1.2;margin-bottom:.5rem}
+.hbn span{color:var(--gold-l)}
+.htag{font-family:'Noto Serif Bengali',serif;font-size:clamp(.95rem,2.2vw,1.2rem);color:rgba(255,255,255,.5);font-style:italic;margin-bottom:2.5rem;line-height:1.75}
+.hdiv{width:55px;height:2px;background:var(--gold);margin:0 auto 2.5rem}
+.hbtns{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+.hbtn{font-family:'Noto Sans Bengali',sans-serif;font-size:.87rem;font-weight:600;padding:.7rem 1.8rem;border-radius:var(--r);cursor:pointer;border:none;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;transition:all .2s;letter-spacing:.02em}
+.hbtn-g{background:var(--gold);color:var(--ink)}.hbtn-g:hover{background:var(--gold-l);transform:translateY(-2px)}
+.hbtn-o{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.28)}.hbtn-o:hover{border-color:#fff;background:rgba(255,255,255,.06)}
+.fstrip{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));border-top:1px solid var(--bdr)}
+.fsi{padding:2rem 1.5rem;text-align:center;border-right:1px solid var(--bdr);background:#fff;cursor:pointer;transition:background .2s}
+.fsi:last-child{border-right:none}.fsi:hover{background:var(--paper-w)}
+.fsi-ic{font-size:1.8rem;margin-bottom:.55rem}
+.fsi-t{font-family:'Noto Serif Bengali',serif;font-size:1.02rem;font-weight:600;margin-bottom:.25rem}
+.fsi-d{font-family:'Noto Sans Bengali',sans-serif;font-size:.78rem;color:var(--ink-md)}
+.astrip{max-width:900px;margin:4rem auto;padding:0 2rem;display:grid;grid-template-columns:1fr 2fr;gap:3rem;align-items:center}
+.aphoto{width:100%;aspect-ratio:3/4;background:var(--paper-d);border-radius:var(--r-lg);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:4rem;border:1px solid var(--bdr-s);gap:.4rem;position:relative;overflow:hidden}
+.aphoto::after{content:'সঞ্জয় মণ্ডল';position:absolute;bottom:0;left:0;right:0;background:var(--ink);color:var(--gold-l);text-align:center;font-family:'Noto Serif Bengali',serif;font-size:.82rem;padding:.55rem}
+.atext h2{font-family:'Noto Serif Bengali',serif;font-size:1.7rem;font-weight:700;margin-bottom:.9rem}
+.atext p{font-family:'Noto Serif Bengali',serif;font-size:.93rem;line-height:1.95;color:var(--ink-lt);margin-bottom:.85rem}
+.atext .rm{font-family:'Noto Sans Bengali',sans-serif;font-size:.82rem;font-weight:600;color:var(--red);background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+.hlat{background:var(--paper-w);padding:3.5rem 2rem}
+.shd{max-width:1000px;margin:0 auto 2rem;display:flex;align-items:center;gap:1rem}
+.shd h2{font-family:'Noto Serif Bengali',serif;font-size:1.4rem;font-weight:700;white-space:nowrap}
+.shdl{flex:1;height:1px;background:var(--bdr-s)}
+.shd button{font-family:'Noto Sans Bengali',sans-serif;font-size:.79rem;color:var(--red);background:none;border:none;cursor:pointer;white-space:nowrap}
+.hpg{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.5rem}
+.mpc{background:#fff;border:1px solid var(--bdr);border-radius:var(--r-lg);padding:1.4rem;cursor:pointer;transition:all .22s}
+.mpc:hover{transform:translateY(-3px);box-shadow:0 5px 20px rgba(26,18,8,.09)}
+.mpcat{font-family:'Noto Sans Bengali',sans-serif;font-size:.7rem;font-weight:600;padding:.2rem .7rem;border-radius:100px;margin-bottom:.65rem;display:inline-block;letter-spacing:.04em}
+.c-rep{background:#fef3e8;color:#7a4500}.c-sto{background:#e8f4fd;color:#0a4a7a}
+.c-mic{background:#e8fdf0;color:#0a5a2a}.c-bih{background:#f0e8fd;color:#4a0a7a}
+.mpc h3{font-family:'Noto Serif Bengali',serif;font-size:1.02rem;font-weight:600;line-height:1.4;margin-bottom:.55rem}
+.mpc p{font-family:'Noto Serif Bengali',serif;font-size:.84rem;color:var(--ink-md);line-height:1.7;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.mpf{display:flex;justify-content:space-between;align-items:center;margin-top:.9rem;padding-top:.7rem;border-top:1px solid var(--bdr)}
+.mpd{font-family:'Noto Sans Bengali',sans-serif;font-size:.72rem;color:var(--ink-mu)}
+.mpr{font-family:'Noto Sans Bengali',sans-serif;font-size:.72rem;color:var(--red);background:none;border:none;cursor:pointer;font-weight:600}
+/* ─ BLOG ─ */
+.blayout{max-width:1140px;margin:0 auto;padding:2.5rem 2rem 4rem;display:grid;grid-template-columns:1fr 290px;gap:2.5rem;align-items:start}
+.bpost{background:#fff;border:1px solid var(--bdr);border-radius:var(--r-lg);margin-bottom:2rem;overflow:hidden;transition:box-shadow .22s}
+.bpost:hover{box-shadow:0 4px 24px rgba(26,18,8,.09)}
+.bpimg{height:215px;background:var(--paper-d);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border-bottom:1px solid var(--bdr)}
+.bpic{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:5rem;opacity:.14}
+.bpil{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(26,18,8,.68));padding:1.5rem 1.2rem .7rem;font-family:'Noto Serif Bengali',serif;font-size:1.1rem;font-weight:600;color:#fff}
+.bpb{padding:1.4rem 1.65rem}
+.bpm{display:flex;align-items:center;gap:.7rem;margin-bottom:.85rem;flex-wrap:wrap}
+.bpcat{font-family:'Noto Sans Bengali',sans-serif;font-size:.7rem;font-weight:600;padding:.2rem .75rem;border-radius:100px;letter-spacing:.04em}
+.bpdate{font-family:'Noto Sans Bengali',sans-serif;font-size:.74rem;color:var(--ink-mu)}
+.bptit{font-family:'Noto Serif Bengali',serif;font-size:1.3rem;font-weight:700;line-height:1.4;margin-bottom:.85rem;cursor:pointer}
+.bptit:hover{color:var(--red)}
+.bpex{font-family:'Noto Serif Bengali',serif;font-size:.92rem;line-height:1.9;color:var(--ink-lt)}
+.bpex p{margin-bottom:.7rem}
+.bpf{padding:.85rem 1.65rem;border-top:1px solid var(--bdr);background:var(--paper-w);display:flex;justify-content:space-between;align-items:center}
+.rmbtn{font-family:'Noto Sans Bengali',sans-serif;font-size:.82rem;font-weight:600;color:var(--red);background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+.pshr{display:flex;gap:.4rem}
+.sbt{font-family:'Noto Sans Bengali',sans-serif;font-size:.7rem;padding:.22rem .7rem;border:1px solid var(--bdr-s);border-radius:100px;background:none;cursor:pointer;color:var(--ink-md);transition:all .15s}
+.sbt:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.pgn{display:flex;align-items:center;justify-content:center;gap:.45rem;margin-top:.5rem}
+.pgb{font-family:'Noto Sans Bengali',sans-serif;font-size:.82rem;width:35px;height:35px;display:flex;align-items:center;justify-content:center;border:1px solid var(--bdr-s);border-radius:var(--r);background:#fff;cursor:pointer;transition:all .15s;color:var(--ink)}
+.pgb:hover,.pgb.cur{background:var(--ink);color:#fff;border-color:var(--ink)}
+.pgb.cur{pointer-events:none}
+/* SIDEBAR */
+.sbar{position:sticky;top:72px}
+.sblk{background:#fff;border:1px solid var(--bdr);border-radius:var(--r-lg);margin-bottom:1.4rem;overflow:hidden}
+.sbhd{background:var(--ink);color:var(--gold-l);font-family:'Noto Serif Bengali',serif;font-size:.88rem;font-weight:600;padding:.65rem 1.05rem;letter-spacing:.03em}
+.sbbd{padding:.9rem 1.05rem}
+.sbpi{display:flex;gap:.55rem;padding:.5rem 0;border-bottom:1px solid var(--bdr);cursor:pointer;align-items:flex-start}
+.sbpi:last-child{border-bottom:none}
+.sbdot{width:6px;height:6px;background:var(--gold);border-radius:50%;flex-shrink:0;margin-top:.55rem}
+.sbpt{font-family:'Noto Serif Bengali',serif;font-size:.82rem;line-height:1.5;color:var(--ink-lt);transition:color .15s}
+.sbpi:hover .sbpt{color:var(--red)}
+.archyr{cursor:pointer;user-select:none}
+.archyh{display:flex;justify-content:space-between;align-items:center;font-family:'Noto Serif Bengali',serif;font-size:.88rem;font-weight:600;padding:.38rem 0;border-bottom:1px solid var(--bdr);margin-bottom:.25rem}
+.archms{padding-left:.45rem;margin-bottom:.5rem}
+.archm{font-family:'Noto Sans Bengali',sans-serif;font-size:.77rem;color:var(--ink-md);display:flex;justify-content:space-between;padding:.22rem 0;cursor:pointer;transition:color .15s}
+.archm:hover{color:var(--red)}
+.archc{font-size:.68rem;background:var(--paper-d);padding:.08rem .38rem;border-radius:100px;color:var(--ink-mu)}
+.ctags{display:flex;flex-wrap:wrap;gap:.38rem}
+.ctag{font-family:'Noto Sans Bengali',sans-serif;font-size:.74rem;padding:.22rem .72rem;border-radius:100px;border:1px solid var(--bdr-s);background:var(--paper-w);cursor:pointer;transition:all .15s;color:var(--ink-lt)}
+.ctag:hover,.ctag.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.bsrch{display:flex;gap:.38rem}
+.bsrch input{flex:1;padding:.5rem .8rem;border:1px solid var(--bdr-s);border-radius:var(--r);font-family:'Noto Sans Bengali',sans-serif;font-size:.84rem;background:var(--paper-w);color:var(--ink);outline:none}
+.bsrch input:focus{border-color:var(--red)}
+.bsrch button{padding:.5rem .9rem;background:var(--ink);color:#fff;border:none;border-radius:var(--r);cursor:pointer;font-size:.84rem}
+/* FULL POST */
+.fpwrap{max-width:780px;margin:2.5rem auto;padding:0 2rem 4rem}
+.fpbk{font-family:'Noto Sans Bengali',sans-serif;font-size:.82rem;color:var(--ink-md);background:none;border:none;cursor:pointer;margin-bottom:1.4rem;display:inline-flex;align-items:center;gap:.3rem;padding:.3rem 0}
+.fpbk:hover{color:var(--red)}
+.fptit{font-family:'Noto Serif Bengali',serif;font-size:clamp(1.6rem,4vw,2.3rem);font-weight:700;line-height:1.3;margin-bottom:.9rem}
+.fpmeta{display:flex;gap:1.4rem;flex-wrap:wrap;margin-bottom:1.9rem;padding-bottom:1.1rem;border-bottom:2px solid var(--bdr-s)}
+.fpmi{font-family:'Noto Sans Bengali',sans-serif;font-size:.77rem;color:var(--ink-mu)}
+.fpmi strong{color:var(--ink-lt);font-weight:600}
+.fpbd{font-family:'Noto Serif Bengali',serif;font-size:1rem;line-height:2;color:var(--ink-lt)}
+.fpbd p{margin-bottom:1rem}
+.fpbd blockquote{border-left:4px solid var(--gold);padding:1rem 1.4rem;margin:1.4rem 0;background:var(--gold-p);font-style:italic;color:var(--ink-lt);border-radius:0 var(--r) var(--r) 0}
+/* ─ ABOUT ─ */
+.apg{max-width:900px;margin:3rem auto;padding:0 2rem 5rem}
+.ahcard{display:grid;grid-template-columns:250px 1fr;gap:3rem;background:#fff;border:1px solid var(--bdr);border-radius:var(--r-lg);padding:2.4rem;margin-bottom:2.4rem;align-items:start;box-shadow:0 2px 14px rgba(26,18,8,.06)}
+.aport{width:100%;aspect-ratio:3/4;background:var(--paper-d);border-radius:var(--r);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:4.5rem;border:1px solid var(--bdr-s);gap:.4rem}
+.aport-n{font-family:'Noto Sans Bengali',sans-serif;font-size:.72rem;color:var(--ink-mu)}
+.aname{font-family:'Noto Serif Bengali',serif;font-size:2rem;font-weight:700;margin-bottom:.25rem}
+.aen{font-family:'Noto Sans Bengali',sans-serif;font-size:.95rem;color:var(--ink-mu);letter-spacing:.1em;margin-bottom:1.4rem}
+.abio p{font-family:'Noto Serif Bengali',serif;font-size:.94rem;line-height:1.95;color:var(--ink-lt);margin-bottom:.85rem}
+.asocial{display:flex;gap:.55rem;flex-wrap:wrap;margin-top:1.4rem}
+.asl{font-family:'Noto Sans Bengali',sans-serif;font-size:.77rem;font-weight:600;padding:.38rem 1rem;border-radius:100px;text-decoration:none;border:1px solid var(--bdr-s);color:var(--ink);transition:all .15s}
+.asl:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.astats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin-bottom:2rem}
+.astat{background:#fff;border:1px solid var(--bdr);border-radius:var(--r-lg);padding:1.2rem;text-align:center}
+.astat-n{font-family:'Noto Serif Bengali',serif;font-size:1.9rem;font-weight:700;color:var(--red)}
+.astat-l{font-family:'Noto Sans Bengali',sans-serif;font-size:.76rem;color:var(--ink-mu)}
+/* ─ BOOKS ─ */
+.bhero{background:var(--ink);padding:3.2rem 2rem 2.8rem;text-align:center}
+.bhero h1{font-family:'Noto Serif Bengali',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;color:#fff;margin-bottom:.35rem}
+.bhero p{font-family:'Noto Sans Bengali',sans-serif;font-size:.88rem;color:rgba(255,255,255,.45)}
+.bflt{background:var(--paper-w);border-bottom:1px solid var(--bdr);padding:.85rem 2rem;display:flex;gap:.58rem;align-items:center;flex-wrap:wrap}
+.flbl{font-family:'Noto Sans Bengali',sans-serif;font-size:.77rem;color:var(--ink-mu);font-weight:500}
+.fbtn{font-family:'Noto Sans Bengali',sans-serif;font-size:.76rem;padding:.26rem .88rem;border:1px solid var(--bdr-s);background:transparent;color:var(--ink-lt);border-radius:100px;cursor:pointer;transition:all .18s}
+.fbtn:hover,.fbtn.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.bmain{max-width:1060px;margin:0 auto;padding:2.4rem 2rem 5rem}
+.bkcard{background:#fff;border:1px solid var(--bdr);border-radius:var(--r-lg);margin-bottom:2.4rem;overflow:hidden;box-shadow:0 2px 14px rgba(26,18,8,.06);transition:all .25s}
+.bkcard:hover{transform:translateY(-3px);box-shadow:0 8px 38px rgba(26,18,8,.12)}
+.bkinn{display:grid;grid-template-columns:255px 1fr;min-height:355px}
+.cvpan{background:var(--paper-d);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1.4rem;border-right:1px solid var(--bdr);gap:.9rem}
+.bkcvr{width:142px;height:202px;border-radius:3px 6px 6px 3px;box-shadow:-3px 3px 0 rgba(0,0,0,.1),4px 8px 20px rgba(0,0,0,.22);display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;cursor:pointer;transition:transform .3s}
+.bkcvr:hover{transform:rotate(-2deg) scale(1.05)}
+.bkcvr::before{content:'';position:absolute;left:0;top:0;bottom:0;width:7px;background:rgba(0,0,0,.18);border-radius:2px 0 0 2px}
+.cvrt{font-family:'Noto Serif Bengali',serif;font-weight:700;font-size:.98rem;line-height:1.3;text-align:center;padding:.58rem;position:relative;z-index:1}
+.cvra{font-family:'Noto Sans Bengali',sans-serif;font-size:.66rem;text-align:center;padding:0 .58rem .58rem;position:relative;z-index:1;letter-spacing:.04em}
+.gbadge{font-family:'Noto Sans Bengali',sans-serif;font-size:.68rem;padding:.25rem .88rem;border-radius:100px;font-weight:600;letter-spacing:.03em}
+.bkinfo{padding:1.7rem 2.1rem;display:flex;flex-direction:column;gap:1.05rem}
+.bktit{font-family:'Noto Serif Bengali',serif;font-size:1.55rem;font-weight:700;line-height:1.3}
+.bmrow{display:flex;flex-wrap:wrap;gap:1.1rem}
+.mti{display:flex;flex-direction:column;gap:2px}
+.ml{font-family:'Noto Sans Bengali',sans-serif;font-size:.67rem;color:var(--ink-mu);text-transform:uppercase;letter-spacing:.08em;font-weight:500}
+.mv{font-family:'Noto Serif Bengali',serif;font-size:.9rem;font-weight:600}
+.mvp{color:var(--red);font-size:1.02rem}
+.bksum{font-family:'Noto Serif Bengali',serif;font-size:.9rem;line-height:1.9;color:var(--ink-lt);border-left:3px solid var(--gold);padding-left:.95rem;font-style:italic}
+.pubr{background:var(--paper-w);border:1px solid var(--bdr);border-radius:var(--r);padding:.85rem 1.05rem;display:flex;gap:.85rem;align-items:flex-start}
+.pubic{width:33px;height:33px;background:var(--ink);border-radius:var(--r);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.9rem}
+.pubn{font-family:'Noto Serif Bengali',serif;font-weight:600;font-size:.88rem}
+.pubi{font-family:'Noto Sans Bengali',sans-serif;font-size:.73rem;color:var(--ink-mu);margin-top:2px;line-height:1.5}
+.pvbox{background:var(--paper-w);border:1px solid var(--bdr);border-radius:var(--r);overflow:hidden}
+.pvhd{display:flex;align-items:center;justify-content:space-between;padding:.62rem 1.05rem;border-bottom:1px solid var(--bdr);cursor:pointer;user-select:none}
+.pvhdl{display:flex;align-items:center;gap:.42rem;font-family:'Noto Sans Bengali',sans-serif;font-size:.78rem;font-weight:600;color:var(--teal)}
+.pvtog{font-family:'Noto Sans Bengali',sans-serif;font-size:.7rem;color:var(--ink-mu)}
+.pvbd{padding:1.05rem;font-family:'Noto Serif Bengali',serif;font-size:.87rem;line-height:1.95;color:var(--ink-lt);max-height:0;overflow:hidden;transition:max-height .4s}
+.pvbd.open{max-height:480px}
+.pvwm{font-family:'Noto Sans Bengali',sans-serif;font-size:.68rem;color:var(--ink-mu);text-align:center;margin-top:.85rem;padding-top:.65rem;border-top:1px dashed var(--bdr-s)}
+.bkacts{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin-top:auto}
+.bbtn{font-family:'Noto Sans Bengali',sans-serif;font-size:.79rem;font-weight:600;padding:.48rem 1.1rem;border-radius:var(--r);border:none;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:.32rem;transition:all .18s;white-space:nowrap}
+.bb-pri{background:var(--red);color:#fff}.bb-pri:hover{background:#6e1414}
+.bb-amz{background:#ff9900;color:var(--ink)}.bb-amz:hover{background:#e68a00}
+.bb-goo{background:#4285f4;color:#fff}.bb-goo:hover{background:#3367d6}
+.bb-bh{background:var(--teal);color:#fff}.bb-bh:hover{background:#134845}
+.bb-out{background:transparent;color:var(--ink);border:1px solid var(--bdr-s)}.bb-out:hover{background:var(--paper-d)}
+.bbdiv{font-family:'Noto Sans Bengali',sans-serif;font-size:.68rem;color:var(--ink-mu)}
+/* MODAL */
+.mov{display:none;position:fixed;inset:0;background:rgba(26,18,8,.65);z-index:1000;align-items:center;justify-content:center}
+.mov.open{display:flex}
+.mbox{background:var(--paper);border-radius:var(--r-lg);padding:2.2rem;max-width:450px;width:90%;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.mx{position:absolute;top:.85rem;right:.95rem;background:none;border:none;font-size:1.4rem;color:var(--ink-mu);cursor:pointer;line-height:1}
+.mbox h2{font-family:'Noto Serif Bengali',serif;font-size:1.22rem;margin-bottom:.28rem}
+.msub{font-family:'Noto Sans Bengali',sans-serif;font-size:.8rem;color:var(--ink-mu);margin-bottom:1.2rem}
+.fg{margin-bottom:.85rem}
+.fg label{display:block;font-family:'Noto Sans Bengali',sans-serif;font-size:.77rem;font-weight:600;color:var(--ink-lt);margin-bottom:.3rem}
+.fg input,.fg select{width:100%;padding:.55rem .85rem;border:1px solid var(--bdr-s);border-radius:var(--r);font-family:'Noto Sans Bengali',sans-serif;font-size:.87rem;background:#fff;color:var(--ink);outline:none;transition:border-color .18s}
+.fg input:focus,.fg select:focus{border-color:var(--red)}
+.mnote{font-family:'Noto Sans Bengali',sans-serif;font-size:.72rem;color:var(--ink-mu);margin-top:.85rem;background:var(--paper-w);padding:.68rem;border-radius:var(--r);line-height:1.6}
+.macts{display:flex;gap:.6rem;margin-top:1.05rem}
+/* ─ CONTACT ─ */
+.cpg{max-width:880px;margin:3rem auto;padding:0 2rem 5rem}
+.cgrid{display:grid;grid-template-columns:1fr 1.55fr;gap:2.4rem;margin-top:2rem}
+.cicard{background:var(--ink);border-radius:var(--r-lg);padding:2.1rem 1.7rem;color:#fff}
+.cicard h3{font-family:'Noto Serif Bengali',serif;color:var(--gold-l);font-size:1.15rem;margin-bottom:1.4rem}
+.cii{display:flex;gap:.85rem;align-items:flex-start;margin-bottom:1.2rem}
+.ciic{width:35px;height:35px;background:rgba(255,255,255,.08);border-radius:var(--r);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.95rem}
+.ciil{font-family:'Noto Sans Bengali',sans-serif;font-size:.7rem;color:rgba(255,255,255,.42);letter-spacing:.06em;margin-bottom:2px}
+.ciiv{font-family:'Noto Serif Bengali',serif;font-size:.88rem;color:rgba(255,255,255,.82)}
+.ciiv a{color:var(--gold-l);text-decoration:none}
+.csoc{margin-top:1.65rem;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,.1)}
+.csoc p{font-family:'Noto Sans Bengali',sans-serif;font-size:.73rem;color:rgba(255,255,255,.38);margin-bottom:.7rem}
+.csocl{display:flex;flex-wrap:wrap;gap:.45rem}
+.csl{font-family:'Noto Sans Bengali',sans-serif;font-size:.73rem;padding:.28rem .82rem;border:1px solid rgba(255,255,255,.18);border-radius:100px;color:rgba(255,255,255,.65);text-decoration:none;transition:all .15s;cursor:pointer;background:none}
+.csl:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.38)}
+.cfcard{background:#fff;border:1px solid var(--bdr);border-radius:var(--r-lg);padding:2.1rem;box-shadow:0 2px 14px rgba(26,18,8,.05)}
+.cfcard h3{font-family:'Noto Serif Bengali',serif;font-size:1.15rem;font-weight:700;margin-bottom:1.4rem}
+.cfrow{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+.cfg{margin-bottom:.9rem}
+.cfg label{display:block;font-family:'Noto Sans Bengali',sans-serif;font-size:.76rem;font-weight:600;color:var(--ink-lt);margin-bottom:.32rem}
+.cfg input,.cfg select,.cfg textarea{width:100%;padding:.58rem .88rem;border:1px solid var(--bdr-s);border-radius:var(--r);font-family:'Noto Sans Bengali',sans-serif;font-size:.88rem;background:var(--paper-w);color:var(--ink);outline:none;transition:border-color .18s;resize:vertical}
+.cfg input:focus,.cfg select:focus,.cfg textarea:focus{border-color:var(--red);background:#fff}
+.cfg textarea{min-height:135px}
+.cfsub{width:100%;padding:.72rem;background:var(--red);color:#fff;border:none;border-radius:var(--r);font-family:'Noto Sans Bengali',sans-serif;font-size:.9rem;font-weight:600;cursor:pointer;transition:all .18s;margin-top:.2rem}
+.cfsub:hover{background:#6e1414;transform:translateY(-1px)}
+.cfok{display:none;background:var(--teal-p);border:1px solid rgba(26,95,90,.22);border-radius:var(--r);padding:.95rem 1.15rem;font-family:'Noto Serif Bengali',serif;font-size:.88rem;color:var(--teal);margin-top:.9rem}
+/* COMING */
+.cmpg{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;text-align:center;padding:4rem 2rem}
+.cmic{font-size:3.5rem;margin-bottom:1.4rem;opacity:.45}
+.cmpg h2{font-family:'Noto Serif Bengali',serif;font-size:1.75rem;font-weight:700;margin-bottom:.7rem}
+.cmpg p{font-family:'Noto Serif Bengali',serif;font-size:.98rem;color:var(--ink-md);max-width:440px;line-height:1.8;margin-bottom:1.9rem}
+.cmbadge{font-family:'Noto Sans Bengali',sans-serif;font-size:.76rem;font-weight:600;padding:.38rem 1.15rem;border-radius:100px;background:var(--gold-p);color:var(--gold);border:1px solid rgba(184,134,11,.28)}
+/* RESPONSIVE */
+@media(max-width:760px){
+  .nlinks{display:none}.nburg{display:block}
+  .blayout,.blayout-cls{grid-template-columns:1fr}
+  .sbar{position:static}
+  .bkinn{grid-template-columns:1fr}
+  .cvpan{border-right:none;border-bottom:1px solid var(--bdr)}
+  .ahcard{grid-template-columns:1fr}
+  .astrip{grid-template-columns:1fr}
+  .cgrid{grid-template-columns:1fr}
+  .cfrow{grid-template-columns:1fr}
+  .hhero{min-height:78vh}
+  #snav{padding:0 1.2rem}
+  .bmain,.apg,.cpg{padding-left:1rem;padding-right:1rem}
+  .blayout{padding-left:1rem;padding-right:1rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="snav">
+  <span class="nbrand" onclick="sp('home')">সঞ্জয় মণ্ডল</span>
+  <ul class="nlinks">
+    <li><button id="n-home" onclick="sp('home')">প্রথম পাতা</button></li>
+    <li><button id="n-about" onclick="sp('about')">আমার কথা</button></li>
+    <li><button id="n-blog" onclick="sp('blog')">ব্লগবার্তা</button></li>
+    <li><button id="n-books" onclick="sp('books')">বইটই</button></li>
+    <li><button id="n-published" onclick="sp('published')">প্রকাশিত</button></li>
+    <li><button id="n-stories" onclick="sp('stories')">গল্পের আসর</button></li>
+    <li><button id="n-contact" onclick="sp('contact')">যোগাযোগ</button></li>
+  </ul>
+  <button class="nburg" onclick="tmob()">☰</button>
+</nav>
+<div class="mmenu" id="mmenu">
+  <button onclick="sp('home');tmob()">প্রথম পাতা</button>
+  <button onclick="sp('about');tmob()">আমার কথা</button>
+  <button onclick="sp('blog');tmob()">ব্লগবার্তা</button>
+  <button onclick="sp('books');tmob()">বইটই</button>
+  <button onclick="sp('published');tmob()">প্রকাশিত</button>
+  <button onclick="sp('stories');tmob()">গল্পের আসর</button>
+  <button onclick="sp('contact');tmob()">যোগাযোগ</button>
+</div>
+
+<!-- ══ HOME ══ -->
+<div class="page active" id="pg-home">
+<div class="hhero">
+  <div class="hinner">
+    <div class="horn">✦ ✦ ✦</div>
+    <div class="hen">SANJOY MONDAL · BENGALI WRITER</div>
+    <h1 class="hbn">সঞ্জয় <span>মণ্ডল</span></h1>
+    <p class="htag">আড্ডা, বিতর্ক, মতামত।<br>সঙ্গে কিছু গল্প, কবিতা, প্রতিবেদন।</p>
+    <div class="hdiv"></div>
+    <div class="hbtns">
+      <button class="hbtn hbtn-g" onclick="sp('blog')">📝 ব্লগ পড়ুন</button>
+      <button class="hbtn hbtn-o" onclick="sp('books')">📚 বই দেখুন</button>
+      <button class="hbtn hbtn-o" onclick="sp('contact')">✉ যোগাযোগ</button>
+    </div>
+  </div>
+</div>
+<div class="fstrip">
+  <div class="fsi" onclick="sp('blog')"><div class="fsi-ic">📝</div><div class="fsi-t">ব্লগবার্তা</div><div class="fsi-d">গল্প, প্রতিবেদন ও মতামত</div></div>
+  <div class="fsi" onclick="sp('books')"><div class="fsi-ic">📚</div><div class="fsi-t">বইটই</div><div class="fsi-d">প্রকাশিত গ্রন্থ ও পূর্বরূপ পড়ুন</div></div>
+  <div class="fsi" onclick="sp('stories')"><div class="fsi-ic">🌿</div><div class="fsi-t">গল্পের আসর</div><div class="fsi-d">ছোটগল্প ও বিহ্বল গল্প</div></div>
+  <div class="fsi" onclick="sp('contact')"><div class="fsi-ic">✉</div><div class="fsi-t">যোগাযোগ</div><div class="fsi-d">মতামত ও বই অর্ডার করুন</div></div>
+</div>
+<div class="astrip">
+  <div class="aphoto">📷<span style="font-family:'Noto Sans Bengali',sans-serif;font-size:.72rem;color:var(--ink-mu)">ছবি যোগ করুন</span></div>
+  <div class="atext">
+    <h2>লেখকের কথা</h2>
+    <p>লেখা হয় একা একা। তবে সেই লেখা শেষ হলেই স্বাধীন হতে চায়। যে চিন্তাসূত্রটি এতদিন ধরে শুঁয়োপোকার গুটির মতো গুটিয়ে ছিল মননে, লেখার হাত ধরে সে রঙিন প্রজাপতি হয়ে উড়তে চায়।</p>
+    <p>তথ্যপ্রযুক্তি শিল্পে বছরের পর বছর দিবারাত্র আষ্টেপৃষ্টে জড়িয়ে থাকার পরেও ব্লগ লেখার কথা কোনদিন মনেই হয় নি। বন্ধুদের পাল্লায় পড়ে সেই ছড়িয়ে ছিটিয়ে থাকা লেখাগুলোকে এক জায়গায় করার একটা চেষ্টার ফসল এই ব্লগটি।</p>
+    <button class="rm" onclick="sp('about')">বিস্তারিত পড়ুন →</button>
+  </div>
+</div>
+<div class="hlat">
+  <div class="shd"><div class="shdl"></div><h2>সাম্প্রতিক লেখা</h2><div class="shdl"></div><button onclick="sp('blog')">সব দেখুন →</button></div>
+  <div class="hpg">
+    <div class="mpc" onclick="op(0)"><span class="mpcat c-mic">অণুগল্প</span><h3>ঝলসানো রুটি</h3><p>দ্রুত বিকেলের আলো ফুরিয়ে আসছে। মরদ সেই কাকভোরে কাজে বেরিয়ে গেছে। রেললাইন থেকে একটু দূরে প্লাস্টিকের একটা ছাউনিতে ফিরে চাল চাইবে।</p><div class="mpf"><span class="mpd">আগস্ট ২০২৩</span><button class="mpr">পড়ুন →</button></div></div>
+    <div class="mpc" onclick="op(1)"><span class="mpcat c-rep">প্রতিবেদন</span><h3>প্রতিবাদহীন,</h3><p>২৩ দিন ধরে রাজপথে হবু শিক্ষকেরা অনশনে বসেছেন। কারো কোন ভ্রুক্ষেপ নেই। না সরকারের, না প্রশাসনের।</p><div class="mpf"><span class="mpd">আগস্ট ২০২০</span><button class="mpr">পড়ুন →</button></div></div>
+    <div class="mpc" onclick="op(2)"><span class="mpcat c-sto">ছোটগল্প</span><h3>অদৃশ্য</h3><p>দুপুরে খাওয়ার পরে বাসন ধুচ্ছিল মাধুরি। বসার ঘরে টিভি দেখতে কর্তা চেঁচিয়ে উঠলেন, লকডাউন বেড়ে গেল।</p><div class="mpf"><span class="mpd">মে ২০২০</span><button class="mpr">পড়ুন →</button></div></div>
+  </div>
+</div>
+<div class="sfoot">© সঞ্জয় মণ্ডল · সর্বস্বত্ব সংরক্ষিত · <a href="#" onclick="sp('contact')">যোগাযোগ করুন</a></div>
+</div>
+
+<!-- ══ BLOG ══ -->
+<div class="page" id="pg-blog">
+<div class="phdr"><h1>ব্লগবার্তা</h1><p>গল্প · প্রতিবেদন · অণুগল্প · মতামত</p></div>
+<div class="blayout">
+  <div>
+    <!-- Post cards — page 1 -->
+    <div class="bpost" data-cat="অণুগল্প" id="bp0">
+      <div class="bpimg"><div class="bpic">🌙</div><div class="bpil">ঝলসানো রুটি</div></div>
+      <div class="bpb"><div class="bpm"><span class="bpcat c-mic">অণুগল্প</span><span class="bpdate">আগস্ট ২০২৩</span></div>
+      <h2 class="bptit" onclick="op(0)">ঝলসানো রুটি</h2>
+      <div class="bpex"><p>দ্রুত বিকেলের আলো ফুরিয়ে আসছে। মরদ সেই কাকভোরে কাজে বেরিয়ে গেছে। ঘন্টাখানেক পরেই বাড়ি ফিরবে। বাড়ি বলতে এখন রেললাইন থেকে একটু দূরে একচিলতে জমিতে প্লাস্টিকের একটা ছাউনি।</p><p>ফিরে এসেই সে ভাত খেতে চাইবে, অথচ ঘরে চাল বাড়ন্ত। শেফালি তাই দৌড়ে চলে এসেছে রেশনের দোকানে।</p></div></div>
+      <div class="bpf"><button class="rmbtn" onclick="op(0)">সম্পূর্ণ পড়ুন →</button><div class="pshr"><button class="sbt">Facebook</button><button class="sbt">X</button></div></div>
+    </div>
+    <div class="bpost" data-cat="প্রতিবেদন" id="bp1">
+      <div class="bpimg"><div class="bpic">✊</div><div class="bpil">প্রতিবাদহীন,</div></div>
+      <div class="bpb"><div class="bpm"><span class="bpcat c-rep">প্রতিবেদন</span><span class="bpdate">আগস্ট ২০২০</span></div>
+      <h2 class="bptit" onclick="op(1)">প্রতিবাদহীন,</h2>
+      <div class="bpex"><p>২৩ দিন ধরে রাজপথে হবু শিক্ষকেরা অনশনে বসেছেন। কারো কোন ভ্রুক্ষেপ নেই। না সরকারের, না প্রশাসনের।</p><p>অগণতান্ত্রিক সরকার সবসময় ক্ষমতাকে নিরঙ্কুশ রাখতে চায়। সেই ক্ষমতাকে নিরঙ্কুশ করতে পুলিশকে ঘুষখোর তৈরী করে।</p></div></div>
+      <div class="bpf"><button class="rmbtn" onclick="op(1)">সম্পূর্ণ পড়ুন →</button><div class="pshr"><button class="sbt">Facebook</button><button class="sbt">X</button></div></div>
+    </div>
+    <!-- Page 2 posts (hidden) -->
+    <div class="bpost" data-cat="ছোটগল্প" id="bp2" style="display:none">
+      <div class="bpimg"><div class="bpic">🚶</div><div class="bpil">অদৃশ্য</div></div>
+      <div class="bpb"><div class="bpm"><span class="bpcat c-sto">ছোটগল্প</span><span class="bpdate">মে ২০২০</span></div>
+      <h2 class="bptit" onclick="op(2)">অদৃশ্য</h2>
+      <div class="bpex"><p>দুপুরে খাওয়ার পরে বাসন ধুচ্ছিল মাধুরি। বসার ঘরে টিভি দেখতে দেখতে কর্তা চেঁচিয়ে উঠলেন, "জানো, লকডাউন বেড়ে গেল। মে মাসে শেষ পর্যন্ত।"</p></div></div>
+      <div class="bpf"><button class="rmbtn" onclick="op(2)">সম্পূর্ণ পড়ুন →</button><div class="pshr"><button class="sbt">Facebook</button><button class="sbt">X</button></div></div>
+    </div>
+    <div class="bpost" data-cat="প্রতিবেদন" id="bp3" style="display:none">
+      <div class="bpimg"><div class="bpic">🚂</div><div class="bpil">পরিযায়ী শ্রমিক</div></div>
+      <div class="bpb"><div class="bpm"><span class="bpcat c-rep">প্রতিবেদন</span><span class="bpdate">মে ২০২০</span></div>
+      <h2 class="bptit" onclick="op(3)">পরিযায়ী শ্রমিকঃ তোমরা কি এদেশেরই মানুষ!</h2>
+      <div class="bpex"><p>গত কয়েক সপ্তাহ ধরে এক ভীষণ টানাপোড়েন চলছে। দেশের বিভিন্ন প্রান্তে প্রায় ২০ কোটি পরিযায়ী শ্রমিক তাদের পরিবারসুদ্ধ আটকে পড়েছেন।</p></div></div>
+      <div class="bpf"><button class="rmbtn" onclick="op(3)">সম্পূর্ণ পড়ুন →</button><div class="pshr"><button class="sbt">Facebook</button><button class="sbt">X</button></div></div>
+    </div>
+    <!-- Page 3 posts (hidden) -->
+    <div class="bpost" data-cat="বিহ্বল গল্প" id="bp4" style="display:none">
+      <div class="bpimg"><div class="bpic">📎</div><div class="bpil">চুলের ক্লিপ অথবা সরকারি কাঁকড়া</div></div>
+      <div class="bpb"><div class="bpm"><span class="bpcat c-bih">বিহ্বল গল্প</span><span class="bpdate">অক্টোবর ২০১৭</span></div>
+      <h2 class="bptit" onclick="op(4)">চুলের ক্লিপ অথবা সরকারি কাঁকড়া</h2>
+      <div class="bpex"><p>মেয়েটা যখন খুব ছোট্ট ছিল, তখন ওর মা স্কুল থেকে ফিরলেই মেয়েটা মায়ের ব্যবহৃত সব জিনিস নিয়ে খেলা করার জন্য হামলে পড়ত।</p></div></div>
+      <div class="bpf"><button class="rmbtn" onclick="op(4)">সম্পূর্ণ পড়ুন →</button><div class="pshr"><button class="sbt">Facebook</button><button class="sbt">X</button></div></div>
+    </div>
+    <div class="bpost" data-cat="প্রতিবেদন" id="bp5" style="display:none">
+      <div class="bpimg"><div class="bpic">🎭</div><div class="bpil">পুতুলনাচ</div></div>
+      <div class="bpb"><div class="bpm"><span class="bpcat c-rep">প্রতিবেদন</span><span class="bpdate">সেপ্টেম্বর ২০১৭</span></div>
+      <h2 class="bptit" onclick="op(5)">পুতুলনাচ</h2>
+      <div class="bpex"><p>"সবাই তো আর খারাপ নয়, কেউ কেউ খারাপ" — এইসব সোহাগী কথাবার্তার দিন বোধহয় শেষ।</p></div></div>
+      <div class="bpf"><button class="rmbtn" onclick="op(5)">সম্পূর্ণ পড়ুন →</button><div class="pshr"><button class="sbt">Facebook</button><button class="sbt">X</button></div></div>
+    </div>
+    <!-- Pagination -->
+    <div class="pgn">
+      <button class="pgb cur" id="pgb1" onclick="sbp(1,this)">১</button>
+      <button class="pgb" id="pgb2" onclick="sbp(2,this)">২</button>
+      <button class="pgb" id="pgb3" onclick="sbp(3,this)">৩</button>
+      <button class="pgb" onclick="sbp(2,document.getElementById('pgb2'))">›</button>
+    </div>
+  </div>
+  <!-- SIDEBAR -->
+  <aside class="sbar">
+    <div class="sblk"><div class="sbhd">🔍 খুঁজুন</div><div class="sbbd"><div class="bsrch"><input type="text" placeholder="লেখা খুঁজুন..." id="bsi"><button onclick="dsrch()">→</button></div></div></div>
+    <div class="sblk">
+      <div class="sbhd">📋 সাম্প্রতিক লেখা</div>
+      <div class="sbbd">
+        <div class="sbpi" onclick="op(0)"><div class="sbdot"></div><span class="sbpt">ঝলসানো রুটি — আগস্ট ২০২৩</span></div>
+        <div class="sbpi" onclick="op(1)"><div class="sbdot"></div><span class="sbpt">প্রতিবাদহীন, — আগস্ট ২০২০</span></div>
+        <div class="sbpi" onclick="op(2)"><div class="sbdot"></div><span class="sbpt">অদৃশ্য — মে ২০২০</span></div>
+        <div class="sbpi" onclick="op(3)"><div class="sbdot"></div><span class="sbpt">পরিযায়ী শ্রমিক — মে ২০২০</span></div>
+        <div class="sbpi" onclick="op(4)"><div class="sbdot"></div><span class="sbpt">চুলের ক্লিপ — অক্টোবর ২০১৭</span></div>
+        <div class="sbpi" onclick="op(5)"><div class="sbdot"></div><span class="sbpt">পুতুলনাচ — সেপ্টেম্বর ২০১৭</span></div>
+      </div>
+    </div>
+    <div class="sblk">
+      <div class="sbhd">🏷 বিভাগ</div>
+      <div class="sbbd"><div class="ctags">
+        <button class="ctag on" onclick="fbl('all',this)">সব (২২)</button>
+        <button class="ctag" onclick="fbl('প্রতিবেদন',this)">প্রতিবেদন (১৪)</button>
+        <button class="ctag" onclick="fbl('ছোটগল্প',this)">ছোটগল্প (৪)</button>
+        <button class="ctag" onclick="fbl('অণুগল্প',this)">অণুগল্প (৩)</button>
+        <button class="ctag" onclick="fbl('বিহ্বল গল্প',this)">বিহ্বল গল্প (১)</button>
+      </div></div>
+    </div>
+    <div class="sblk">
+      <div class="sbhd">📅 সংগ্রহশালা</div>
+      <div class="sbbd">
+        <div class="archyr"><div class="archyh" onclick="ta(this)"><span>২০২৩</span><span>▼</span></div><div class="archms"><div class="archm"><span>আগস্ট</span><span class="archc">১</span></div></div></div>
+        <div class="archyr"><div class="archyh" onclick="ta(this)"><span>২০২০</span><span>▼</span></div><div class="archms"><div class="archm"><span>আগস্ট</span><span class="archc">১</span></div><div class="archm"><span>মে</span><span class="archc">২</span></div></div></div>
+        <div class="archyr"><div class="archyh" onclick="ta(this)"><span>২০১৭</span><span>▼</span></div><div class="archms"><div class="archm"><span>অক্টোবর</span><span class="archc">১</span></div><div class="archm"><span>সেপ্টেম্বর</span><span class="archc">১</span></div><div class="archm"><span>ফেব্রুয়ারি</span><span class="archc">১</span></div></div></div>
+        <div class="archyr"><div class="archyh" onclick="ta(this)"><span>২০১৬</span><span>►</span></div></div>
+      </div>
+    </div>
+    <div class="sblk">
+      <div class="sbhd">🔗 পছন্দের ব্লগ</div>
+      <div class="sbbd">
+        <div class="sbpi"><div class="sbdot" style="background:var(--teal)"></div><a href="https://www.omicronlab.com/avro-keyboard.html" target="_blank" style="font-family:'Noto Sans Bengali',sans-serif;font-size:.8rem;color:var(--teal);text-decoration:none">অভ্র হরফ</a></div>
+        <div class="sbpi"><div class="sbdot" style="background:var(--teal)"></div><a href="http://www.galpopath.com/" target="_blank" style="font-family:'Noto Sans Bengali',sans-serif;font-size:.8rem;color:var(--teal);text-decoration:none">গল্পপাঠ</a></div>
+        <div class="sbpi"><div class="sbdot" style="background:var(--teal)"></div><a href="http://www.sachalayatan.com/" target="_blank" style="font-family:'Noto Sans Bengali',sans-serif;font-size:.8rem;color:var(--teal);text-decoration:none">সচলায়তন</a></div>
+        <div class="sbpi"><div class="sbdot" style="background:var(--teal)"></div><a href="http://tagoreweb.in/" target="_blank" style="font-family:'Noto Sans Bengali',sans-serif;font-size:.8rem;color:var(--teal);text-decoration:none">সম্পূর্ণ রবীন্দ্র-রচনাবলী</a></div>
+      </div>
+    </div>
+  </aside>
+</div>
+<div class="sfoot">© সঞ্জয় মণ্ডল · সর্বস্বত্ব সংরক্ষিত</div>
+</div>
+
+<!-- ══ FULL POST ══ -->
+<div class="page" id="pg-fp">
+<div class="fpwrap">
+  <button class="fpbk" onclick="sp('blog')">← ব্লগে ফিরুন</button>
+  <div id="fp-cat"></div>
+  <h1 class="fptit" id="fp-tit"></h1>
+  <div class="fpmeta" id="fp-meta"></div>
+  <div class="fpbd" id="fp-bd"></div>
+</div>
+<div class="sfoot">© সঞ্জয় মণ্ডল</div>
+</div>
+
+<!-- ══ ABOUT ══ -->
+<div class="page" id="pg-about">
+<div class="phdr"><h1>আমার কথা</h1><p>লেখক পরিচিতি</p></div>
+<div class="apg">
+  <div class="ahcard">
+    <div class="aport">📷<span class="aport-n">ছবি যোগ করুন</span></div>
+    <div>
+      <div class="aname">সঞ্জয় মণ্ডল</div>
+      <div class="aen">SANJOY MONDAL</div>
+      <div class="abio">
+        <p>লেখা হয় একা একা। তবে সেই লেখা শেষ হলেই স্বাধীন হতে চায়। সৃষ্টির সেই দাবী মেনে, যে বক্তব্যকে কেন্দ্র করে সেই লেখার শরীর নির্মিত হয়, সেই বক্তব্য তখন বর্হিজগতে প্রকাশিত হতে চায়।</p>
+        <p>যে চিন্তাসূত্রটি এতদিন ধরে শুঁয়োপোকার গুটির মতো গুটিয়ে ছিল মননে, লেখার হাত ধরে সে রঙিন প্রজাপতি হয়ে উড়তে চায়, প্রসারিত হতে চায়। যে অনুভূতিগুলো মনের জমিতে তুষারকণার মতো নিঃশব্দে ঝরতে থাকে প্রতি পলে, সেই অনুভূতিগুলো এবার শব্দের কায়া পেতে চায়।</p>
+        <p>তথ্যপ্রযুক্তি শিল্পে বছরের পর বছর দিবারাত্র আষ্টেপৃষ্টে জড়িয়ে থাকার পরেও ব্লগ লেখার কথা কোনদিন মনেই হয় নি। বন্ধুদের পাল্লায় পড়ে সেই ছড়িয়ে ছিটিয়ে থাকা লেখাগুলোকে এক জায়গায় করার একটা চেষ্টার ফসল এই ছোট্ট ব্লগটি।</p>
+        <p>লেখাগুলো এদিক ওদিক যায়। কখনো-সখনো মূদ্রিত হয় খবরের কাগজের পাতায় কিংবা অনলাইন পত্রিকায় কিংবা ফেসবুকের দেওয়ালে। অল্পস্বল্প পঠিত হয়, আলোচিত হয়, সমালোচিত হয় পাঠকদের কাছ থেকে।</p>
+        <p>বন্ধুরা, আন্তর্জালের এই মহাজগতে নিরন্তর ভ্রমণের সময় কোনদিন যদি এই ব্লগটিতে এসে পড়েন, তবে অনুরোধ করবো আপনাদের সুচিন্তিত মতামত দেবার জন্য।</p>
+      </div>
+      <div class="asocial">
+        <a class="asl" href="#" target="_blank">Facebook</a>
+        <a class="asl" href="https://sanjoyisonline.blogspot.com" target="_blank">Blogger</a>
+        <a class="asl" href="https://www.amazon.in/dp/B08CY9M4V2/" target="_blank">Amazon</a>
+        <a class="asl" href="https://play.google.com/store/books/details?id=Nua9DwAAQBAJ" target="_blank">Google Books</a>
+      </div>
+    </div>
+  </div>
+  <div class="astats">
+    <div class="astat"><div class="astat-n">২২+</div><div class="astat-l">প্রকাশিত লেখা</div></div>
+    <div class="astat"><div class="astat-n">১+</div><div class="astat-l">প্রকাশিত গ্রন্থ</div></div>
+    <div class="astat"><div class="astat-n">২০১৬</div><div class="astat-l">ব্লগ শুরু</div></div>
+    <div class="astat"><div class="astat-n">বাংলা</div><div class="astat-l">লেখার ভাষা</div></div>
+  </div>
+</div>
+<div class="sfoot">© সঞ্জয় মণ্ডল</div>
+</div>
+
+<!-- ══ BOOKS ══ -->
+<div class="page" id="pg-books">
+<div class="bhero"><h1>বইটই</h1><p>প্রকাশিত গ্রন্থসমূহ · পড়ুন, কিনুন, সংগ্রহ করুন</p></div>
+<div class="bflt">
+  <span class="flbl">ধরন:</span>
+  <button class="fbtn on" onclick="fbk('all',this)">সব বই</button>
+  <button class="fbtn" onclick="fbk('উপন্যাস',this)">উপন্যাস</button>
+  <button class="fbtn" onclick="fbk('গল্পসংকলন',this)">গল্পসংকলন</button>
+  <button class="fbtn" onclick="fbk('প্রবন্ধ',this)">প্রবন্ধ</button>
+</div>
+<div class="bmain">
+  <!-- Book 1 -->
+  <div class="bkcard" data-bg="উপন্যাস">
+    <div class="bkinn">
+      <div class="cvpan">
+        <div class="bkcvr" style="background:linear-gradient(160deg,#1a3a5c,#0d2137)">
+          <div style="position:absolute;top:20px;left:0;right:0;text-align:center;opacity:.18;font-size:2.5rem">💻</div>
+          <div class="cvrt" style="color:#d4a017">নবদিগন্তের অভিমন্যুরা</div>
+          <div class="cvra" style="color:rgba(212,160,23,.62)">সঞ্জয় মণ্ডল</div>
+        </div>
+        <span class="gbadge" style="background:#e8f0fa;color:#1a3a5c;border:1px solid #b5c8e8">উপন্যাস</span>
+      </div>
+      <div class="bkinfo">
+        <div class="bktit">নবদিগন্তের অভিমন্যুরা</div>
+        <div class="bmrow">
+          <div class="mti"><span class="ml">প্রকাশকাল</span><span class="mv">২০২০</span></div>
+          <div class="mti"><span class="ml">মূল্য (ইবুক)</span><span class="mv mvp">₹৯৯</span></div>
+          <div class="mti"><span class="ml">ভাষা</span><span class="mv">বাংলা</span></div>
+          <div class="mti"><span class="ml">ধরন</span><span class="mv">সমকালীন উপন্যাস</span></div>
+        </div>
+        <div class="bksum">কলকাতার পূর্ব প্রান্তের তথ্যপ্রযুক্তি শিল্পতালুকে হাজার হাজার তরুণ-তরুণী "কেরিয়ার" নামের অদৃশ্য সাপ-লুডো খেলায় নেমেছে। পদোন্নতির স্বপ্ন দেখতে দেখতে তারা কোথায় হারিয়ে যায়? প্রেম, পরিবার, আর নিজস্বতার খোঁজে এক প্রজন্মের আখ্যান।</div>
+        <div class="pubr"><div class="pubic">📖</div><div><div class="pubn">বইয়ের হাট (Boierhut)</div><div class="pubi">ডিজিটাল প্রকাশনা · ebook.boierhut.com</div></div></div>
+        <div class="pvbox">
+          <div class="pvhd" onclick="tpv(this)"><div class="pvhdl">👁 ১০% বিনামূল্যে পড়ুন</div><span class="pvtog">▼ খুলুন</span></div>
+          <div class="pvbd"><p>লোকে বলে SDF। সরকারি নাম নবদিগন্ত। কলকাতা মহানগরীর পূর্ব প্রান্তে দিগন্ত বিস্তৃত এক লবণাক্ত জলাভূমিতে গড়ে উঠেছে তথ্যপ্রযুক্তি শিল্প। প্রতি বছর হাজার হাজার তরুণ-তরুণী সেইসব সফটওয়্যার কারখানায় চাকরি শুরু করে।</p><p>তারপর "কেরিয়ার" নামের অদৃশ্য সাপ-লুডো খেলায় খেলতে নেমে তারা কেমন থাকে? পদোন্নতির সিঁড়ি বেয়ে তারা কোথায় একটা যেন পৌঁছতে চায়...</p><div class="pvwm">⋯ প্রথম ১০% অংশ। সম্পূর্ণ পড়তে কিনুন।</div></div>
+        </div>
+        <div class="bkacts">
+          <button class="bbtn bb-pri" onclick="obm('নবদিগন্তের অভিমন্যুরা','৯৯')">🛒 সরাসরি কিনুন</button>
+          <span class="bbdiv">অথবা</span>
+          <a class="bbtn bb-amz" href="https://www.amazon.in/dp/B08CY9M4V2/" target="_blank">Amazon</a>
+          <a class="bbtn bb-goo" href="https://play.google.com/store/books/details?id=Nua9DwAAQBAJ" target="_blank">Google Books</a>
+          <a class="bbtn bb-bh" href="https://ebook.boierhut.com/2020/09/nabadiganter-abhimanyura.html" target="_blank">বইয়ের হাট</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Book 2 placeholder -->
+  <div class="bkcard" data-bg="গল্পসংকলন">
+    <div class="bkinn">
+      <div class="cvpan">
+        <div class="bkcvr" style="background:linear-gradient(160deg,#3b1f0a,#1e0f04)">
+          <div style="position:absolute;top:20px;left:0;right:0;text-align:center;opacity:.18;font-size:2.5rem">🌿</div>
+          <div class="cvrt" style="color:#e8c87a">দ্বিতীয় বইয়ের নাম</div>
+          <div class="cvra" style="color:rgba(232,200,122,.62)">সঞ্জয় মণ্ডল</div>
+        </div>
+        <span class="gbadge" style="background:#fdf4e3;color:#6b4000;border:1px solid #e8c87a">গল্পসংকলন</span>
+      </div>
+      <div class="bkinfo">
+        <div class="bktit">আপনার দ্বিতীয় বইয়ের নাম</div>
+        <div class="bmrow">
+          <div class="mti"><span class="ml">প্রকাশকাল</span><span class="mv">যোগ করুন</span></div>
+          <div class="mti"><span class="ml">মূল্য</span><span class="mv mvp">₹ —</span></div>
+          <div class="mti"><span class="ml">ভাষা</span><span class="mv">বাংলা</span></div>
+        </div>
+        <div class="bksum">এখানে বইয়ের সারসংক্ষেপ লিখুন। পাঠক যাতে বইয়ের বিষয়বস্তু সম্পর্কে স্পষ্ট ধারণা পেতে পারেন সেভাবে লিখুন।</div>
+        <div class="pubr"><div class="pubic">📖</div><div><div class="pubn">প্রকাশকের নাম যোগ করুন</div><div class="pubi">ঠিকানা ও যোগাযোগ তথ্য এখানে</div></div></div>
+        <div class="pvbox">
+          <div class="pvhd" onclick="tpv(this)"><div class="pvhdl">👁 ১০% বিনামূল্যে পড়ুন</div><span class="pvtog">▼ খুলুন</span></div>
+          <div class="pvbd"><p>এখানে বইয়ের প্রথম অধ্যায়ের নমুনা অংশ যোগ করুন।</p><div class="pvwm">⋯ প্রথম ১০% অংশ। সম্পূর্ণ পড়তে কিনুন।</div></div>
+        </div>
+        <div class="bkacts">
+          <button class="bbtn bb-pri" onclick="obm('দ্বিতীয় বই','—')">🛒 সরাসরি কিনুন</button>
+          <span class="bbdiv">অথবা</span>
+          <a class="bbtn bb-amz" href="#" target="_blank">Amazon</a>
+          <a class="bbtn bb-goo" href="#" target="_blank">Google Books</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="sfoot">© সঞ্জয় মণ্ডল</div>
+</div>
+
+<!-- ══ CONTACT ══ -->
+<div class="page" id="pg-contact">
+<div class="phdr"><h1>যোগাযোগ করুন</h1><p>মতামত, বই অর্ডার বা যেকোনো প্রশ্নের জন্য</p></div>
+<div class="cpg">
+  <div class="cgrid">
+    <div class="cicard">
+      <h3>📬 যোগাযোগের তথ্য</h3>
+      <div class="cii"><div class="ciic">✉</div><div><div class="ciil">ইমেল</div><div class="ciiv"><a href="mailto:sanjoy@example.com">sanjoy@example.com</a></div></div></div>
+      <div class="cii"><div class="ciic">📍</div><div><div class="ciil">অবস্থান</div><div class="ciiv">কলকাতা, পশ্চিমবঙ্গ, ভারত</div></div></div>
+      <div class="cii"><div class="ciic">📚</div><div><div class="ciil">বই অর্ডার</div><div class="ciiv">ফর্ম পূরণ করুন বা সরাসরি ইমেল করুন</div></div></div>
+      <div class="cii"><div class="ciic">⏰</div><div><div class="ciil">প্রতিক্রিয়া সময়</div><div class="ciiv">২৪–৪৮ ঘন্টার মধ্যে</div></div></div>
+      <div class="csoc">
+        <p>সামাজিক মাধ্যমে</p>
+        <div class="csocl">
+          <a class="csl" href="#" target="_blank">Facebook</a>
+          <a class="csl" href="https://sanjoyisonline.blogspot.com" target="_blank">Blogger</a>
+          <a class="csl" href="https://www.amazon.in/dp/B08CY9M4V2/" target="_blank">Amazon</a>
+          <a class="csl" href="https://play.google.com/store/books/details?id=Nua9DwAAQBAJ" target="_blank">Google Books</a>
+        </div>
+      </div>
+    </div>
+    <div class="cfcard">
+      <h3>✍ বার্তা পাঠান</h3>
+      <div class="cfrow">
+        <div class="cfg"><label>আপনার নাম *</label><input type="text" id="cfn" placeholder="পুরো নাম"></div>
+        <div class="cfg"><label>ইমেল ঠিকানা *</label><input type="email" id="cfe" placeholder="yourname@email.com"></div>
+      </div>
+      <div class="cfg"><label>বিষয়</label>
+        <select id="cfs"><option value="">বিষয় বেছে নিন...</option><option>বই কেনার অর্ডার</option><option>লেখার বিষয়ে মতামত</option><option>প্রকাশনা সংক্রান্ত</option><option>সাক্ষাৎকার / অনুষ্ঠান</option><option>অন্যান্য</option></select>
+      </div>
+      <div class="cfg"><label>বার্তা *</label><textarea id="cfm" placeholder="আপনার বার্তা এখানে লিখুন..."></textarea></div>
+      <button class="cfsub" onclick="scon()">বার্তা পাঠান →</button>
+      <div class="cfok" id="cfok">✅ আপনার বার্তা পাঠানো হয়েছে! শীঘ্রই উত্তর দেওয়া হবে।</div>
+    </div>
+  </div>
+  <div style="margin-top:2rem;background:#fff;border:1px solid var(--bdr);border-radius:var(--r-lg);padding:1.75rem;text-align:center">
+    <div style="font-size:2.2rem;margin-bottom:.6rem">🗺</div>
+    <div style="font-family:'Noto Serif Bengali',serif;font-size:.98rem;color:var(--ink-lt)">কলকাতা, পশ্চিমবঙ্গ, ভারত</div>
+    <div style="font-family:'Noto Sans Bengali',sans-serif;font-size:.76rem;color:var(--ink-mu);margin-top:.2rem">Google Maps এম্বেড এখানে যোগ করা যাবে</div>
+  </div>
+</div>
+<div class="sfoot">© সঞ্জয় মণ্ডল · সর্বস্বত্ব সংরক্ষিত</div>
+</div>
+
+<!-- ══ PUBLISHED (Coming Soon) ══ -->
+<div class="page" id="pg-published">
+<div class="phdr"><h1>প্রকাশিত</h1><p>পত্রিকা ও সংবাদমাধ্যমে প্রকাশিত লেখাসমূহ</p></div>
+<div class="cmpg">
+  <div class="cmic">📰</div>
+  <h2>শীঘ্রই আসছে</h2>
+  <p>পত্রিকা ও অনলাইন মাধ্যমে প্রকাশিত সমস্ত লেখার তালিকা এখানে যুক্ত হবে। প্রতিটি লেখার সরাসরি লিংক ও প্রকাশনার তারিখসহ।</p>
+  <span class="cmbadge">🔧 নির্মাণাধীন</span>
+</div>
+<div class="sfoot">© সঞ্জয় মণ্ডল</div>
+</div>
+
+<!-- ══ STORIES (Coming Soon) ══ -->
+<div class="page" id="pg-stories">
+<div class="phdr"><h1>গল্পের আসর</h1><p>ছোটগল্প ও বিহ্বল গল্পের সংকলন</p></div>
+<div class="cmpg">
+  <div class="cmic">🌿</div>
+  <h2>শীঘ্রই আসছে</h2>
+  <p>ছোটগল্প, বিহ্বল গল্প ও অন্যান্য রচনার বিশেষ আসর এখানে তৈরি হচ্ছে। পাঠকের জন্য অনন্য এক অভিজ্ঞতা।</p>
+  <span class="cmbadge">🔧 নির্মাণাধীন</span>
+</div>
+<div class="sfoot">© সঞ্জয় মণ্ডল</div>
+</div>
+
+<!-- BUY MODAL -->
+<div class="mov" id="bmod">
+  <div class="mbox">
+    <button class="mx" onclick="cbm()">×</button>
+    <h2 id="mt"></h2>
+    <div class="msub" id="mp"></div>
+    <div class="fg"><label>আপনার নাম</label><input type="text" id="mn" placeholder="পুরো নাম"></div>
+    <div class="fg"><label>ইমেল ঠিকানা</label><input type="email" id="me" placeholder="yourname@email.com"></div>
+    <div class="fg"><label>ডেলিভারি ফরম্যাট</label>
+      <select id="mf"><option value="">বেছে নিন...</option><option value="kindle">Amazon Kindle (.mobi / .epub)</option><option value="google">Google Books / Play Books</option><option value="epub">সরাসরি EPUB ফাইল</option><option value="pdf">PDF ফাইল</option></select>
+    </div>
+    <div class="mnote">💡 পেমেন্টের পর আপনার পছন্দের ফরম্যাটে বইটি ইমেলে পাঠানো হবে। Amazon Kindle-এ পেতে Kindle ইমেল দিন।</div>
+    <div class="macts"><button class="bbtn bb-pri" style="flex:1" onclick="sbm()">পেমেন্ট করুন →</button><button class="bbtn bb-out" onclick="cbm()">বাতিল</button></div>
+  </div>
+</div>
+
+<script>
+// POST DATA
+const PD=[
+  {id:0,title:'ঝলসানো রুটি',cat:'অণুগল্প',cc:'c-mic',date:'আগস্ট ২০২৩',body:`<p>দ্রুত বিকেলের আলো ফুরিয়ে আসছে। মরদ সেই কাকভোরে কাজে বেরিয়ে গেছে। ঘন্টাখানেক পরেই বাড়ি ফিরবে। বাড়ি বলতে এখন রেললাইন থেকে একটু দূরে একচিলতে জমিতে প্লাস্টিকের একটা ছাউনি। ফিরে এসেই সে ভাত খেতে চাইবে, অথচ ঘরে চাল বাড়ন্ত। শেফালি তাই দৌড়ে চলে এসেছে রেশনের দোকানে।</p><p>তাড়াতাড়ি পা চালিয়ে শেফালি এসে দেখল দোকানের সামনে বিশাল ভিড়। অন্যদিন এত লম্বা লাইন তো থাকে না! দোকানের ভেতর একটা টিভি চলছে। ভিড়টা সেখানেই বেশি। বুড়ো-বাচ্চা সবাই হাঁ করে তাকিয়ে আছে।</p><p>শেফালির সামনে এখন মাত্র একজন দাঁড়িয়ে আছে। একটি ছেলেকে শেফালি জিজ্ঞেস করল, "হ্যাঁ-রে বাপ, তোরা কি দেখছিস সবাই?"</p><p>ছেলেটি বলল, "মাসি চাঁদ দেখাচ্ছে। চাঁদ।"</p><blockquote>শেফালি একটু অবাকই হল। টিভিতে এখন চাঁদ দেখাচ্ছে? এই তো আজ বাদে কাল পূর্ণিমা। রাত হলেই তো সবাই চাঁদ দেখতে পাবে।</blockquote><p>"না গো মাসি। গতমাসে ইণ্ডিয়া একটা চন্দ্রযান পাঠিয়েছিল। সেটা একটু পরেই চাঁদের মাটিতে গিয়ে পোঁছাবে।"</p><p>গতমাসেই তো সরকারি বুলডোজার এসে রেললাইনের পাশে তাদের বস্তির সবকিছু ভেঙে গুঁড়িয়ে দিয়ে গেছে। পুলিশ বলে গেছে শেফালিরা নাকি ওখানে এতদিন বেআইনিভাবে বাড়ি তৈরি করে থাকত।</p><p>শেফালি ব্যাগটা দোকানদারের সামনে এগিয়ে দেবার সময় হঠাৎই সবাই একসাথে বিশাল চিৎকার করে উঠল। "নেমে গেছে। নেমে গেছে।"</p><p>দোকানদার শেফালির ব্যাগে চাল ঢেলে দিতে দিতে বলল, "দিদি, ওরা যে দু'বেলা পেট ভরে খেতে পায়।"</p><p>চাল-ভর্তি ব্যাগটার মুখে গিঁট দিতে দিতে শেফালির বুক থেকে একটা স্বস্তির দীর্ঘশ্বাস বেরিয়ে এল। সে বাড়ির দিকে দৌড় লাগাল।</p>`},
+  {id:1,title:'প্রতিবাদহীন,',cat:'প্রতিবেদন',cc:'c-rep',date:'আগস্ট ২০২০',body:`<p>২৩ দিন ধরে রাজপথে হবু শিক্ষকেরা অনশনে বসেছেন। কারো কোন ভ্রুক্ষেপ নেই। না সরকারের, না প্রশাসনের। না থাকারই কথা। অগণতান্ত্রিক সরকার সবসময় ক্ষমতাকে নিরঙ্কুশ রাখতে চায়। তারা চায় স্থিতি।</p><blockquote>প্রতিটি বুর্জোয়া সরকার, গণতন্ত্রের নামে শুধুমাত্র ক্ষমতাকে কুক্ষিগত করে। সেই ক্ষমতাকে নিরঙ্কুশ করতে পুলিশকে ঘুষখোর তৈরী করে। আমলারা সকাল হলেই ক্ষমতার চরণামৃত নেবার জন্য হত্যে দিয়ে পড়ে থাকে।</blockquote><p>এটাই স্বাভাবিক। তাই নিয়োগ-দুর্নীতির অভিযোগে ২৫ দিন ধরে একদল শিক্ষিত যুবক-যুবতী অনশন করতে হয়। শিক্ষায় আর শিক্ষক নিয়োগে দুর্নীতিটাই একমাত্র নীতি।</p><p>এতসবের পরেও রাগ হয় না! আর কতদিন একমুঠো সরকারি প্রতিদানের আশায় এমনভাবে প্রতিবাদহীন মৃতদেহের মতো বেঁচে থাকা যায়।</p><p>তাই প্যারিসের রাস্তায় "ইয়েলো ভেষ্টের" আন্দোলনকে ফরাসি সরকার দমাতে পারে নি। মহারাষ্ট্রের কৃষক আন্দোলন সরকারের দাঁড়ানোর মাটি ধসিয়ে দিয়েছে।</p>`},
+  {id:2,title:'অদৃশ্য',cat:'ছোটগল্প',cc:'c-sto',date:'মে ২০২০',body:`<p>দুপুরে খাওয়ার পরে বাসন ধুচ্ছিল মাধুরি। বসার ঘরে টিভি দেখতে দেখতে কর্তা চেঁচিয়ে উঠলেন, "জানো, লকডাউন বেড়ে গেল। মে মাসে শেষ পর্যন্ত।"</p><blockquote>লকডাউন। লকডাউন। লকডাউন।</blockquote><p>আবার লকডাউন বেড়ে গেল শুনে মাধুরি ক্ষেপে গেলেন। গত দু'মাসে এই নিয়ে চারবার। লকডাউনের প্রথম ক'দিন বেশ মজা হল।</p><p>একদিন সবাই মিলে থালা-বাটি বাজিয়েছিল। ক্লাবের ছেলেদের সাথে একশো-দেড়শো প্যাকেট চাল-ডাল-তেল দিয়ে এসেছিলেন পাশের বস্তির মানুষদের। দেদার ছবি তুলে ফেসবুকে দিতেই কয়েক হাজার লাইক পড়েছে।</p>`},
+  {id:3,title:'পরিযায়ী শ্রমিকঃ তোমরা কি এদেশেরই মানুষ!',cat:'প্রতিবেদন',cc:'c-rep',date:'মে ২০২০',body:`<p>গত কয়েক সপ্তাহ ধরে এক ভীষণ টানাপোড়েন চলছে। দেশের বিভিন্ন প্রান্তে প্রায় ২০ কোটি পরিযায়ী শ্রমিক তাদের পরিবারসুদ্ধ আটকে পড়েছেন গত দু'মাসের বেশী সময় ধরে।</p><p>লকডাউন শুরু হওয়ামাত্র সরকার প্রথমেই তাদের আটকে দিল। কি না তারা ফিরে গেলে সংক্রমণ ছড়িয়ে পারে। বাস, ট্রেন বন্ধ হয়ে গেল।</p><blockquote>তবু কেউ কেউ পায়ে হেঁটে পাড়ি দিল নিজের গ্রামের দিকে। যা থাকে কপালে। হাজার হাজার মাইল পায়ে হেঁটে তাদের অনেকেই পৌঁছাল।</blockquote>`},
+  {id:4,title:'চুলের ক্লিপ অথবা সরকারি কাঁকড়া',cat:'বিহ্বল গল্প',cc:'c-bih',date:'অক্টোবর ২০১৭',body:`<p>মেয়েটা যখন খুব ছোট্ট ছিল, তখন ওর মা স্কুল থেকে ফিরলেই মেয়েটা মায়ের ব্যবহৃত সব জিনিস নিয়ে খেলা করার জন্য হামলে পড়ত। ওর মা তখন বাড়িতে ফিরেই তড়িঘড়ি ব্যস্ত হয়ে মেয়ের জন্য খাবার বানানোর জন্য রান্নাঘরে।</p><p>এদিকে মেয়ে ততক্ষণে বিছানায় ফেলে যাওয়া শাড়িটা জড়িয়ে বসে আছে। কোনদিন কপাল থেকে খুলে রাখা টিপটা নিজের কপালে লাগিয়েছে কিংবা স্কুলের ব্যাগ হাতড়ে ঘরের মেঝেতে ছড়িয়ে ফেলেছে খাতা, পেন্সিল, ডাইরি, ক্লিপ।</p>`},
+  {id:5,title:'পুতুলনাচ',cat:'প্রতিবেদন',cc:'c-rep',date:'সেপ্টেম্বর ২০১৭',body:`<p>"সবাই তো আর খারাপ নয়, কেউ কেউ খারাপ" — এইসব সোহাগী কথাবার্তার দিন বোধহয় শেষ। নারদকান্ডের ভিডিওতে এতগুলো মন্ত্রী-সাংসদ-পুলিশ থুতু লাগিয়ে টাকা গুনে গুনে নিল, সবাইকে চোখে আঙুল দিয়ে দেখিয়ে দেবার পরও সরকার আর পুলিশ কিছুতেই দেখতে পেল না।</p><p>সবাই ভেবেছিল, সাধারণ মানুষের অভিযোগ থানায় জমা পড়লে যা ভবিতব্য হয় এবারেও তাই হবে।</p>`}
+];
+
+// PAGE ROUTING
+function sp(p){
+  document.querySelectorAll('.page').forEach(e=>e.classList.remove('active'));
+  const pg=document.getElementById('pg-'+p);
+  if(pg)pg.classList.add('active');
+  document.querySelectorAll('.nlinks button').forEach(e=>e.classList.remove('act'));
+  const nb=document.getElementById('n-'+p);
+  if(nb)nb.classList.add('act');
+  window.scrollTo(0,0);
+}
+function tmob(){document.getElementById('mmenu').classList.toggle('open')}
+
+// BLOG
+const BP_MAP={1:[0,1],2:[2,3],3:[4,5]};
+function sbp(n,btn){
+  document.querySelectorAll('.pgb').forEach(b=>b.classList.remove('cur'));
+  btn.classList.add('cur');
+  for(let i=0;i<6;i++){const e=document.getElementById('bp'+i);if(e)e.style.display='none';}
+  (BP_MAP[n]||[]).forEach(i=>{const e=document.getElementById('bp'+i);if(e)e.style.display='';});
+  window.scrollTo(0,58);
+}
+// init page 1
+BP_MAP[1].forEach(i=>{const e=document.getElementById('bp'+i);if(e)e.style.display='';});
+
+function fbl(cat,btn){
+  document.querySelectorAll('.ctag').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  document.querySelectorAll('.bpost').forEach(c=>{
+    if(cat==='all'||c.dataset.cat===cat)c.style.display='';
+    else c.style.display='none';
+  });
+}
+function ta(hd){
+  const m=hd.nextElementSibling;const a=hd.querySelector('span:last-child');
+  if(!m)return;
+  if(m.style.display==='none'){m.style.display='';a.textContent='▼';}
+  else{m.style.display='none';a.textContent='►';}
+}
+function dsrch(){
+  const q=document.getElementById('bsi').value.toLowerCase().trim();
+  if(!q)return;
+  const r=PD.filter(p=>p.title.includes(q)||p.body.includes(q));
+  if(r.length)op(r[0].id);
+}
+
+// FULL POST
+function op(id){
+  const p=PD[id];
+  document.getElementById('fp-cat').innerHTML=`<span class="bpcat ${p.cc}" style="font-family:'Noto Sans Bengali',sans-serif;font-size:.7rem;padding:.22rem .78rem;border-radius:100px;letter-spacing:.04em;font-weight:600;display:inline-block;margin-bottom:.85rem">${p.cat}</span>`;
+  document.getElementById('fp-tit').textContent=p.title;
+  document.getElementById('fp-meta').innerHTML=`<div class="fpmi"><strong>লেখক:</strong> সঞ্জয় মণ্ডল</div><div class="fpmi"><strong>প্রকাশকাল:</strong> ${p.date}</div><div class="fpmi"><strong>বিভাগ:</strong> ${p.cat}</div>`;
+  document.getElementById('fp-bd').innerHTML=p.body;
+  sp('fp');
+}
+
+// BOOKS
+function fbk(g,btn){
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');
+  document.querySelectorAll('.bkcard').forEach(c=>{if(g==='all'||c.dataset.bg===g)c.style.display='';else c.style.display='none';});
+}
+function tpv(hd){
+  const bd=hd.nextElementSibling;const t=hd.querySelector('.pvtog');
+  const o=bd.classList.contains('open');bd.classList.toggle('open');
+  t.textContent=o?'▼ খুলুন':'▲ বন্ধ করুন';
+}
+
+// BUY MODAL
+let BT='';
+function obm(t,p){BT=t;document.getElementById('mt').textContent=t;document.getElementById('mp').textContent='মূল্য: ₹'+p+' · নিরাপদ পেমেন্ট';document.getElementById('bmod').classList.add('open');document.body.style.overflow='hidden';}
+function cbm(){document.getElementById('bmod').classList.remove('open');document.body.style.overflow='';}
+function sbm(){
+  const n=document.getElementById('mn').value.trim();const e=document.getElementById('me').value.trim();const f=document.getElementById('mf').value;
+  if(!n||!e||!f){alert('অনুগ্রহ করে সমস্ত তথ্য পূরণ করুন।');return;}
+  alert('ধন্যবাদ '+n+'!\n\nবই: '+BT+'\nফরম্যাট: '+f+'\nইমেল: '+e+'\n\nশীঘ্রই নিশ্চিতকরণ পাঠানো হবে।');cbm();
+}
+document.getElementById('bmod').addEventListener('click',function(e){if(e.target===this)cbm();});
+
+// CONTACT
+function scon(){
+  const n=document.getElementById('cfn').value.trim();const e=document.getElementById('cfe').value.trim();const m=document.getElementById('cfm').value.trim();
+  if(!n||!e||!m){alert('অনুগ্রহ করে নাম, ইমেল ও বার্তা পূরণ করুন।');return;}
+  const ok=document.getElementById('cfok');ok.style.display='block';
+  document.getElementById('cfn').value='';document.getElementById('cfe').value='';document.getElementById('cfm').value='';document.getElementById('cfs').value='';
+  setTimeout(()=>ok.style.display='none',5000);
+}
+
+sp('home');
+</script>
+</body>
+</html>
