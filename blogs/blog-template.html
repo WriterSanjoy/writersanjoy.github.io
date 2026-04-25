@@ -3,57 +3,118 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>প্রতিবাদহীন, — সঞ্জয় মণ্ডল</title>
-<meta name="description" content="২৩ দিন ধরে রাজপথে হবু শিক্ষকেরা অনশনে বসেছেন। কারো কোন ভ্রুক্ষেপ নেই।">
+
+<!-- ═══════════════════════════════════════════
+     CHANGE THESE 3 LINES FOR EVERY NEW POST
+═══════════════════════════════════════════ -->
+<title>পোস্টের শিরোনাম — সঞ্জয় মণ্ডল</title>
+<meta name="description" content="পোস্টের সংক্ষিপ্ত বিবরণ এখানে লিখুন">
+<meta property="og:title" content="পোস্টের শিরোনাম">
+<!-- ═══════════════════════════════════════════ -->
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Baloo+Da+2:wght@400;500;600;700&family=Tiro+Bangla:ital@0;1&family=Noto+Serif+Bengali:wght@300;400;500;600;700&family=Noto+Sans+Bengali:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--ink:#1a1208;--ink-lt:#3d3020;--ink-md:#6b5a45;--ink-mu:#9a8a76;--paper:#faf8f4;--paper-w:#f5f1e8;--paper-d:#ede8de;--gold:#b8860b;--gold-l:#d4a017;--gold-p:#fdf4d8;--red:#8b1a1a;--teal:#1a5f5a;--bdr:rgba(26,18,8,.12);--bdr-s:rgba(26,18,8,.22);--r:4px;--r-lg:8px;}
+:root{
+  --ink:#1a1208;--ink-lt:#3d3020;--ink-md:#6b5a45;--ink-mu:#9a8a76;
+  --paper:#faf8f4;--paper-w:#f5f1e8;--paper-d:#ede8de;
+  --gold:#b8860b;--gold-l:#d4a017;--gold-p:#fdf4d8;
+  --red:#8b1a1a;--teal:#1a5f5a;--teal-p:#e8f5f4;
+  --bdr:rgba(26,18,8,.12);--bdr-s:rgba(26,18,8,.22);
+  --r:4px;--r-lg:8px;
+}
 html{scroll-behavior:smooth}
 body{font-family:'Hind Siliguri','Noto Sans Bengali',sans-serif;background:var(--paper);color:var(--ink);line-height:1.8;font-size:16px}
+
+/* ── NAV ── */
 nav{background:var(--ink);padding:0 2.5rem;position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;height:58px;box-shadow:0 2px 16px rgba(0,0,0,.35)}
 .nbrand{font-family:'Noto Serif Bengali',serif;font-size:1.05rem;font-weight:700;color:var(--gold-l);text-decoration:none}
 .nlinks{display:flex;list-style:none}
 .nlinks li a{font-family:'Noto Sans Bengali',sans-serif;font-size:.82rem;color:rgba(255,255,255,.62);text-decoration:none;padding:.4rem 1rem;display:block;transition:color .2s;border-bottom:2px solid transparent}
-.nlinks li a:hover{color:#fff}.nlinks li a.act{color:var(--gold-l);border-bottom-color:var(--gold-l)}
+.nlinks li a:hover{color:#fff}
+.nlinks li a.act{color:var(--gold-l);border-bottom-color:var(--gold-l)}
 .nburg{display:none;background:none;border:none;color:#fff;font-size:1.4rem;cursor:pointer;padding:.3rem}
 .mmenu{display:none;background:#0e0c08;position:fixed;top:58px;left:0;right:0;z-index:199;border-top:1px solid rgba(255,255,255,.08)}
 .mmenu.open{display:block}
 .mmenu a{display:block;font-family:'Noto Sans Bengali',sans-serif;font-size:.95rem;color:rgba(255,255,255,.72);text-decoration:none;padding:.7rem 1.75rem;border-bottom:1px solid rgba(255,255,255,.05)}
+.mmenu a:hover{color:var(--gold-l)}
+
+/* ── BREADCRUMB ── */
 .breadcrumb{background:var(--paper-w);border-bottom:1px solid var(--bdr);padding:.65rem 2rem;font-family:'Noto Sans Bengali',sans-serif;font-size:.78rem;color:var(--ink-mu)}
 .breadcrumb a{color:var(--ink-md);text-decoration:none}.breadcrumb a:hover{color:var(--red)}
 .breadcrumb span{margin:0 .4rem}
+
+/* ── POST LAYOUT ── */
 .post-wrap{max-width:780px;margin:0 auto;padding:2.5rem 2rem 5rem}
-.back-btn{display:inline-flex;align-items:center;gap:.4rem;font-family:'Noto Sans Bengali',sans-serif;font-size:.82rem;color:var(--ink-md);background:none;border:1px solid var(--bdr-s);border-radius:var(--r);padding:.4rem .9rem;text-decoration:none;margin-bottom:2rem;transition:all .18s}
+
+/* Back button */
+.back-btn{display:inline-flex;align-items:center;gap:.4rem;font-family:'Noto Sans Bengali',sans-serif;font-size:.82rem;color:var(--ink-md);background:none;border:1px solid var(--bdr-s);border-radius:var(--r);padding:.4rem .9rem;cursor:pointer;text-decoration:none;margin-bottom:2rem;transition:all .18s}
 .back-btn:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+/* Category badge */
 .post-cat{font-family:'Noto Sans Bengali',sans-serif;font-size:.72rem;font-weight:600;padding:.25rem .85rem;border-radius:100px;letter-spacing:.04em;display:inline-block;margin-bottom:.9rem}
 .c-rep{background:#fef3e8;color:#7a4500}
-.post-title{font-family:'Noto Serif Bengali',serif;font-size:clamp(1.7rem,4vw,2.5rem);font-weight:700;line-height:1.3;margin-bottom:1rem}
+.c-sto{background:#e8f4fd;color:#0a4a7a}
+.c-mic{background:#e8fdf0;color:#0a5a2a}
+.c-bih{background:#f0e8fd;color:#4a0a7a}
+.c-poem{background:#fdf0f8;color:#7a0a5a}
+
+/* Title */
+.post-title{font-family:'Noto Serif Bengali',serif;font-size:clamp(1.7rem,4vw,2.5rem);font-weight:700;line-height:1.3;margin-bottom:1rem;color:var(--ink)}
+
+/* Meta row */
 .post-meta{display:flex;flex-wrap:wrap;gap:1.5rem;padding:1rem 0;border-top:1px solid var(--bdr);border-bottom:2px solid var(--bdr-s);margin-bottom:2rem}
 .meta-item{display:flex;flex-direction:column;gap:2px}
 .meta-label{font-family:'Noto Sans Bengali',sans-serif;font-size:.68rem;color:var(--ink-mu);text-transform:uppercase;letter-spacing:.08em;font-weight:500}
 .meta-value{font-family:'Noto Sans Bengali',sans-serif;font-size:.82rem;font-weight:600;color:var(--ink-lt)}
+
+/* Post body */
 .post-body{font-family:'Noto Serif Bengali',serif;font-size:1.05rem;line-height:2.05;color:var(--ink-lt)}
 .post-body p{margin-bottom:1.2rem}
-.post-body blockquote{border-left:4px solid var(--gold);padding:1rem 1.5rem;margin:1.5rem 0;background:var(--gold-p);font-style:italic;color:var(--ink-lt);border-radius:0 var(--r) var(--r) 0}
+.post-body blockquote{border-left:4px solid var(--gold);padding:1rem 1.5rem;margin:1.5rem 0;background:var(--gold-p);font-style:italic;color:var(--ink-lt);border-radius:0 var(--r) var(--r) 0;font-size:1rem}
+.post-body h2{font-family:'Noto Serif Bengali',serif;font-size:1.3rem;font-weight:700;margin:1.8rem 0 .8rem;color:var(--ink)}
+.post-body h3{font-family:'Noto Serif Bengali',serif;font-size:1.1rem;font-weight:600;margin:1.5rem 0 .6rem;color:var(--ink)}
+.post-body ul,.post-body ol{padding-left:1.5rem;margin-bottom:1.2rem}
+.post-body li{margin-bottom:.4rem;font-family:'Noto Serif Bengali',serif;font-size:1rem;color:var(--ink-lt)}
+
+/* Divider */
 .post-divider{width:60px;height:2px;background:var(--gold);margin:2.5rem 0}
+
+/* Share section */
 .share-section{margin-top:3rem;padding:1.5rem;background:var(--paper-w);border:1px solid var(--bdr);border-radius:var(--r-lg);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
 .share-text{font-family:'Noto Serif Bengali',serif;font-size:.95rem;color:var(--ink-lt)}
 .share-btns{display:flex;gap:.5rem}
-.share-btn{font-family:'Noto Sans Bengali',sans-serif;font-size:.78rem;font-weight:600;padding:.4rem 1rem;border-radius:100px;border:none;cursor:pointer;text-decoration:none;display:inline-block;transition:all .15s}
-.share-btn.fb{background:#1877f2;color:#fff}.share-btn.tw{background:#000;color:#fff}
+.share-btn{font-family:'Noto Sans Bengali',sans-serif;font-size:.78rem;font-weight:600;padding:.4rem 1rem;border-radius:100px;border:1px solid var(--bdr-s);background:#fff;cursor:pointer;color:var(--ink-md);transition:all .15s;text-decoration:none;display:inline-block}
+.share-btn:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.share-btn.fb{background:#1877f2;color:#fff;border-color:#1877f2}.share-btn.fb:hover{background:#1464d2}
+.share-btn.tw{background:#000;color:#fff;border-color:#000}
+
+/* Related / nav between posts */
 .post-nav{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
 .pnav-card{background:#fff;border:1px solid var(--bdr);border-radius:var(--r-lg);padding:1rem 1.25rem;text-decoration:none;transition:all .2s;display:block}
 .pnav-card:hover{border-color:var(--gold);box-shadow:0 3px 12px rgba(26,18,8,.08)}
 .pnav-dir{font-family:'Noto Sans Bengali',sans-serif;font-size:.7rem;color:var(--ink-mu);letter-spacing:.06em;margin-bottom:.3rem}
 .pnav-title{font-family:'Noto Serif Bengali',serif;font-size:.9rem;font-weight:600;color:var(--ink-lt);line-height:1.4}
+
+/* Tags */
 .post-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.5rem}
 .tag{font-family:'Noto Sans Bengali',sans-serif;font-size:.72rem;padding:.22rem .75rem;border-radius:100px;border:1px solid var(--bdr-s);background:var(--paper-w);color:var(--ink-md)}
+
+/* Footer */
 footer{background:var(--ink);color:rgba(255,255,255,.32);font-family:'Noto Sans Bengali',sans-serif;font-size:.75rem;text-align:center;padding:1.75rem 2rem;letter-spacing:.04em}
 footer a{color:var(--gold-l);text-decoration:none}
-@media(max-width:680px){nav{padding:0 1.2rem}.nlinks{display:none}.nburg{display:block}.post-wrap{padding:1.5rem 1rem 4rem}.post-nav{grid-template-columns:1fr}}
+
+/* Responsive */
+@media(max-width:680px){
+  nav{padding:0 1.2rem}
+  .nlinks{display:none}
+  .nburg{display:block}
+  .post-wrap{padding:1.5rem 1rem 4rem}
+  .post-nav{grid-template-columns:1fr}
+  .share-section{flex-direction:column;align-items:flex-start}
+}
 
 /* ════ SETTINGS BUTTON ════ */
 #settings-btn{position:fixed;bottom:2rem;right:2rem;z-index:500;width:48px;height:48px;border-radius:50%;background:var(--ink);color:var(--gold-l);display:flex;align-items:center;justify-content:center;font-size:1.3rem;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.3);transition:all .2s;user-select:none;border:2px solid rgba(255,255,255,.1)}
@@ -117,69 +178,138 @@ footer a{color:var(--gold-l);text-decoration:none}
   </div></div>
   <div class="sp-section"><button class="reset-btn" onclick="resetSettings()">↺ ডিফল্টে ফিরুন</button></div>
 </div>
+
+<!-- ── NAV (same on every blog page) ── -->
 <nav>
   <a class="nbrand" href="../index.html">সঞ্জয় মণ্ডল</a>
   <ul class="nlinks">
     <li><a href="../index.html">প্রথম পাতা</a></li>
-    <li><a href="../index.html">আমার কথা</a></li>
-    <li><a href="../index.html" class="act">ব্লগবার্তা</a></li>
-    <li><a href="../index.html">বইটই</a></li>
-    <li><a href="../index.html">যোগাযোগ</a></li>
+    <li><a href="../index.html#about">আমার কথা</a></li>
+    <li><a href="../index.html#blog" class="act">ব্লগবার্তা</a></li>
+    <li><a href="../index.html#books">বইটই</a></li>
+    <li><a href="../index.html#contact">যোগাযোগ</a></li>
   </ul>
   <button class="nburg" onclick="document.getElementById('mm').classList.toggle('open')">☰</button>
 </nav>
 <div class="mmenu" id="mm">
   <a href="../index.html">প্রথম পাতা</a>
+  <a href="../index.html">আমার কথা</a>
   <a href="../index.html" class="act">ব্লগবার্তা</a>
   <a href="../index.html">বইটই</a>
   <a href="../index.html">যোগাযোগ</a>
 </div>
+
+<!-- ── BREADCRUMB ── -->
 <div class="breadcrumb">
-  <a href="../index.html">প্রথম পাতা</a><span>›</span>
-  <a href="../index.html">ব্লগবার্তা</a><span>›</span>
-  প্রতিবাদহীন,
+  <a href="../index.html">প্রথম পাতা</a>
+  <span>›</span>
+  <a href="../index.html">ব্লগবার্তা</a>
+  <span>›</span>
+  পোস্টের শিরোনাম <!-- CHANGE THIS -->
 </div>
+
+<!-- ══════════════════════════════════════
+     MAIN POST CONTENT — EDIT BELOW THIS
+══════════════════════════════════════ -->
 <div class="post-wrap">
+
   <a class="back-btn" href="../index.html">← ব্লগে ফিরুন</a>
+
+  <!-- STEP 1: Change category — pick one class below:
+       প্রতিবেদন  → class="post-cat c-rep"
+       ছোটগল্প   → class="post-cat c-sto"
+       অণুগল্প   → class="post-cat c-mic"
+       বিহ্বল গল্প → class="post-cat c-bih"
+       কবিতা     → class="post-cat c-poem"
+  -->
   <span class="post-cat c-rep">প্রতিবেদন</span>
-  <h1 class="post-title">প্রতিবাদহীন,</h1>
+
+  <!-- STEP 2: Change the title -->
+  <h1 class="post-title">পোস্টের শিরোনাম এখানে লিখুন</h1>
+
+  <!-- STEP 3: Change date, reading time -->
   <div class="post-meta">
-    <div class="meta-item"><span class="meta-label">লেখক</span><span class="meta-value">সঞ্জয় মণ্ডল</span></div>
-    <div class="meta-item"><span class="meta-label">প্রকাশকাল</span><span class="meta-value">আগস্ট ২০২০</span></div>
-    <div class="meta-item"><span class="meta-label">বিভাগ</span><span class="meta-value">প্রতিবেদন</span></div>
-    <div class="meta-item"><span class="meta-label">পড়ার সময়</span><span class="meta-value">৪ মিনিট</span></div>
+    <div class="meta-item">
+      <span class="meta-label">লেখক</span>
+      <span class="meta-value">সঞ্জয় মণ্ডল</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">প্রকাশকাল</span>
+      <span class="meta-value">এপ্রিল ২০২৫</span> <!-- CHANGE DATE -->
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">বিভাগ</span>
+      <span class="meta-value">প্রতিবেদন</span> <!-- CHANGE CATEGORY -->
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">পড়ার সময়</span>
+      <span class="meta-value">৫ মিনিট</span> <!-- CHANGE READ TIME -->
+    </div>
   </div>
+
+  <!-- STEP 4: Write your full post content here -->
   <div class="post-body">
-    <p>২৩ দিন ধরে রাজপথে হবু শিক্ষকেরা অনশনে বসেছেন। কারো কোন ভ্রুক্ষেপ নেই। না সরকারের, না প্রশাসনের। না থাকারই কথা। অগণতান্ত্রিক সরকার সবসময় ক্ষমতাকে নিরঙ্কুশ রাখতে চায়। তারা চায় স্থিতি।</p>
-    <blockquote>প্রতিটি বুর্জোয়া সরকার, গণতন্ত্রের নামে শুধুমাত্র ক্ষমতাকে কুক্ষিগত করে। সেই ক্ষমতাকে নিরঙ্কুশ করতে পুলিশকে ঘুষখোর তৈরী করে। আমলারা সকাল হলেই ক্ষমতার চরণামৃত নেবার জন্য হত্যে দিয়ে পড়ে থাকে।</blockquote>
-    <p>এটাই স্বাভাবিক। তাই নিয়োগ-দুর্নীতির অভিযোগে ২৫ দিন ধরে একদল শিক্ষিত যুবক-যুবতী অনশন করতে হয়। শিক্ষায় আর শিক্ষক নিয়োগে দুর্নীতিটাই একমাত্র নীতি।</p>
+
+    <p>এখানে আপনার পোস্টের প্রথম অনুচ্ছেদ লিখুন। প্রতিটি অনুচ্ছেদ একটি করে &lt;p&gt; ট্যাগের মধ্যে থাকবে।</p>
+
+    <p>দ্বিতীয় অনুচ্ছেদ এখানে। যতটা ইচ্ছা লম্বা লিখতে পারেন।</p>
+
     <div class="post-divider"></div>
-    <p>এতসবের পরেও রাগ হয় না! আর কতদিন একমুঠো সরকারি প্রতিদানের আশায় এমনভাবে প্রতিবাদহীন মৃতদেহের মতো বেঁচে থাকা যায়।</p>
-    <p>তাই প্যারিসের রাস্তায় "ইয়েলো ভেষ্টের" আন্দোলনকে ফরাসি সরকার দমাতে পারে নি। মহারাষ্ট্রের কৃষক আন্দোলন সরকারের দাঁড়ানোর মাটি ধসিয়ে দিয়েছে।</p>
-    <p>আমরাই পারি না কেন? কারণ আমরা প্রতিবাদহীন। আমরা ব্যক্তিস্বার্থে এতটাই আচ্ছন্ন যে সামাজিক দায়বদ্ধতার কথা ভুলে গেছি।</p>
+
+    <p>বিভাজকের পরে আরেকটি অনুচ্ছেদ।</p>
+
+    <!-- গুরুত্বপূর্ণ উদ্ধৃতি এভাবে দিন -->
+    <blockquote>
+      গুরুত্বপূর্ণ কথা বা উদ্ধৃতি এই ব্লকের ভেতরে রাখুন। এটি আলাদাভাবে হাইলাইট হয়ে দেখাবে।
+    </blockquote>
+
+    <p>উদ্ধৃতির পরে আবার স্বাভাবিক লেখা চলবে।</p>
+
+    <!-- উপশিরোনাম দিতে চাইলে -->
+    <h2>উপশিরোনাম (প্রয়োজন হলে)</h2>
+    <p>উপশিরোনামের নিচে লেখা।</p>
+
+    <p>পোস্টের শেষ অনুচ্ছেদ। পাঠককে ধন্যবাদ জানিয়ে শেষ করতে পারেন।</p>
+
   </div>
+  <!-- ══ POST CONTENT ENDS HERE ══ -->
+
+  <!-- STEP 5: Change tags -->
   <div class="post-tags">
-    <span class="tag">প্রতিবেদন</span><span class="tag">শিক্ষা</span><span class="tag">নিয়োগ দুর্নীতি</span><span class="tag">সমাজ</span>
+    <span class="tag">বাংলা</span>
+    <span class="tag">সমাজ</span>
+    <span class="tag">প্রতিবেদন</span>
+    <!-- Add or remove tags as needed -->
   </div>
+
+  <!-- Share buttons -->
   <div class="share-section">
     <span class="share-text">লেখাটি ভালো লাগলে শেয়ার করুন</span>
     <div class="share-btns">
-      <a class="share-btn fb" href="https://www.facebook.com/sharer/sharer.php?u=https://writersanjoy.github.io/blogs/blog-002.html" target="_blank">Facebook</a>
-      <a class="share-btn tw" href="https://twitter.com/intent/tweet?url=https://writersanjoy.github.io/blogs/blog-002.html" target="_blank">X (Twitter)</a>
+      <a class="share-btn fb" href="https://www.facebook.com/sharer/sharer.php?u=YOUR_POST_URL" target="_blank">Facebook</a>
+      <a class="share-btn tw" href="https://twitter.com/intent/tweet?url=YOUR_POST_URL" target="_blank">X (Twitter)</a>
     </div>
   </div>
+
+  <!-- STEP 6: Update prev/next post links -->
   <div class="post-nav">
     <a class="pnav-card" href="blog-001.html">
       <div class="pnav-dir">← আগের পোস্ট</div>
-      <div class="pnav-title">ঝলসানো রুটি</div>
+      <div class="pnav-title">আগের পোস্টের শিরোনাম</div>
     </a>
     <a class="pnav-card" href="blog-003.html" style="text-align:right">
       <div class="pnav-dir">পরের পোস্ট →</div>
-      <div class="pnav-title">অদৃশ্য</div>
+      <div class="pnav-title">পরের পোস্টের শিরোনাম</div>
     </a>
   </div>
+
 </div>
-<footer>© সঞ্জয় মণ্ডল · সর্বস্বত্ব সংরক্ষিত · <a href="../index.html">প্রথম পাতায় ফিরুন</a></footer>
+
+<footer>
+  © সঞ্জয় মণ্ডল · সর্বস্বত্ব সংরক্ষিত ·
+  <a href="../index.html">প্রথম পাতায় ফিরুন</a>
+</footer>
+
 
 <script>
 const FONTS={'hind':"'Hind Siliguri',sans-serif",'baloo':"'Baloo Da 2',cursive",'tiro':"'Tiro Bangla',serif",'noto-serif':"'Noto Serif Bengali',serif",'noto-sans':"'Noto Sans Bengali',sans-serif"};
