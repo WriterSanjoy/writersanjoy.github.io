@@ -281,6 +281,25 @@ body{font-family:'Hind Siliguri','Noto Sans Bengali',sans-serif;background:var(-
 .fg-helper{font-family:'Hind Siliguri','Noto Sans Bengali',sans-serif;font-size:.7rem;color:var(--ink-mu);margin-top:.2rem}
 .modal-price-badge{display:inline-block;background:var(--red);color:#fff;font-family:'Hind Siliguri','Noto Sans Bengali',sans-serif;font-size:.85rem;font-weight:700;padding:.3rem .85rem;border-radius:100px;margin-bottom:1rem}
 
+
+/* ── COMPACT BOOK GRID (index page) ── */
+.books-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.5rem}
+.book-thumb{background:#fff;border:1px solid var(--bdr);border-radius:var(--r-lg);overflow:hidden;text-decoration:none;color:inherit;display:block;transition:all .25s}
+.book-thumb:hover{transform:translateY(-4px);box-shadow:0 8px 32px rgba(26,18,8,.13)}
+.book-thumb-cover{height:220px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden}
+.book-thumb-cover .tc-icon{position:absolute;top:18px;left:0;right:0;text-align:center;font-size:3rem;opacity:.18}
+.book-thumb-cover .tc-title{font-family:'Hind Siliguri',sans-serif;font-weight:700;font-size:.95rem;line-height:1.3;text-align:center;padding:.6rem;position:relative;z-index:1}
+.book-thumb-cover .tc-author{font-family:'Hind Siliguri',sans-serif;font-size:.65rem;text-align:center;padding:0 .6rem .6rem;position:relative;z-index:1;letter-spacing:.04em}
+.book-thumb-cover::before{content:'';position:absolute;left:0;top:0;bottom:0;width:7px;background:rgba(0,0,0,.15)}
+.book-thumb-info{padding:1rem}
+.book-thumb-genre{font-family:'Hind Siliguri',sans-serif;font-size:.68rem;font-weight:600;padding:.18rem .65rem;border-radius:100px;display:inline-block;margin-bottom:.5rem;letter-spacing:.04em}
+.book-thumb-title{font-family:'Hind Siliguri',sans-serif;font-size:.95rem;font-weight:700;line-height:1.35;margin-bottom:.35rem;color:var(--ink)}
+.book-thumb-summary{font-family:'Hind Siliguri',sans-serif;font-size:.78rem;color:var(--ink-md);line-height:1.6;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:.7rem}
+.book-thumb-footer{display:flex;align-items:center;justify-content:space-between;padding-top:.6rem;border-top:1px solid var(--bdr)}
+.book-thumb-price{font-family:'Hind Siliguri',sans-serif;font-size:.82rem;font-weight:700;color:var(--red)}
+.book-thumb-btn{font-family:'Hind Siliguri',sans-serif;font-size:.74rem;font-weight:600;padding:.3rem .8rem;background:var(--ink);color:var(--gold-l);border-radius:var(--r);text-decoration:none;transition:all .15s}
+.book-thumb-btn:hover{background:var(--red);color:#fff}
+
 /* ── COMING SOON ── */
 .cmpg{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;text-align:center;padding:4rem 2rem}
 .cmic{font-size:3.5rem;margin-bottom:1.4rem;opacity:.45}
@@ -702,106 +721,73 @@ body{font-family:'Hind Siliguri','Noto Sans Bengali',sans-serif;background:var(-
   <button class="fbtn" onclick="fbk('প্রবন্ধ',this)">প্রবন্ধ</button>
 </div>
 <div class="bmain">
-  <div class="bkcard" data-bg="উপন্যাস">
-    <div class="bkinn">
-      <div class="cvpan">
-        <div class="bkcvr" style="background:linear-gradient(160deg,#1a3a5c,#0d2137)">
-          <div style="position:absolute;top:20px;left:0;right:0;text-align:center;opacity:.18;font-size:2.5rem">💻</div>
-          <div class="cvrt" style="color:#d4a017">নবদিগন্তের অভিমন্যুরা</div>
-          <div class="cvra" style="color:rgba(212,160,23,.62)">সঞ্জয় মণ্ডল</div>
-        </div>
-        <span class="gbadge" style="background:#e8f0fa;color:#1a3a5c;border:1px solid #b5c8e8">উপন্যাস</span>
+
+  <!-- ══════════════════════════════════════════
+       BOOKS GRID — ADD NEW BOOK CARDS HERE
+       Copy one .book-thumb block for each book.
+       Change: href, gradient colour, icon emoji,
+               title, genre badge, summary, price
+  ══════════════════════════════════════════ -->
+  <div class="books-grid">
+
+    <!-- Book 1 -->
+    <a class="book-thumb" href="books/Book_1.html">
+      <div class="book-thumb-cover" style="background:linear-gradient(160deg,#1a3a5c,#0d2137)">
+        <div class="tc-icon">💻</div>
+        <div class="tc-title" style="color:#d4a017">নবদিগন্তের অভিমন্যুরা</div>
+        <div class="tc-author" style="color:rgba(212,160,23,.6)">সঞ্জয় মণ্ডল</div>
       </div>
-      <div class="bkinfo">
-        <div class="bktit">নবদিগন্তের অভিমন্যুরা</div>
-        <div class="bmrow">
-          <div class="mti"><span class="ml">প্রকাশকাল</span><span class="mv">২০২০</span></div>
-          <div class="mti"><span class="ml">মূল্য (ইবুক)</span><span class="mv mvp">₹৯৯</span></div>
-          <div class="mti"><span class="ml">ভাষা</span><span class="mv">বাংলা</span></div>
-          <div class="mti"><span class="ml">ধরন</span><span class="mv">সমকালীন উপন্যাস</span></div>
-        </div>
-        <div class="bksum">কলকাতার পূর্ব প্রান্তের তথ্যপ্রযুক্তি শিল্পতালুকে হাজার হাজার তরুণ-তরুণী "কেরিয়ার" নামের অদৃশ্য সাপ-লুডো খেলায় নেমেছে। পদোন্নতির স্বপ্ন দেখতে দেখতে তারা কোথায় হারিয়ে যায়?</div>
-        <!-- ── PRICE TABS ── -->
-        <div class="price-tabs">
-          <div class="price-tab active" id="tab-digital" onclick="switchPriceTab('digital','nabadiganter')">
-            <span class="pt-icon">📱</span>
-            <span class="pt-label">ডিজিটাল</span>
-            <span class="pt-price">₹৯৯</span>
-            <span class="pt-avail">ebook · Kindle · PDF</span>
-          </div>
-          <div class="price-tab" id="tab-hard" onclick="switchPriceTab('hard','nabadiganter')">
-            <span class="pt-icon">📗</span>
-            <span class="pt-label">হার্ডবাইন্ড</span>
-            <span class="pt-price">₹২৯৯</span>
-            <span class="pt-avail">ডাক যোগে / সংগ্রহ</span>
-          </div>
-        </div>
-
-        <!-- ── PUBLISHER CARD ── -->
-        <div class="pub-card">
-          <div class="pub-card-head">📖 <span>প্রকাশক বিবরণ</span></div>
-          <div class="pub-card-body">
-            <div class="pub-field full">
-              <span class="pub-field-label">প্রকাশনা</span>
-              <span class="pub-field-val">বইয়ের হাট (Boierhut)</span>
-            </div>
-            <div class="pub-field">
-              <span class="pub-field-label">ফোন</span>
-              <span class="pub-field-val"><a href="tel:+91XXXXXXXXXX">+91 XXXX-XXXXXX</a></span>
-            </div>
-            <div class="pub-field">
-              <span class="pub-field-label">ইমেল</span>
-              <span class="pub-field-val"><a href="mailto:publisher@boierhut.com">publisher@boierhut.com</a></span>
-            </div>
-            <div class="pub-field full">
-              <span class="pub-field-label">ঠিকানা</span>
-              <span class="pub-field-val">প্রকাশকের পূর্ণ ঠিকানা এখানে লিখুন, কলকাতা</span>
-            </div>
-            <div class="pub-field">
-              <span class="pub-field-label">ওয়েবসাইট</span>
-              <span class="pub-field-val"><a href="https://ebook.boierhut.com" target="_blank">ebook.boierhut.com</a></span>
-            </div>
-            <div class="pub-field">
-              <span class="pub-field-label">ISBN</span>
-              <span class="pub-field-val">978-XX-XXXX-XXX-X</span>
-            </div>
-          </div>
-        </div>
-        <div class="pvbox">
-          <div class="pvhd" onclick="tpv(this)"><div class="pvhdl">👁 ১০% বিনামূল্যে পড়ুন</div><span class="pvtog">▼ খুলুন</span></div>
-          <div class="pvbd"><p>লোকে বলে SDF। সরকারি নাম নবদিগন্ত। কলকাতা মহানগরীর পূর্ব প্রান্তে দিগন্ত বিস্তৃত এক লবণাক্ত জলাভূমিতে গড়ে উঠেছে তথ্যপ্রযুক্তি শিল্প। প্রতি বছর হাজার হাজার তরুণ-তরুণী সেইসব সফটওয়্যার কারখানায় চাকরি শুরু করে।</p><div class="pvwm">⋯ প্রথম ১০% অংশ। সম্পূর্ণ পড়তে কিনুন।</div></div>
-        </div>
-        <!-- ── DELIVERY INFO ── -->
-        <div class="delivery-box" id="delivery-digital-nabadiganter">
-          <div class="delivery-box-head">📦 ডিজিটাল ডেলিভারি — কীভাবে পাবেন</div>
-          <ul class="delivery-steps">
-            <li>নিচের বোতামে কিনুন — আপনার নাম, ইমেল ও ফরম্যাট দিন</li>
-            <li>Amazon Kindle-এ পেতে আপনার Kindle ইমেল দিন (yourname@kindle.com) — বই সরাসরি লাইব্রেরিতে যাবে</li>
-            <li>Google Play Books-এ পেতে Google ইমেল দিন — ফাইল পাঠাবো, একটি ক্লিকে আপলোড হবে</li>
-            <li>EPUB / PDF — যেকোনো ডিভাইসে পড়া যাবে</li>
-          </ul>
-        </div>
-        <div class="delivery-box" id="delivery-hard-nabadiganter" style="display:none;background:#f5f0e8;border-color:rgba(26,18,8,.15)">
-          <div class="delivery-box-head" style="color:var(--ink-lt)">📦 হার্ডবাইন্ড ডেলিভারি — কীভাবে পাবেন</div>
-          <ul class="delivery-steps" style="color:var(--ink-lt)">
-            <li>অর্ডার করুন — নাম, ঠিকানা ও ফোন নম্বর দিন</li>
-            <li>পেমেন্ট নিশ্চিত হলে ৩-৫ কার্যদিবসের মধ্যে ডাকে পাঠানো হবে</li>
-            <li>প্রকাশকের কাছ থেকে সরাসরি সংগ্রহ করা যাবে</li>
-            <li>বাল্ক অর্ডারে ছাড় পেতে সরাসরি যোগাযোগ করুন</li>
-          </ul>
-        </div>
-
-        <div class="bkacts">
-          <button class="bbtn bb-pri" id="buy-btn-nabadiganter" onclick="obm('নবদিগন্তের অভিমন্যুরা','৯৯','digital')">🛒 সরাসরি কিনুন</button>
-          <span class="bbdiv">অথবা</span>
-          <a class="bbtn bb-amz" href="https://www.amazon.in/dp/B08CY9M4V2/" target="_blank">Amazon</a>
-          <a class="bbtn bb-goo" href="https://play.google.com/store/books/details?id=Nua9DwAAQBAJ" target="_blank">Google Books</a>
-          <a class="bbtn bb-bh" href="https://ebook.boierhut.com/2020/09/nabadiganter-abhimanyura.html" target="_blank">বইয়ের হাট</a>
+      <div class="book-thumb-info">
+        <span class="book-thumb-genre" style="background:#e8f0fa;color:#1a3a5c;border:1px solid #b5c8e8">উপন্যাস</span>
+        <div class="book-thumb-title">নবদিগন্তের অভিমন্যুরা</div>
+        <div class="book-thumb-summary">তথ্যপ্রযুক্তি শিল্পে কর্মরত এক প্রজন্মের প্রেম, কেরিয়ার ও পরিচয়ের সন্ধানের আখ্যান।</div>
+        <div class="book-thumb-footer">
+          <span class="book-thumb-price">₹৯৯ থেকে</span>
+          <span class="book-thumb-btn">বিস্তারিত →</span>
         </div>
       </div>
-    </div>
+    </a>
+
+    <!-- Book 2 — PLACEHOLDER: Fill in when Book_2.html is ready -->
+    <a class="book-thumb" href="books/Book_2.html">
+      <div class="book-thumb-cover" style="background:linear-gradient(160deg,#3b1f0a,#1e0f04)">
+        <div class="tc-icon">🌿</div>
+        <div class="tc-title" style="color:#e8c87a">দ্বিতীয় বইয়ের নাম</div>
+        <div class="tc-author" style="color:rgba(232,200,122,.6)">সঞ্জয় মণ্ডল</div>
+      </div>
+      <div class="book-thumb-info">
+        <span class="book-thumb-genre" style="background:#fdf4e3;color:#6b4000;border:1px solid #e8c87a">গল্পসংকলন</span>
+        <div class="book-thumb-title">দ্বিতীয় বইয়ের নাম</div>
+        <div class="book-thumb-summary">এখানে বইয়ের সংক্ষিপ্ত পরিচিতি লিখুন।</div>
+        <div class="book-thumb-footer">
+          <span class="book-thumb-price">₹ —</span>
+          <span class="book-thumb-btn">বিস্তারিত →</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Book 3 — PLACEHOLDER -->
+    <a class="book-thumb" href="books/Book_3.html">
+      <div class="book-thumb-cover" style="background:linear-gradient(160deg,#1a4a2a,#0d2a14)">
+        <div class="tc-icon">🌸</div>
+        <div class="tc-title" style="color:#a0e0b0">তৃতীয় বইয়ের নাম</div>
+        <div class="tc-author" style="color:rgba(160,224,176,.6)">সঞ্জয় মণ্ডল</div>
+      </div>
+      <div class="book-thumb-info">
+        <span class="book-thumb-genre" style="background:#e8fdf0;color:#0a5a2a;border:1px solid #a0e0b0">কবিতা</span>
+        <div class="book-thumb-title">তৃতীয় বইয়ের নাম</div>
+        <div class="book-thumb-summary">এখানে বইয়ের সংক্ষিপ্ত পরিচিতি লিখুন।</div>
+        <div class="book-thumb-footer">
+          <span class="book-thumb-price">₹ —</span>
+          <span class="book-thumb-btn">বিস্তারিত →</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- ADD MORE BOOKS HERE — copy any block above -->
+
   </div>
-</div>
+</div></div>
 <div class="sfoot">© সঞ্জয় মণ্ডল</div>
 </div>
 
