@@ -493,7 +493,7 @@ body{font-family:'Hind Siliguri','Noto Sans Bengali',sans-serif;background:var(-
   <ul class="nlinks">
     <li><button id="n-home" onclick="sp('home')">প্রথম পাতা</button></li>
     <li><button id="n-about" onclick="sp('about')">আমার কথা</button></li>
-    <li><button id="n-blog" onclick="sp('blog')">ব্লগবার্তা</button></li>
+    <li><button id="n-blog" onclick="window.location='blog-list.html'">ব্লগবার্তা</button></li>
     <li><button id="n-books" onclick="sp('books')">বইটই</button></li>
     <li><button id="n-published" onclick="sp('published')">প্রকাশিত</button></li>
     <li><button id="n-stories" onclick="sp('stories')">গল্পের আসর</button></li>
@@ -504,7 +504,7 @@ body{font-family:'Hind Siliguri','Noto Sans Bengali',sans-serif;background:var(-
 <div class="mmenu" id="mmenu">
   <button onclick="sp('home');tmob()">প্রথম পাতা</button>
   <button onclick="sp('about');tmob()">আমার কথা</button>
-  <button onclick="sp('blog');tmob()">ব্লগবার্তা</button>
+  <button onclick="window.location='blog-list.html';tmob()">ব্লগবার্তা</button>
   <button onclick="sp('books');tmob()">বইটই</button>
   <button onclick="sp('published');tmob()">প্রকাশিত</button>
   <button onclick="sp('stories');tmob()">গল্পের আসর</button>
@@ -521,14 +521,14 @@ body{font-family:'Hind Siliguri','Noto Sans Bengali',sans-serif;background:var(-
     <p class="htag">আড্ডা, বিতর্ক, মতামত।<br>সঙ্গে কিছু গল্প, কবিতা, প্রতিবেদন।</p>
     <div class="hdiv"></div>
     <div class="hbtns">
-      <button class="hbtn hbtn-g" onclick="sp('blog')">📝 ব্লগ পড়ুন</button>
+      <button class="hbtn hbtn-g" onclick="window.location='blog-list.html'">📝 ব্লগ পড়ুন</button>
       <button class="hbtn hbtn-o" onclick="sp('books')">📚 বই দেখুন</button>
       <button class="hbtn hbtn-o" onclick="sp('contact')">✉ যোগাযোগ</button>
     </div>
   </div>
 </div>
 <div class="fstrip">
-  <div class="fsi" onclick="sp('blog')"><div class="fsi-ic">📝</div><div class="fsi-t">ব্লগবার্তা</div><div class="fsi-d">গল্প, প্রতিবেদন ও মতামত</div></div>
+  <div class="fsi" onclick="window.location='blog-list.html'"><div class="fsi-ic">📝</div><div class="fsi-t">ব্লগবার্তা</div><div class="fsi-d">গল্প, প্রতিবেদন ও মতামত</div></div>
   <div class="fsi" onclick="sp('books')"><div class="fsi-ic">📚</div><div class="fsi-t">বইটই</div><div class="fsi-d">প্রকাশিত গ্রন্থ ও পূর্বরূপ পড়ুন</div></div>
   <div class="fsi" onclick="sp('stories')"><div class="fsi-ic">🌿</div><div class="fsi-t">গল্পের আসর</div><div class="fsi-d">ছোটগল্প ও বিহ্বল গল্প</div></div>
   <div class="fsi" onclick="sp('contact')"><div class="fsi-ic">✉</div><div class="fsi-t">যোগাযোগ</div><div class="fsi-d">মতামত ও বই অর্ডার করুন</div></div>
@@ -543,7 +543,7 @@ body{font-family:'Hind Siliguri','Noto Sans Bengali',sans-serif;background:var(-
   </div>
 </div>
 <div class="hlat">
-  <div class="shd"><div class="shdl"></div><h2>সাম্প্রতিক লেখা</h2><div class="shdl"></div><button onclick="sp('blog')">সব দেখুন →</button></div>
+  <div class="shd"><div class="shdl"></div><h2>সাম্প্রতিক লেখা</h2><div class="shdl"></div><button onclick="window.location='blog-list.html'">সব দেখুন →</button></div>
   <div class="hpg">
     <!-- ══ ADD NEW BLOG CARDS HERE FOR HOME PAGE ══ -->
     <a class="mpc" href="blogs/blog-001.html">
@@ -570,115 +570,6 @@ body{font-family:'Hind Siliguri','Noto Sans Bengali',sans-serif;background:var(-
 </div>
 
 <!-- ════ BLOG PAGE ════ -->
-<div class="page" id="pg-blog">
-<div class="phdr"><h1>ব্লগবার্তা</h1><p>গল্প · প্রতিবেদন · অণুগল্প · মতামত</p></div>
-<div class="blayout">
-  <div id="blog-list">
-
-    <!-- ══════════════════════════════════════════
-         HOW TO ADD A NEW BLOG POST CARD:
-         1. Copy one bpost block below
-         2. Change: data-cat, id, icon, title, category, date, excerpt
-         3. Change href in <a class="rmbtn"> to point to your new blog file
-         4. Increment the id (bp4, bp5, bp6...)
-         5. Update BP_MAP in the script below to include new post
-    ══════════════════════════════════════════ -->
-
-    <div class="bpost" data-cat="অণুগল্প" id="bp0">
-      <div class="bpimg"><div class="bpic">🌙</div><div class="bpil">ঝলসানো রুটি</div></div>
-      <div class="bpb">
-        <div class="bpm"><span class="bpcat c-mic">অণুগল্প</span><span class="bpdate">আগস্ট ২০২৩</span></div>
-        <a class="bptit" href="blogs/blog-001.html">ঝলসানো রুটি</a>
-        <div class="bpex"><p>দ্রুত বিকেলের আলো ফুরিয়ে আসছে। মরদ সেই কাকভোরে কাজে বেরিয়ে গেছে। বাড়ি বলতে এখন রেললাইন থেকে একটু দূরে একচিলতে জমিতে প্লাস্টিকের একটা ছাউনি।</p><p>ফিরে এসেই সে ভাত খেতে চাইবে, অথচ ঘরে চাল বাড়ন্ত। শেফালি তাই দৌড়ে চলে এসেছে রেশনের দোকানে।</p></div>
-      </div>
-      <div class="bpf">
-        <a class="rmbtn" href="blogs/blog-001.html">সম্পূর্ণ পড়ুন →</a>
-        <div class="pshr"><button class="sbt" onclick="shareFB('blogs/blog-001.html')">Facebook</button><button class="sbt">X</button></div>
-      </div>
-    </div>
-
-    <div class="bpost" data-cat="প্রতিবেদন" id="bp1">
-      <div class="bpimg"><div class="bpic">✊</div><div class="bpil">প্রতিবাদহীন,</div></div>
-      <div class="bpb">
-        <div class="bpm"><span class="bpcat c-rep">প্রতিবেদন</span><span class="bpdate">আগস্ট ২০২০</span></div>
-        <a class="bptit" href="blogs/blog-002.html">প্রতিবাদহীন,</a>
-        <div class="bpex"><p>২৩ দিন ধরে রাজপথে হবু শিক্ষকেরা অনশনে বসেছেন। কারো কোন ভ্রুক্ষেপ নেই। না সরকারের, না প্রশাসনের।</p><p>অগণতান্ত্রিক সরকার সবসময় ক্ষমতাকে নিরঙ্কুশ রাখতে চায়। সেই ক্ষমতাকে নিরঙ্কুশ করতে পুলিশকে ঘুষখোর তৈরী করে।</p></div>
-      </div>
-      <div class="bpf">
-        <a class="rmbtn" href="blogs/blog-002.html">সম্পূর্ণ পড়ুন →</a>
-        <div class="pshr"><button class="sbt">Facebook</button><button class="sbt">X</button></div>
-      </div>
-    </div>
-
-    <!-- Page 2 posts -->
-    <div class="bpost" data-cat="ছোটগল্প" id="bp2" style="display:none">
-      <div class="bpimg"><div class="bpic">🚶</div><div class="bpil">অদৃশ্য</div></div>
-      <div class="bpb">
-        <div class="bpm"><span class="bpcat c-sto">ছোটগল্প</span><span class="bpdate">মে ২০২০</span></div>
-        <a class="bptit" href="blogs/blog-003.html">অদৃশ্য</a>
-        <div class="bpex"><p>দুপুরে খাওয়ার পরে বাসন ধুচ্ছিল মাধুরি। বসার ঘরে টিভি দেখতে দেখতে কর্তা চেঁচিয়ে উঠলেন, "জানো, লকডাউন বেড়ে গেল।"</p></div>
-      </div>
-      <div class="bpf">
-        <a class="rmbtn" href="blogs/blog-003.html">সম্পূর্ণ পড়ুন →</a>
-        <div class="pshr"><button class="sbt">Facebook</button><button class="sbt">X</button></div>
-      </div>
-    </div>
-
-    <!-- ══ PASTE NEW BLOG CARDS ABOVE THIS LINE ══ -->
-
-    <div class="pgn">
-      <button class="pgb cur" id="pgb1" onclick="sbp(1,this)">১</button>
-      <button class="pgb" id="pgb2" onclick="sbp(2,this)">২</button>
-      <button class="pgb" onclick="sbp(2,document.getElementById('pgb2'))">›</button>
-    </div>
-  </div>
-
-  <!-- SIDEBAR -->
-  <aside class="sbar">
-    <div class="sblk"><div class="sbhd">🔍 খুঁজুন</div><div class="sbbd"><div class="bsrch"><input type="text" placeholder="লেখা খুঁজুন..." id="bsi" onkeydown="if(event.key==='Enter')dsrch()"><button onclick="dsrch()">→</button></div></div></div>
-    <div class="sblk">
-      <div class="sbhd">📋 সাম্প্রতিক লেখা</div>
-      <div class="sbbd">
-        <!-- ══ ADD NEW POST LINKS HERE IN SIDEBAR ══ -->
-        <a class="sbpi" href="blogs/blog-001.html"><div class="sbdot"></div><span class="sbpt">ঝলসানো রুটি — আগস্ট ২০২৩</span></a>
-        <a class="sbpi" href="blogs/blog-002.html"><div class="sbdot"></div><span class="sbpt">প্রতিবাদহীন, — আগস্ট ২০২০</span></a>
-        <a class="sbpi" href="blogs/blog-003.html"><div class="sbdot"></div><span class="sbpt">অদৃশ্য — মে ২০২০</span></a>
-      </div>
-    </div>
-    <div class="sblk">
-      <div class="sbhd">🏷 বিভাগ</div>
-      <div class="sbbd"><div class="ctags">
-        <button class="ctag on" onclick="fbl('all',this)">সব</button>
-        <button class="ctag" onclick="fbl('প্রতিবেদন',this)">প্রতিবেদন</button>
-        <button class="ctag" onclick="fbl('ছোটগল্প',this)">ছোটগল্প</button>
-        <button class="ctag" onclick="fbl('অণুগল্প',this)">অণুগল্প</button>
-        <button class="ctag" onclick="fbl('বিহ্বল গল্প',this)">বিহ্বল গল্প</button>
-      </div></div>
-    </div>
-    <div class="sblk">
-      <div class="sbhd">📅 সংগ্রহশালা</div>
-      <div class="sbbd">
-        <div class="archyr"><div class="archyh" onclick="ta(this)"><span>২০২৩</span><span>▼</span></div><div class="archms"><div class="archm"><span>আগস্ট</span><span class="archc">১</span></div></div></div>
-        <div class="archyr"><div class="archyh" onclick="ta(this)"><span>২০২০</span><span>▼</span></div><div class="archms"><div class="archm"><span>আগস্ট</span><span class="archc">১</span></div><div class="archm"><span>মে</span><span class="archc">২</span></div></div></div>
-        <div class="archyr"><div class="archyh" onclick="ta(this)"><span>২০১৭</span><span>▼</span></div><div class="archms"><div class="archm"><span>অক্টোবর</span><span class="archc">১</span></div><div class="archm"><span>সেপ্টেম্বর</span><span class="archc">১</span></div></div></div>
-        <div class="archyr"><div class="archyh" onclick="ta(this)"><span>২০১৬</span><span>►</span></div></div>
-      </div>
-    </div>
-    <div class="sblk">
-      <div class="sbhd">🔗 পছন্দের ব্লগ</div>
-      <div class="sbbd">
-        <a class="sbpi" href="https://www.omicronlab.com/avro-keyboard.html" target="_blank"><div class="sbdot" style="background:var(--teal)"></div><span class="sbpt" style="color:var(--teal)">অভ্র হরফ</span></a>
-        <a class="sbpi" href="http://www.galpopath.com/" target="_blank"><div class="sbdot" style="background:var(--teal)"></div><span class="sbpt" style="color:var(--teal)">গল্পপাঠ</span></a>
-        <a class="sbpi" href="http://www.sachalayatan.com/" target="_blank"><div class="sbdot" style="background:var(--teal)"></div><span class="sbpt" style="color:var(--teal)">সচলায়তন</span></a>
-        <a class="sbpi" href="http://tagoreweb.in/" target="_blank"><div class="sbdot" style="background:var(--teal)"></div><span class="sbpt" style="color:var(--teal)">সম্পূর্ণ রবীন্দ্র-রচনাবলী</span></a>
-      </div>
-    </div>
-  </aside>
-</div>
-<div class="sfoot">© সঞ্জয় মণ্ডল · সর্বস্বত্ব সংরক্ষিত</div>
-</div>
-
-<!-- ════ ABOUT ════ -->
 <div class="page" id="pg-about">
 <div class="phdr"><h1>আমার কথা</h1><p>লেখক পরিচিতি</p></div>
 <div class="apg">
@@ -924,55 +815,7 @@ function sp(p){
 }
 function tmob(){document.getElementById('mmenu').classList.toggle('open')}
 
-// ── BLOG PAGINATION ──
-// BP_MAP: page number → array of post element IDs to show
-// WHEN YOU ADD NEW POSTS: add their id here e.g. 4:[3,4], 5:[5,6]
-const BP_MAP={1:['bp0','bp1'], 2:['bp2']};
-const ALL_IDS=['bp0','bp1','bp2'];
-
-function sbp(n,btn){
-  document.querySelectorAll('.pgb').forEach(b=>b.classList.remove('cur'));
-  btn.classList.add('cur');
-  ALL_IDS.forEach(id=>{const e=document.getElementById(id);if(e)e.style.display='none';});
-  (BP_MAP[n]||[]).forEach(id=>{const e=document.getElementById(id);if(e)e.style.display='';});
-  window.scrollTo(0,58);
-}
-// Show page 1 on load
-BP_MAP[1].forEach(id=>{const e=document.getElementById(id);if(e)e.style.display='';});
-
-// ── BLOG FILTER BY CATEGORY ──
-function fbl(cat,btn){
-  document.querySelectorAll('.ctag').forEach(b=>b.classList.remove('on'));
-  btn.classList.add('on');
-  document.querySelectorAll('.bpost').forEach(c=>{
-    if(cat==='all'||c.dataset.cat===cat)c.style.display='';
-    else c.style.display='none';
-  });
-}
-
-// ── ARCHIVE TOGGLE ──
-function ta(hd){
-  const m=hd.nextElementSibling;const a=hd.querySelector('span:last-child');
-  if(!m)return;
-  if(m.style.display==='none'){m.style.display='';a.textContent='▼';}
-  else{m.style.display='none';a.textContent='►';}
-}
-
-// ── SEARCH (simple title match) ──
-function dsrch(){
-  const q=document.getElementById('bsi').value.toLowerCase().trim();
-  if(!q)return;
-  const cards=document.querySelectorAll('.bpost');
-  let found=false;
-  cards.forEach(c=>{
-    const t=c.querySelector('.bptit');
-    if(t&&t.textContent.toLowerCase().includes(q)){
-      ALL_IDS.forEach(id=>{const e=document.getElementById(id);if(e)e.style.display='none';});
-      c.style.display='';found=true;
-    }
-  });
-  if(!found)alert('কোনো লেখা পাওয়া যায়নি।');
-}
+// Blog functions moved to blog-list.html
 
 // ── BOOKS ──
 function fbk(g,btn){
