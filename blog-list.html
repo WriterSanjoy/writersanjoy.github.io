@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ব্লগবার্তা — সঞ্জয় মণ্ডল</title>
+<meta name="description" content="সঞ্জয় মণ্ডলের ব্লগ — গল্প, প্রতিবেদন, অণুগল্প ও মতামত">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Baloo+Da+2:wght@400;500;600;700&family=Tiro+Bangla:ital@0;1&family=Noto+Serif+Bengali:wght@300;400;500;600;700&family=Noto+Sans+Bengali:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#1a1208;--ink-lt:#3d3020;--ink-md:#6b5a45;--ink-mu:#9a8a76;
+  --paper:#faf8f4;--paper-w:#f5f1e8;--paper-d:#ede8de;
+  --gold:#b8860b;--gold-l:#d4a017;--gold-p:#fdf4d8;
+  --red:#8b1a1a;--teal:#1a5f5a;--teal-p:#e8f5f4;
+  --bdr:rgba(26,18,8,.12);--bdr-s:rgba(26,18,8,.22);
+  --r:4px;--r-lg:8px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Hind Siliguri','Noto Sans Bengali',sans-serif;background:var(--paper);color:var(--ink);line-height:1.8;font-size:16px}
+
+/* ── NAV ── */
+nav{background:var(--ink);padding:0 2.5rem;position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;height:58px;box-shadow:0 2px 16px rgba(0,0,0,.35)}
+.nbrand{font-family:'Noto Serif Bengali',serif;font-size:1.05rem;font-weight:700;color:var(--gold-l);text-decoration:none}
+.nlinks{display:flex;list-style:none}
+.nlinks li a{font-family:'Hind Siliguri',sans-serif;font-size:.82rem;color:rgba(255,255,255,.62);text-decoration:none;padding:.4rem 1rem;display:block;transition:color .2s;border-bottom:2px solid transparent}
+.nlinks li a:hover{color:#fff}
+.nlinks li a.act{color:var(--gold-l);border-bottom-color:var(--gold-l)}
+.nburg{display:none;background:none;border:none;color:#fff;font-size:1.4rem;cursor:pointer;padding:.3rem}
+.mmenu{display:none;background:#0e0c08;position:fixed;top:58px;left:0;right:0;z-index:199;border-top:1px solid rgba(255,255,255,.08)}
+.mmenu.open{display:block}
+.mmenu a{display:block;font-family:'Hind Siliguri',sans-serif;font-size:.95rem;color:rgba(255,255,255,.72);text-decoration:none;padding:.7rem 1.75rem;border-bottom:1px solid rgba(255,255,255,.05)}
+
+/* ── PAGE HEADER ── */
+.phdr{background:var(--ink);padding:2.5rem 2rem}
+.phdr h1{font-family:'Noto Serif Bengali',serif;font-size:clamp(1.5rem,4vw,2.4rem);font-weight:700;color:#fff;line-height:1.25}
+.phdr p{font-family:'Hind Siliguri',sans-serif;font-size:.84rem;color:rgba(255,255,255,.42);margin-top:.3rem}
+.phdr-row{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;max-width:1140px;margin:0 auto}
+.post-total{font-family:'Hind Siliguri',sans-serif;font-size:.8rem;color:rgba(255,255,255,.35);letter-spacing:.04em}
+
+/* ── LAYOUT ── */
+.blayout{max-width:1140px;margin:0 auto;padding:2.5rem 2rem 4rem;display:grid;grid-template-columns:1fr 290px;gap:2.5rem;align-items:start}
+
+/* ── BLOG POST CARD ── */
+.bpost{background:#fff;border:1px solid var(--bdr);border-radius:var(--r-lg);margin-bottom:2rem;overflow:hidden;transition:box-shadow .22s}
+.bpost:hover{box-shadow:0 4px 24px rgba(26,18,8,.09)}
+.bpimg{height:215px;background:var(--paper-d);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border-bottom:1px solid var(--bdr)}
+/* Cover image version */
+.bpimg img{width:100%;height:100%;object-fit:cover}
+/* Emoji/icon version */
+.bpic{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:5rem;opacity:.14}
+.bpil{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(26,18,8,.68));padding:1.5rem 1.2rem .7rem;font-family:'Noto Serif Bengali',serif;font-size:1.1rem;font-weight:600;color:#fff}
+.bpb{padding:1.4rem 1.65rem}
+.bpm{display:flex;align-items:center;gap:.7rem;margin-bottom:.85rem;flex-wrap:wrap}
+.bpcat{font-family:'Hind Siliguri',sans-serif;font-size:.7rem;font-weight:600;padding:.2rem .75rem;border-radius:100px;letter-spacing:.04em}
+.bpdate{font-family:'Hind Siliguri',sans-serif;font-size:.74rem;color:var(--ink-mu)}
+.bptit{font-family:'Noto Serif Bengali',serif;font-size:1.3rem;font-weight:700;line-height:1.4;margin-bottom:.85rem;cursor:pointer;text-decoration:none;color:var(--ink);display:block}
+.bptit:hover{color:var(--red)}
+.bpex{font-family:'Noto Serif Bengali',serif;font-size:.92rem;line-height:1.9;color:var(--ink-lt)}
+.bpex p{margin-bottom:.7rem}
+.bpf{padding:.85rem 1.65rem;border-top:1px solid var(--bdr);background:var(--paper-w);display:flex;justify-content:space-between;align-items:center}
+.rmbtn{font-family:'Hind Siliguri',sans-serif;font-size:.82rem;font-weight:600;color:var(--red);background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:.3rem;text-decoration:none}
+.pshr{display:flex;gap:.4rem}
+.sbt{font-family:'Hind Siliguri',sans-serif;font-size:.7rem;padding:.22rem .7rem;border:1px solid var(--bdr-s);border-radius:100px;background:none;cursor:pointer;color:var(--ink-md);transition:all .15s}
+.sbt:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+/* Category colour classes */
+.c-rep{background:#fef3e8;color:#7a4500}
+.c-sto{background:#e8f4fd;color:#0a4a7a}
+.c-mic{background:#e8fdf0;color:#0a5a2a}
+.c-bih{background:#f0e8fd;color:#4a0a7a}
+.c-poem{background:#fdf0f8;color:#7a0a5a}
+
+/* ── PAGINATION ── */
+.pgn{display:flex;align-items:center;justify-content:center;gap:.5rem;margin-top:.5rem;flex-wrap:wrap}
+.pgb{font-family:'Hind Siliguri',sans-serif;font-size:.82rem;min-width:36px;height:36px;padding:0 .6rem;display:flex;align-items:center;justify-content:center;border:1px solid var(--bdr-s);border-radius:var(--r);background:#fff;cursor:pointer;transition:all .15s;color:var(--ink)}
+.pgb:hover,.pgb.cur{background:var(--ink);color:#fff;border-color:var(--ink)}
+.pgb.cur{pointer-events:none}
+.pgb.pgb-sep{border:none;background:none;cursor:default;color:var(--ink-mu)}
+.pgb.pgb-sep:hover{background:none;color:var(--ink-mu)}
+
+/* ── SIDEBAR ── */
+.sbar{position:sticky;top:72px}
+.sblk{background:#fff;border:1px solid var(--bdr);border-radius:var(--r-lg);margin-bottom:1.4rem;overflow:hidden}
+.sbhd{background:var(--ink);color:var(--gold-l);font-family:'Noto Serif Bengali',serif;font-size:.88rem;font-weight:600;padding:.65rem 1.05rem}
+.sbbd{padding:.9rem 1.05rem}
+.sbpi{display:flex;gap:.55rem;padding:.5rem 0;border-bottom:1px solid var(--bdr);align-items:flex-start;text-decoration:none}
+.sbpi:last-child{border-bottom:none}
+.sbdot{width:6px;height:6px;background:var(--gold);border-radius:50%;flex-shrink:0;margin-top:.55rem}
+.sbpt{font-family:'Noto Serif Bengali',serif;font-size:.82rem;line-height:1.5;color:var(--ink-lt);transition:color .15s}
+.sbpi:hover .sbpt{color:var(--red)}
+.archyr{cursor:pointer;user-select:none}
+.archyh{display:flex;justify-content:space-between;align-items:center;font-family:'Noto Serif Bengali',serif;font-size:.88rem;font-weight:600;padding:.38rem 0;border-bottom:1px solid var(--bdr);margin-bottom:.25rem}
+.archms{padding-left:.45rem;margin-bottom:.5rem}
+.archm{font-family:'Hind Siliguri',sans-serif;font-size:.77rem;color:var(--ink-md);display:flex;justify-content:space-between;padding:.22rem 0;cursor:pointer;transition:color .15s}
+.archm:hover{color:var(--red)}
+.archc{font-size:.68rem;background:var(--paper-d);padding:.08rem .38rem;border-radius:100px;color:var(--ink-mu)}
+.ctags{display:flex;flex-wrap:wrap;gap:.38rem}
+.ctag{font-family:'Hind Siliguri',sans-serif;font-size:.74rem;padding:.22rem .72rem;border-radius:100px;border:1px solid var(--bdr-s);background:var(--paper-w);cursor:pointer;transition:all .15s;color:var(--ink-lt)}
+.ctag:hover,.ctag.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.bsrch{display:flex;gap:.38rem}
+.bsrch input{flex:1;padding:.5rem .8rem;border:1px solid var(--bdr-s);border-radius:var(--r);font-family:'Hind Siliguri',sans-serif;font-size:.84rem;background:var(--paper-w);color:var(--ink);outline:none}
+.bsrch input:focus{border-color:var(--red)}
+.bsrch button{padding:.5rem .9rem;background:var(--ink);color:#fff;border:none;border-radius:var(--r);cursor:pointer;font-size:.84rem}
+
+/* ── SETTINGS ── */
+#settings-btn{position:fixed;bottom:2rem;right:2rem;z-index:500;width:48px;height:48px;border-radius:50%;background:var(--ink);color:var(--gold-l);display:flex;align-items:center;justify-content:center;font-size:1.3rem;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.3);transition:all .2s;border:2px solid rgba(255,255,255,.1)}
+#settings-btn:hover{transform:rotate(45deg) scale(1.1)}
+#settings-overlay{display:none;position:fixed;inset:0;z-index:499;background:rgba(0,0,0,.4)}
+#settings-overlay.open{display:block}
+#settings-panel{position:fixed;right:-340px;top:0;bottom:0;width:320px;z-index:500;background:var(--paper);border-left:1px solid var(--bdr-s);box-shadow:-8px 0 40px rgba(0,0,0,.2);transition:right .3s cubic-bezier(.4,0,.2,1);overflow-y:auto}
+#settings-panel.open{right:0}
+.sp-header{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 1.4rem;background:var(--ink);font-family:'Hind Siliguri',sans-serif;font-size:1rem;font-weight:600;color:var(--gold-l);position:sticky;top:0}
+.sp-header button{background:none;border:none;color:rgba(255,255,255,.6);font-size:1.2rem;cursor:pointer;padding:.2rem .4rem}
+.sp-section{padding:1.1rem 1.4rem;border-bottom:1px solid var(--bdr)}
+.sp-label{font-family:'Hind Siliguri',sans-serif;font-size:.8rem;font-weight:600;color:var(--ink-mu);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.75rem}
+.sp-grid{display:grid;grid-template-columns:1fr 1fr;gap:.45rem}
+.theme-btn{font-family:'Hind Siliguri',sans-serif;font-size:.78rem;padding:.5rem .6rem;border:1.5px solid var(--bdr-s);border-radius:var(--r);background:var(--paper-w);color:var(--ink);cursor:pointer;transition:all .18s;text-align:left}
+.theme-btn:hover,.theme-btn.active{border-color:var(--gold);background:var(--gold-p);font-weight:700}
+.sp-font-list{display:flex;flex-direction:column;gap:.4rem}
+.font-btn{font-family:'Hind Siliguri',sans-serif;font-size:.82rem;padding:.55rem .8rem;border:1.5px solid var(--bdr-s);border-radius:var(--r);background:var(--paper-w);color:var(--ink);cursor:pointer;transition:all .18s;text-align:left;display:flex;align-items:center;gap:.6rem}
+.font-btn:hover,.font-btn.active{border-color:var(--gold);background:var(--gold-p)}
+.font-preview{font-size:1.1rem;color:var(--ink-lt);min-width:40px}
+.sp-size-row{display:flex;gap:.4rem;flex-wrap:wrap}
+.size-btn{font-family:'Hind Siliguri',sans-serif;font-size:.78rem;padding:.42rem .8rem;border:1.5px solid var(--bdr-s);border-radius:100px;background:var(--paper-w);color:var(--ink);cursor:pointer;transition:all .18s}
+.size-btn.active{border-color:var(--gold);background:var(--gold);color:#fff;font-weight:700}
+.reset-btn{width:100%;font-family:'Hind Siliguri',sans-serif;font-size:.82rem;padding:.6rem;border:1.5px solid var(--bdr-s);border-radius:var(--r);background:transparent;color:var(--ink-md);cursor:pointer;transition:all .18s}
+.reset-btn:hover{background:var(--red);color:#fff;border-color:var(--red)}
+
+/* ── FOOTER ── */
+footer{background:var(--ink);color:rgba(255,255,255,.32);font-family:'Hind Siliguri',sans-serif;font-size:.75rem;text-align:center;padding:1.75rem 2rem;letter-spacing:.04em}
+footer a{color:var(--gold-l);text-decoration:none}
+
+/* ── NO RESULTS ── */
+.no-results{text-align:center;padding:3rem 2rem;color:var(--ink-mu);font-family:'Noto Serif Bengali',serif;font-size:1rem}
+
+/* ── RESPONSIVE ── */
+@media(max-width:760px){
+  nav{padding:0 1.2rem}.nlinks{display:none}.nburg{display:block}
+  .blayout{grid-template-columns:1fr;padding:1.5rem 1rem 4rem}
+  .sbar{position:static}
+  #settings-btn{bottom:1.2rem;right:1.2rem;width:44px;height:44px}
+  .phdr{padding:2rem 1.2rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ════ NAV ════ -->
+<nav>
+  <a class="nbrand" href="index.html">সঞ্জয় মণ্ডল</a>
+  <ul class="nlinks">
+    <li><a href="index.html">প্রথম পাতা</a></li>
+    <li><a href="index.html">আমার কথা</a></li>
+    <li><a href="blog-list.html" class="act">ব্লগবার্তা</a></li>
+    <li><a href="index.html">বইটই</a></li>
+    <li><a href="index.html">যোগাযোগ</a></li>
+  </ul>
+  <button class="nburg" onclick="document.getElementById('mm').classList.toggle('open')">☰</button>
+</nav>
+<div class="mmenu" id="mm">
+  <a href="index.html">প্রথম পাতা</a>
+  <a href="index.html">আমার কথা</a>
+  <a href="blog-list.html" class="act">ব্লগবার্তা</a>
+  <a href="index.html">বইটই</a>
+  <a href="index.html">যোগাযোগ</a>
+</div>
+
+<!-- ════ PAGE HEADER ════ -->
+<div class="phdr">
+  <div class="phdr-row">
+    <div>
+      <h1>ব্লগবার্তা</h1>
+      <p>গল্প · প্রতিবেদন · অণুগল্প · মতামত</p>
+    </div>
+    <div class="post-total" id="post-total-display"></div>
+  </div>
+</div>
+
+<!-- ════ MAIN LAYOUT ════ -->
+<div class="blayout">
+
+  <!-- ══ LEFT: POST LIST ══ -->
+  <div>
+
+    <!-- ════════════════════════════════════════════════════════
+         HOW TO ADD A NEW BLOG POST:
+
+         1. COPY the block below marked "NEW POST TEMPLATE"
+         2. PASTE it right after the opening comment below
+            ↓ ↓ ↓  ADD NEW POSTS HERE (newest first) ↓ ↓ ↓
+         3. Change these values in your new block:
+            - data-cat  → category (অণুগল্প / প্রতিবেদন / ছোটগল্প / বিহ্বল গল্প / কবিতা)
+            - data-year → year (২০২৩ / ২০২৪ etc.) — for archive filter
+            - data-month→ month (আগস্ট / মে etc.) — for archive filter
+            - .bpic     → emoji matching the post mood
+            - .bpil     → post title (on the image)
+            - .bpcat    → category badge class (c-mic / c-rep / c-sto / c-bih / c-poem)
+            - .bpdate   → published date
+            - .bptit href → link to blogs/blog-00X.html
+            - .bptit text → post title
+            - .bpex p   → 2-3 line excerpt
+            - .rmbtn href → same link as .bptit href
+         4. Also add the post to the SIDEBAR "সাম্প্রতিক লেখা" section (keep only latest 6-8)
+         5. Also update the ARCHIVE section if it's a new month/year
+         6. The NEWEST post goes at the TOP — it automatically shows as #1
+
+         NOTE: Do NOT change any IDs or pagination code.
+               The script handles display automatically based on POSTS_PER_PAGE.
+
+         ════════════════════════════════════════════════════════
+
+         ── NEW POST TEMPLATE (copy this block) ──
+
+         <div class="bpost" data-cat="অণুগল্প" data-year="২০২৪" data-month="জানুয়ারি">
+           <div class="bpimg">
+             <div class="bpic">✍</div>
+             <div class="bpil">পোস্টের শিরোনাম</div>
+           </div>
+           <div class="bpb">
+             <div class="bpm"><span class="bpcat c-mic">অণুগল্প</span><span class="bpdate">জানুয়ারি ২০২৪</span></div>
+             <a class="bptit" href="blogs/blog-004.html">পোস্টের শিরোনাম</a>
+             <div class="bpex"><p>প্রথম ২-৩ লাইনের সংক্ষিপ্তসার।</p></div>
+           </div>
+           <div class="bpf">
+             <a class="rmbtn" href="blogs/blog-004.html">সম্পূর্ণ পড়ুন →</a>
+             <div class="pshr">
+               <button class="sbt" onclick="sharePost('blogs/blog-004.html','fb')">Facebook</button>
+               <button class="sbt" onclick="sharePost('blogs/blog-004.html','tw')">X</button>
+             </div>
+           </div>
+         </div>
+
+         ─────────────────────────────────────────────────────── -->
+
+    <!-- ↓↓↓ ADD NEW POSTS HERE — NEWEST FIRST ↓↓↓ -->
+
+    <div class="bpost" data-cat="অণুগল্প" data-year="২০২৩" data-month="আগস্ট">
+      <div class="bpimg">
+        <div class="bpic">🌙</div>
+        <div class="bpil">ঝলসানো রুটি</div>
+      </div>
+      <div class="bpb">
+        <div class="bpm"><span class="bpcat c-mic">অণুগল্প</span><span class="bpdate">আগস্ট ২০২৩</span></div>
+        <a class="bptit" href="blogs/blog-001.html">ঝলসানো রুটি</a>
+        <div class="bpex">
+          <p>দ্রুত বিকেলের আলো ফুরিয়ে আসছে। মরদ সেই কাকভোরে কাজে বেরিয়ে গেছে। বাড়ি বলতে এখন রেললাইন থেকে একটু দূরে একচিলতে জমিতে প্লাস্টিকের একটা ছাউনি।</p>
+          <p>ফিরে এসেই সে ভাত খেতে চাইবে, অথচ ঘরে চাল বাড়ন্ত।</p>
+        </div>
+      </div>
+      <div class="bpf">
+        <a class="rmbtn" href="blogs/blog-001.html">সম্পূর্ণ পড়ুন →</a>
+        <div class="pshr">
+          <button class="sbt" onclick="sharePost('blogs/blog-001.html','fb')">Facebook</button>
+          <button class="sbt" onclick="sharePost('blogs/blog-001.html','tw')">X</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="bpost" data-cat="প্রতিবেদন" data-year="২০২০" data-month="আগস্ট">
+      <div class="bpimg">
+        <div class="bpic">✊</div>
+        <div class="bpil">প্রতিবাদহীন,</div>
+      </div>
+      <div class="bpb">
+        <div class="bpm"><span class="bpcat c-rep">প্রতিবেদন</span><span class="bpdate">আগস্ট ২০২০</span></div>
+        <a class="bptit" href="blogs/blog-002.html">প্রতিবাদহীন,</a>
+        <div class="bpex">
+          <p>২৩ দিন ধরে রাজপথে হবু শিক্ষকেরা অনশনে বসেছেন। কারো কোন ভ্রুক্ষেপ নেই। না সরকারের, না প্রশাসনের।</p>
+          <p>অগণতান্ত্রিক সরকার সবসময় ক্ষমতাকে নিরঙ্কুশ রাখতে চায়।</p>
+        </div>
+      </div>
+      <div class="bpf">
+        <a class="rmbtn" href="blogs/blog-002.html">সম্পূর্ণ পড়ুন →</a>
+        <div class="pshr">
+          <button class="sbt" onclick="sharePost('blogs/blog-002.html','fb')">Facebook</button>
+          <button class="sbt" onclick="sharePost('blogs/blog-002.html','tw')">X</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="bpost" data-cat="ছোটগল্প" data-year="২০২০" data-month="মে">
+      <div class="bpimg">
+        <div class="bpic">🚶</div>
+        <div class="bpil">অদৃশ্য</div>
+      </div>
+      <div class="bpb">
+        <div class="bpm"><span class="bpcat c-sto">ছোটগল্প</span><span class="bpdate">মে ২০২০</span></div>
+        <a class="bptit" href="blogs/blog-003.html">অদৃশ্য</a>
+        <div class="bpex">
+          <p>দুপুরে খাওয়ার পরে বাসন ধুচ্ছিল মাধুরি। বসার ঘরে টিভি দেখতে দেখতে কর্তা চেঁচিয়ে উঠলেন, "জানো, লকডাউন বেড়ে গেল।"</p>
+        </div>
+      </div>
+      <div class="bpf">
+        <a class="rmbtn" href="blogs/blog-003.html">সম্পূর্ণ পড়ুন →</a>
+        <div class="pshr">
+          <button class="sbt" onclick="sharePost('blogs/blog-003.html','fb')">Facebook</button>
+          <button class="sbt" onclick="sharePost('blogs/blog-003.html','tw')">X</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ↑↑↑ ADD NEW POSTS ABOVE THIS LINE — NEWEST FIRST ↑↑↑ -->
+
+    <!-- Pagination — DO NOT EDIT -->
+    <div class="pgn" id="pgn"></div>
+
+    <!-- No results message -->
+    <div class="no-results" id="no-results" style="display:none">
+      এই বিভাগে কোনো লেখা পাওয়া যায়নি।
+    </div>
+
+  </div><!-- /blog-list -->
+
+  <!-- ══ RIGHT: SIDEBAR ══ -->
+  <aside class="sbar">
+
+    <!-- Search -->
+    <div class="sblk">
+      <div class="sbhd">🔍 খুঁজুন</div>
+      <div class="sbbd">
+        <div class="bsrch">
+          <input type="text" id="bsi" placeholder="লেখা খুঁজুন..." onkeydown="if(event.key==='Enter')doSearch()">
+          <button onclick="doSearch()">→</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent posts — update when you add new posts (keep latest 6-8) -->
+    <div class="sblk">
+      <div class="sbhd">📋 সাম্প্রতিক লেখা</div>
+      <div class="sbbd" id="sidebar-recent">
+        <!-- ══ UPDATE THIS when adding new posts — keep latest 6-8 ══ -->
+        <a class="sbpi" href="blogs/blog-001.html"><div class="sbdot"></div><span class="sbpt">ঝলসানো রুটি — আগস্ট ২০২৩</span></a>
+        <a class="sbpi" href="blogs/blog-002.html"><div class="sbdot"></div><span class="sbpt">প্রতিবাদহীন, — আগস্ট ২০২০</span></a>
+        <a class="sbpi" href="blogs/blog-003.html"><div class="sbdot"></div><span class="sbpt">অদৃশ্য — মে ২০২০</span></a>
+      </div>
+    </div>
+
+    <!-- Category filter -->
+    <div class="sblk">
+      <div class="sbhd">🏷 বিভাগ</div>
+      <div class="sbbd">
+        <div class="ctags">
+          <button class="ctag on" onclick="filterCat('all',this)">সব</button>
+          <button class="ctag" onclick="filterCat('প্রতিবেদন',this)">প্রতিবেদন</button>
+          <button class="ctag" onclick="filterCat('ছোটগল্প',this)">ছোটগল্প</button>
+          <button class="ctag" onclick="filterCat('অণুগল্প',this)">অণুগল্প</button>
+          <button class="ctag" onclick="filterCat('বিহ্বল গল্প',this)">বিহ্বল গল্প</button>
+          <button class="ctag" onclick="filterCat('কবিতা',this)">কবিতা</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Archive — update when you add posts in a new month/year -->
+    <div class="sblk">
+      <div class="sbhd">📅 সংগ্রহশালা</div>
+      <div class="sbbd">
+        <!-- ══ UPDATE THIS when adding posts in new months ══ -->
+        <div class="archyr">
+          <div class="archyh" onclick="toggleArch(this)"><span>২০২৩</span><span>▼</span></div>
+          <div class="archms">
+            <div class="archm" onclick="filterMonth('২০২৩','আগস্ট')"><span>আগস্ট</span><span class="archc">১</span></div>
+          </div>
+        </div>
+        <div class="archyr">
+          <div class="archyh" onclick="toggleArch(this)"><span>২০২০</span><span>▼</span></div>
+          <div class="archms">
+            <div class="archm" onclick="filterMonth('২০২০','আগস্ট')"><span>আগস্ট</span><span class="archc">১</span></div>
+            <div class="archm" onclick="filterMonth('২০২০','মে')"><span>মে</span><span class="archc">২</span></div>
+          </div>
+        </div>
+        <div class="archyr">
+          <div class="archyh" onclick="toggleArch(this)"><span>২০১৭</span><span>▼</span></div>
+          <div class="archms">
+            <div class="archm" onclick="filterMonth('২০১৭','অক্টোবর')"><span>অক্টোবর</span><span class="archc">১</span></div>
+            <div class="archm" onclick="filterMonth('২০১৭','সেপ্টেম্বর')"><span>সেপ্টেম্বর</span><span class="archc">১</span></div>
+          </div>
+        </div>
+        <div class="archyr">
+          <div class="archyh" onclick="toggleArch(this)"><span>২০১৬</span><span>►</span></div>
+        </div>
+        <button style="font-family:'Hind Siliguri',sans-serif;font-size:.72rem;color:var(--ink-mu);background:none;border:none;cursor:pointer;margin-top:.5rem;padding:.2rem 0" onclick="filterCat('all',document.querySelector('.ctag'))">← সব দেখুন</button>
+      </div>
+    </div>
+
+    <!-- Favourite links -->
+    <div class="sblk">
+      <div class="sbhd">🔗 পছন্দের ব্লগ</div>
+      <div class="sbbd">
+        <a class="sbpi" href="https://www.omicronlab.com/avro-keyboard.html" target="_blank"><div class="sbdot" style="background:var(--teal)"></div><span class="sbpt" style="color:var(--teal)">অভ্র হরফ</span></a>
+        <a class="sbpi" href="http://www.galpopath.com/" target="_blank"><div class="sbdot" style="background:var(--teal)"></div><span class="sbpt" style="color:var(--teal)">গল্পপাঠ</span></a>
+        <a class="sbpi" href="http://www.sachalayatan.com/" target="_blank"><div class="sbdot" style="background:var(--teal)"></div><span class="sbpt" style="color:var(--teal)">সচলায়তন</span></a>
+        <a class="sbpi" href="http://tagoreweb.in/" target="_blank"><div class="sbdot" style="background:var(--teal)"></div><span class="sbpt" style="color:var(--teal)">সম্পূর্ণ রবীন্দ্র-রচনাবলী</span></a>
+      </div>
+    </div>
+
+  </aside>
+</div><!-- /blayout -->
+
+<!-- ════ SETTINGS ════ -->
+<div id="settings-btn" onclick="toggleSettings()" title="সেটিংস">⚙</div>
+<div id="settings-overlay" onclick="closeSettings()"></div>
+<div id="settings-panel">
+  <div class="sp-header"><span>⚙ সেটিংস</span><button onclick="closeSettings()">✕</button></div>
+  <div class="sp-section"><div class="sp-label">🎨 থিম</div><div class="sp-grid">
+    <button class="theme-btn active" data-theme="classic" onclick="setTheme('classic',this)">📜 ক্লাসিক</button>
+    <button class="theme-btn" data-theme="dark" onclick="setTheme('dark',this)">🌙 ডার্ক</button>
+    <button class="theme-btn" data-theme="sepia" onclick="setTheme('sepia',this)">🍂 সেপিয়া</button>
+    <button class="theme-btn" data-theme="mint" onclick="setTheme('mint',this)">🌿 মিন্ট</button>
+    <button class="theme-btn" data-theme="rose" onclick="setTheme('rose',this)">🌸 রোজ</button>
+    <button class="theme-btn" data-theme="night" onclick="setTheme('night',this)">🔵 নাইট</button>
+  </div></div>
+  <div class="sp-section"><div class="sp-label">✍ ফন্ট</div><div class="sp-font-list">
+    <button class="font-btn active" data-font="hind" onclick="setFont('hind',this)"><span class="font-preview">বাংলা</span>Hind Siliguri</button>
+    <button class="font-btn" data-font="baloo" onclick="setFont('baloo',this)"><span class="font-preview">বাংলা</span>Baloo Da 2</button>
+    <button class="font-btn" data-font="tiro" onclick="setFont('tiro',this)"><span class="font-preview">বাংলা</span>Tiro Bangla</button>
+    <button class="font-btn" data-font="noto-serif" onclick="setFont('noto-serif',this)"><span class="font-preview">বাংলা</span>Noto Serif</button>
+    <button class="font-btn" data-font="noto-sans" onclick="setFont('noto-sans',this)"><span class="font-preview">বাংলা</span>Noto Sans</button>
+  </div></div>
+  <div class="sp-section"><div class="sp-label">🔠 লেখার আকার</div><div class="sp-size-row">
+    <button class="size-btn" onclick="setSize(14)">ছোট</button>
+    <button class="size-btn active" onclick="setSize(16)">স্বাভাবিক</button>
+    <button class="size-btn" onclick="setSize(18)">বড়</button>
+    <button class="size-btn" onclick="setSize(20)">বড়তর</button>
+  </div></div>
+  <div class="sp-section"><button class="reset-btn" onclick="resetSettings()">↺ ডিফল্টে ফিরুন</button></div>
+</div>
+
+<footer>
+  © সঞ্জয় মণ্ডল · সর্বস্বত্ব সংরক্ষিত ·
+  <a href="index.html">প্রথম পাতায় ফিরুন</a>
+</footer>
+
+<script>
+// ════════════════════════════════════════
+// PAGINATION ENGINE
+// Change POSTS_PER_PAGE to show more/fewer per page
+// ════════════════════════════════════════
+const POSTS_PER_PAGE = 2; // ← Change this number freely
+
+let allPosts = [];        // all .bpost elements
+let filtered = [];        // after category/search filter
+let currentPage = 1;
+let currentCat = 'all';
+
+function init() {
+  allPosts = Array.from(document.querySelectorAll('.bpost'));
+  // Hide all first — JS will show them
+  allPosts.forEach(p => p.style.display = 'none');
+  filtered = [...allPosts];
+  updateTotal();
+  renderPage(1);
+}
+
+function updateTotal() {
+  const el = document.getElementById('post-total-display');
+  if (el) el.textContent = `মোট ${filtered.length}টি লেখা`;
+}
+
+function renderPage(page) {
+  currentPage = page;
+  const total = filtered.length;
+  const totalPages = Math.ceil(total / POSTS_PER_PAGE);
+  const start = (page - 1) * POSTS_PER_PAGE;
+  const end   = start + POSTS_PER_PAGE;
+
+  // Hide all
+  allPosts.forEach(p => p.style.display = 'none');
+
+  // Show current page slice
+  const pageItems = filtered.slice(start, end);
+  pageItems.forEach(p => p.style.display = '');
+
+  // No results
+  document.getElementById('no-results').style.display =
+    filtered.length === 0 ? '' : 'none';
+
+  // Build pagination
+  buildPagination(page, totalPages);
+
+  // Scroll to top of list
+  if (page > 1) window.scrollTo({ top: 120, behavior: 'smooth' });
+}
+
+function buildPagination(cur, total) {
+  const pgn = document.getElementById('pgn');
+  if (total <= 1) { pgn.innerHTML = ''; return; }
+
+  let html = '';
+
+  // Prev arrow
+  if (cur > 1) {
+    html += `<button class="pgb" onclick="renderPage(${cur-1})">‹</button>`;
+  }
+
+  // Page numbers with smart ellipsis
+  for (let i = 1; i <= total; i++) {
+    if (i === 1 || i === total || (i >= cur-1 && i <= cur+1)) {
+      html += `<button class="pgb${i===cur?' cur':''}" onclick="renderPage(${i})">${toBengaliNum(i)}</button>`;
+    } else if (i === cur-2 || i === cur+2) {
+      html += `<button class="pgb pgb-sep">…</button>`;
+    }
+  }
+
+  // Next arrow
+  if (cur < total) {
+    html += `<button class="pgb" onclick="renderPage(${cur+1})">›</button>`;
+  }
+
+  pgn.innerHTML = html;
+}
+
+function toBengaliNum(n) {
+  const bn = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+  return String(n).split('').map(d => bn[parseInt(d)] || d).join('');
+}
+
+// ── CATEGORY FILTER ──
+function filterCat(cat, btn) {
+  currentCat = cat;
+  document.querySelectorAll('.ctag').forEach(b => b.classList.remove('on'));
+  if (btn) btn.classList.add('on');
+  applyFilter();
+}
+
+// ── MONTH/YEAR FILTER ──
+function filterMonth(year, month) {
+  // Reset category pills
+  document.querySelectorAll('.ctag').forEach(b => b.classList.remove('on'));
+  currentCat = 'all';
+  filtered = allPosts.filter(p =>
+    p.dataset.year === year && p.dataset.month === month
+  );
+  updateTotal();
+  renderPage(1);
+}
+
+// ── SEARCH ──
+function doSearch() {
+  const q = document.getElementById('bsi').value.trim().toLowerCase();
+  if (!q) { applyFilter(); return; }
+
+  filtered = allPosts.filter(p => {
+    const title   = (p.querySelector('.bptit')||{}).textContent || '';
+    const excerpt = (p.querySelector('.bpex')||{}).textContent || '';
+    const cat     = (p.querySelector('.bpcat')||{}).textContent || '';
+    return (title + excerpt + cat).toLowerCase().includes(q);
+  });
+
+  // If category filter also active
+  if (currentCat !== 'all') {
+    filtered = filtered.filter(p => p.dataset.cat === currentCat);
+  }
+
+  updateTotal();
+  renderPage(1);
+}
+
+// ── APPLY COMBINED FILTER ──
+function applyFilter() {
+  if (currentCat === 'all') {
+    filtered = [...allPosts];
+  } else {
+    filtered = allPosts.filter(p => p.dataset.cat === currentCat);
+  }
+  updateTotal();
+  renderPage(1);
+}
+
+// ── ARCHIVE TOGGLE ──
+function toggleArch(hd) {
+  const m = hd.nextElementSibling;
+  const a = hd.querySelector('span:last-child');
+  if (!m) return;
+  if (m.style.display === 'none') { m.style.display = ''; a.textContent = '▼'; }
+  else { m.style.display = 'none'; a.textContent = '►'; }
+}
+
+// ── SHARE ──
+function sharePost(path, platform) {
+  const url = encodeURIComponent('https://writersanjoy.github.io/' + path);
+  if (platform === 'fb') window.open('https://www.facebook.com/sharer/sharer.php?u='+url, '_blank');
+  if (platform === 'tw') window.open('https://twitter.com/intent/tweet?url='+url, '_blank');
+}
+
+// ── SETTINGS ──
+const FONTS = {
+  'hind':"'Hind Siliguri',sans-serif", 'baloo':"'Baloo Da 2',cursive",
+  'tiro':"'Tiro Bangla',serif", 'noto-serif':"'Noto Serif Bengali',serif",
+  'noto-sans':"'Noto Sans Bengali',sans-serif"
+};
+const THEMES = {
+  classic:{'--ink':'#1a1208','--ink-lt':'#3d3020','--ink-md':'#6b5a45','--ink-mu':'#9a8a76','--paper':'#faf8f4','--paper-w':'#f5f1e8','--paper-d':'#ede8de','--gold':'#b8860b','--gold-l':'#d4a017','--gold-p':'#fdf4d8','--red':'#8b1a1a','--nav-bg':'#1a1208'},
+  dark:{'--ink':'#e8e0d0','--ink-lt':'#c8bfaf','--ink-md':'#a09080','--ink-mu':'#706050','--paper':'#1a1612','--paper-w':'#221e18','--paper-d':'#2a251e','--gold':'#d4a017','--gold-l':'#e8b820','--gold-p':'#2a2010','--red':'#e06060','--nav-bg':'#0e0c08'},
+  sepia:{'--ink':'#2c1a0a','--ink-lt':'#4a3020','--ink-md':'#7a5a3a','--ink-mu':'#aa8a6a','--paper':'#f8f0e0','--paper-w':'#f0e4cc','--paper-d':'#e4d4b4','--gold':'#8b6a20','--gold-l':'#a07828','--gold-p':'#f8edd8','--red':'#7a2020','--nav-bg':'#2c1a0a'},
+  mint:{'--ink':'#0a2018','--ink-lt':'#1a3828','--ink-md':'#4a7060','--ink-mu':'#7aaa98','--paper':'#f0faf6','--paper-w':'#e0f4ec','--paper-d':'#c8e8dc','--gold':'#2a8060','--gold-l':'#38a078','--gold-p':'#d8f4ec','--red':'#c04060','--nav-bg':'#0a2018'},
+  rose:{'--ink':'#2a0a18','--ink-lt':'#4a1a28','--ink-md':'#8a5060','--ink-mu':'#c0909a','--paper':'#fff8f9','--paper-w':'#f8eef0','--paper-d':'#f0dde0','--gold':'#c06080','--gold-l':'#d87090','--gold-p':'#fce8ec','--red':'#a02040','--nav-bg':'#2a0a18'},
+  night:{'--ink':'#c8d8f0','--ink-lt':'#a0b8e0','--ink-md':'#7090b8','--ink-mu':'#506888','--paper':'#0a1020','--paper-w':'#101828','--paper-d':'#182030','--gold':'#6090e0','--gold-l':'#78a8f8','--gold-p':'#101828','--red':'#7090e0','--nav-bg':'#060c18'}
+};
+function toggleSettings(){document.getElementById('settings-panel').classList.toggle('open');document.getElementById('settings-overlay').classList.toggle('open');}
+function closeSettings(){document.getElementById('settings-panel').classList.remove('open');document.getElementById('settings-overlay').classList.remove('open');}
+function setTheme(n,b){const t=THEMES[n];if(!t)return;Object.entries(t).forEach(([k,v])=>document.documentElement.style.setProperty(k,v));document.querySelector('nav').style.background=t['--nav-bg'];document.querySelectorAll('.theme-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');localStorage.setItem('sm-theme',n);}
+function setFont(n,b){const f=FONTS[n];if(!f)return;document.body.style.fontFamily=f;document.querySelectorAll('.font-btn').forEach(x=>{x.classList.remove('active');const fp=x.querySelector('.font-preview');if(fp)fp.style.fontFamily=FONTS[x.dataset.font]||f;});b.classList.add('active');localStorage.setItem('sm-font',n);}
+function setSize(px){document.documentElement.style.fontSize=px+'px';document.querySelectorAll('.size-btn').forEach(x=>x.classList.remove('active'));event.target.classList.add('active');localStorage.setItem('sm-size',px);}
+function resetSettings(){['sm-theme','sm-font','sm-size'].forEach(k=>localStorage.removeItem(k));location.reload();}
+(function(){
+  const t=localStorage.getItem('sm-theme'),f=localStorage.getItem('sm-font'),s=localStorage.getItem('sm-size');
+  if(t){const b=document.querySelector('.theme-btn[data-theme="'+t+'"]');if(b)setTheme(t,b);}
+  if(f){const b=document.querySelector('.font-btn[data-font="'+f+'"]');if(b)setFont(f,b);}
+  if(s)document.documentElement.style.fontSize=s+'px';
+  setTimeout(()=>{document.querySelectorAll('.font-btn').forEach(b=>{const fp=b.querySelector('.font-preview');if(fp&&FONTS[b.dataset.font])fp.style.fontFamily=FONTS[b.dataset.font];});},400);
+})();
+
+// ── INIT ──
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
