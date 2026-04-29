@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>প্রকাশিত — সঞ্জয় মণ্ডল</title>
+<meta name="description" content="সঞ্জয় মণ্ডলের পত্রিকা ও অনলাইন পোর্টালে প্রকাশিত লেখাসমূহ">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Noto+Serif+Bengali:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#1a1208;--ink-lt:#3d3020;--ink-md:#6b5a45;--ink-mu:#9a8a76;
+  --paper:#faf8f4;--paper-w:#f5f1e8;--paper-d:#ede8de;
+  --gold:#b8860b;--gold-l:#d4a017;--gold-p:#fdf4d8;
+  --red:#8b1a1a;--teal:#1a5f5a;--teal-p:#e8f5f4;
+  --bdr:rgba(26,18,8,.11);--bdr-s:rgba(26,18,8,.2);
+  --r:4px;--r-lg:8px;
+  /* Category accent colours */
+  --c-story:#e8b820;      /* গল্প — gold */
+  --c-report:#e05050;     /* প্রতিবেদন — red */
+  --c-poem:#8b5cf6;       /* কবিতা — purple */
+  --c-essay:#1a9060;      /* প্রবন্ধ — green */
+  --c-review:#2563eb;     /* সমালোচনা — blue */
+  --c-interview:#db7706;  /* সাক্ষাৎকার — orange */
+}
+html{scroll-behavior:smooth}
+body{font-family:'Hind Siliguri','Noto Sans Bengali',sans-serif;background:var(--paper);color:var(--ink);line-height:1.8;font-size:16px;min-height:100vh}
+
+/* ── NAV ── */
+nav{background:var(--ink);padding:0 2.5rem;position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;height:58px;box-shadow:0 2px 16px rgba(0,0,0,.35)}
+.nbrand{font-family:'Noto Serif Bengali',serif;font-size:1.05rem;font-weight:700;color:var(--gold-l);text-decoration:none}
+.nlinks{display:flex;list-style:none}
+.nlinks li a{font-family:'Hind Siliguri',sans-serif;font-size:.82rem;color:rgba(255,255,255,.62);text-decoration:none;padding:.4rem 1rem;display:block;transition:color .2s;border-bottom:2px solid transparent}
+.nlinks li a:hover{color:#fff}
+.nlinks li a.act{color:var(--gold-l);border-bottom-color:var(--gold-l)}
+.nburg{display:none;background:none;border:none;color:#fff;font-size:1.4rem;cursor:pointer;padding:.3rem}
+.mmenu{display:none;background:#0e0c08;position:fixed;top:58px;left:0;right:0;z-index:199;border-top:1px solid rgba(255,255,255,.08)}
+.mmenu.open{display:block}
+.mmenu a{display:block;font-family:'Hind Siliguri',sans-serif;font-size:.95rem;color:rgba(255,255,255,.72);text-decoration:none;padding:.7rem 1.75rem;border-bottom:1px solid rgba(255,255,255,.05)}
+
+/* ── PAGE HEADER ── */
+.phdr{background:var(--ink);padding:2.5rem 2rem 0;position:relative;overflow:hidden}
+.phdr::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 44px,rgba(184,134,11,.04) 44px,rgba(184,134,11,.04) 45px)}
+.phdr-inner{max-width:1060px;margin:0 auto;position:relative;z-index:1}
+.phdr-top{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding-bottom:0}
+.phdr h1{font-family:'Noto Serif Bengali',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;color:#fff;line-height:1.2}
+.phdr-sub{font-family:'Hind Siliguri',sans-serif;font-size:.84rem;color:rgba(255,255,255,.4);margin-top:.3rem}
+.phdr-count{font-family:'Hind Siliguri',sans-serif;font-size:.8rem;color:rgba(255,255,255,.3);white-space:nowrap;padding-bottom:.25rem}
+
+/* Category tab bar */
+.cat-bar{display:flex;gap:0;border-top:1px solid rgba(255,255,255,.08);margin-top:1.5rem;overflow-x:auto;scrollbar-width:none}
+.cat-bar::-webkit-scrollbar{display:none}
+.cat-tab{font-family:'Hind Siliguri',sans-serif;font-size:.82rem;font-weight:600;padding:.7rem 1.25rem;color:rgba(255,255,255,.45);background:none;border:none;cursor:pointer;white-space:nowrap;transition:all .2s;border-bottom:3px solid transparent;flex-shrink:0}
+.cat-tab:hover{color:rgba(255,255,255,.8)}
+.cat-tab.on{color:#fff;border-bottom-color:var(--gold-l)}
+
+/* ── MAIN ── */
+.main-wrap{max-width:1060px;margin:0 auto;padding:2rem 2rem 5rem}
+
+/* ── ENTRY CARD ── */
+.entry{
+  display:grid;grid-template-columns:220px 1fr;gap:0;
+  background:#fff;border:1px solid var(--bdr);border-radius:var(--r-lg);
+  margin-bottom:1.5rem;overflow:hidden;
+  transition:box-shadow .22s,transform .22s;
+}
+.entry:hover{
+  box-shadow:0 6px 28px rgba(26,18,8,.1);
+  transform:translateY(-2px)
+}
+
+/* Left: image */
+.entry-img{
+  position:relative;overflow:hidden;
+  background:var(--paper-d);flex-shrink:0;
+  min-height:180px
+}
+.entry-img img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .4s ease;display:block
+}
+.entry:hover .entry-img img{transform:scale(1.04)}
+/* Placeholder when no image */
+.entry-img-placeholder{
+  width:100%;height:100%;min-height:180px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:3.5rem;opacity:.18;background:var(--ink)
+}
+/* Year badge on image */
+.entry-year{
+  position:absolute;top:.6rem;left:.6rem;
+  background:rgba(26,18,8,.75);color:rgba(255,255,255,.85);
+  font-family:'Hind Siliguri',sans-serif;font-size:.68rem;font-weight:600;
+  padding:.18rem .6rem;border-radius:100px;letter-spacing:.04em;
+  backdrop-filter:blur(4px)
+}
+
+/* Right: content */
+.entry-body{
+  padding:1.4rem 1.6rem;display:flex;flex-direction:column;gap:.6rem;
+  border-left:1px solid var(--bdr)
+}
+
+/* Category label — matches reference image style */
+.entry-cat-wrap{display:flex;align-items:center;gap:.5rem}
+.entry-cat{
+  font-family:'Hind Siliguri',sans-serif;font-size:.78rem;font-weight:700;
+  letter-spacing:.05em;color:var(--ink);position:relative;display:inline-block
+}
+.entry-cat::after{
+  content:'';position:absolute;bottom:-2px;left:0;right:0;
+  height:3px;border-radius:2px;background:var(--cat-color,var(--gold))
+}
+.entry-portal{
+  font-family:'Hind Siliguri',sans-serif;font-size:.75rem;
+  color:var(--ink-mu);display:flex;align-items:center;gap:.3rem
+}
+.entry-portal::before{content:'·';color:var(--bdr-s)}
+
+/* Title */
+.entry-title{
+  font-family:'Noto Serif Bengali',serif;font-size:1.15rem;font-weight:700;
+  color:var(--ink);line-height:1.4
+}
+
+/* Summary */
+.entry-summary{
+  font-family:'Noto Serif Bengali',serif;font-size:.9rem;
+  color:var(--ink-lt);line-height:1.85;
+  display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden
+}
+
+/* Footer row */
+.entry-footer{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-top:auto;padding-top:.55rem;border-top:1px solid var(--bdr);flex-wrap:wrap;gap:.5rem
+}
+.entry-date{
+  font-family:'Hind Siliguri',sans-serif;font-size:.72rem;
+  color:var(--ink-mu);display:flex;align-items:center;gap:.3rem
+}
+.entry-link{
+  font-family:'Hind Siliguri',sans-serif;font-size:.8rem;font-weight:600;
+  color:var(--teal);text-decoration:none;display:inline-flex;align-items:center;gap:.3rem;
+  transition:color .15s
+}
+.entry-link:hover{color:var(--red)}
+.entry-link-arrow{font-size:.9rem;transition:transform .15s}
+.entry-link:hover .entry-link-arrow{transform:translateX(3px)}
+
+/* ── SECTION DIVIDER ── */
+.sec-div{
+  display:flex;align-items:center;gap:1rem;
+  margin:2rem 0 1.25rem
+}
+.sec-div-label{
+  font-family:'Noto Serif Bengali',serif;font-size:1rem;font-weight:700;
+  color:var(--ink);white-space:nowrap;display:flex;align-items:center;gap:.5rem
+}
+.sec-div-line{flex:1;height:1px;background:var(--bdr-s)}
+.sec-div-count{
+  font-family:'Hind Siliguri',sans-serif;font-size:.72rem;
+  color:var(--ink-mu);white-space:nowrap
+}
+
+/* ── FILTER BAR ── */
+.filter-bar{
+  display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;
+  margin-bottom:1.75rem;padding:.9rem 1.1rem;
+  background:#fff;border:1px solid var(--bdr);border-radius:var(--r-lg)
+}
+.filter-label{font-family:'Hind Siliguri',sans-serif;font-size:.76rem;color:var(--ink-mu);font-weight:500}
+.filter-pill{
+  font-family:'Hind Siliguri',sans-serif;font-size:.76rem;font-weight:600;
+  padding:.28rem .88rem;border-radius:100px;border:1.5px solid var(--bdr-s);
+  background:var(--paper-w);color:var(--ink-lt);cursor:pointer;transition:all .18s
+}
+.filter-pill:hover{border-color:var(--gold)}
+.filter-pill.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.filter-search{
+  margin-left:auto;display:flex;gap:.4rem
+}
+.filter-search input{
+  padding:.42rem .8rem;border:1.5px solid var(--bdr-s);border-radius:var(--r);
+  font-family:'Hind Siliguri',sans-serif;font-size:.82rem;
+  background:var(--paper-w);color:var(--ink);outline:none;width:180px;transition:border-color .18s
+}
+.filter-search input:focus{border-color:var(--red);background:#fff}
+.filter-search button{
+  padding:.42rem .85rem;background:var(--ink);color:#fff;
+  border:none;border-radius:var(--r);cursor:pointer;font-size:.82rem
+}
+
+/* ── NO RESULTS ── */
+.no-results{
+  text-align:center;padding:3rem;color:var(--ink-mu);
+  font-family:'Noto Serif Bengali',serif;font-size:1rem;display:none
+}
+
+/* ── SETTINGS ── */
+#settings-btn{position:fixed;bottom:2rem;right:2rem;z-index:500;width:48px;height:48px;border-radius:50%;background:var(--ink);color:var(--gold-l);display:flex;align-items:center;justify-content:center;font-size:1.3rem;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.3);transition:all .2s;border:2px solid rgba(255,255,255,.1)}
+#settings-btn:hover{transform:rotate(45deg) scale(1.1)}
+#settings-overlay{display:none;position:fixed;inset:0;z-index:499;background:rgba(0,0,0,.4)}
+#settings-overlay.open{display:block}
+#settings-panel{position:fixed;right:-340px;top:0;bottom:0;width:320px;z-index:500;background:var(--paper);border-left:1px solid var(--bdr-s);box-shadow:-8px 0 40px rgba(0,0,0,.2);transition:right .3s cubic-bezier(.4,0,.2,1);overflow-y:auto}
+#settings-panel.open{right:0}
+.sp-header{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 1.4rem;background:var(--ink);font-family:'Hind Siliguri',sans-serif;font-size:1rem;font-weight:600;color:var(--gold-l);position:sticky;top:0}
+.sp-header button{background:none;border:none;color:rgba(255,255,255,.6);font-size:1.2rem;cursor:pointer;padding:.2rem .4rem}
+.sp-section{padding:1.1rem 1.4rem;border-bottom:1px solid var(--bdr)}
+.sp-label{font-family:'Hind Siliguri',sans-serif;font-size:.8rem;font-weight:600;color:var(--ink-mu);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.75rem}
+.sp-grid{display:grid;grid-template-columns:1fr 1fr;gap:.45rem}
+.theme-btn{font-family:'Hind Siliguri',sans-serif;font-size:.78rem;padding:.5rem .6rem;border:1.5px solid var(--bdr-s);border-radius:var(--r);background:var(--paper-w);color:var(--ink);cursor:pointer;transition:all .18s;text-align:left}
+.theme-btn:hover,.theme-btn.active{border-color:var(--gold);background:var(--gold-p);font-weight:700}
+.sp-font-list{display:flex;flex-direction:column;gap:.4rem}
+.font-btn{font-family:'Hind Siliguri',sans-serif;font-size:.82rem;padding:.55rem .8rem;border:1.5px solid var(--bdr-s);border-radius:var(--r);background:var(--paper-w);color:var(--ink);cursor:pointer;transition:all .18s;text-align:left;display:flex;align-items:center;gap:.6rem}
+.font-btn:hover,.font-btn.active{border-color:var(--gold);background:var(--gold-p)}
+.font-preview{font-size:1.1rem;color:var(--ink-lt);min-width:40px}
+.sp-size-row{display:flex;gap:.4rem;flex-wrap:wrap}
+.size-btn{font-family:'Hind Siliguri',sans-serif;font-size:.78rem;padding:.42rem .8rem;border:1.5px solid var(--bdr-s);border-radius:100px;background:var(--paper-w);color:var(--ink);cursor:pointer;transition:all .18s}
+.size-btn.active{border-color:var(--gold);background:var(--gold);color:#fff;font-weight:700}
+.reset-btn{width:100%;font-family:'Hind Siliguri',sans-serif;font-size:.82rem;padding:.6rem;border:1.5px solid var(--bdr-s);border-radius:var(--r);background:transparent;color:var(--ink-md);cursor:pointer;transition:all .18s}
+.reset-btn:hover{background:var(--red);color:#fff;border-color:var(--red)}
+
+/* ── FOOTER ── */
+footer{background:var(--ink);color:rgba(255,255,255,.32);font-family:'Hind Siliguri',sans-serif;font-size:.75rem;text-align:center;padding:1.75rem 2rem}
+footer a{color:var(--gold-l);text-decoration:none}
+
+/* ── RESPONSIVE ── */
+@media(max-width:680px){
+  nav{padding:0 1.2rem}.nlinks{display:none}.nburg{display:block}
+  .entry{grid-template-columns:1fr}
+  .entry-img{min-height:200px;border-left:none;border-bottom:1px solid var(--bdr)}
+  .entry-img img,.entry-img-placeholder{min-height:200px}
+  .entry-body{border-left:none;padding:1.1rem 1.2rem}
+  .filter-search{margin-left:0;width:100%}
+  .filter-search input{width:100%;flex:1}
+  .main-wrap{padding:1.5rem 1rem 4rem}
+  .phdr{padding:2rem 1.2rem 0}
+  #settings-btn{bottom:1.2rem;right:1.2rem;width:44px;height:44px}
+}
+</style>
+</head>
+<body>
+
+<!-- ════ NAV ════ -->
+<nav>
+  <a class="nbrand" href="index.html">সঞ্জয় মণ্ডল</a>
+  <ul class="nlinks">
+    <li><a href="index.html">প্রথম পাতা</a></li>
+    <li><a href="index.html">আমার কথা</a></li>
+    <li><a href="blog-list.html">ব্লগবার্তা</a></li>
+    <li><a href="index.html">বইটই</a></li>
+    <li><a href="published.html" class="act">প্রকাশিত</a></li>
+    <li><a href="index.html">যোগাযোগ</a></li>
+  </ul>
+  <button class="nburg" onclick="document.getElementById('mm').classList.toggle('open')">☰</button>
+</nav>
+<div class="mmenu" id="mm">
+  <a href="index.html">প্রথম পাতা</a>
+  <a href="index.html">আমার কথা</a>
+  <a href="blog-list.html">ব্লগবার্তা</a>
+  <a href="index.html">বইটই</a>
+  <a href="published.html" class="act">প্রকাশিত</a>
+  <a href="index.html">যোগাযোগ</a>
+</div>
+
+<!-- ════ PAGE HEADER ════ -->
+<div class="phdr">
+  <div class="phdr-inner">
+    <div class="phdr-top">
+      <div>
+        <h1>প্রকাশিত</h1>
+        <div class="phdr-sub">পত্রিকা ও অনলাইন পোর্টালে প্রকাশিত লেখাসমূহ</div>
+      </div>
+      <div class="phdr-count" id="total-count"></div>
+    </div>
+
+    <!-- Category tab bar -->
+    <div class="cat-bar">
+      <button class="cat-tab on" onclick="filterTab('all',this)">সব লেখা</button>
+      <button class="cat-tab" onclick="filterTab('গল্প',this)">গল্প</button>
+      <button class="cat-tab" onclick="filterTab('প্রতিবেদন',this)">প্রতিবেদন</button>
+      <button class="cat-tab" onclick="filterTab('প্রবন্ধ',this)">প্রবন্ধ</button>
+      <button class="cat-tab" onclick="filterTab('কবিতা',this)">কবিতা</button>
+      <button class="cat-tab" onclick="filterTab('সমালোচনা',this)">সমালোচনা</button>
+      <button class="cat-tab" onclick="filterTab('সাক্ষাৎকার',this)">সাক্ষাৎকার</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════ MAIN ════ -->
+<div class="main-wrap">
+
+  <!-- Filter bar -->
+  <div class="filter-bar">
+    <span class="filter-label">পোর্টাল:</span>
+    <button class="filter-pill on" onclick="filterPortal('all',this)">সব</button>
+    <button class="filter-pill" onclick="filterPortal('পত্রিকা',this)">পত্রিকা</button>
+    <button class="filter-pill" onclick="filterPortal('অনলাইন',this)">অনলাইন</button>
+    <div class="filter-search">
+      <input type="text" id="pub-search" placeholder="লেখা খুঁজুন..." onkeydown="if(event.key==='Enter')doSearch()">
+      <button onclick="doSearch()">→</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       HOW TO ADD A NEW PUBLISHED PIECE:
+
+       1. Copy one .entry block below
+       2. Paste it at the TOP of the list (newest first)
+       3. Change these values:
+          - data-cat   → category (গল্প / প্রতিবেদন / প্রবন্ধ / কবিতা / সমালোচনা / সাক্ষাৎকার)
+          - data-type  → পত্রিকা or অনলাইন
+          - data-year  → e.g. ২০২৪
+          - .entry-img → image or emoji placeholder
+          - .entry-year → year on image badge
+          - --cat-color → colour for the category underline
+          - .entry-cat  → category name
+          - .entry-portal → portal/magazine name
+          - .entry-title  → title of the piece
+          - .entry-summary → excerpt / summary
+          - .entry-date → published date
+          - .entry-link href → link to the article/magazine page
+
+       CATEGORY COLOURS (copy-paste for --cat-color):
+         গল্প        → #e8b820
+         প্রতিবেদন   → #e05050
+         কবিতা       → #8b5cf6
+         প্রবন্ধ     → #1a9060
+         সমালোচনা    → #2563eb
+         সাক্ষাৎকার  → #db7706
+  ══════════════════════════════════════════════════════ -->
+
+  <div id="pub-list">
+
+  <!-- ↓↓↓ ADD NEW ENTRIES HERE — NEWEST FIRST ↓↓↓ -->
+
+  <!-- Entry 1 -->
+  <div class="entry" data-cat="গল্প" data-type="অনলাইন" data-year="২০২৩">
+    <div class="entry-img">
+      <!-- Replace with: <img src="images/pub-sompork.jpg" alt="সম্পর্ক"> -->
+      <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=440&h=300&fit=crop&q=80" alt="সম্পর্ক">
+      <div class="entry-year">২০২৩</div>
+    </div>
+    <div class="entry-body">
+      <div class="entry-cat-wrap">
+        <span class="entry-cat" style="--cat-color:#e8b820">গল্প</span>
+        <span class="entry-portal">গল্পপাঠ</span>
+      </div>
+      <div class="entry-title">সম্পর্ক</div>
+      <div class="entry-summary">যা গেছে, তা কি চিরদিনের মেতা ছেড়ে চলে যায়! বিজ্ঞানীরা বলেন জেলরও নাকি স্মৃতি থাকে। আর সম্পর্কের স্মৃতি! সেই স্মৃতিকে কে কেউ কখনো বলতে পারে, তোমার কোন চিহ্ন নেই আমার মনে। সম্পর্কের উপর ধুলার পরত জমতে পারে, সম্পর্কের রঙ কিছুটা ফ্যাকাশে হতে পারে, সম্পর্ক কখনো কখনো পালেছড়া নৌকার মেতা অকূল সমুদ্রে দিশাহারা হতে পারে কিন্তু কোন সম্পর্কেরই কোনদিন মৃত্যু হয় না।</div>
+      <div class="entry-footer">
+        <span class="entry-date">📅 জুলাই ২০২৩</span>
+        <a class="entry-link" href="http://www.galpopath.com/" target="_blank">
+          গল্পপাঠে পড়ুন <span class="entry-link-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Entry 2 -->
+  <div class="entry" data-cat="গল্প" data-type="অনলাইন" data-year="২০২২">
+    <div class="entry-img">
+      <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=440&h=300&fit=crop&q=80" alt="বিষদাঁত">
+      <div class="entry-year">২০২২</div>
+    </div>
+    <div class="entry-body">
+      <div class="entry-cat-wrap">
+        <span class="entry-cat" style="--cat-color:#e8b820">গল্প</span>
+        <span class="entry-portal">সচলায়তন</span>
+      </div>
+      <div class="entry-title">বিষদাঁত</div>
+      <div class="entry-summary">সভ্যতা অনেক, অনেক পথ পেরিয়ে আসার পরেও সমাজে অপরাধ কমে নি। আর কোন কোন অপরাধ সমাজের ভিত্তিটাকেই যেন সমূল উপড়ে ফেলতে চায়। কোন কোন নারকীয় অপরাধের সামনে দাঁড়িয়ে চলতি আইনও যেন দিশাহীন হয়ে যায়, সিদ্ধান্তহীনতায় ভোগে। সুউচ্চ আদালত পর্যন্ত বিপুল বিষয়ে থমকে দাঁড়ায় সেই অপরাধের নৃশংসতা আর ব্যাপ্তির সামনে।</div>
+      <div class="entry-footer">
+        <span class="entry-date">📅 মার্চ ২০২২</span>
+        <a class="entry-link" href="http://www.sachalayatan.com/" target="_blank">
+          সচলায়তনে পড়ুন <span class="entry-link-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Entry 3 — Newspaper example -->
+  <div class="entry" data-cat="প্রতিবেদন" data-type="পত্রিকা" data-year="২০২১">
+    <div class="entry-img">
+      <div class="entry-img-placeholder">📰</div>
+      <div class="entry-year">২০২১</div>
+    </div>
+    <div class="entry-body">
+      <div class="entry-cat-wrap">
+        <span class="entry-cat" style="--cat-color:#e05050">প্রতিবেদন</span>
+        <span class="entry-portal">আনন্দবাজার পত্রিকা</span>
+      </div>
+      <div class="entry-title">লকডাউনের দিনগুলি</div>
+      <div class="entry-summary">করোনা মহামারির সময়ে কলকাতার পূর্ব প্রান্তের তথ্যপ্রযুক্তি শিল্পতালুকে কর্মরত লক্ষাধিক মানুষের জীবনযাত্রার উপর একটি বিশেষ প্রতিবেদন। ঘরে বসে কাজ, অনিশ্চিত ভবিষ্যৎ আর পরিবারের সাথে আবার কাটানো দিনগুলির মধ্যে যে নতুন জীবনের সন্ধান।</div>
+      <div class="entry-footer">
+        <span class="entry-date">📅 এপ্রিল ২০২১</span>
+        <a class="entry-link" href="#" target="_blank">
+          পত্রিকায় পড়ুন <span class="entry-link-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Entry 4 — Essay example -->
+  <div class="entry" data-cat="প্রবন্ধ" data-type="অনলাইন" data-year="২০২০">
+    <div class="entry-img">
+      <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=440&h=300&fit=crop&q=80" alt="প্রবন্ধ">
+      <div class="entry-year">২০২০</div>
+    </div>
+    <div class="entry-body">
+      <div class="entry-cat-wrap">
+        <span class="entry-cat" style="--cat-color:#1a9060">প্রবন্ধ</span>
+        <span class="entry-portal">কবিতাপাক্ষিক</span>
+      </div>
+      <div class="entry-title">বাংলা সাহিত্যে প্রযুক্তির ছায়া</div>
+      <div class="entry-summary">আধুনিক বাংলা সাহিত্যে তথ্যপ্রযুক্তি ও ডিজিটাল জীবনযাত্রার প্রতিফলন কতটুকু? সমকালীন লেখকেরা কি এই নতুন বাস্তবতাকে তাঁদের রচনায় ধারণ করতে পারছেন? এই প্রশ্নের উত্তর খোঁজার চেষ্টা করা হয়েছে এই প্রবন্ধে।</div>
+      <div class="entry-footer">
+        <span class="entry-date">📅 ডিসেম্বর ২০২০</span>
+        <a class="entry-link" href="#" target="_blank">
+          পোর্টালে পড়ুন <span class="entry-link-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Entry 5 — Poem example -->
+  <div class="entry" data-cat="কবিতা" data-type="পত্রিকা" data-year="২০১৯">
+    <div class="entry-img">
+      <div class="entry-img-placeholder">🌿</div>
+      <div class="entry-year">২০১৯</div>
+    </div>
+    <div class="entry-body">
+      <div class="entry-cat-wrap">
+        <span class="entry-cat" style="--cat-color:#8b5cf6">কবিতা</span>
+        <span class="entry-portal">দেশ পত্রিকা</span>
+      </div>
+      <div class="entry-title">শহরের রাত্রি</div>
+      <div class="entry-summary">শহরের রাতের আলো আর অন্ধকারের মাঝে যে মানুষগুলো হারিয়ে যায়, তাদের কথা। নিওন আলোর নিচে দাঁড়িয়ে যে মানুষ তার নিজের ছায়া চেনে না — সেই বিচ্ছিন্নতার কবিতা।</div>
+      <div class="entry-footer">
+        <span class="entry-date">📅 জানুয়ারি ২০১৯</span>
+        <a class="entry-link" href="#" target="_blank">
+          দেশে পড়ুন <span class="entry-link-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ↑↑↑ ADD NEW ENTRIES ABOVE THIS LINE — NEWEST FIRST ↑↑↑ -->
+
+  </div><!-- /pub-list -->
+
+  <div class="no-results" id="no-results">এই বিভাগে কোনো লেখা পাওয়া যায়নি।</div>
+
+</div><!-- /main-wrap -->
+
+<!-- ════ SETTINGS ════ -->
+<div id="settings-btn" onclick="toggleSettings()" title="সেটিংস">⚙</div>
+<div id="settings-overlay" onclick="closeSettings()"></div>
+<div id="settings-panel">
+  <div class="sp-header"><span>⚙ সেটিংস</span><button onclick="closeSettings()">✕</button></div>
+  <div class="sp-section"><div class="sp-label">🎨 থিম</div><div class="sp-grid">
+    <button class="theme-btn active" data-theme="classic" onclick="setTheme('classic',this)">📜 ক্লাসিক</button>
+    <button class="theme-btn" data-theme="dark" onclick="setTheme('dark',this)">🌙 ডার্ক</button>
+    <button class="theme-btn" data-theme="sepia" onclick="setTheme('sepia',this)">🍂 সেপিয়া</button>
+    <button class="theme-btn" data-theme="mint" onclick="setTheme('mint',this)">🌿 মিন্ট</button>
+    <button class="theme-btn" data-theme="rose" onclick="setTheme('rose',this)">🌸 রোজ</button>
+    <button class="theme-btn" data-theme="night" onclick="setTheme('night',this)">🔵 নাইট</button>
+  </div></div>
+  <div class="sp-section"><div class="sp-label">✍ ফন্ট</div><div class="sp-font-list">
+    <button class="font-btn active" data-font="hind" onclick="setFont('hind',this)"><span class="font-preview">বাংলা</span>Hind Siliguri</button>
+    <button class="font-btn" data-font="baloo" onclick="setFont('baloo',this)"><span class="font-preview">বাংলা</span>Baloo Da 2</button>
+    <button class="font-btn" data-font="tiro" onclick="setFont('tiro',this)"><span class="font-preview">বাংলা</span>Tiro Bangla</button>
+    <button class="font-btn" data-font="noto-serif" onclick="setFont('noto-serif',this)"><span class="font-preview">বাংলা</span>Noto Serif</button>
+    <button class="font-btn" data-font="noto-sans" onclick="setFont('noto-sans',this)"><span class="font-preview">বাংলা</span>Noto Sans</button>
+  </div></div>
+  <div class="sp-section"><div class="sp-label">🔠 লেখার আকার</div><div class="sp-size-row">
+    <button class="size-btn" onclick="setSize(14)">ছোট</button>
+    <button class="size-btn active" onclick="setSize(16)">স্বাভাবিক</button>
+    <button class="size-btn" onclick="setSize(18)">বড়</button>
+    <button class="size-btn" onclick="setSize(20)">বড়তর</button>
+  </div></div>
+  <div class="sp-section"><button class="reset-btn" onclick="resetSettings()">↺ ডিফল্টে ফিরুন</button></div>
+</div>
+
+<footer>
+  © সঞ্জয় মণ্ডল · সর্বস্বত্ব সংরক্ষিত ·
+  <a href="index.html">প্রথম পাতায় ফিরুন</a>
+</footer>
+
+<script>
+// ── FILTER STATE ──
+let activeCat = 'all';
+let activePortal = 'all';
+
+function getEntries() {
+  return Array.from(document.querySelectorAll('#pub-list .entry'));
+}
+
+function applyFilters() {
+  const entries = getEntries();
+  let shown = 0;
+  entries.forEach(e => {
+    const catMatch    = activeCat === 'all'    || e.dataset.cat  === activeCat;
+    const portalMatch = activePortal === 'all' || e.dataset.type === activePortal;
+    const visible = catMatch && portalMatch;
+    e.style.display = visible ? '' : 'none';
+    if (visible) shown++;
+  });
+  document.getElementById('no-results').style.display = shown === 0 ? '' : 'none';
+  updateCount(shown);
+}
+
+function updateCount(n) {
+  const el = document.getElementById('total-count');
+  if (el) el.textContent = `মোট ${n}টি লেখা`;
+}
+
+// Tab filter (category)
+function filterTab(cat, btn) {
+  activeCat = cat;
+  document.querySelectorAll('.cat-tab').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  applyFilters();
+}
+
+// Pill filter (portal type)
+function filterPortal(type, btn) {
+  activePortal = type;
+  document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  applyFilters();
+}
+
+// Search
+function doSearch() {
+  const q = document.getElementById('pub-search').value.trim().toLowerCase();
+  if (!q) { applyFilters(); return; }
+  const entries = getEntries();
+  let shown = 0;
+  entries.forEach(e => {
+    const text = e.textContent.toLowerCase();
+    const vis  = text.includes(q);
+    e.style.display = vis ? '' : 'none';
+    if (vis) shown++;
+  });
+  document.getElementById('no-results').style.display = shown === 0 ? '' : 'none';
+  updateCount(shown);
+  // Reset pills/tabs visually
+  document.querySelectorAll('.cat-tab').forEach(b => b.classList.remove('on'));
+  document.querySelectorAll('.cat-tab')[0].classList.add('on');
+  activeCat = 'all'; activePortal = 'all';
+}
+
+// Init count
+(function(){
+  const n = getEntries().length;
+  updateCount(n);
+})();
+
+// ── SETTINGS ──
+const FONTS={'hind':"'Hind Siliguri',sans-serif",'baloo':"'Baloo Da 2',cursive",'tiro':"'Tiro Bangla',serif",'noto-serif':"'Noto Serif Bengali',serif",'noto-sans':"'Noto Sans Bengali',sans-serif"};
+const THEMES={classic:{'--ink':'#1a1208','--ink-lt':'#3d3020','--ink-md':'#6b5a45','--ink-mu':'#9a8a76','--paper':'#faf8f4','--paper-w':'#f5f1e8','--paper-d':'#ede8de','--gold':'#b8860b','--gold-l':'#d4a017','--gold-p':'#fdf4d8','--red':'#8b1a1a','--nav-bg':'#1a1208'},dark:{'--ink':'#e8e0d0','--ink-lt':'#c8bfaf','--ink-md':'#a09080','--ink-mu':'#706050','--paper':'#1a1612','--paper-w':'#221e18','--paper-d':'#2a251e','--gold':'#d4a017','--gold-l':'#e8b820','--gold-p':'#2a2010','--red':'#e06060','--nav-bg':'#0e0c08'},sepia:{'--ink':'#2c1a0a','--ink-lt':'#4a3020','--ink-md':'#7a5a3a','--ink-mu':'#aa8a6a','--paper':'#f8f0e0','--paper-w':'#f0e4cc','--paper-d':'#e4d4b4','--gold':'#8b6a20','--gold-l':'#a07828','--gold-p':'#f8edd8','--red':'#7a2020','--nav-bg':'#2c1a0a'},mint:{'--ink':'#0a2018','--ink-lt':'#1a3828','--ink-md':'#4a7060','--ink-mu':'#7aaa98','--paper':'#f0faf6','--paper-w':'#e0f4ec','--paper-d':'#c8e8dc','--gold':'#2a8060','--gold-l':'#38a078','--gold-p':'#d8f4ec','--red':'#c04060','--nav-bg':'#0a2018'},rose:{'--ink':'#2a0a18','--ink-lt':'#4a1a28','--ink-md':'#8a5060','--ink-mu':'#c0909a','--paper':'#fff8f9','--paper-w':'#f8eef0','--paper-d':'#f0dde0','--gold':'#c06080','--gold-l':'#d87090','--gold-p':'#fce8ec','--red':'#a02040','--nav-bg':'#2a0a18'},night:{'--ink':'#c8d8f0','--ink-lt':'#a0b8e0','--ink-md':'#7090b8','--ink-mu':'#506888','--paper':'#0a1020','--paper-w':'#101828','--paper-d':'#182030','--gold':'#6090e0','--gold-l':'#78a8f8','--gold-p':'#101828','--red':'#7090e0','--nav-bg':'#060c18'}};
+function toggleSettings(){document.getElementById('settings-panel').classList.toggle('open');document.getElementById('settings-overlay').classList.toggle('open');}
+function closeSettings(){document.getElementById('settings-panel').classList.remove('open');document.getElementById('settings-overlay').classList.remove('open');}
+function setTheme(n,b){const t=THEMES[n];if(!t)return;Object.entries(t).forEach(([k,v])=>document.documentElement.style.setProperty(k,v));document.querySelector('nav').style.background=t['--nav-bg'];document.querySelectorAll('.theme-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');localStorage.setItem('sm-theme',n);}
+function setFont(n,b){const f=FONTS[n];if(!f)return;document.body.style.fontFamily=f;document.querySelectorAll('.font-btn').forEach(x=>{x.classList.remove('active');const fp=x.querySelector('.font-preview');if(fp)fp.style.fontFamily=FONTS[x.dataset.font]||f;});b.classList.add('active');localStorage.setItem('sm-font',n);}
+function setSize(px){document.documentElement.style.fontSize=px+'px';document.querySelectorAll('.size-btn').forEach(x=>x.classList.remove('active'));event.target.classList.add('active');localStorage.setItem('sm-size',px);}
+function resetSettings(){['sm-theme','sm-font','sm-size'].forEach(k=>localStorage.removeItem(k));location.reload();}
+(function(){
+  const t=localStorage.getItem('sm-theme'),f=localStorage.getItem('sm-font'),s=localStorage.getItem('sm-size');
+  if(t){const b=document.querySelector('.theme-btn[data-theme="'+t+'"]');if(b)setTheme(t,b);}
+  if(f){const b=document.querySelector('.font-btn[data-font="'+f+'"]');if(b)setFont(f,b);}
+  if(s)document.documentElement.style.fontSize=s+'px';
+  setTimeout(()=>{document.querySelectorAll('.font-btn').forEach(b=>{const fp=b.querySelector('.font-preview');if(fp&&FONTS[b.dataset.font])fp.style.fontFamily=FONTS[b.dataset.font];});},400);
+})();
+</script>
+</body>
+</html>
