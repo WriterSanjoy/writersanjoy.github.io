@@ -3,120 +3,85 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>অদৃশ্য — সঞ্জয় মণ্ডল</title>
-<meta name="description" content="লকডাউনের দিনে মাধুরির গল্প — অদৃশ্য হয়ে যাওয়া মানুষদের কথা">
+<title>দিবস-মোহ — সঞ্জয় মণ্ডল</title>
+<meta name="description" content="দিবস-মোহ — সঞ্জয় মণ্ডলের প্রতিবেদন">
+<meta property="og:title" content="দিবস-মোহ — সঞ্জয় মণ্ডল">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://writersanjoy.github.io/images/blogimages/blog-003-cover.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Baloo+Da+2:wght@400;500;600;700&family=Tiro+Bangla:ital@0;1&family=Noto+Serif+Bengali:wght@300;400;500;600;700&family=Noto+Sans+Bengali:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--ink:#1a1208;--ink-lt:#3d3020;--ink-md:#6b5a45;--ink-mu:#9a8a76;--paper:#faf8f4;--paper-w:#f5f1e8;--paper-d:#ede8de;--gold:#b8860b;--gold-l:#d4a017;--gold-p:#fdf4d8;--red:#8b1a1a;--teal:#1a5f5a;--bdr:rgba(26,18,8,.12);--bdr-s:rgba(26,18,8,.22);--r:4px;--r-lg:8px;}
+:root{--ink:#1a1208;--ink-lt:#3d3020;--ink-md:#6b5a45;--ink-mu:#9a8a76;--paper:#faf8f4;--paper-w:#f5f1e8;--paper-d:#ede8de;--gold:#b8860b;--gold-l:#d4a017;--gold-p:#fdf4d8;--red:#8b1a1a;--teal:#1a5f5a;--teal-p:#e8f5f4;--bdr:rgba(26,18,8,.12);--bdr-s:rgba(26,18,8,.22);--r:4px;--r-lg:8px;}
 html{scroll-behavior:smooth}
 body{font-family:'Hind Siliguri','Noto Sans Bengali',sans-serif;background:var(--paper);color:var(--ink);line-height:1.8;font-size:16px}
 nav{background:var(--ink);padding:0 2.5rem;position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;height:58px;box-shadow:0 2px 16px rgba(0,0,0,.35)}
 .nbrand{font-family:'Noto Serif Bengali',serif;font-size:1.05rem;font-weight:700;color:var(--gold-l);text-decoration:none}
 .nlinks{display:flex;list-style:none}
-.nlinks li a{font-family:'Noto Sans Bengali',sans-serif;font-size:.82rem;color:rgba(255,255,255,.62);text-decoration:none;padding:.4rem 1rem;display:block;transition:color .2s;border-bottom:2px solid transparent}
+.nlinks li a{font-family:'Hind Siliguri',sans-serif;font-size:.82rem;color:rgba(255,255,255,.62);text-decoration:none;padding:.4rem 1rem;display:block;transition:color .2s;border-bottom:2px solid transparent}
 .nlinks li a:hover{color:#fff}.nlinks li a.act{color:var(--gold-l);border-bottom-color:var(--gold-l)}
 .nburg{display:none;background:none;border:none;color:#fff;font-size:1.4rem;cursor:pointer;padding:.3rem}
 .mmenu{display:none;background:#0e0c08;position:fixed;top:58px;left:0;right:0;z-index:199;border-top:1px solid rgba(255,255,255,.08)}
 .mmenu.open{display:block}
-.mmenu a{display:block;font-family:'Noto Sans Bengali',sans-serif;font-size:.95rem;color:rgba(255,255,255,.72);text-decoration:none;padding:.7rem 1.75rem;border-bottom:1px solid rgba(255,255,255,.05)}
-.breadcrumb{background:var(--paper-w);border-bottom:1px solid var(--bdr);padding:.65rem 2rem;font-family:'Noto Sans Bengali',sans-serif;font-size:.78rem;color:var(--ink-mu)}
+.mmenu a{display:block;font-family:'Hind Siliguri',sans-serif;font-size:.95rem;color:rgba(255,255,255,.72);text-decoration:none;padding:.7rem 1.75rem;border-bottom:1px solid rgba(255,255,255,.05)}
+.breadcrumb{background:var(--paper-w);border-bottom:1px solid var(--bdr);padding:.65rem 2rem;font-family:'Hind Siliguri',sans-serif;font-size:.78rem;color:var(--ink-mu)}
 .breadcrumb a{color:var(--ink-md);text-decoration:none}.breadcrumb a:hover{color:var(--red)}
 .breadcrumb span{margin:0 .4rem}
 .post-wrap{max-width:780px;margin:0 auto;padding:2.5rem 2rem 5rem}
-.back-btn{display:inline-flex;align-items:center;gap:.4rem;font-family:'Noto Sans Bengali',sans-serif;font-size:.82rem;color:var(--ink-md);background:none;border:1px solid var(--bdr-s);border-radius:var(--r);padding:.4rem .9rem;text-decoration:none;margin-bottom:2rem;transition:all .18s}
+.back-btn{display:inline-flex;align-items:center;gap:.4rem;font-family:'Hind Siliguri',sans-serif;font-size:.82rem;color:var(--ink-md);background:none;border:1px solid var(--bdr-s);border-radius:var(--r);padding:.4rem .9rem;text-decoration:none;margin-bottom:1.5rem;transition:all .18s}
 .back-btn:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
-.post-cat{font-family:'Noto Sans Bengali',sans-serif;font-size:.72rem;font-weight:600;padding:.25rem .85rem;border-radius:100px;letter-spacing:.04em;display:inline-block;margin-bottom:.9rem}
-.c-sto{background:#e8f4fd;color:#0a4a7a}
+.post-cat{font-family:'Hind Siliguri',sans-serif;font-size:.72rem;font-weight:600;padding:.25rem .85rem;border-radius:100px;letter-spacing:.04em;display:inline-block;margin-bottom:.9rem}
+.c-rep{background:#fef3e8;color:#7a4500}.c-sto{background:#e8f4fd;color:#0a4a7a}
+.c-mic{background:#e8fdf0;color:#0a5a2a}.c-bih{background:#f0e8fd;color:#4a0a7a}.c-poem{background:#fdf0f8;color:#7a0a5a}
 .post-title{font-family:'Noto Serif Bengali',serif;font-size:clamp(1.7rem,4vw,2.5rem);font-weight:700;line-height:1.3;margin-bottom:1rem}
 .post-meta{display:flex;flex-wrap:wrap;gap:1.5rem;padding:1rem 0;border-top:1px solid var(--bdr);border-bottom:2px solid var(--bdr-s);margin-bottom:2rem}
 .meta-item{display:flex;flex-direction:column;gap:2px}
-.meta-label{font-family:'Noto Sans Bengali',sans-serif;font-size:.68rem;color:var(--ink-mu);text-transform:uppercase;letter-spacing:.08em;font-weight:500}
-.meta-value{font-family:'Noto Sans Bengali',sans-serif;font-size:.82rem;font-weight:600;color:var(--ink-lt)}
+.meta-label{font-family:'Hind Siliguri',sans-serif;font-size:.68rem;color:var(--ink-mu);text-transform:uppercase;letter-spacing:.08em;font-weight:500}
+.meta-value{font-family:'Hind Siliguri',sans-serif;font-size:.82rem;font-weight:600;color:var(--ink-lt)}
 .post-body{font-family:'Noto Serif Bengali',serif;font-size:1.05rem;line-height:2.05;color:var(--ink-lt)}
 .post-body p{margin-bottom:1.2rem}
 .post-body blockquote{border-left:4px solid var(--gold);padding:1rem 1.5rem;margin:1.5rem 0;background:var(--gold-p);font-style:italic;color:var(--ink-lt);border-radius:0 var(--r) var(--r) 0}
-.post-divider{width:60px;height:2px;background:var(--gold);margin:2.5rem 0}
 .share-section{margin-top:3rem;padding:1.5rem;background:var(--paper-w);border:1px solid var(--bdr);border-radius:var(--r-lg);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
 .share-text{font-family:'Noto Serif Bengali',serif;font-size:.95rem;color:var(--ink-lt)}
 .share-btns{display:flex;gap:.5rem}
-.share-btn{font-family:'Noto Sans Bengali',sans-serif;font-size:.78rem;font-weight:600;padding:.4rem 1rem;border-radius:100px;border:none;cursor:pointer;text-decoration:none;display:inline-block;transition:all .15s}
+.share-btn{font-family:'Hind Siliguri',sans-serif;font-size:.78rem;font-weight:600;padding:.4rem 1rem;border-radius:100px;border:none;cursor:pointer;text-decoration:none;display:inline-block}
 .share-btn.fb{background:#1877f2;color:#fff}.share-btn.tw{background:#000;color:#fff}
 .post-nav{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
 .pnav-card{background:#fff;border:1px solid var(--bdr);border-radius:var(--r-lg);padding:1rem 1.25rem;text-decoration:none;transition:all .2s;display:block}
 .pnav-card:hover{border-color:var(--gold);box-shadow:0 3px 12px rgba(26,18,8,.08)}
-.pnav-dir{font-family:'Noto Sans Bengali',sans-serif;font-size:.7rem;color:var(--ink-mu);letter-spacing:.06em;margin-bottom:.3rem}
+.pnav-dir{font-family:'Hind Siliguri',sans-serif;font-size:.7rem;color:var(--ink-mu);letter-spacing:.06em;margin-bottom:.3rem}
 .pnav-title{font-family:'Noto Serif Bengali',serif;font-size:.9rem;font-weight:600;color:var(--ink-lt);line-height:1.4}
 .post-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.5rem}
-.tag{font-family:'Noto Sans Bengali',sans-serif;font-size:.72rem;padding:.22rem .75rem;border-radius:100px;border:1px solid var(--bdr-s);background:var(--paper-w);color:var(--ink-md)}
-footer{background:var(--ink);color:rgba(255,255,255,.32);font-family:'Noto Sans Bengali',sans-serif;font-size:.75rem;text-align:center;padding:1.75rem 2rem;letter-spacing:.04em}
-footer a{color:var(--gold-l);text-decoration:none}
-@media(max-width:680px){nav{padding:0 1.2rem}.nlinks{display:none}.nburg{display:block}.post-wrap{padding:1.5rem 1rem 4rem}.post-nav{grid-template-columns:1fr}}
-
-/* ════ SETTINGS BUTTON ════ */
-#settings-btn{position:fixed;bottom:2rem;right:2rem;z-index:500;width:48px;height:48px;border-radius:50%;background:var(--ink);color:var(--gold-l);display:flex;align-items:center;justify-content:center;font-size:1.3rem;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.3);transition:all .2s;user-select:none;border:2px solid rgba(255,255,255,.1)}
+.tag{font-family:'Hind Siliguri',sans-serif;font-size:.72rem;padding:.22rem .75rem;border-radius:100px;border:1px solid var(--bdr-s);background:var(--paper-w);color:var(--ink-md)}
+#settings-btn{position:fixed;bottom:2rem;right:2rem;z-index:500;width:48px;height:48px;border-radius:50%;background:var(--ink);color:var(--gold-l);display:flex;align-items:center;justify-content:center;font-size:1.3rem;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.3);transition:all .2s;border:2px solid rgba(255,255,255,.1)}
 #settings-btn:hover{transform:rotate(45deg) scale(1.1)}
-#settings-overlay{display:none;position:fixed;inset:0;z-index:499;background:rgba(0,0,0,.4);backdrop-filter:blur(2px)}
+#settings-overlay{display:none;position:fixed;inset:0;z-index:499;background:rgba(0,0,0,.4)}
 #settings-overlay.open{display:block}
 #settings-panel{position:fixed;right:-340px;top:0;bottom:0;width:320px;z-index:500;background:var(--paper);border-left:1px solid var(--bdr-s);box-shadow:-8px 0 40px rgba(0,0,0,.2);transition:right .3s cubic-bezier(.4,0,.2,1);overflow-y:auto}
 #settings-panel.open{right:0}
 .sp-header{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 1.4rem;background:var(--ink);font-family:'Hind Siliguri',sans-serif;font-size:1rem;font-weight:600;color:var(--gold-l);position:sticky;top:0}
-.sp-header button{background:none;border:none;color:rgba(255,255,255,.6);font-size:1.2rem;cursor:pointer;padding:.2rem .4rem}
+.sp-header button{background:none;border:none;color:rgba(255,255,255,.6);font-size:1.2rem;cursor:pointer}
 .sp-section{padding:1.1rem 1.4rem;border-bottom:1px solid var(--bdr)}
 .sp-label{font-family:'Hind Siliguri',sans-serif;font-size:.8rem;font-weight:600;color:var(--ink-mu);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.75rem}
 .sp-grid{display:grid;grid-template-columns:1fr 1fr;gap:.45rem}
-.theme-btn{font-family:'Hind Siliguri',sans-serif;font-size:.78rem;padding:.5rem .6rem;border:1.5px solid var(--bdr-s);border-radius:var(--r);background:var(--paper-w);color:var(--ink);cursor:pointer;transition:all .18s;text-align:left;font-weight:500}
-.theme-btn:hover,.theme-btn.active{border-color:var(--gold);background:var(--gold-p)}
-.sp-font-list{display:flex;flex-direction:column;gap:.4rem}
-.font-btn{font-family:'Hind Siliguri',sans-serif;font-size:.82rem;padding:.55rem .8rem;border:1.5px solid var(--bdr-s);border-radius:var(--r);background:var(--paper-w);color:var(--ink);cursor:pointer;transition:all .18s;text-align:left;display:flex;align-items:center;gap:.6rem}
-.font-btn:hover,.font-btn.active{border-color:var(--gold);background:var(--gold-p)}
-.font-preview{font-size:1.1rem;color:var(--ink-lt);min-width:40px}
-.sp-size-row{display:flex;gap:.4rem;flex-wrap:wrap}
+.theme-btn,.font-btn{font-family:'Hind Siliguri',sans-serif;font-size:.78rem;padding:.5rem .6rem;border:1.5px solid var(--bdr-s);border-radius:var(--r);background:var(--paper-w);color:var(--ink);cursor:pointer;transition:all .18s;text-align:left}
+.theme-btn:hover,.theme-btn.active,.font-btn:hover,.font-btn.active{border-color:var(--gold);background:var(--gold-p);font-weight:700}
+.sp-font-list,.sp-size-row{display:flex;flex-direction:column;gap:.4rem}
+.sp-size-row{flex-direction:row;flex-wrap:wrap}
+.font-btn{display:flex;align-items:center;gap:.6rem}
+.font-preview{font-size:1.1rem;min-width:40px}
 .size-btn{font-family:'Hind Siliguri',sans-serif;font-size:.78rem;padding:.42rem .8rem;border:1.5px solid var(--bdr-s);border-radius:100px;background:var(--paper-w);color:var(--ink);cursor:pointer;transition:all .18s}
-.size-btn:hover{border-color:var(--gold);background:var(--gold-p)}
 .size-btn.active{border-color:var(--gold);background:var(--gold);color:#fff;font-weight:700}
 .reset-btn{width:100%;font-family:'Hind Siliguri',sans-serif;font-size:.82rem;padding:.6rem;border:1.5px solid var(--bdr-s);border-radius:var(--r);background:transparent;color:var(--ink-md);cursor:pointer;transition:all .18s}
 .reset-btn:hover{background:var(--red);color:#fff;border-color:var(--red)}
+footer{background:var(--ink);color:rgba(255,255,255,.32);font-family:'Hind Siliguri',sans-serif;font-size:.75rem;text-align:center;padding:1.75rem 2rem}
+footer a{color:var(--gold-l);text-decoration:none}
+@media(max-width:680px){nav{padding:0 1.2rem}.nlinks{display:none}.nburg{display:block}.post-wrap{padding:1.5rem 1rem 4rem}.post-nav{grid-template-columns:1fr}.share-section{flex-direction:column}}
 </style>
 </head>
 <body>
-
-<!-- ════ SETTINGS ════ -->
-<div id="settings-btn" onclick="toggleSettings()" title="সেটিংস">⚙</div>
-<div id="settings-overlay" onclick="closeSettings()"></div>
-<div id="settings-panel">
-  <div class="sp-header"><span>⚙ সেটিংস</span><button onclick="closeSettings()">✕</button></div>
-  <div class="sp-section"><div class="sp-label">🎨 থিম</div><div class="sp-grid">
-    <button class="theme-btn active" data-theme="classic" onclick="setTheme('classic',this)">📜 ক্লাসিক</button>
-    <button class="theme-btn" data-theme="dark" onclick="setTheme('dark',this)">🌙 ডার্ক</button>
-    <button class="theme-btn" data-theme="sepia" onclick="setTheme('sepia',this)">🍂 সেপিয়া</button>
-    <button class="theme-btn" data-theme="mint" onclick="setTheme('mint',this)">🌿 মিন্ট</button>
-    <button class="theme-btn" data-theme="rose" onclick="setTheme('rose',this)">🌸 রোজ</button>
-    <button class="theme-btn" data-theme="night" onclick="setTheme('night',this)">🔵 নাইট</button>
-  </div></div>
-  <div class="sp-section"><div class="sp-label">✍ ফন্ট</div><div class="sp-font-list">
-    <button class="font-btn active" data-font="hind" onclick="setFont('hind',this)"><span class="font-preview">বাংলা</span> Hind Siliguri</button>
-    <button class="font-btn" data-font="baloo" onclick="setFont('baloo',this)"><span class="font-preview">বাংলা</span> Baloo Da 2</button>
-    <button class="font-btn" data-font="tiro" onclick="setFont('tiro',this)"><span class="font-preview">বাংলা</span> Tiro Bangla</button>
-    <button class="font-btn" data-font="noto-serif" onclick="setFont('noto-serif',this)"><span class="font-preview">বাংলা</span> Noto Serif</button>
-    <button class="font-btn" data-font="noto-sans" onclick="setFont('noto-sans',this)"><span class="font-preview">বাংলা</span> Noto Sans</button>
-  </div></div>
-  <div class="sp-section"><div class="sp-label">🔠 লেখার আকার</div><div class="sp-size-row">
-    <button class="size-btn" onclick="setSize(14)">ছোট</button>
-    <button class="size-btn active" onclick="setSize(16)">স্বাভাবিক</button>
-    <button class="size-btn" onclick="setSize(18)">বড়</button>
-    <button class="size-btn" onclick="setSize(20)">বড়তর</button>
-  </div></div>
-  <div class="sp-section"><div class="sp-label">📏 লাইনের ব্যবধান</div><div class="sp-size-row">
-    <button class="size-btn" onclick="setLineH(1.6)">ঘন</button>
-    <button class="size-btn active" onclick="setLineH(1.8)">স্বাভাবিক</button>
-    <button class="size-btn" onclick="setLineH(2.1)">হালকা</button>
-    <button class="size-btn" onclick="setLineH(2.4)">বিরল</button>
-  </div></div>
-  <div class="sp-section"><button class="reset-btn" onclick="resetSettings()">↺ ডিফল্টে ফিরুন</button></div>
-</div>
+<!-- মূল পোস্ট: https://sanjoyisonline.blogspot.com/ -->
 <nav>
   <a class="nbrand" href="../index.html">সঞ্জয় মণ্ডল</a>
   <ul class="nlinks">
@@ -137,63 +102,91 @@ footer a{color:var(--gold-l);text-decoration:none}
 <div class="breadcrumb">
   <a href="../index.html">প্রথম পাতা</a><span>›</span>
   <a href="../index.html">ব্লগবার্তা</a><span>›</span>
-  অদৃশ্য
+  দিবস-মোহ
 </div>
 <div class="post-wrap">
   <a class="back-btn" href="../index.html">← ব্লগে ফিরুন</a>
-  <span class="post-cat c-sto">ছোটগল্প</span>
-  <h1 class="post-title">অদৃশ্য</h1>
+
+  <!-- COVER IMAGE — change URL if needed -->
+  <div class="post-cover" style="height:380px;background:var(--paper-d);border-radius:var(--r-lg);overflow:hidden;margin-bottom:2rem;position:relative">
+    <img src="https://writersanjoy.github.io/images/blogimages/blog-003-cover.jpg" alt="দিবস-মোহ" style="width:100%;height:100%;object-fit:cover"
+         onerror="this.parentElement.style.background='var(--ink)';this.style.display='none'">
+    <div style="position:absolute;bottom:0;left:0;right:0;padding:2rem 2rem .75rem;background:linear-gradient(transparent,rgba(26,18,8,.7))">
+      <div style="font-family:'Hind Siliguri',sans-serif;font-size:.72rem;font-weight:600;color:rgba(255,255,255,.55);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.25rem">প্রতিবেদন</div>
+    </div>
+  </div>
+
+  <span class="post-cat c-rep">প্রতিবেদন</span>
+  <h1 class="post-title">দিবস-মোহ</h1>
   <div class="post-meta">
     <div class="meta-item"><span class="meta-label">লেখক</span><span class="meta-value">সঞ্জয় মণ্ডল</span></div>
-    <div class="meta-item"><span class="meta-label">প্রকাশকাল</span><span class="meta-value">মে ২০২০</span></div>
-    <div class="meta-item"><span class="meta-label">বিভাগ</span><span class="meta-value">ছোটগল্প</span></div>
-    <div class="meta-item"><span class="meta-label">পড়ার সময়</span><span class="meta-value">৫ মিনিট</span></div>
+    <div class="meta-item"><span class="meta-label">প্রকাশকাল</span><span class="meta-value">৬ মে, ২০১৬</span></div>
+    <div class="meta-item"><span class="meta-label">বিভাগ</span><span class="meta-value">প্রতিবেদন</span></div>
+    <div class="meta-item"><span class="meta-label">পড়ার সময়</span><span class="meta-value">3 মিনিট</span></div>
   </div>
   <div class="post-body">
-    <p>দুপুরে খাওয়ার পরে বাসন ধুচ্ছিল মাধুরি। বসার ঘরে টিভি দেখতে দেখতে কর্তা চেঁচিয়ে উঠলেন, "জানো, লকডাউন বেড়ে গেল। মে মাসে শেষ পর্যন্ত।"</p>
-    <blockquote>লকডাউন। লকডাউন। লকডাউন।</blockquote>
-    <p>আবার লকডাউন বেড়ে গেল শুনে মাধুরি ক্ষেপে গেলেন। গত দু'মাসে এই নিয়ে চারবার। লকডাউনের প্রথম ক'দিন বেশ মজা হল।</p>
-    <p>একদিন সবাই মিলে থালা-বাটি বাজিয়েছিল। ক্লাবের ছেলেদের সাথে একশো-দেড়শো প্যাকেট চাল-ডাল-তেল দিয়ে এসেছিলেন পাশের বস্তির মানুষদের। দেদার ছবি তুলে ফেসবুকে দিতেই কয়েক হাজার লাইক পড়েছে।</p>
-    <div class="post-divider"></div>
-    <p>কিন্তু তারপর? সেই মানুষগুলো? যারা প্রতিদিন রোজগার করে সংসার চালায়, যাদের রেশন কার্ড নেই, ব্যাংক অ্যাকাউন্ট নেই — তারা কোথায় গেল?</p>
-    <p>মাধুরি বাসন মাজতে মাজতে ভাবলেন — তারা তো অদৃশ্য হয়ে গেছে। লাইক আর শেয়ারের ভিড়ে, টিভির ব্রেকিং নিউজে, নেতাদের ভাষণে — সবার মধ্যে থেকেও তারা অদৃশ্য।</p>
-    <p>বাসনগুলো ধোয়া হয়ে গেছে। মাধুরি হাত মুছলেন। বসার ঘরে গিয়ে দেখলেন কর্তা ঘুমিয়ে পড়েছেন। টিভিতে তখনও চলছে — লকডাউনের খবর, সংক্রমণের সংখ্যা, নেতাদের বক্তৃতা।</p>
-    <p>কিন্তু সেই অদৃশ্য মানুষগুলোর কথা — একটি শব্দও নেই।</p>
+    <p>‘বারো মাসে তেরো পার্বণ’ ছাড়িয়ে এখন বছরের প্রতিটি দিনই হয় কোন দিবস কিংবা উৎসব। গতকাল শিশুদিবস ছিল, আজ ক্যান্সার দিবস কিংবা আগামীকাল উপভোক্তা দিবস উদযাপন করা হবে। অথচ নারীদিবসের দিনেই মধ্যপ্রদেশের একজন স্বামী (?) তার স্ত্রীকে দাঁড়িপাল্লায় তোলেন ঋণ পরিশোধ করার জন্য কিংবা দেশের একাধিক মন্দিরে প্রবেশাধিকারের দাবীতে পথে নেমে আন্দোলন করতে হয় নারীদের। অন্যদিকে পরিবেশ দিবসের দিন নামকরা বহুজাতিক সংস্থার “বায়ুশোধনকারী” যন্ত্রের বিজ্ঞাপন ঝলমল করে ওঠে স্বল্পবাস পরিহিতা নায়িকাদের ছবিতে। আসলে আমাদের এই ‘ভোগবাদী’ সমাজে এইসব দিবসের পালনের সাথে সমাজের সার্বিক কল্যাণ জড়িয়ে থাকে নামমাত্র। বিনা খরচে কেউ ক্যান্সার রোগীদের চিকিৎসা করার অঙ্গীকারও করে না। একটি ‘বিশেষ’ দিবস, সে ‘শিশু দিবস’ কিংবা ‘ক্যান্সার দিবস’ হোক না কেন, সেই দিনটি আসলে ব্যবহৃত হয় আরো বেশী বেশী পণ্য বিক্রি করার একটা ‘বিশেষ’ সুযোগ হিসাবে। সর্বক্ষন, সর্বত্র শুধু বিজ্ঞাপন আর বিজ্ঞাপন। এক দল বলে ‘কিনে নিন, কিনে নিন’ তো অন্য দল বলে ‘বেচে দিন, বেচে দিন’। আচ্ছা, আমরা কি কলের পুতুল না লাঙ্গলে জুতে দেওয়া বলদ! একটি “দিবস পালন” আসলে সমাজ কিংবা মানুষের প্রতি পূর্বকৃত অঙ্গীকারকে মনে করিয়ে দেওয়া। অথচ বাস্তবে এগুলো পর্যবসিত হয় জনগনের মনোযোগ বিক্ষিপ্ত করার কৌশলি প্রচেষ্টা হিসাবে। ব্যক্তি, সমাজ থেকে শুরু করে আমাদের চিন্তা, চেতনা, মনন ও ভাবনাকে সবসময় কিছু-না-কিছু একটা প্রলোভনের সাথে “খুড়োর কলের” মতো জুতে দেওয়া চাই। ঘুম থেকে উঠলেই একটি ‘দিবস’। আমি-আপনি সারাদিন ধরে সেই দিবস পালনে মত্ত। এটাই পুঁজিবাদী ‘বাজারী’ ব্যবস্থা আর সেই ব্যবস্থা ময়াল সাপের মতো আষ্টেপৃষ্ঠে পেঁচিয়ে গিলে ফেলতে চায় দেশ, সমাজ, সংসার, সম্পর্ক। সব কিছু। জাতি-ধর্ম-বয়স নির্বিশেষে আবালবৃদ্ধবনিতা সহ গোটা সমাজটাই যেন একজন মাতাল আর তার পাশে মদের খালি বোতলের মতো দিন-রাত গড়াগড়ি খাক। আমাদের মন-মস্তিষ্ক, চিন্তা, চেতনা, অনুভূতি, চাওয়া-পাওয়া সমস্ত কিছু আবর্তিত হোক এবং নিমজ্জিত থাকুক কোন না কোন পণ্যের ভোগবিলাসিতায় অথবা ভোগ্যপণ্যের আকাঙক্ষায়। তাই মনে হয় না এবার নারী-পুরুষ, জাতি-ধর্ম নির্বিশেষ সবাইকে এই ‘দিবস’ পালনের মোহ থেকে বেরিয়ে আসা দরকার? পিতা-মাতা দিবস পালন করার পরেও বৃদ্ধ বাবা-মাকে ছেলের অত্যাচারে জর্জরিত হয়ে আদালতের দারস্থ হতে হয়। ঘটা করে শিশুদিবস পালন করার পরে শিশুশ্রমিকের বানানো চা না খেলে চায়ের স্বাদ পাওয়া যায় না। আবার নারীদিবসের বক্তৃতা মঞ্চ থেকে মাইকের শব্দ পিঠে শিশু সন্তানকে বেঁধে ইঁটভাটায় ইঁট বইতে থাকা নারীর কানে পৌঁছয় না। কোন বিশেষ দিবস যেমন আমাদের মহৎ করে তোলে না, তেমনি পতনোন্মুখ মানসিকতা কিংবা চারিত্রিক ত্রুটিকেও পাল্টাতে পারে না। পারবেও না। যতক্ষন না আমাদের কোন গঠন মূলক ও উন্নততর সমাজব্যবস্থায় আমাদের উত্তরণ হবে।</p>
   </div>
   <div class="post-tags">
-    <span class="tag">ছোটগল্প</span><span class="tag">লকডাউন</span><span class="tag">সমাজ</span><span class="tag">করোনা</span>
+    <span class="tag">সমাজ</span>
+    <span class="tag">চেতনা</span>
   </div>
   <div class="share-section">
     <span class="share-text">লেখাটি ভালো লাগলে শেয়ার করুন</span>
     <div class="share-btns">
-      <a class="share-btn fb" href="https://www.facebook.com/sharer/sharer.php?u=https://writersanjoy.github.io/blogs/blog-003.html" target="_blank">Facebook</a>
-      <a class="share-btn tw" href="https://twitter.com/intent/tweet?url=https://writersanjoy.github.io/blogs/blog-003.html" target="_blank">X (Twitter)</a>
+      <a class="share-btn fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwritersanjoy.github.io%2Fblogs%2Fblog-003.html" target="_blank">Facebook</a>
+      <a class="share-btn tw" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fwritersanjoy.github.io%2Fblogs%2Fblog-003.html&text=%E0%A6%A6%E0%A6%BF%E0%A6%AC%E0%A6%B8-%E0%A6%AE%E0%A7%8B%E0%A6%B9" target="_blank">X (Twitter)</a>
     </div>
   </div>
   <div class="post-nav">
     <a class="pnav-card" href="blog-002.html">
       <div class="pnav-dir">← আগের পোস্ট</div>
-      <div class="pnav-title">প্রতিবাদহীন,</div>
+      <div class="pnav-title">ছোবল</div>
     </a>
-    <div class="pnav-card" style="opacity:.4;pointer-events:none;text-align:right">
+    <a class="pnav-card" href="blog-004.html" style="text-align:right">
       <div class="pnav-dir">পরের পোস্ট →</div>
-      <div class="pnav-title">শীঘ্রই আসছে</div>
-    </div>
+      <div class="pnav-title">প্রদীপের নীচে ‘আলো’</div>
+    </a>
   </div>
 </div>
+<div id="settings-btn" onclick="toggleSettings()">⚙</div>
+<div id="settings-overlay" onclick="closeSettings()"></div>
+<div id="settings-panel">
+  <div class="sp-header"><span>⚙ সেটিংস</span><button onclick="closeSettings()">✕</button></div>
+  <div class="sp-section"><div class="sp-label">🎨 থিম</div><div class="sp-grid">
+    <button class="theme-btn active" data-theme="classic" onclick="setTheme('classic',this)">📜 ক্লাসিক</button>
+    <button class="theme-btn" data-theme="dark" onclick="setTheme('dark',this)">🌙 ডার্ক</button>
+    <button class="theme-btn" data-theme="sepia" onclick="setTheme('sepia',this)">🍂 সেপিয়া</button>
+    <button class="theme-btn" data-theme="mint" onclick="setTheme('mint',this)">🌿 মিন্ট</button>
+    <button class="theme-btn" data-theme="rose" onclick="setTheme('rose',this)">🌸 রোজ</button>
+    <button class="theme-btn" data-theme="night" onclick="setTheme('night',this)">🔵 নাইট</button>
+  </div></div>
+  <div class="sp-section"><div class="sp-label">✍ ফন্ট</div><div class="sp-font-list">
+    <button class="font-btn active" data-font="hind" onclick="setFont('hind',this)"><span class="font-preview">বাংলা</span>Hind Siliguri</button>
+    <button class="font-btn" data-font="baloo" onclick="setFont('baloo',this)"><span class="font-preview">বাংলা</span>Baloo Da 2</button>
+    <button class="font-btn" data-font="tiro" onclick="setFont('tiro',this)"><span class="font-preview">বাংলা</span>Tiro Bangla</button>
+    <button class="font-btn" data-font="noto-serif" onclick="setFont('noto-serif',this)"><span class="font-preview">বাংলা</span>Noto Serif</button>
+    <button class="font-btn" data-font="noto-sans" onclick="setFont('noto-sans',this)"><span class="font-preview">বাংলা</span>Noto Sans</button>
+  </div></div>
+  <div class="sp-section"><div class="sp-label">🔠 লেখার আকার</div><div class="sp-size-row">
+    <button class="size-btn" onclick="setSize(14)">ছোট</button>
+    <button class="size-btn active" onclick="setSize(16)">স্বাভাবিক</button>
+    <button class="size-btn" onclick="setSize(18)">বড়</button>
+    <button class="size-btn" onclick="setSize(20)">বড়তর</button>
+  </div></div>
+  <div class="sp-section"><button class="reset-btn" onclick="resetSettings()">↺ ডিফল্টে ফিরুন</button></div>
+</div>
 <footer>© সঞ্জয় মণ্ডল · সর্বস্বত্ব সংরক্ষিত · <a href="../index.html">প্রথম পাতায় ফিরুন</a></footer>
-
 <script>
 const FONTS={'hind':"'Hind Siliguri',sans-serif",'baloo':"'Baloo Da 2',cursive",'tiro':"'Tiro Bangla',serif",'noto-serif':"'Noto Serif Bengali',serif",'noto-sans':"'Noto Sans Bengali',sans-serif"};
 const THEMES={classic:{'--ink':'#1a1208','--ink-lt':'#3d3020','--ink-md':'#6b5a45','--ink-mu':'#9a8a76','--paper':'#faf8f4','--paper-w':'#f5f1e8','--paper-d':'#ede8de','--gold':'#b8860b','--gold-l':'#d4a017','--gold-p':'#fdf4d8','--red':'#8b1a1a','--nav-bg':'#1a1208'},dark:{'--ink':'#e8e0d0','--ink-lt':'#c8bfaf','--ink-md':'#a09080','--ink-mu':'#706050','--paper':'#1a1612','--paper-w':'#221e18','--paper-d':'#2a251e','--gold':'#d4a017','--gold-l':'#e8b820','--gold-p':'#2a2010','--red':'#e06060','--nav-bg':'#0e0c08'},sepia:{'--ink':'#2c1a0a','--ink-lt':'#4a3020','--ink-md':'#7a5a3a','--ink-mu':'#aa8a6a','--paper':'#f8f0e0','--paper-w':'#f0e4cc','--paper-d':'#e4d4b4','--gold':'#8b6a20','--gold-l':'#a07828','--gold-p':'#f8edd8','--red':'#7a2020','--nav-bg':'#2c1a0a'},mint:{'--ink':'#0a2018','--ink-lt':'#1a3828','--ink-md':'#4a7060','--ink-mu':'#7aaa98','--paper':'#f0faf6','--paper-w':'#e0f4ec','--paper-d':'#c8e8dc','--gold':'#2a8060','--gold-l':'#38a078','--gold-p':'#d8f4ec','--red':'#c04060','--nav-bg':'#0a2018'},rose:{'--ink':'#2a0a18','--ink-lt':'#4a1a28','--ink-md':'#8a5060','--ink-mu':'#c0909a','--paper':'#fff8f9','--paper-w':'#f8eef0','--paper-d':'#f0dde0','--gold':'#c06080','--gold-l':'#d87090','--gold-p':'#fce8ec','--red':'#a02040','--nav-bg':'#2a0a18'},night:{'--ink':'#c8d8f0','--ink-lt':'#a0b8e0','--ink-md':'#7090b8','--ink-mu':'#506888','--paper':'#0a1020','--paper-w':'#101828','--paper-d':'#182030','--gold':'#6090e0','--gold-l':'#78a8f8','--gold-p':'#101828','--red':'#7090e0','--nav-bg':'#060c18'}};
 function toggleSettings(){document.getElementById('settings-panel').classList.toggle('open');document.getElementById('settings-overlay').classList.toggle('open');}
 function closeSettings(){document.getElementById('settings-panel').classList.remove('open');document.getElementById('settings-overlay').classList.remove('open');}
-function setTheme(n,btn){const t=THEMES[n];if(!t)return;Object.entries(t).forEach(([k,v])=>document.documentElement.style.setProperty(k,v));const nav=document.querySelector('nav');if(nav)nav.style.background=t['--nav-bg'];document.querySelectorAll('.theme-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');localStorage.setItem('sm-theme',n);}
-function setFont(n,btn){const f=FONTS[n];if(!f)return;document.body.style.fontFamily=f;document.querySelectorAll('.font-btn').forEach(b=>{b.classList.remove('active');const fp=b.querySelector('.font-preview');if(fp)fp.style.fontFamily=FONTS[b.dataset.font]||f;});btn.classList.add('active');localStorage.setItem('sm-font',n);}
-function setSize(px){document.documentElement.style.fontSize=px+'px';document.querySelectorAll('.size-btn').forEach(b=>b.classList.remove('active'));event.target.classList.add('active');localStorage.setItem('sm-size',px);}
-function setLineH(lh){document.body.style.lineHeight=lh;document.querySelectorAll('.size-btn').forEach(b=>b.classList.remove('active'));event.target.classList.add('active');localStorage.setItem('sm-lineh',lh);}
-function resetSettings(){['sm-theme','sm-font','sm-size','sm-lineh'].forEach(k=>localStorage.removeItem(k));location.reload();}
-(function(){const t=localStorage.getItem('sm-theme'),f=localStorage.getItem('sm-font'),s=localStorage.getItem('sm-size'),lh=localStorage.getItem('sm-lineh');if(t){const b=document.querySelector('.theme-btn[data-theme="'+t+'"]');if(b)setTheme(t,b);}if(f){const b=document.querySelector('.font-btn[data-font="'+f+'"]');if(b)setFont(f,b);}if(s)document.documentElement.style.fontSize=s+'px';if(lh)document.body.style.lineHeight=lh;setTimeout(()=>{document.querySelectorAll('.font-btn').forEach(b=>{const fp=b.querySelector('.font-preview');if(fp&&FONTS[b.dataset.font])fp.style.fontFamily=FONTS[b.dataset.font];});},400);})();
+function setTheme(n,b){const t=THEMES[n];if(!t)return;Object.entries(t).forEach(([k,v])=>document.documentElement.style.setProperty(k,v));const nav=document.querySelector('nav');if(nav)nav.style.background=t['--nav-bg'];document.querySelectorAll('.theme-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');localStorage.setItem('sm-theme',n);}
+function setFont(n,b){const f=FONTS[n];if(!f)return;document.body.style.fontFamily=f;document.querySelectorAll('.font-btn').forEach(x=>{x.classList.remove('active');const fp=x.querySelector('.font-preview');if(fp)fp.style.fontFamily=FONTS[x.dataset.font]||f;});b.classList.add('active');localStorage.setItem('sm-font',n);}
+function setSize(px){document.documentElement.style.fontSize=px+'px';document.querySelectorAll('.size-btn').forEach(x=>x.classList.remove('active'));event.target.classList.add('active');localStorage.setItem('sm-size',px);}
+function resetSettings(){['sm-theme','sm-font','sm-size'].forEach(k=>localStorage.removeItem(k));location.reload();}
+(function(){const t=localStorage.getItem('sm-theme'),f=localStorage.getItem('sm-font'),s=localStorage.getItem('sm-size');if(t){const b=document.querySelector('.theme-btn[data-theme="'+t+'"]');if(b)setTheme(t,b);}if(f){const b=document.querySelector('.font-btn[data-font="'+f+'"]');if(b)setFont(f,b);}if(s)document.documentElement.style.fontSize=s+'px';setTimeout(()=>{document.querySelectorAll('.font-btn').forEach(b=>{const fp=b.querySelector('.font-preview');if(fp&&FONTS[b.dataset.font])fp.style.fontFamily=FONTS[b.dataset.font];});},400);})();
 </script>
 </body>
 </html>
