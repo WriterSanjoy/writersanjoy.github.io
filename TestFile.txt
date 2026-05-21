@@ -1,0 +1,15 @@
+here is my file structure: 
+writersanjoy.github.io/
+├── index.html         ← main site - this is prior to netlify one and working
+├── blog-list.html      ← ALL blog cards live here ✅
+├── published.html	← A page will list published work link and pages
+├── images/		← ALL misc images like covers, author etc
+│   	└── BlogImages/	← ALL images related to blogs
+│		  └── Image_1.jpg
+│		  └──Image_2.jpg
+├── blogs/
+│  	└── blog-001.html
+│   	└── blog-002.html
+│   	└── blog-003.html
+└── books/
+    	└── Book_1.html

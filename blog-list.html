@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ব্লগবার্তা — সঞ্জয় মণ্ডল</title>
+<meta name="description" content="সঞ্জয় মণ্ডলের ব্লগ — গল্প, প্রতিবেদন, অণুগল্প ও মতামত">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Baloo+Da+2:wght@400;500;600;700&family=Tiro+Bangla:ital@0;1&family=Noto+Serif+Bengali:wght@300;400;500;600;700&family=Noto+Sans+Bengali:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#1a1208;--ink-lt:#3d3020;--ink-md:#6b5a45;--ink-mu:#9a8a76;
+  --paper:#faf8f4;--paper-w:#f5f1e8;--paper-d:#ede8de;
+  --gold:#b8860b;--gold-l:#d4a017;--gold-p:#fdf4d8;
+  --red:#8b1a1a;--teal:#1a5f5a;--teal-p:#e8f5f4;
+  --bdr:rgba(26,18,8,.12);--bdr-s:rgba(26,18,8,.22);
+  --r:4px;--r-lg:8px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Hind Siliguri','Noto Sans Bengali',sans-serif;background:var(--paper);color:var(--ink);line-height:1.8;font-size:16px}
+
+/* ── NAV ── */
+nav{background:var(--ink);padding:0 2.5rem;position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;height:58px;box-shadow:0 2px 16px rgba(0,0,0,.35)}
+.nbrand{font-family:'Noto Serif Bengali',serif;font-size:1.05rem;font-weight:700;color:var(--gold-l);text-decoration:none}
+.nlinks{display:flex;list-style:none}
+.nlinks li a{font-family:'Hind Siliguri',sans-serif;font-size:.82rem;color:rgba(255,255,255,.62);text-decoration:none;padding:.4rem 1rem;display:block;transition:color .2s;border-bottom:2px solid transparent}
+.nlinks li a:hover{color:#fff}
+.nlinks li a.act{color:var(--gold-l);border-bottom-color:var(--gold-l)}
+.nburg{display:none;background:none;border:none;color:#fff;font-size:1.4rem;cursor:pointer;padding:.3rem}
+.mmenu{display:none;background:#0e0c08;position:fixed;top:58px;left:0;right:0;z-index:199;border-top:1px solid rgba(255,255,255,.08)}
+.mmenu.open{display:block}
+.mmenu a{display:block;font-family:'Hind Siliguri',sans-serif;font-size:.95rem;color:rgba(255,255,255,.72);text-decoration:none;padding:.7rem 1.75rem;border-bottom:1px solid rgba(255,255,255,.05)}
+
+/* ── PAGE HEADER ── */
+.phdr{background:var(--ink);padding:2.5rem 2rem}
+.phdr h1{font-family:'Noto Serif Bengali',serif;font-size:clamp(1.5rem,4vw,2.4rem);font-weight:700;color:#fff;line-height:1.25}
+.phdr p{font-family:'Hind Siliguri',sans-serif;font-size:.84rem;color:rgba(255,255,255,.42);margin-top:.3rem}
+.phdr-row{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;max-width:1140px;margin:0 auto}
+.post-total{font-family:'Hind Siliguri',sans-serif;font-size:.8rem;color:rgba(255,255,255,.35);letter-spacing:.04em}
+
+/* ── LAYOUT ── */
+.blayout{max-width:1140px;margin:0 auto;padding:2.5rem 2rem 4rem;display:grid;grid-template-columns:1fr 290px;gap:2.5rem;align-items:start}
+
+/* ── BLOG POST CARD ── */
+.bpost{background:#fff;border:1px solid var(--bdr);border-radius:var(--r-lg);margin-bottom:2rem;overflow:hidden;transition:box-shadow .22s}
+.bpost:hover{box-shadow:0 4px 24px rgba(26,18,8,.09)}
+.bpimg{height:215px;background:var(--paper-d);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border-bottom:1px solid var(--bdr)}
+/* Cover image version */
+.bpimg img{width:100%;height:100%;object-fit:cover}
+/* Emoji/icon version */
+.bpic{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:5rem;opacity:.14}
+.bpil{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(26,18,8,.68));padding:1.5rem 1.2rem .7rem;font-family:'Noto Serif Bengali',serif;font-size:1.1rem;font-weight:600;color:#fff}
+.bpb{padding:1.4rem 1.65rem}
+.bpm{display:flex;align-items:center;gap:.7rem;margin-bottom:.85rem;flex-wrap:wrap}
+.bpcat{font-family:'Hind Siliguri',sans-serif;font-size:.7rem;font-weight:600;padding:.2rem .75rem;border-radius:100px;letter-spacing:.04em}
+.bpdate{font-family:'Hind Siliguri',sans-serif;font-size:.74rem;color:var(--ink-mu)}
+.bptit{font-family:'Noto Serif Bengali',serif;font-size:1.3rem;font-weight:700;line-height:1.4;margin-bottom:.85rem;cursor:pointer;text-decoration:none;color:var(--ink);display:block}
+.bptit:hover{color:var(--red)}
+.bpex{font-family:'Noto Serif Bengali',serif;font-size:.92rem;line-height:1.9;color:var(--ink-lt)}
+.bpex p{margin-bottom:.7rem}
+.bpex p:first-of-type::first-letter {
+  font-size: 150%;     /* makes it bigger */
+  font-weight: bold;   /* optional */
+  color: color:var(--gold-l); /* optional styling #d4a017 */
+}
+.bpf{padding:.85rem 1.65rem;border-top:1px solid var(--bdr);background:var(--paper-w);display:flex;justify-content:space-between;align-items:center}
+.rmbtn{font-family:'Hind Siliguri',sans-serif;font-size:.82rem;font-weight:600;color:var(--red);background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:.3rem;text-decoration:none}
+.pshr{display:flex;gap:.4rem}
+.sbt{font-family:'Hind Siliguri',sans-serif;font-size:.7rem;padding:.22rem .7rem;border:1px solid var(--bdr-s);border-radius:100px;background:none;cursor:pointer;color:var(--ink-md);transition:all .15s}
+.sbt:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+/* Category colour classes */
+.c-rep{background:#fef3e8;color:#7a4500}
+.c-sto{background:#e8f4fd;color:#0a4a7a}
+.c-mic{background:#e8fdf0;color:#0a5a2a}
+.c-bih{background:#f0e8fd;color:#4a0a7a}
+.c-poem{background:#fdf0f8;color:#7a0a5a}
+
+/* ── PAGINATION ── */
+.pgn{display:flex;align-items:center;justify-content:center;gap:.5rem;margin-top:.5rem;flex-wrap:wrap}
+.pgb{font-family:'Hind Siliguri',sans-serif;font-size:.82rem;min-width:36px;height:36px;padding:0 .6rem;display:flex;align-items:center;justify-content:center;border:1px solid var(--bdr-s);border-radius:var(--r);background:#fff;cursor:pointer;transition:all .15s;color:var(--ink)}
+.pgb:hover,.pgb.cur{background:var(--ink);color:#fff;border-color:var(--ink)}
+.pgb.cur{pointer-events:none}
+.pgb.pgb-sep{border:none;background:none;cursor:default;color:var(--ink-mu)}
+.pgb.pgb-sep:hover{background:none;color:var(--ink-mu)}
+
+/* ── SIDEBAR ── */
+.sbar{position:sticky;top:72px}
+.sblk{background:#fff;border:1px solid var(--bdr);border-radius:var(--r-lg);margin-bottom:1.4rem;overflow:hidden}
+.sbhd{background:var(--ink);color:var(--gold-l);font-family:'Noto Serif Bengali',serif;font-size:.88rem;font-weight:600;padding:.65rem 1.05rem}
+.sbbd{padding:.9rem 1.05rem}
+.sbpi{display:flex;gap:.55rem;padding:.5rem 0;border-bottom:1px solid var(--bdr);align-items:flex-start;text-decoration:none}
+.sbpi:last-child{border-bottom:none}
+.sbdot{width:6px;height:6px;background:var(--gold);border-radius:50%;flex-shrink:0;margin-top:.55rem}
+.sbpt{font-family:'Noto Serif Bengali',serif;font-size:.82rem;line-height:1.5;color:var(--ink-lt);transition:color .15s}
+.sbpi:hover .sbpt{color:var(--red)}
+.archyr{cursor:pointer;user-select:none}
+.archyh{display:flex;justify-content:space-between;align-items:center;font-family:'Noto Serif Bengali',serif;font-size:.88rem;font-weight:600;padding:.38rem 0;border-bottom:1px solid var(--bdr);margin-bottom:.25rem}
+.archms{padding-left:.45rem;margin-bottom:.5rem}
+.archm{font-family:'Hind Siliguri',sans-serif;font-size:.77rem;color:var(--ink-md);display:flex;justify-content:space-between;padding:.22rem 0;cursor:pointer;transition:color .15s}
+.archm:hover{color:var(--red)}
+.archc{font-size:.68rem;background:var(--paper-d);padding:.08rem .38rem;border-radius:100px;color:var(--ink-mu)}
+.ctags{display:flex;flex-wrap:wrap;gap:.38rem}
+.ctag{font-family:'Hind Siliguri',sans-serif;font-size:.74rem;padding:.22rem .72rem;border-radius:100px;border:1px solid var(--bdr-s);background:var(--paper-w);cursor:pointer;transition:all .15s;color:var(--ink-lt)}
+.ctag:hover,.ctag.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.bsrch{display:flex;gap:.38rem}
+.bsrch input{flex:1;padding:.5rem .8rem;border:1px solid var(--bdr-s);border-radius:var(--r);font-family:'Hind Siliguri',sans-serif;font-size:.84rem;background:var(--paper-w);color:var(--ink);outline:none}
+.bsrch input:focus{border-color:var(--red)}
+.bsrch button{padding:.5rem .9rem;background:var(--ink);color:#fff;border:none;border-radius:var(--r);cursor:pointer;font-size:.84rem}
+
+/* ── SETTINGS ── */
+#settings-btn{position:fixed;bottom:2rem;right:2rem;z-index:500;width:48px;height:48px;border-radius:50%;background:var(--ink);color:var(--gold-l);display:flex;align-items:center;justify-content:center;font-size:1.3rem;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.3);transition:all .2s;border:2px solid rgba(255,255,255,.1)}
+#settings-btn:hover{transform:rotate(45deg) scale(1.1)}
+#settings-overlay{display:none;position:fixed;inset:0;z-index:499;background:rgba(0,0,0,.4)}
+#settings-overlay.open{display:block}
+#settings-panel{position:fixed;right:-340px;top:0;bottom:0;width:320px;z-index:500;background:var(--paper);border-left:1px solid var(--bdr-s);box-shadow:-8px 0 40px rgba(0,0,0,.2);transition:right .3s cubic-bezier(.4,0,.2,1);overflow-y:auto}
+#settings-panel.open{right:0}
+.sp-header{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 1.4rem;background:var(--ink);font-family:'Hind Siliguri',sans-serif;font-size:1rem;font-weight:600;color:var(--gold-l);position:sticky;top:0}
+.sp-header button{background:none;border:none;color:rgba(255,255,255,.6);font-size:1.2rem;cursor:pointer;padding:.2rem .4rem}
+.sp-section{padding:1.1rem 1.4rem;border-bottom:1px solid var(--bdr)}
+.sp-label{font-family:'Hind Siliguri',sans-serif;font-size:.8rem;font-weight:600;color:var(--ink-mu);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.75rem}
+.sp-grid{display:grid;grid-template-columns:1fr 1fr;gap:.45rem}
+.theme-btn{font-family:'Hind Siliguri',sans-serif;font-size:.78rem;padding:.5rem .6rem;border:1.5px solid var(--bdr-s);border-radius:var(--r);background:var(--paper-w);color:var(--ink);cursor:pointer;transition:all .18s;text-align:left}
+.theme-btn:hover,.theme-btn.active{border-color:var(--gold);background:var(--gold-p);font-weight:700}
+.sp-font-list{display:flex;flex-direction:column;gap:.4rem}
+.font-btn{font-family:'Hind Siliguri',sans-serif;font-size:.82rem;padding:.55rem .8rem;border:1.5px solid var(--bdr-s);border-radius:var(--r);background:var(--paper-w);color:var(--ink);cursor:pointer;transition:all .18s;text-align:left;display:flex;align-items:center;gap:.6rem}
+.font-btn:hover,.font-btn.active{border-color:var(--gold);background:var(--gold-p)}
+.font-preview{font-size:1.1rem;color:var(--ink-lt);min-width:40px}
+.sp-size-row{display:flex;gap:.4rem;flex-wrap:wrap}
+.size-btn{font-family:'Hind Siliguri',sans-serif;font-size:.78rem;padding:.42rem .8rem;border:1.5px solid var(--bdr-s);border-radius:100px;background:var(--paper-w);color:var(--ink);cursor:pointer;transition:all .18s}
+.size-btn.active{border-color:var(--gold);background:var(--gold);color:#fff;font-weight:700}
+.reset-btn{width:100%;font-family:'Hind Siliguri',sans-serif;font-size:.82rem;padding:.6rem;border:1.5px solid var(--bdr-s);border-radius:var(--r);background:transparent;color:var(--ink-md);cursor:pointer;transition:all .18s}
+.reset-btn:hover{background:var(--red);color:#fff;border-color:var(--red)}
+
+/* ── FOOTER ── */
+footer{background:var(--ink);color:rgba(255,255,255,.32);font-family:'Hind Siliguri',sans-serif;font-size:.75rem;text-align:center;padding:1.75rem 2rem;letter-spacing:.04em}
+footer a{color:var(--gold-l);text-decoration:none}
+
+/* ── NO RESULTS ── */
+.no-results{text-align:center;padding:3rem 2rem;color:var(--ink-mu);font-family:'Noto Serif Bengali',serif;font-size:1rem}
+
+/* ── RESPONSIVE ── */
+@media(max-width:760px){
+  nav{padding:0 1.2rem}.nlinks{display:none}.nburg{display:block}
+  .blayout{grid-template-columns:1fr;padding:1.5rem 1rem 4rem}
+  .sbar{position:static}
+  #settings-btn{bottom:1.2rem;right:1.2rem;width:44px;height:44px}
+  .phdr{padding:2rem 1.2rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ════ NAV ════ -->
+<nav>
+  <a class="nbrand" href="index.html">সঞ্জয় মণ্ডল</a>
+  <ul class="nlinks">
+    <li><a href="index.html">প্রথম পাতা</a></li>
+    <li><a href="index.html">আমার কথা</a></li>
+    <li><a href="blog-list.html" class="act">ব্লগবার্তা</a></li>
+    <li><a href="index.html">বইটই</a></li>
+    <li><a href="published.html">প্রকাশিত</a></li>
+    <!--<li><a href="index.html">গল্পের আসর</a></li> sanjoy removed -->
+    <li><a href="index.html">যোগাযোগ</a></li>
+  </ul>
+  <button class="nburg" onclick="document.getElementById('mm').classList.toggle('open')">☰</button>
+</nav>
+<div class="mmenu" id="mm">
+  <a href="index.html">প্রথম পাতা</a>
+  <a href="index.html">আমার কথা</a>
+  <a href="blog-list.html" class="act">ব্লগবার্তা</a>
+  <a href="index.html">বইটই</a>
+  <a href="published.html">প্রকাশিত</a>
+  <!--<a href="index.html">গল্পের আসর</a> sanjoy removed -->
+  <a href="index.html">যোগাযোগ</a>
+</div>
+
+<!-- ════ PAGE HEADER ════ -->
+<div class="phdr">
+  <div class="phdr-row">
+    <div>
+      <h1>ব্লগবার্তা</h1>
+      <p>গল্প · প্রতিবেদন · অণুগল্প · মতামত</p>
+    </div>
+    <div class="post-total" id="post-total-display"></div>
+  </div>
+</div>
+
+<!-- ════ MAIN LAYOUT ════ -->
+<div class="blayout">
+
+  <!-- ══ LEFT: POST LIST ══ -->
+  <div>
+
+    <!-- ════════════════════════════════════════════════════════
+         HOW TO ADD A NEW BLOG POST:
+
+         1. COPY the block below marked "NEW POST TEMPLATE"
+         2. PASTE it right after the opening comment below
+            ↓ ↓ ↓  ADD NEW POSTS HERE (newest first) ↓ ↓ ↓
+         3. Change these values in your new block:
+            - data-cat  → category (অণুগল্প / প্রতিবেদন / ছোটগল্প / বিহ্বল গল্প / কবিতা)
+            - data-year → year (২০২৩ / ২০২৪ etc.) — for archive filter
+            - data-month→ month (আগস্ট / মে etc.) — for archive filter
+            - .bpic     → emoji matching the post mood
+            - .bpil     → post title (on the image)
+            - .bpcat    → category badge class (c-mic / c-rep / c-sto / c-bih / c-poem)
+            - .bpdate   → published date
+            - .bptit href → link to blogs/blog-00X.html
+            - .bptit text → post title
+            - .bpex p   → 2-3 line excerpt
+            - .rmbtn href → same link as .bptit href
+         4. Also add the post to the SIDEBAR "সাম্প্রতিক লেখা" section (keep only latest 6-8)
+         5. Also update the ARCHIVE section if it's a new month/year
+         6. The NEWEST post goes at the TOP — it automatically shows as #1
+
+         NOTE: Do NOT change any IDs or pagination code.
+               The script handles display automatically based on POSTS_PER_PAGE.
+
+         ════════════════════════════════════════════════════════
+
+         ── NEW POST TEMPLATE (copy this block) ──
+
+         <div class="bpost" data-cat="অণুগল্প" data-year="২০২৪" data-month="জানুয়ারি">
+           <div class="bpimg">
+             <div class="bpic">✍</div>
+             <div class="bpil">পোস্টের শিরোনাম</div>
+           </div>
+           <div class="bpb">
+             <div class="bpm"><span class="bpcat c-mic">অণুগল্প</span><span class="bpdate">জানুয়ারি ২০২৪</span></div>
+             <a class="bptit" href="blogs/blog-004.html">পোস্টের শিরোনাম</a>
+             <div class="bpex"><p>প্রথম ২-৩ লাইনের সংক্ষিপ্তসার।</p></div>
+           </div>
+           <div class="bpf">
+             <a class="rmbtn" href="blogs/blog-004.html">সম্পূর্ণ পড়ুন →</a>
+             <div class="pshr">
+               <button class="sbt" onclick="sharePost('blogs/blog-004.html','fb')">Facebook</button>
+               <button class="sbt" onclick="sharePost('blogs/blog-004.html','tw')">X</button>
+             </div>
+           </div>
+         </div>
+
+         ─────────────────────────────────────────────────────── -->
+
+    <!-- ↓↓↓ ADD NEW POSTS HERE — NEWEST FIRST ↓↓↓ -->
+    
+    <div class="bpost" data-cat="অণুগল্প" data-year="২০২০" data-month="অগাস্ট ৬,">
+      <div class="bpimg">
+        <div class="image"><img src="https://writersanjoy.github.io/images/blogimages/blog-023-cover.jpg"></div>
+        <div class="bpil">ঝলসানো রুটি</div>
+      </div>
+      <div class="bpb">
+        <div class="bpm"><span class="bpcat c-mic">অণুগল্প</span><span class="bpdate">অগাস্ট ৬</span></div>
+        <a class="bptit" href="blogs/blog-023.html">ঝলসানো রুটি🫓</a>
+        <div class="bpex">
+          <p>দ্রুত বিকেলের আলো ফুরিয়ে আসছে। মরদ সেই কাকভোরে কাজে বেরিয়ে গেছে। ঘন্টাখানেক পরেই বাড়ি ফিরবে। বাড়ি বলতে এখন রেললাইন থেকে একটু দূরে একচিলতে জমিতে প্লাস্টিকের একটা ছাউনি। ফিরে এসেই সে ভাত খেতে চাইবে, অথচ ঘরে চাল বাড়ন্ত। শেফালি তাই দৌড়ে চলে এসেছে রেশনের দোকানে। এদিকে সন্ধে ...</p>
+        </div>
+      </div>
+      <div class="bpf">
+        <a class="rmbtn" href="blogs/blog-023.html">সম্পূর্ণ পড়ুন →</a>
+        <div class="pshr">
+          <button class="sbt" onclick="sharePost('blogs/blog23html','fb')">Facebook</button>
+          <button class="sbt" onclick="sharePost('blogs/blog-023.html','tw')">X</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="bpost" data-cat="প্রতিবেদন" data-year="২০২০" data-month="জুন ১৫,">
+      <div class="bpimg">
+        <div class="image"><img src="https://writersanjoy.github.io/images/blogimages/blog-022-cover.jpg"></div>
+        <div class="bpil">প্রতিবাদহীন</div>
+      </div>
+      <div class="bpb">
+        <div class="bpm"><span class="bpcat c-mic">প্রতিবেদন</span><span class="bpdate">জুন ১৫</span></div>
+        <a class="bptit" href="blogs/blog-022.html">প্রতিবাদহীন✊</a>
+        <div class="bpex">
+          <p>২৩ দিন ধরে রাজপথে হবু শিক্ষকেরা অনশনে বসেছেন। কারো কোন ভ্রুক্ষেপ নেই। না সরকারের, না প্রশাসনের। না থাকারই কথা। অগণতান্ত্রিক সরকার সবসময় ক্ষমতাকে নিরঙ্কুশ রাখতে চায়। তারা চায় স্থিতি। প্রতিটি বুর্জোয়া সরকার, গণতন্ত্রের নামে শুধুমাত্র ক্ষমতাকে কুক্ষিগত করে। সেই ক্ষমতাকে নিরঙ্কুশ করতে ...</p>
+        </div>
+      </div>
+      <div class="bpf">
+        <a class="rmbtn" href="blogs/blog-022.html">সম্পূর্ণ পড়ুন →</a>
+        <div class="pshr">
+          <button class="sbt" onclick="sharePost('blogs/blog22html','fb')">Facebook</button>
+          <button class="sbt" onclick="sharePost('blogs/blog-022.html','tw')">X</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="bpost" data-cat="অণুগল্প" data-year="২০২০" data-month="মে ১৬,">
+      <div class="bpimg">
+        <div class="image"><img src="https://writersanjoy.github.io/images/blogimages/blog-021-cover.jpg"></div>
+        <div class="bpil">অদৃশ্য</div>
+      </div>
+      <div class="bpb">
+        <div class="bpm"><span class="bpcat c-mic">অণুগল্প</span><span class="bpdate">মে ১৬</span></div>
+        <a class="bptit" href="blogs/blog-021.html">অদৃশ্য🚧</a>
+        <div class="bpex">
+          <p>দুপুরে খাওয়ার পরে বাসন ধুচ্ছিল মাধুরি। বসার ঘরে টিভি দেখতে দেখতে কর্তা চেঁচিয়ে উঠলেন, “জানো, লকডাউন বেড়ে গেল। মে মাসে শেষ পর্যন্ত।”</p>
+          <p>লকডাউন। লকডাউন । লকডাউন।</p>
+          <p>আবার লকডাউন বেড়ে গেল শুনে মাধুরি ক্ষেপে গেলেন। গত দু’মাসে...</p>
+        </div>
+      </div>
+      <div class="bpf">
+        <a class="rmbtn" href="blogs/blog-021.html">সম্পূর্ণ পড়ুন →</a>
+        <div class="pshr">
+          <button class="sbt" onclick="sharePost('blogs/blog21html','fb')">Facebook</button>
+          <button class="sbt" onclick="sharePost('blogs/blog-021.html','tw')">X</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="bpost" data-cat="প্রতিবেদন" data-year="২০১৯" data-month="অক্টোবর ২৫,">
+      <div class="bpimg">
+        <div class="image"><img src="https://writersanjoy.github.io/images/blogimages/blog-020-cover.jpg"></div>
+        <div class="bpil">পরিযায়ী শ্রমিকঃ তোমরা কি এদেশেরই মানুষ!</div>
+      </div>
+      <div class="bpb">
+        <div class="bpm"><span class="bpcat c-mic">প্রতিবেদন</span><span class="bpdate">অক্টোবর ২৫</span></div>
+        <a class="bptit" href="blogs/blog-020.html">পরিযায়ী শ্রমিক: তোমরা কি এদেশেরই মানুষ!🚶‍➡️</a>
+        <div class="bpex">
+          <p>গত কয়েক সপ্তাহ ধরে এক ভীষণ টানাপোড়েন চলছে। দেশের বিভিন্ন প্রান্তে, বিশেষ করে রাজ্যগুলোর রাজধানী আর বড়-মাঝারি শিল্পতালুকগুলিতে যেখানে প্রায় ২০ কোটি পরিযায়ী শ্রমিক তাদের পরিবারসুদ্ধ আটকে পড়েছেন গত দু’মাসের বেশী সময় ধরে।</p>
+          <p>লকডাউন শুরু হওয়ামাত্র সরকার প্রথমেই তাদের আটকে দিল। কি না...</p>
+        </div>
+      </div>
+      <div class="bpf">
+        <a class="rmbtn" href="blogs/blog-020.html">সম্পূর্ণ পড়ুন →</a>
+        <div class="pshr">
+          <button class="sbt" onclick="sharePost('blogs/blog20html','fb')">Facebook</button>
+          <button class="sbt" onclick="sharePost('blogs/blog-020.html','tw')">X</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="bpost" data-cat="প্রতিবেদন" data-year="২০১৯" data-month="সেপ্টেম্বর ২৮,">
+      <div class="bpimg">
+        <div class="image"><img src="https://writersanjoy.github.io/images/blogimages/blog-019-cover.jpg"></div>
+        <div class="bpil">চুলের ক্লিপ অথবা সরকারি কাঁকড়া</div>
+      </div>
+      <div class="bpb">
+        <div class="bpm"><span class="bpcat c-mic">প্রতিবেদন</span><span class="bpdate">সেপ্টেম্বর ২৮</span></div>
+        <a class="bptit" href="blogs/blog-019.html">চুলের ক্লিপ অথবা সরকারি কাঁকড়া📎</a>
+        <div class="bpex">
+          <p>মেয়েটা যখন খুব ছোট্ট ছিল, তখন ওর মা স্কুল থেকে ফিরলেই মেয়েটা মায়ের ব্যবহৃত সব জিনিস নিয়ে খেলা করার জন্য হামলে পড়ত। ওর মা তখন বাড়িতে ফিরেই তড়িঘড়ি ব্যস্ত হয়ে মেয়ের জন্য খাবার বানানোর জন্য রান্নাঘরে। এদিকে মেয়ে ততক্ষণে বিছানায় ফেলে যাওয়া শাড়িটা জড়িয়ে বসে আছে। কোনদিন...</p>
+        </div>
+      </div>
+      <div class="bpf">
+        <a class="rmbtn" href="blogs/blog-019.html">সম্পূর্ণ পড়ুন →</a>
+        <div class="pshr">
+          <button class="sbt" onclick="sharePost('blogs/blog19html','fb')">Facebook</button>
+          <button class="sbt" onclick="sharePost('blogs/blog-019.html','tw')">X</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="bpost" data-cat="ছোটগল্প" data-year="২০১৯" data-month="অগাস্ট ৯,">
+      <div class="bpimg">
+        <div class="image"><img src="https://writersanjoy.github.io/images/blogimages/blog-018-cover.jpg"></div>
+        <div class="bpil">বিষদাঁত</div>
+      </div>
+      <div class="bpb">
+        <div class="bpm"><span class="bpcat c-mic">ছোটগল্প</span><span class="bpdate">অগাস্ট ৯</span></div>
+        <a class="bptit" href="blogs/blog-018.html">বিষদাঁত⚖</a>
+        <div class="bpex">
+          <p>বিকেলের সূর্যটা পশ্চিম আকাশের এক কোণায় গিয়ে আটকে আছে। হরিহর সেই ডুবন্ত সূর্যের দিকে তাকিয়ে অপেক্ষা করতে থাকলেন কখন আলো নিভে আসে। আজকাল সূর্যের আলো তাঁর আর সহ্য হয় না। ভোরের আলো ফোটার আগেই বাড়ি থেকে বেরিয়ে পড়েন সাইকেলটা নিয়ে। পাক্কা তিন ক্রোশ সাইকেল চালিয়ে...</p>
+        </div>
+      </div>
+      <div class="bpf">
+        <a class="rmbtn" href="blogs/blog-018.html">সম্পূর্ণ পড়ুন →</a>
+        <div class="pshr">
+          <button class="sbt" onclick="sharePost('blogs/blog18html','fb')">Facebook</button>
+          <button class="sbt" onclick="sharePost('blogs/blog-018.html','tw')">X</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="bpost" data-cat="প্রতিবেদন" data-year="২০১৯" data-month="ফেব্রুয়ারি ১৯,">
+      <div class="bpimg">
+        <div class="image"><img src="https://writersanjoy.github.io/images/blogimages/blog-017-cover.jpg"></div>
+        <div class="bpil">পুতুলনাচ</div>
+      </div>
+      <div class="bpb">
+        <div class="bpm"><span class="bpcat c-mic">প্রতিবেদন</span><span class="bpdate">ফেব্রুয়ারি ১৯</span></div>
+        <a class="bptit" href="blogs/blog-017.html">পুতুলনাচ🎭</a>
+        <div class="bpex">
+          <p>“সবাই তো আর খারাপ নয়, কেউ কেউ খারাপ” -এইসব সোহাগী কথাবার্তার দিন বোধহয় শেষ। নারদকান্ডের ভিডিওতে এতগুলো মন্ত্রী-সাংসদ-পুলিশ থুতু লাগিয়ে টাকা গুনে গুনে নিল, সবাইকে চোখে আঙুল দিয়ে দেখিয়ে দেবার পরও সরকার আর পুলিশ কিছুতেই দেখতে পেল না। সবাই ভেবেছিল...</p>
+        </div>
+      </div>
+      <div class="bpf">
+        <a class="rmbtn" href="blogs/blog-017.html">সম্পূর্ণ পড়ুন →</a>
+        <div class="pshr">
+          <button class="sbt" onclick="sharePost('blogs/blog17html','fb')">Facebook</button>
+          <button class="sbt" onclick="sharePost('blogs/blog-017.html','tw')">X</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="bpost" data-cat="প্রতিবেদন" data-year="২০১৮" data-month="মে ২০,">
+      <div class="bpimg">
+        <div class="image"><img src="https://writersanjoy.github.io/images/blogimages/blog-016-cover.jpg"></div>
+        <div class="bpil">প্রাথমিক শিক্ষক নিয়োগঃ কোথায় এসে আমরা দাঁড়িয়েছি?</div>
+      </div>
+      <div class="bpb">
+        <div class="bpm"><span class="bpcat c-mic">প্রতিবেদন</span><span class="bpdate">মে ২০</span></div>
+        <a class="bptit" href="blogs/blog-016.html">প্রাথমিক শিক্ষক নিয়োগঃ কোথায় এসে আমরা দাঁড়িয়েছি?👨🏻‍🏫</a>
+        <div class="bpex">
+          <p>প্রাথমিক শিক্ষক নিয়োগ পরীক্ষার ফলাফল প্রকাশিত হবার কয়েকদিন পরেই একটি মর্মান্তিক খবর আমরা সবাই পড়েছি।</p>
+          <p>কেউ যেন মনে না করেন ঘুষ দিয়ে চাকরি পাওয়া যায় ইত্যাদি, ইত্যাদি। যদিও কোনটা যে সত্যি সেটা এখন...</p>
+        </div>
+      </div>
+      <div class="bpf">
+        <a class="rmbtn" href="blogs/blog-016.html">সম্পূর্ণ পড়ুন →</a>
+        <div class="pshr">
+          <button class="sbt" onclick="sharePost('blogs/blog16html','fb')">Facebook</button>
+          <button class="sbt" onclick="sharePost('blogs/blog-016.html','tw')">X</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="bpost" data-cat="প্রতিবেদন" data-year="২০১৮" data-month="জানুয়ারি ১৫,">
+      <div class="bpimg">
+        <div class="image"><img src="https://writersanjoy.github.io/images/blogimages/blog-015-cover.jpg"></div>
+        <div class="bpil">টাকা মাটি, মাটি...</div>
+      </div>
+      <div class="bpb">
+        <div class="bpm"><span class="bpcat c-mic">প্রতিবেদন</span><span class="bpdate">জানুয়ারি ১৫</span></div>
+        <a class="bptit" href="blogs/blog-015.html">টাকা মাটি, মাটি...₹</a>
+        <div class="bpex">
+          <p>আজ রাত ১২টার পর থেকে হঠাৎই ৫০০ আর ১০০০ টাকার বড় বড় নোটগুলো সাদা কাগজ হয়ে গেল। দেশের যতো চোর, ছ্যাঁচোড় আর কালা-ধনের কারবারিদের মাথায় হাত। মোদীভাই একি করলেন!</p>
+          <p>কাকপক্ষীতে ঘুণাক্ষরে জানতেও পারলো না! “দশভরি” সোনার চেন আর বি-এম-ডব্লু নিয়ে ঘুরে বেড়ানো টাকার...</p>
+        </div>
+      </div>
+      <div class="bpf">
+        <a class="rmbtn" href="blogs/blog-015.html">সম্পূর্ণ পড়ুন →</a>
+        <div class="pshr">
+          <button class="sbt" onclick="sharePost('blogs/blog-015.html','fb')">Facebook</button>
+          <button class="sbt" onclick="sharePost('blogs/blog-015.html','tw')">X</button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- ↓↓↓ ADDed before 6-May-26 ↓↓↓ --> 
+    <div class="bpost" data-cat="ছোটগল্প" data-year="২০১৭" data-month="জুলাই ১৭,">
+      <div class="bpimg">
+        <div class="image"><img src="https://writersanjoy.github.io/images/blogimages/blog-014-cover.jpg"></div>
+        <div class="bpil">স্ফুলিঙ্গ</div>
+      </div>
+      <div class="bpb">
+        <div class="bpm"><span class="bpcat c-mic">ছোটগল্প</span><span class="bpdate">জুলাই ২০১৭</span></div>
+        <a class="bptit" href="blogs/blog-014.html">স্ফুলিঙ্গ⚡</a>
+        <div class="bpex">
+          <p>তখন সবে সন্ধ্যা হয়েছে। ইন্দ্রপ্রস্থ গ্রামের শেষ প্রান্তে দিগন্ত বিস্তৃত এই জঙ্গলটা বেশ বড় আর গভীর। যত দিন গেছে ততই বাসিন্দার সংখ্যা বেড়েছে। তাই জঙ্গলের আয়তন কমছে। ‘মানুষ’জন আসে না বললে ভুল হবে, তবে পারতপক্ষে এড়িয়ে চলে।</p>
+          <p>কারণটা আর কিছুই না। জঙ্গলে মধ্যে জঙ্গলের রাজত্ব চলবে না তো ‘মানুষের’ রাজত্ব চলবে! কিন্তু সেটা ওই বড়-সড় মাথাওয়ালা, বুদ্ধির ঢেঁকি মানুষগুলোকে কে বোঝাতে...</p>
+        </div>
+      </div>
+      <div class="bpf">
+        <a class="rmbtn" href="blogs/blog-014.html">সম্পূর্ণ পড়ুন →</a>
+        <div class="pshr">
+          <button class="sbt" onclick="sharePost('blogs/blog-014.html','fb')">Facebook</button>
+          <button class="sbt" onclick="sharePost('blogs/blog-014.html','tw')">X</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="bpost" data-cat="প্রতিবেদন" data-year="২০১৭" data-month="মার্চ ৪,">
+      <div class="bpimg">
+        <div class="image"><img src="https://writersanjoy.github.io/images/blogimages/blog-013-cover.jpg"></div>
+        <div class="bpil">রাজনের পদত্যাগঃ কয়েকটি ভাবনা</div>
+      </div>
+      <div class="bpb">
+        <div class="bpm"><span class="bpcat c-mic">প্রতিবেদন</span><span class="bpdate">মার্চ ২০১৭</span></div>
+        <a class="bptit" href="blogs/blog-013.html">রাজনের পদত্যাগঃ কয়েকটি ভাবনা📈</a>
+        <div class="bpex">
+          <p>কলিকালের অসুরদের জ্বালায় দেশের সর্বোচ্চ সভাঘর থেকে আরো একবার ইন্দ্রের মহাপ্রস্থান হলো। এ দেশের অর্থনৈতিক ব্যবস্থায় সর্বোচ্চ পদাধিকারী এই মানুষটি এককথায় বলিউডের কোন নায়কের থেকে কিছু কম যান না। শুধু তাই নয়, পৃথিবীর অর্থনৈতিক জগতে যাঁরা ঘোরাফেরা করেন, তাঁরাও এই আগাগোড়া উচ্চশিক্ষিত ও মহিমান্বিত ডিগ্রির অধিকারী মানুষটিকে একডাকে চেনেন তো বটেই, আমাদের দেশে “দালাল স্ট্রীটের রজনীকান্ত” বলেও এনার পরিচিতি...</p>
+        </div>
+      </div>
+      <div class="bpf">
+        <a class="rmbtn" href="blogs/blog-013.html">সম্পূর্ণ পড়ুন →</a>
+        <div class="pshr">
+          <button class="sbt" onclick="sharePost('blogs/blog-013.html','fb')">Facebook</button>
+          <button class="sbt" onclick="sharePost('blogs/blog-013.html','tw')">X</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="bpost" data-cat="ছোটগল্প" data-year="২০১৬" data-month="জুন ২৮,">
+      <div class="bpimg">
+        <div class="image"><img src="https://writersanjoy.github.io/images/blogimages/blog-012-cover.jpg"></div>
+        <div class="bpil">Misplaced</div>
+      </div>
+      <div class="bpb">
+        <div class="bpm"><span class="bpcat c-mic">ছোটগল্প</span><span class="bpdate">জুন ২০১৬</span></div>
+        <a class="bptit" href="blogs/blog-012.html">Misplaced📜</a>
+        <div class="bpex">
+          <p>It's 7:30 in the Saturday evening. Sandip was about to switch off the laptop when the phone rang.</p>
+          <p>It was Maya.</p>
+          <p>Few months back, Amit and Maya were finally transferred back to Kolkata. Sandip and Amit had met few times after office hours on Saturdays...</p>
+        </div>
+      </div>
+      <div class="bpf">
+        <a class="rmbtn" href="blogs/blog-012.html">সম্পূর্ণ পড়ুন →</a>
+        <div class="pshr">
+          <button class="sbt" onclick="sharePost('blogs/blog-012.html','fb')">Facebook</button>
+          <button class="sbt" onclick="sharePost('blogs/blog-012.html','tw')">X</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="bpost" data-cat="প্রতিবেদন" data-year="২০১৬" data-month="জুন ১৬,">
+      <div class="bpimg">
+        <div class="image"><img src="https://writersanjoy.github.io/images/blogimages/blog-011-cover.jpg"></div>
+        <div class="bpil">সাধু সাবধান!</div>
+      </div>
+      <div class="bpb">
+        <div class="bpm"><span class="bpcat c-mic">প্রতিবেদন</span><span class="bpdate">জুন ২০১৬</span></div>
+        <a class="bptit" href="blogs/blog-011.html">সাধু সাবধান❗</a>
+        <div class="bpex">
+          <p>বেশ কিছুদিন ধরে একটা ব্যাপার লক্ষ্য করেছেন! যত বেশী সরকারী হাসপাতাল চালু হচ্ছে, খবরের কাগজে বেসরকারী হাসপাতাল আর নার্সিংহোমের বিজ্ঞাপনের সংখ্যা ধারাবাহিক ভাবে বেড়েই চলেছে। অনেকে অজানা অনেক নতুন নতুন রোগের খবর জানাচ্ছেন। কেউ কেউ বিনামূল্যে উপদেশ দিচ্ছেন। কেউ আবার শরীরে মারাত্মক ক্ষতবিক্ষত...</p>
+        </div>
+      </div>
+      <div class="bpf">
+        <a class="rmbtn" href="blogs/blog-011.html">সম্পূর্ণ পড়ুন →</a>
+        <div class="pshr">
+          <button class="sbt" onclick="sharePost('blogs/blog-011.html','fb')">Facebook</button>
+          <button class="sbt" onclick="sharePost('blogs/blog-011.html','tw')">X</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="bpost" data-cat="প্রতিবেদন" data-year="২০১৬" data-month="জুন ১,">
+      <div class="bpimg">
+        <div class="image"><img src="https://writersanjoy.github.io/images/blogimages/blog-010-cover.jpg"></div>
+        <div class="bpil">সারমেয় সংবাদ</div>
+      </div>
+      <div class="bpb">
+        <div class="bpm"><span class="bpcat c-mic">প্রতিবেদন</span><span class="bpdate">জুন ২০১৬</span></div>
+        <a class="bptit" href="blogs/blog-010.html">সারমেয় সংবাদ📢</a>
+        <div class="bpex">
+          <p>দিন কয়েক আগে কলকাতার একটি আবাসনে সে কি ধুন্ধুমার কাণ্ড। একদিন রাত্রে বেশ অনেকগুলি রাস্তার কুকুরকে কে বা কারা নৃশংসভাবে হত্যা করে ফেলে রেখে গেছে। তারপর থেকে সারমেয়প্রেমীদের তুমুল বিক্ষোভ, থানায় একাধিক ডাইরি হয়েছে। আবার এদিকে কুকুরের কামড়ে ভুক্তভোগীদের পালটা...</p>
+        </div>
+      </div>
+      <div class="bpf">
+        <a class="rmbtn" href="blogs/blog-010.html">সম্পূর্ণ পড়ুন →</a>
+        <div class="pshr">
+          <button class="sbt" onclick="sharePost('blogs/blog-010.html','fb')">Facebook</button>
+          <button class="sbt" onclick="sharePost('blogs/blog-010.html','tw')">X</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="bpost" data-cat="অণুগল্প" data-year="২০১৬" data-month="মে ২২,">
+      <div class="bpimg">
+        <div class="image"><img src="https://writersanjoy.github.io/images/blogimages/blog-009-cover.jpg"></div>
+        <div class="bpil">আলাপ</div>
+      </div>
+      <div class="bpb">
+        <div class="bpm"><span class="bpcat c-mic">অণুগল্প</span><span class="bpdate">মে ২০১৬</span></div>
+        <a class="bptit" href="blogs/blog-009.html">আলাপ❤️</a>
+        <div class="bpex">
+          <p>দর্শকভর্তি হলঘরের মঞ্চে কবিরা একটার পর একটা কবিতা পড়ে চলেছেন। যেন একটু আগেই পৃথিবী জন্ম নিয়েছে। কারণ পৃথিবীতে যে কোন প্রান্তে যখনই কোন কবিতা পড়া হয়, তখনই একটি করে নতুন জগতের জন্ম হয়। আবেশমুগ্ধ শ্রোতাদের মৃদু হাততালি যেন উচ্চারিত কবিতার শব্দগুলোকে...</p>
+        </div>
+      </div>
+      <div class="bpf">
+        <a class="rmbtn" href="blogs/blog-009.html">সম্পূর্ণ পড়ুন →</a>
+        <div class="pshr">
+          <button class="sbt" onclick="sharePost('blogs/blog-009.html','fb')">Facebook</button>
+          <button class="sbt" onclick="sharePost('blogs/blog-009.html','tw')">X</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="bpost" data-cat="ছোটগল্প" data-year="২০১৬" data-month="মে ৯,">
+      <div class="bpimg">
+        <div class="image"><img src="https://writersanjoy.github.io/images/blogimages/blog-008-cover.jpg"></div>
+        <div class="bpil">বিশুদ্ধ বাতাস</div>
+      </div>
+      <div class="bpb">
+        <div class="bpm"><span class="bpcat c-mic">ছোটগল্প</span><span class="bpdate">মে ২০১৬</span></div>
+        <a class="bptit" href="blogs/blog-008.html">বিশুদ্ধ বাতাস🌿</a>
+        <div class="bpex">
+          <p>হাঁপানির মানুষেরা ভোরে কাক ডাকার অপেক্ষায় থাকে। দু’একটা কাক ডেকেছে কি ডাকে নি তার আগেই সুজাতাদেবী বিছানা থেকে উঠে বারান্দায় এসে দাঁড়ালেন। আঃ, কি শান্তি। বাড়িতে পাঁচিল ঘেরা এই এক ফালি জায়গাটুকু আছে বলেই মনে হয় আরো কিছুদিন বাঁচা হবে। সুজাতাদেবী আকাশের দিকে তাকালেন। এবার, দূরে পূর্ব কোণে একটু কমলা রঙের...</p>
+        </div>
+      </div>
+      <div class="bpf">
+        <a class="rmbtn" href="blogs/blog-008.html">সম্পূর্ণ পড়ুন →</a>
+        <div class="pshr">
+          <button class="sbt" onclick="sharePost('blogs/blog-008.html','fb')">Facebook</button>
+          <button class="sbt" onclick="sharePost('blogs/blog-008.html','tw')">X</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="bpost" data-cat="প্রতিবেদন" data-year="২০১৬" data-month="এপ্রিল ২৫,">
+      <div class="bpimg">
+        <div class="image"><img src="https://writersanjoy.github.io/images/blogimages/blog-007-cover.jpg"></div>
+        <div class="bpil">মহিষাসুর</div>
+      </div>
+      <div class="bpb">
+        <div class="bpm"><span class="bpcat c-mic">প্রতিবেদন</span><span class="bpdate">এপ্রিল ২০১৬</span></div>
+        <a class="bptit" href="blogs/blog-007.html">মহিষাসুর😈</a>
+        <div class="bpex">
+          <p>নতুন দেশে বেড়াতে গিয়ে মানুষ চিনতে হলে অনেকেই স্থানীয় কাগজে পাত্র-পাত্রীর বিজ্ঞাপন পড়েন। ওই বিজ্ঞাপনের ভাষার মধ্যে কিছুটা হলেও খুঁজে পাওয়া যায় সে দেশের মানুষের শিক্ষা-সংস্কৃতি, আশা-আকাঙ্ক্ষা। সাথে মুখদর্শন হয় সমাজ-চরিত্রের। </p>
+          <p>এদেশে, সকালে কাগজ খুললেই একদলা কাদা-পাঁক মুখের উপর ছিটকে এসে পড়ে। কি সেই সমাজ-চিত্র! ঘুম থেকে উঠে দিন শুরু হয় হিংসা, রক্তপাত আর...</p>
+        </div>
+      </div>
+      <div class="bpf">
+        <a class="rmbtn" href="blogs/blog-007.html">সম্পূর্ণ পড়ুন →</a>
+        <div class="pshr">
+          <button class="sbt" onclick="sharePost('blogs/blog-007.html','fb')">Facebook</button>
+          <button class="sbt" onclick="sharePost('blogs/blog-007.html','tw')">X</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="bpost" data-cat="বই-খবর" data-year="২০১৬" data-month="এপ্রিল ১৭,">
+      <div class="bpimg">
+        <div class="image"><img src="https://writersanjoy.github.io/images/blogimages/blog-006-cover.jpg"></div>
+        <div class="bpil">নবদিগন্তের অভিমন্যুরা</div>
+      </div>
+      <div class="bpb">
+        <div class="bpm"><span class="bpcat c-mic">বই-খবর</span><span class="bpdate">এপ্রিল ২০১৬</span></div>
+        <a class="bptit" href="blogs/blog-006.html">নবদিগন্তের অভিমন্যুরা📕</a>
+        <div class="bpex">
+          <p>লোকে বলে SDF। সরকারি নাম নবদিগন্ত। কলকাতা মহানগরীর পূর্ব প্রান্তে দিগন্ত বিস্তৃত এক লবণাক্ত জলাভূমিতে গড়ে উঠেছে তথ্যপ্রযুক্তি শিল্প। প্রতি বছর হাজার হাজার তরুণ-তরুণী সেইসব সফটওয়্যার কারখানায় চাকরি শুরু করে। তারপর “কেরিয়ার” নামের অদৃশ্য সাপ-লুডো খেলায় খেলতে নেমে তারা কেমন থাকে ? পদোন্নতির সিঁড়ি বেয়ে তারা কোথায় একটা যেন পৌঁছতে চায়। এদিকে চাকরির সাথে তাল মেলাতে গিয়ে জীবনের দিকে ফিরে তাকানোর সময় নেই। দিবারাত্র নিজেদের নিংড়ে দেবার...</p>
+        </div>
+      </div>
+      <div class="bpf">
+        <a class="rmbtn" href="blogs/blog-006.html">সম্পূর্ণ পড়ুন →</a>
+        <div class="pshr">
+          <button class="sbt" onclick="sharePost('blogs/blog-006.html','fb')">Facebook</button>
+          <button class="sbt" onclick="sharePost('blogs/blog-006.html','tw')">X</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="bpost" data-cat="প্রতিবেদন" data-year="২০১৬" data-month="৬ এপ্রিল,">
+      <div class="bpimg">
+        <div class="image"><img src="https://writersanjoy.github.io/images/blogimages/blog-005-cover.jpg"></div>
+        <div class="bpil">বোতলবন্দী</div>
+      </div>
+      <div class="bpb">
+        <div class="bpm"><span class="bpcat c-mic">প্রতিবেদন</span><span class="bpdate">এপ্রিল ২০১৬</span></div>
+        <a class="bptit" href="blogs/blog-005.html">বোতলবন্দী🍾</a>
+        <div class="bpex">
+          <p>পটল, ধেনো, পাত্তি, ল্যাংড়া, চুন্নু - নামগুলোকে বেশ চেনা চেনা লাগছে না! একদম ঠিক ধরেছেন। এদের যেমন বাজারে কিনতে পাওয়া যায়, তেমনি অপরাধ জগতেও এই নামগুলো অতি পরিচিত। অনেকটা গরুর গায়ে এঁটুলির মতো সম্পর্ক।</p>
+          <p>তবে বেশীর ভাগ সময়ে এই নামগুলো জলহস্তীর মতো শুধু নাকটুকু...</p>
+        </div>
+      </div>
+      <div class="bpf">
+        <a class="rmbtn" href="blogs/blog-005.html">সম্পূর্ণ পড়ুন →</a>
+        <div class="pshr">
+          <button class="sbt" onclick="sharePost('blogs/blog-005.html','fb')">Facebook</button>
+          <button class="sbt" onclick="sharePost('blogs/blog-005.html','tw')">X</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="bpost" data-cat="প্রতিবেদন" data-year="২০১৬" data-month="২৪ মার্চ,">
+      <div class="bpimg">
+        <div class="image"><img src="https://writersanjoy.github.io/images/blogimages/blog-004-cover.jpg"></div>
+        <div class="bpil">প্রদীপের নীচে ‘আলো’</div>
+      </div>
+      <div class="bpb">
+        <div class="bpm"><span class="bpcat c-mic">প্রতিবেদন</span><span class="bpdate">মার্চ ২০১৬</span></div>
+        <a class="bptit" href="blogs/blog-004.html">প্রদীপের নীচে ‘আলো’🪔</a>
+        <div class="bpex">
+          <p>আবার চৈত্রমাস। আবার সর্বনাশ। আমাদের মতোই কারো ঘরে, সংসারে। দিল্লির অভিসার সিনেমা হল, পার্কস্ট্রীটের স্টিফেন কোর্ট, ঢাকুরিয়ার আমরি হাসপাতাল আর সর্বশেষ বিবেকানন্দ উড়ালপুল। শুধু ‘সাধারণ’ মানুষের অবিশ্রান্ত মৃত্যুমিছিল। দগ্ধ, অর্ধদগ্ধ, থেঁতলানো মাংসপিন্ডের মধ্যে...</p>
+        </div>
+      </div>
+      <div class="bpf">
+        <a class="rmbtn" href="blogs/blog-004.html">সম্পূর্ণ পড়ুন →</a>
+        <div class="pshr">
+          <button class="sbt" onclick="sharePost('blogs/blog-004.html','fb')">Facebook</button>
+          <button class="sbt" onclick="sharePost('blogs/blog-004.html','tw')">X</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="bpost" data-cat="প্রতিবেদন" data-year="২০১৬" data-month="১২ মার্চ,">
+      <div class="bpimg">
+        <div class="image"><img src="https://writersanjoy.github.io/images/blogimages/blog-003-cover.jpg"></div>
+        <div class="bpil">দিবস-মোহ</div>
+      </div>
+      <div class="bpb">
+        <div class="bpm"><span class="bpcat c-mic">প্রতিবেদন</span><span class="bpdate">মার্চ ২০১৬</span></div>
+        <a class="bptit" href="blogs/blog-003.html">দিবস-মোহ📆</a>
+        <div class="bpex">
+          <p>‘বারো মাসে তেরো পার্বণ’ ছাড়িয়ে এখন বছরের প্রতিটি দিনই হয় কোন দিবস কিংবা উৎসব।</p>
+          <p>গতকাল শিশুদিবস ছিল, আজ ক্যান্সার দিবস কিংবা আগামীকাল উপভোক্তা দিবস উদযাপন করা হবে। অথচ নারীদিবসের দিনেই মধ্যপ্রদেশের...</p>
+        </div>
+      </div>
+      <div class="bpf">
+        <a class="rmbtn" href="blogs/blog-003.html">সম্পূর্ণ পড়ুন →</a>
+        <div class="pshr">
+          <button class="sbt" onclick="sharePost('blogs/blog-003.html','fb')">Facebook</button>
+          <button class="sbt" onclick="sharePost('blogs/blog-003.html','tw')">X</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="bpost" data-cat="প্রতিবেদন" data-year="২০১৬" data-month="২ মার্চ,">
+      <div class="bpimg">
+        <div class="image"><img src="https://writersanjoy.github.io/images/blogimages/blog-002-cover.jpg"></div>
+        <div class="bpil">ছোবল</div>
+      </div>
+      <div class="bpb">
+        <div class="bpm"><span class="bpcat c-rep">প্রতিবেদন</span><span class="bpdate">মার্চ ২০১৬</span></div>
+        <a class="bptit" href="blogs/blog-002.html">ছোবল🐦‍🔥</a>
+        <div class="bpex">
+          <p>ভোট-নাট্য শুরু। আলুর দাম ঊর্ধ্বগামী। পেঁয়াজের কান্না কাঁদতে হবে ভোটের পরে। যে মজুতদারেরা ভোটের খরচ জোগাচ্ছেন তারা যে ত্যাগ ধর্মে বিশ্বাসী নন, হাড়েহাড়ে জানেন।</p>
+          <p> কিন্তু নিরুপায়। হাঁড়িকাঠের দিকে তাকিয়ে ছাগলেরও কিছু করার থাকে না।...</p>
+        </div>
+      </div>
+      <div class="bpf">
+        <a class="rmbtn" href="blogs/blog-002.html">সম্পূর্ণ পড়ুন →</a>
+        <div class="pshr">
+          <button class="sbt" onclick="sharePost('blogs/blog-002.html','fb')">Facebook</button>
+          <button class="sbt" onclick="sharePost('blogs/blog-002.html','tw')">X</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="bpost" data-cat="প্রতিবেদন" data-year="২০১৬" data-month="২৩ ফেব্রুয়ারি,">
+      <div class="bpimg">
+        <div class="image"><img src="https://writersanjoy.github.io/images/blogimages/blog-001-cover.jpg"></div>
+        <div class="bpil">বসন্ত এসে গেছে!</div>
+      </div>
+      <div class="bpb">
+        <div class="bpm"><span class="bpcat c-sto">প্রতিবেদন</span><span class="bpdate">ফেব্রুয়ারি ২০১৬</span></div>
+        <a class="bptit" href="blogs/blog-001.html">বসন্ত এসে গেছে!🌷</a>
+        <div class="bpex">
+          <p>শীত বিদায় নিচ্ছে। ভোরবেলার বাতাসে একটু শিরশিরে ভাব। তাই ঘুমের ঘোরে চাদরটা গায়ে টেনে নিলে নিদ্রাভঙ্গের পরেও আরামের রেশটুকু মনে কিছুটা ছড়িয়ে পড়ে। কিন্তু অফিস যাবার তাড়া। তাই সকালের কাগজটাকে বগলদাবা করে সোজা প্রাতরাশের টেবিলে।...</p>
+        </div>
+      </div>
+      <div class="bpf">
+        <a class="rmbtn" href="blogs/blog-001.html">সম্পূর্ণ পড়ুন →</a>
+        <div class="pshr">
+          <button class="sbt" onclick="sharePost('blogs/blog-001.html','fb')">Facebook</button>
+          <button class="sbt" onclick="sharePost('blogs/blog-001.html','tw')">X</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ↑↑↑ ADD NEW POSTS ABOVE THIS LINE — NEWEST FIRST ↑↑↑ -->
+
+    <!-- Pagination — DO NOT EDIT -->
+    <div class="pgn" id="pgn"></div>
+
+    <!-- No results message -->
+    <div class="no-results" id="no-results" style="display:none">
+      এই বিভাগে কোনো লেখা পাওয়া যায়নি।
+    </div>
+
+  </div><!-- /blog-list -->
+
+  <!-- ══ RIGHT: SIDEBAR ══ -->
+  <aside class="sbar">
+
+    <!-- Search -->
+    <div class="sblk">
+      <div class="sbhd">🔍 খুঁজুন</div>
+      <div class="sbbd">
+        <div class="bsrch">
+          <input type="text" id="bsi" placeholder="লেখা খুঁজুন..." onkeydown="if(event.key==='Enter')doSearch()">
+          <button onclick="doSearch()">→</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent posts — update when you add new posts (keep latest 6-8) -->
+    <div class="sblk">
+      <div class="sbhd">📋 সাম্প্রতিক লেখা</div>
+      <div class="sbbd" id="sidebar-recent">
+        <!-- ══ UPDATE THIS when adding new posts — keep latest 6-8 ══ -->
+        <a class="sbpi" href="blogs/blog-001.html"><div class="sbdot"></div><span class="sbpt">ঝলসানো রুটি — আগস্ট ২০২৩</span></a>
+        <a class="sbpi" href="blogs/blog-002.html"><div class="sbdot"></div><span class="sbpt">প্রতিবাদহীন, — আগস্ট ২০২০</span></a>
+        <a class="sbpi" href="blogs/blog-003.html"><div class="sbdot"></div><span class="sbpt">অদৃশ্য — মে ২০২০</span></a>
+      </div>
+    </div>
+
+    <!-- Category filter -->
+    <div class="sblk">
+      <div class="sbhd">🏷 বিভাগ</div>
+      <div class="sbbd">
+        <div class="ctags">
+          <button class="ctag on" onclick="filterCat('all',this)">সব</button>
+          <button class="ctag" onclick="filterCat('প্রতিবেদন',this)">প্রতিবেদন</button>
+          <button class="ctag" onclick="filterCat('ছোটগল্প',this)">ছোটগল্প</button>
+          <button class="ctag" onclick="filterCat('অণুগল্প',this)">অণুগল্প</button>
+          <button class="ctag" onclick="filterCat('বিহ্বল গল্প',this)">বিহ্বল গল্প</button>
+          <button class="ctag" onclick="filterCat('কবিতা',this)">কবিতা</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Archive — update when you add posts in a new month/year -->
+    <div class="sblk">
+      <div class="sbhd">📅 সংগ্রহশালা</div>
+      <div class="sbbd">
+        <!-- ══ UPDATE THIS when adding posts in new months ══ -->
+        <div class="archyr">
+          <div class="archyh" onclick="toggleArch(this)"><span>২০২৩</span><span>▼</span></div>
+          <div class="archms">
+            <div class="archm" onclick="filterMonth('২০২৩','আগস্ট')"><span>আগস্ট</span><span class="archc">১</span></div>
+          </div>
+        </div>
+        <div class="archyr">
+          <div class="archyh" onclick="toggleArch(this)"><span>২০২০</span><span>▼</span></div>
+          <div class="archms">
+            <div class="archm" onclick="filterMonth('২০২০','আগস্ট')"><span>আগস্ট</span><span class="archc">১</span></div>
+            <div class="archm" onclick="filterMonth('২০২০','মে')"><span>মে</span><span class="archc">২</span></div>
+          </div>
+        </div>
+        <div class="archyr">
+          <div class="archyh" onclick="toggleArch(this)"><span>২০১৭</span><span>▼</span></div>
+          <div class="archms">
+            <div class="archm" onclick="filterMonth('২০১৭','অক্টোবর')"><span>অক্টোবর</span><span class="archc">১</span></div>
+            <div class="archm" onclick="filterMonth('২০১৭','সেপ্টেম্বর')"><span>সেপ্টেম্বর</span><span class="archc">১</span></div>
+          </div>
+        </div>
+        <div class="archyr">
+          <div class="archyh" onclick="toggleArch(this)"><span>২০১৬</span><span>►</span></div>
+        </div>
+        <button style="font-family:'Hind Siliguri',sans-serif;font-size:.72rem;color:var(--ink-mu);background:none;border:none;cursor:pointer;margin-top:.5rem;padding:.2rem 0" onclick="filterCat('all',document.querySelector('.ctag'))">← সব দেখুন</button>
+      </div>
+    </div>
+
+    <!-- Favourite links -->
+    <div class="sblk">
+      <div class="sbhd">🔗 পছন্দের ব্লগ</div>
+      <div class="sbbd">
+        <a class="sbpi" href="https://www.omicronlab.com/avro-keyboard.html" target="_blank"><div class="sbdot" style="background:var(--teal)"></div><span class="sbpt" style="color:var(--teal)">অভ্র হরফ</span></a>
+        <a class="sbpi" href="http://www.galpopath.com/" target="_blank"><div class="sbdot" style="background:var(--teal)"></div><span class="sbpt" style="color:var(--teal)">গল্পপাঠ</span></a>
+        <a class="sbpi" href="http://www.sachalayatan.com/" target="_blank"><div class="sbdot" style="background:var(--teal)"></div><span class="sbpt" style="color:var(--teal)">সচলায়তন</span></a>
+        <a class="sbpi" href="http://tagoreweb.in/" target="_blank"><div class="sbdot" style="background:var(--teal)"></div><span class="sbpt" style="color:var(--teal)">সম্পূর্ণ রবীন্দ্র-রচনাবলী</span></a>
+      </div>
+    </div>
+
+  </aside>
+</div><!-- /blayout -->
+
+<!-- ════ SETTINGS ════ -->
+<div id="settings-btn" onclick="toggleSettings()" title="সেটিংস">⚙</div>
+<div id="settings-overlay" onclick="closeSettings()"></div>
+<div id="settings-panel">
+  <div class="sp-header"><span>⚙ সেটিংস</span><button onclick="closeSettings()">✕</button></div>
+  <div class="sp-section"><div class="sp-label">🎨 থিম</div><div class="sp-grid">
+    <button class="theme-btn active" data-theme="classic" onclick="setTheme('classic',this)">📜 ক্লাসিক</button>
+    <button class="theme-btn" data-theme="dark" onclick="setTheme('dark',this)">🌙 ডার্ক</button>
+    <button class="theme-btn" data-theme="sepia" onclick="setTheme('sepia',this)">🍂 সেপিয়া</button>
+    <button class="theme-btn" data-theme="mint" onclick="setTheme('mint',this)">🌿 মিন্ট</button>
+    <button class="theme-btn" data-theme="rose" onclick="setTheme('rose',this)">🌸 রোজ</button>
+    <button class="theme-btn" data-theme="night" onclick="setTheme('night',this)">🔵 নাইট</button>
+  </div></div>
+  <div class="sp-section"><div class="sp-label">✍ ফন্ট</div><div class="sp-font-list">
+    <button class="font-btn active" data-font="hind" onclick="setFont('hind',this)"><span class="font-preview">বাংলা</span>Hind Siliguri</button>
+    <button class="font-btn" data-font="baloo" onclick="setFont('baloo',this)"><span class="font-preview">বাংলা</span>Baloo Da 2</button>
+    <button class="font-btn" data-font="tiro" onclick="setFont('tiro',this)"><span class="font-preview">বাংলা</span>Tiro Bangla</button>
+    <button class="font-btn" data-font="noto-serif" onclick="setFont('noto-serif',this)"><span class="font-preview">বাংলা</span>Noto Serif</button>
+    <button class="font-btn" data-font="noto-sans" onclick="setFont('noto-sans',this)"><span class="font-preview">বাংলা</span>Noto Sans</button>
+  </div></div>
+  <div class="sp-section"><div class="sp-label">🔠 লেখার আকার</div><div class="sp-size-row">
+    <button class="size-btn" onclick="setSize(14)">ছোট</button>
+    <button class="size-btn active" onclick="setSize(16)">স্বাভাবিক</button>
+    <button class="size-btn" onclick="setSize(18)">বড়</button>
+    <button class="size-btn" onclick="setSize(20)">বড়তর</button>
+  </div></div>
+  <div class="sp-section"><button class="reset-btn" onclick="resetSettings()">↺ ডিফল্টে ফিরুন</button></div>
+</div>
+
+<footer>
+  © সঞ্জয় মণ্ডল · সর্বস্বত্ব সংরক্ষিত ·
+  <a href="index.html">প্রথম পাতায় ফিরুন</a>
+</footer>
+
+<script>
+// ════════════════════════════════════════
+// PAGINATION ENGINE
+// Change POSTS_PER_PAGE to show more/fewer per page
+// ════════════════════════════════════════
+const POSTS_PER_PAGE = 2; // ← Change this number freely
+
+let allPosts = [];        // all .bpost elements
+let filtered = [];        // after category/search filter
+let currentPage = 1;
+let currentCat = 'all';
+
+function init() {
+  allPosts = Array.from(document.querySelectorAll('.bpost'));
+  // Hide all first — JS will show them
+  allPosts.forEach(p => p.style.display = 'none');
+  filtered = [...allPosts];
+  updateTotal();
+  renderPage(1);
+}
+
+function updateTotal() {
+  const el = document.getElementById('post-total-display');
+  if (el) el.textContent = `মোট ${filtered.length}টি লেখা`;
+}
+
+function renderPage(page) {
+  currentPage = page;
+  const total = filtered.length;
+  const totalPages = Math.ceil(total / POSTS_PER_PAGE);
+  const start = (page - 1) * POSTS_PER_PAGE;
+  const end   = start + POSTS_PER_PAGE;
+
+  // Hide all
+  allPosts.forEach(p => p.style.display = 'none');
+
+  // Show current page slice
+  const pageItems = filtered.slice(start, end);
+  pageItems.forEach(p => p.style.display = '');
+
+  // No results
+  document.getElementById('no-results').style.display =
+    filtered.length === 0 ? '' : 'none';
+
+  // Build pagination
+  buildPagination(page, totalPages);
+
+  // Scroll to top of list
+  if (page > 1) window.scrollTo({ top: 120, behavior: 'smooth' });
+}
+
+function buildPagination(cur, total) {
+  const pgn = document.getElementById('pgn');
+  if (total <= 1) { pgn.innerHTML = ''; return; }
+
+  let html = '';
+
+  // Prev arrow
+  if (cur > 1) {
+    html += `<button class="pgb" onclick="renderPage(${cur-1})">‹</button>`;
+  }
+
+  // Page numbers with smart ellipsis
+  for (let i = 1; i <= total; i++) {
+    if (i === 1 || i === total || (i >= cur-1 && i <= cur+1)) {
+      html += `<button class="pgb${i===cur?' cur':''}" onclick="renderPage(${i})">${toBengaliNum(i)}</button>`;
+    } else if (i === cur-2 || i === cur+2) {
+      html += `<button class="pgb pgb-sep">…</button>`;
+    }
+  }
+
+  // Next arrow
+  if (cur < total) {
+    html += `<button class="pgb" onclick="renderPage(${cur+1})">›</button>`;
+  }
+
+  pgn.innerHTML = html;
+}
+
+function toBengaliNum(n) {
+  const bn = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+  return String(n).split('').map(d => bn[parseInt(d)] || d).join('');
+}
+
+// ── CATEGORY FILTER ──
+function filterCat(cat, btn) {
+  currentCat = cat;
+  document.querySelectorAll('.ctag').forEach(b => b.classList.remove('on'));
+  if (btn) btn.classList.add('on');
+  applyFilter();
+}
+
+// ── MONTH/YEAR FILTER ──
+function filterMonth(year, month) {
+  // Reset category pills
+  document.querySelectorAll('.ctag').forEach(b => b.classList.remove('on'));
+  currentCat = 'all';
+  filtered = allPosts.filter(p =>
+    p.dataset.year === year && p.dataset.month === month
+  );
+  updateTotal();
+  renderPage(1);
+}
+
+// ── SEARCH ──
+function doSearch() {
+  const q = document.getElementById('bsi').value.trim().toLowerCase();
+  if (!q) { applyFilter(); return; }
+
+  filtered = allPosts.filter(p => {
+    const title   = (p.querySelector('.bptit')||{}).textContent || '';
+    const excerpt = (p.querySelector('.bpex')||{}).textContent || '';
+    const cat     = (p.querySelector('.bpcat')||{}).textContent || '';
+    return (title + excerpt + cat).toLowerCase().includes(q);
+  });
+
+  // If category filter also active
+  if (currentCat !== 'all') {
+    filtered = filtered.filter(p => p.dataset.cat === currentCat);
+  }
+
+  updateTotal();
+  renderPage(1);
+}
+
+// ── APPLY COMBINED FILTER ──
+function applyFilter() {
+  if (currentCat === 'all') {
+    filtered = [...allPosts];
+  } else {
+    filtered = allPosts.filter(p => p.dataset.cat === currentCat);
+  }
+  updateTotal();
+  renderPage(1);
+}
+
+// ── ARCHIVE TOGGLE ──
+function toggleArch(hd) {
+  const m = hd.nextElementSibling;
+  const a = hd.querySelector('span:last-child');
+  if (!m) return;
+  if (m.style.display === 'none') { m.style.display = ''; a.textContent = '▼'; }
+  else { m.style.display = 'none'; a.textContent = '►'; }
+}
+
+// ── SHARE ──
+function sharePost(path, platform) {
+  const url = encodeURIComponent('https://writersanjoy.github.io/' + path);
+  if (platform === 'fb') window.open('https://www.facebook.com/sharer/sharer.php?u='+url, '_blank');
+  if (platform === 'tw') window.open('https://twitter.com/intent/tweet?url='+url, '_blank');
+}
+
+// ── SETTINGS ──
+const FONTS = {
+  'hind':"'Hind Siliguri',sans-serif", 'baloo':"'Baloo Da 2',cursive",
+  'tiro':"'Tiro Bangla',serif", 'noto-serif':"'Noto Serif Bengali',serif",
+  'noto-sans':"'Noto Sans Bengali',sans-serif"
+};
+const THEMES = {
+  classic:{'--ink':'#1a1208','--ink-lt':'#3d3020','--ink-md':'#6b5a45','--ink-mu':'#9a8a76','--paper':'#faf8f4','--paper-w':'#f5f1e8','--paper-d':'#ede8de','--gold':'#b8860b','--gold-l':'#d4a017','--gold-p':'#fdf4d8','--red':'#8b1a1a','--nav-bg':'#1a1208'},
+  dark:{'--ink':'#e8e0d0','--ink-lt':'#c8bfaf','--ink-md':'#a09080','--ink-mu':'#706050','--paper':'#1a1612','--paper-w':'#221e18','--paper-d':'#2a251e','--gold':'#d4a017','--gold-l':'#e8b820','--gold-p':'#2a2010','--red':'#e06060','--nav-bg':'#0e0c08'},
+  sepia:{'--ink':'#2c1a0a','--ink-lt':'#4a3020','--ink-md':'#7a5a3a','--ink-mu':'#aa8a6a','--paper':'#f8f0e0','--paper-w':'#f0e4cc','--paper-d':'#e4d4b4','--gold':'#8b6a20','--gold-l':'#a07828','--gold-p':'#f8edd8','--red':'#7a2020','--nav-bg':'#2c1a0a'},
+  mint:{'--ink':'#0a2018','--ink-lt':'#1a3828','--ink-md':'#4a7060','--ink-mu':'#7aaa98','--paper':'#f0faf6','--paper-w':'#e0f4ec','--paper-d':'#c8e8dc','--gold':'#2a8060','--gold-l':'#38a078','--gold-p':'#d8f4ec','--red':'#c04060','--nav-bg':'#0a2018'},
+  rose:{'--ink':'#2a0a18','--ink-lt':'#4a1a28','--ink-md':'#8a5060','--ink-mu':'#c0909a','--paper':'#fff8f9','--paper-w':'#f8eef0','--paper-d':'#f0dde0','--gold':'#c06080','--gold-l':'#d87090','--gold-p':'#fce8ec','--red':'#a02040','--nav-bg':'#2a0a18'},
+  night:{'--ink':'#c8d8f0','--ink-lt':'#a0b8e0','--ink-md':'#7090b8','--ink-mu':'#506888','--paper':'#0a1020','--paper-w':'#101828','--paper-d':'#182030','--gold':'#6090e0','--gold-l':'#78a8f8','--gold-p':'#101828','--red':'#7090e0','--nav-bg':'#060c18'}
+};
+function toggleSettings(){document.getElementById('settings-panel').classList.toggle('open');document.getElementById('settings-overlay').classList.toggle('open');}
+function closeSettings(){document.getElementById('settings-panel').classList.remove('open');document.getElementById('settings-overlay').classList.remove('open');}
+function setTheme(n,b){const t=THEMES[n];if(!t)return;Object.entries(t).forEach(([k,v])=>document.documentElement.style.setProperty(k,v));document.querySelector('nav').style.background=t['--nav-bg'];document.querySelectorAll('.theme-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');localStorage.setItem('sm-theme',n);}
+function setFont(n,b){const f=FONTS[n];if(!f)return;document.body.style.fontFamily=f;document.querySelectorAll('.font-btn').forEach(x=>{x.classList.remove('active');const fp=x.querySelector('.font-preview');if(fp)fp.style.fontFamily=FONTS[x.dataset.font]||f;});b.classList.add('active');localStorage.setItem('sm-font',n);}
+function setSize(px){document.documentElement.style.fontSize=px+'px';document.querySelectorAll('.size-btn').forEach(x=>x.classList.remove('active'));event.target.classList.add('active');localStorage.setItem('sm-size',px);}
+function resetSettings(){['sm-theme','sm-font','sm-size'].forEach(k=>localStorage.removeItem(k));location.reload();}
+(function(){
+  const t=localStorage.getItem('sm-theme'),f=localStorage.getItem('sm-font'),s=localStorage.getItem('sm-size');
+  if(t){const b=document.querySelector('.theme-btn[data-theme="'+t+'"]');if(b)setTheme(t,b);}
+  if(f){const b=document.querySelector('.font-btn[data-font="'+f+'"]');if(b)setFont(f,b);}
+  if(s)document.documentElement.style.fontSize=s+'px';
+  setTimeout(()=>{document.querySelectorAll('.font-btn').forEach(b=>{const fp=b.querySelector('.font-preview');if(fp&&FONTS[b.dataset.font])fp.style.fontFamily=FONTS[b.dataset.font];});},400);
+})();
+
+// ── INIT ──
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
