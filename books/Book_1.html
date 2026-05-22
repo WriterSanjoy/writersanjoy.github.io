@@ -791,7 +791,6 @@ footer a{color:var(--gold-l);text-decoration:none}
   <!-- ══ RIGHT: BUY BOX end ══ -->
 
 </div>
-
   
 <!-- ════ SETTINGS BUTTON + PANEL ════ -->
 <div id="settings-btn" onclick="toggleSettings()" title="সেটিংস">⚙</div>
@@ -953,10 +952,9 @@ function placeHardOrder(){
     customer_email: email,
     customer_address: addr,
     order_date: new Date().toLocaleString('bn-IN')
-    }),
+    };
     //book_image: 'https://writersanjoy.github.io/images/cover-nabadiganta.webp' // ✅ image URL
-  };
-
+ 
   fetch("/api/sendOrder", {
   method: "POST",
   headers: { "Content-Type": "application/json" },
@@ -975,7 +973,6 @@ function placeHardOrder(){
     btn.style.display = "block";
     document.getElementById('hard-error').style.display = "block";
   });
-
 }
 
 // ══════════════════════════════════════════════════
