@@ -265,6 +265,13 @@ footer a{color:var(--gold-l);text-decoration:none}
 .rdr-buy:hover{background:#6e1414;transform:translateY(-1px)}
 @media(max-width:640px){#reader-modal{margin:.5rem;border-radius:var(--r-lg) var(--r-lg) 0 0;max-height:96vh}#reader-body{padding:1.5rem 1.25rem}#reader-toolbar{padding:.65rem 1rem}}
 
+/* ══ INPUT Error ══ */ 
+.error {
+  color: red;
+  font-size: 0.9em;
+  display: none; /* hidden until validation fails */
+} 
+  
 </style>
 </head>
 <body>
@@ -668,10 +675,29 @@ footer a{color:var(--gold-l);text-decoration:none}
           <div class="dlv-step"><div class="dlv-num">৩</div><div class="dlv-text">৩-৫ কার্যদিবসে Speed Post / Courier-এ পাঠানো হবে</div></div>
           <div class="dlv-step"><div class="dlv-num">৪</div><div class="dlv-text">Tracking নম্বর SMS / ইমেলে পাঠানো হবে</div></div>
         </div>
-        <div class="bf"><label>পুরো নাম *</label><input type="text" id="h-name" placeholder="প্রাপকের নাম"></div>
-        <div class="bf"><label>মোবাইল নম্বর *</label><input type="tel" id="h-phone" placeholder="+91 XXXXX XXXXX"></div>
-        <div class="bf"><label>ইমেল ঠিকানা *<span style="font-size:.68rem;font-weight:400;color:var(--ink-mu);margin-left:.4rem">নিশ্চিতকরণ এখানে আসবে</span></label><input type="email" id="h-email" placeholder="yourname@gmail.com"></div>
-        <div class="bf"><label>পূর্ণ ঠিকানা *</label><textarea id="h-addr" placeholder="বাড়ি নং, রাস্তা, এলাকা, শহর, পিন কোড"></textarea></div>
+        <div class="bf">
+          <label>পুরো নাম *</label>
+          <input type="text" id="h-name" placeholder="আপনার নাম"/>
+          <span class="error" id="err-name"></span>
+        </div>
+        
+        <div class="bf">
+          <label>মোবাইল নম্বর *</label>
+          <input type="tel" id="h-phone" placeholder="+91 1234567890"/>
+          <span class="error" id="err-phone"></span>
+        </div>
+        
+        <div class="bf">
+          <label>ইমেল ঠিকানা *<span style="font-size:.68rem;font-weight:400;color:var(--ink-mu);margin-left:.4rem">নিশ্চিতকরণ এখানে আসবে</span></label>
+          <input type="email" id="h-email" placeholder="name@provider.com"/>
+          <span class="error" id="err-email"></span>
+        </div>
+        
+        <div class="bf">
+          <label>পূর্ণ ঠিকানা *</label>
+          <textarea id="h-addr" placeholder="বাড়ি নং, রাস্তা, এলাকা, শহর, পিন কোড"></textarea>
+          <span class="error" id="err-addr"></span>
+        </div>
 
         <!-- Order button -->
         <button class="buy-submit" id="hard-order-btn" onclick="placeHardOrder()">📦 অর্ডার করুন — ₹৪০৫</button>
@@ -907,6 +933,15 @@ function placeHardOrder(){
   //const EMAILJS_SERVICE  = process.env.EMAILJS_SERVICE_ID; all 3 Moved to Bankend
   //const EMAILJS_ORDER_T  = process.env.EMAILJS_TEMPLATE_CONFIRM_ID; // Order confirmation → publisher
   //const EMAILJS_AUTOREPLY= process.env.EMAILJS_TEMPLATE_REPLY_ID; // Auto-reply → customer
+  
+  // Clear old errors
+  ['err-name','err-phone','err-email','err-addr'].forEach(id => {
+    const el = document.getElementById(id);
+    el.textContent = '';
+    el.style.display = 'none';
+  });
+  
+  //Static value of Book. change for new book
   const BOOK_TITLE       = 'নবদিগন্তের অভিমন্যুরা';
   const BOOK_PRICE       = '₹৪০৫';
   // CHANGE: Your WhatsApp number (with country code, no + or spaces)
@@ -923,17 +958,44 @@ function placeHardOrder(){
   if(!email) { alert('অনুগ্রহ করে ইমেল ঠিকানা দিন।'); return; }
   if(!addr)  { alert('অনুগ্রহ করে পূর্ণ ঠিকানা দিন।'); return; }
   
+  let valid = true;
+  
   // Regex validation
+  if(!name) {
+    document.getElementById('err-name').textContent = 'অনুগ্রহ করে আপনার নাম দিন।';
+    document.getElementById('err-name').style.display = 'block';
+    valid = false;
+  }
+  
   const phoneRegex = /^\+\d{2}\s?\d{10}$/;
-  if(!phoneRegex.test(phone)) {
-    alert('মোবাইল নম্বর ফরম্যাট: +91 9876543210 অথবা +919876543210'); 
-    return;
+  if(!phone) {
+    document.getElementById('err-phone').textContent = 'অনুগ্রহ করে মোবাইল নম্বর দিন।';
+    document.getElementById('err-phone').style.display = 'block';
+    valid = false;
+  } else if(!phoneRegex.test(phone)) {
+    document.getElementById('err-phone').textContent = 'ফরম্যাট: +91 9876543210 অথবা +919876543210';
+    document.getElementById('err-phone').style.display = 'block';
+    valid = false;
   }
+  
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if(!emailRegex.test(email)) {
-    alert('ইমেল ফরম্যাট: name@provider.com'); 
-    return;
+  if(!email) {
+    document.getElementById('err-email').textContent = 'অনুগ্রহ করে ইমেল ঠিকানা দিন।';
+    document.getElementById('err-email').style.display = 'block';
+    valid = false;
+  } else if(!emailRegex.test(email)) {
+    document.getElementById('err-email').textContent = 'ইমেল ফরম্যাট: name@provider.com';
+    document.getElementById('err-email').style.display = 'block';
+    valid = false;
   }
+  
+  if(!addr) {
+    document.getElementById('err-addr').textContent = 'অনুগ্রহ করে পূর্ণ ঠিকানা দিন।';
+    document.getElementById('err-addr').style.display = 'block';
+    valid = false;
+  }
+  
+  if(!valid) return; // stop if validation fails
   
   // Build WhatsApp URL (always ready as fallback)
   const waMsg = encodeURIComponent(
