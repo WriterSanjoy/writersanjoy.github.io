@@ -901,9 +901,9 @@ document.addEventListener('keydown',function(e){
 // ══════════════════════════════════════════════════
 // EmailJS CREDENTIALS
 // ══════════════════════════════════════════════════
-const EMAILJS_SERVICE  = 'service_zpz35ij';
-const EMAILJS_ORDER_T  = 'template_lxwa8da'; // Order confirmation → publisher
-const EMAILJS_AUTOREPLY= 'template_104ldeb'; // Auto-reply → customer
+const EMAILJS_SERVICE  = process.env.EMAILJS_SERVICE_ID;
+const EMAILJS_ORDER_T  = process.env.EMAILJS_TEMPLATE_CONFIRM_ID; // Order confirmation → publisher
+const EMAILJS_AUTOREPLY= process.env.EMAILJS_TEMPLATE_REPLY_ID; // Auto-reply → customer
 const BOOK_TITLE       = 'নবদিগন্তের অভিমন্যুরা';
 const BOOK_PRICE       = '₹৪০৫';
 // CHANGE: Your WhatsApp number (with country code, no + or spaces)
@@ -952,62 +952,30 @@ function placeHardOrder(){
     customer_phone: phone,
     customer_email: email,
     customer_address: addr,
-    order_date: new Date().toLocaleDateString('bn-IN', {
-    year:'numeric', month:'long', day:'numeric',
-    hour:'2-digit', minute:'2-digit'
+    order_date: new Date().toLocaleString('bn-IN')
     }),
     //book_image: 'https://writersanjoy.github.io/images/cover-nabadiganta.webp' // ✅ image URL
-    //order_date: new Date().toString() // simpler format
   };
 
-  // Build the message string dynamically in JS
-  let messageBlock = "";
-  if (BOOK_TITLE) {
-    messageBlock = `
-      Order Confirmation Details:
-      Book: ${BOOK_TITLE}
-      Price: ${BOOK_PRICE}
-      Type: 'হার্ডবাইন্ড (ছাপা বই)'
-      Date: ${new Date().toString()}
-    `;
-  }
-  
-  // Send order notification to publisher
-  emailjs.send(EMAILJS_SERVICE, EMAILJS_ORDER_T, orderParams)
-    .then(function(){
-      // Auto-reply to customer (only variables template expects)
-      const autoReplyParams = {
-      to_email: email,
-      to_name: name,
-      header: BOOK_TITLE,
-      message_block: messageBlock
-      };
-    
-      return emailjs.send(EMAILJS_SERVICE, EMAILJS_AUTOREPLY, autoReplyParams);
-    })
-    .then(function(){
-      // ✅ Both emails sent successfully
-      sending.style.display = 'none';
-      document.getElementById('success-hard').style.display = 'block';
-      // Clear form
-      ['h-name','h-phone','h-email','h-addr'].forEach(function(id){
-        const el = document.getElementById(id);
-        if(el) el.value = '';
-      });
-    })
-    .catch(function(err){
-      // ❌ EmailJS failed — show error + WhatsApp fallback
-      console.error('EmailJS error:', err);
-      sending.style.display = 'none';
-      btn.style.display = 'block';
-      document.getElementById('hard-error').style.display = 'block';
-      // Show WhatsApp fallback button prominently
-      const wabtn = document.getElementById('whatsapp-order-btn');
-      if(wabtn){
-        wabtn.href = waUrl;
-        wabtn.style.display = 'flex';
-      }
-    });
+  fetch("/api/sendOrder", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(orderParams)
+  })
+  .then(res => res.json())
+  .then(data => {
+    // ✅ Success
+    sending.style.display = "none";
+    document.getElementById('success-hard').style.display = 'block';
+  })
+  .catch(err => {
+    // ❌ Error
+    console.error("Backend error:", err);
+    sending.style.display = "none";
+    btn.style.display = "block";
+    document.getElementById('hard-error').style.display = "block";
+  });
+
 }
 
 // ══════════════════════════════════════════════════
