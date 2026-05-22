@@ -810,34 +810,45 @@ function placeHardOrder(){
   })
   .then(res => res.json())
   .then(data => {
-    // ✅ Success
-    //sending.style.display = "none";
-    document.getElementById('success-hard').style.display = 'block';
-    ['h-name','h-phone','h-email','h-addr'].forEach(id => document.getElementById(id).value = '');
-  })
-  .catch(err => {
-    // ❌ Error
-    console.error("Backend error:", err);
-    //sending.style.display = "none";
-    //btn.style.display = "block";
-    document.getElementById('hard-error').style.display = "block";
-    
-    // Reset inputs
+    // Clear inputs and reset indicators
     ['h-name','h-phone','h-email','h-addr'].forEach(id => {
+      document.getElementById(id).value = '';
       document.getElementById(id).classList.remove('valid','invalid');
     });
 
-    // Hide success checkmarks
     ['ok-name','ok-phone','ok-email','ok-addr'].forEach(id => {
       const ok = document.getElementById(id);
       if(ok) ok.style.display = 'none';
     });
 
-    // Hide error messages
     ['err-name','err-phone','err-email','err-addr'].forEach(id => {
       const err = document.getElementById(id);
       if(err) err.style.display = 'none';
     });
+    
+    // ✅ Show acknowledgement AFTER reset
+    document.getElementById('success-hard').style.display = 'block';
+    //['h-name','h-phone','h-email','h-addr'].forEach(id => document.getElementById(id).value = '');
+    })
+  .catch(err => {
+    console.error("Backend error:", err);
+    
+     ['h-name','h-phone','h-email','h-addr'].forEach(id => {
+      document.getElementById(id).classList.remove('valid','invalid');
+    });
+
+    ['ok-name','ok-phone','ok-email','ok-addr'].forEach(id => {
+      const ok = document.getElementById(id);
+      if(ok) ok.style.display = 'none';
+    });
+
+    ['err-name','err-phone','err-email','err-addr'].forEach(id => {
+      const err = document.getElementById(id);
+      if(err) err.style.display = 'none';
+    });
+    
+    // ❌ Show error acknowledgement
+    document.getElementById('hard-error').style.display = 'block';
   });
 }
 
