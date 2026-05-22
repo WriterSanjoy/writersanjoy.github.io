@@ -22,7 +22,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Baloo+Da+2:wght@400;500;600;700&family=Tiro+Bangla:ital@0;1&family=Noto+Serif+Bengali:wght@300;400;500;600;700&family=Noto+Sans+Bengali:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <!-- Linking style.css -->
-<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="books.css">
 
 </head>
 <body>
@@ -821,6 +821,23 @@ function placeHardOrder(){
     //sending.style.display = "none";
     //btn.style.display = "block";
     document.getElementById('hard-error').style.display = "block";
+    
+    // Reset inputs
+    ['h-name','h-phone','h-email','h-addr'].forEach(id => {
+      document.getElementById(id).classList.remove('valid','invalid');
+    });
+
+    // Hide success checkmarks
+    ['ok-name','ok-phone','ok-email','ok-addr'].forEach(id => {
+      const ok = document.getElementById(id);
+      if(ok) ok.style.display = 'none';
+    });
+
+    // Hide error messages
+    ['err-name','err-phone','err-email','err-addr'].forEach(id => {
+      const err = document.getElementById(id);
+      if(err) err.style.display = 'none';
+    });
   });
 }
 
