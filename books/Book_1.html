@@ -898,20 +898,20 @@ document.addEventListener('keydown',function(e){
 });
 
 // ══════════════════════════════════════════════════
-// EmailJS CREDENTIALS
-// ══════════════════════════════════════════════════
-const EMAILJS_SERVICE  = process.env.EMAILJS_SERVICE_ID;
-const EMAILJS_ORDER_T  = process.env.EMAILJS_TEMPLATE_CONFIRM_ID; // Order confirmation → publisher
-const EMAILJS_AUTOREPLY= process.env.EMAILJS_TEMPLATE_REPLY_ID; // Auto-reply → customer
-const BOOK_TITLE       = 'নবদিগন্তের অভিমন্যুরা';
-const BOOK_PRICE       = '₹৪০৫';
-// CHANGE: Your WhatsApp number (with country code, no + or spaces)
-const WA_NUMBER        = '919830622345';
-
-// ══════════════════════════════════════════════════
 // হার্ডবাইন্ড ORDER — EmailJS + WhatsApp
 // ══════════════════════════════════════════════════
 function placeHardOrder(){
+  // ══════════════════════════════════════════════════
+  // EmailJS CREDENTIALS
+  // ══════════════════════════════════════════════════
+  const EMAILJS_SERVICE  = process.env.EMAILJS_SERVICE_ID;
+  const EMAILJS_ORDER_T  = process.env.EMAILJS_TEMPLATE_CONFIRM_ID; // Order confirmation → publisher
+  const EMAILJS_AUTOREPLY= process.env.EMAILJS_TEMPLATE_REPLY_ID; // Auto-reply → customer
+  const BOOK_TITLE       = 'নবদিগন্তের অভিমন্যুরা';
+  const BOOK_PRICE       = '₹৪০৫';
+  // CHANGE: Your WhatsApp number (with country code, no + or spaces)
+  const WA_NUMBER        = '919830622345';
+
   const name  = document.getElementById('h-name').value.trim();
   const phone = document.getElementById('h-phone').value.trim();
   const email = document.getElementById('h-email').value.trim();
@@ -922,7 +922,7 @@ function placeHardOrder(){
   if(!phone) { alert('অনুগ্রহ করে মোবাইল নম্বর দিন।'); return; }
   if(!email) { alert('অনুগ্রহ করে ইমেল ঠিকানা দিন।'); return; }
   if(!addr)  { alert('অনুগ্রহ করে পূর্ণ ঠিকানা দিন।'); return; }
-
+  
   // Build WhatsApp URL (always ready as fallback)
   const waMsg = encodeURIComponent(
     '📦 নতুন অর্ডার — ' + BOOK_TITLE + '\n\n' +
