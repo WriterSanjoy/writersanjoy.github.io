@@ -4,7 +4,26 @@ const owner = process.env.GITHUB_OWNER;
 const repo = process.env.GITHUB_REPO;
 const token = process.env.GITHUB_TOKEN;
 
-const path = "comments/books/book1.json";
+const bookId =
+    req.method === "GET"
+        ? req.query.bookId
+        : req.body.bookId;
+
+const path =
+    `comments/books/${bookId}.json`;
+  
+const allowedBooks = [
+    "book1",
+    "book2",
+    "book3"
+];
+
+if (!allowedBooks.includes(bookId)) {
+    return res.status(400).json({
+        success: false,
+        message: "Invalid book"
+    });
+}
 
 if (req.method === "GET") {
 
