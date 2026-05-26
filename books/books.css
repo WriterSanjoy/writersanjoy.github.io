@@ -372,3 +372,18 @@ footer a{color:var(--gold-l);text-decoration:none}
 .load-more-btn:hover{
     background:#dcdcdc;
 }
+/* ===== for showing avg rating ===== */
+.rating-summary{
+    text-align:center;
+    margin:12px 0 20px;
+}
+
+.rating-stars{
+    font-size:1.2rem;
+    font-weight:700;
+}
+
+.rating-count{
+    color:#777;
+    font-size:.9rem;
+}

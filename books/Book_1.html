@@ -272,6 +272,7 @@
     <!-- Reader Comments Section -->
     <div class="section" id="reader-comments">
       <div class="section-head">⭐ পাঠকের মতামত</div>
+        <div id="ratingSummary"></div>
         <!-- Section Body -->
         <div class="section-body">
           <!-- Comments Container -->
@@ -1257,6 +1258,8 @@ async function loadComments() {
 
         allComments =
             await response.json();
+      
+        renderRatingSummary();
 
         renderComments();
 
@@ -1265,6 +1268,43 @@ async function loadComments() {
         console.error(error);
 
     }
+}
+
+function renderRatingSummary() {
+
+    if (allComments.length < 5) {
+        return;
+    }
+
+    const total =
+        allComments.reduce(
+            (sum, item) =>
+                sum + Number(item.rating || 5),
+            0
+        );
+
+    const average =
+        (total / allComments.length)
+            .toFixed(1);
+
+    const rounded =
+        Math.round(average);
+
+    const stars =
+        "★".repeat(rounded) +
+        "☆".repeat(5 - rounded);
+
+    document.getElementById("ratingSummary").innerHTML = `
+        <div class="rating-summary">
+            <div class="rating-stars">
+                ${stars} ${average}/5
+            </div>
+
+            <div class="rating-count">
+                (${allComments.length} জন পাঠকের মতামত)
+            </div>
+        </div>
+    `;
 }
 
 function renderComments() {
@@ -1300,15 +1340,17 @@ function renderComments() {
         stars.className =
             "comment-stars";
       
-        const rating =
-            Number(item.rating) || 5;
+        const rating = Math.min(
+            5,
+            Math.max(
+                1,
+                Number(item.rating) || 5
+            )
+        );
 
         stars.textContent =
           "★".repeat(Number(item.rating)) +
           "☆".repeat(5 - Number(item.rating));
-
-        stars.textContent =
-            "★★★★★";
 
         const text =
             document.createElement("div");
