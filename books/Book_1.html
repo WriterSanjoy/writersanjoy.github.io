@@ -1187,6 +1187,8 @@ document
   .addEventListener("submit", async function(e) {
 
     e.preventDefault();
+  
+    const bookId = "book1"; //Change 
 
     const name =
       document.getElementById("cname").value.trim();
@@ -1222,6 +1224,7 @@ document
           },
 
           body: JSON.stringify({
+            bookId,  
             name,
             comment,
             rating,
@@ -1254,7 +1257,8 @@ async function loadComments() {
     try {
 
         const response =
-            await fetch("/api/comments");
+            //await fetch("/api/comments");
+            await fetch(`/api/comments?bookId=${bookId}`);
 
         allComments =
             await response.json();
