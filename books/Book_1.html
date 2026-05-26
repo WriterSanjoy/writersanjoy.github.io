@@ -315,7 +315,7 @@
           </form>
 
         <!-- Display comments -->
-        <div id="comments"></div>
+        <!--<div id="comments"></div>-->
       </div>
     </div>
 
@@ -1208,7 +1208,9 @@ document
         await response.json();
 
       alert(result.message);
+      visibleCount += 1;
       loadComments();
+      document.getElementById("reviewForm").reset();
 
     } catch(error) {
 
@@ -1219,53 +1221,111 @@ document
 
 });
   
+let allComments = [];
+let visibleCount = 4;
+
 async function loadComments() {
 
-  try {
+    try {
 
-    const response = await fetch("/api/comments");
+        const response =
+            await fetch("/api/comments");
 
-    const comments = await response.json();
+        allComments =
+            await response.json();
+
+        renderComments();
+
+    } catch(error) {
+
+        console.error(error);
+
+    }
+}
+
+function renderComments() {
 
     const commentsDiv =
-      document.getElementById("comments");
+        document.getElementById("comments");
 
     commentsDiv.innerHTML = "";
 
-    comments.forEach(item => {
+    const visibleComments =
+        allComments.slice(0, visibleCount);
 
-    const card = document.createElement("div");
-    card.className = "comment-card";
+    visibleComments.forEach(item => {
 
-    const name = document.createElement("div");
-    name.className = "comment-name";
-    name.textContent = item.name;
+        const card =
+            document.createElement("div");
 
-    const date = document.createElement("div");
-    date.className = "comment-date";
-    date.textContent =
-      new Date(item.date).toLocaleDateString();
+        card.className =
+            "comment-card";
 
-    const comment = document.createElement("div");
-    comment.className = "comment-text";
-    comment.textContent = item.comment;
+        const name =
+            document.createElement("div");
 
-    card.appendChild(name);
-    card.appendChild(date);
-    card.appendChild(comment);
+        name.className =
+            "comment-name";
 
-    commentsDiv.appendChild(card);
-});
+        name.textContent =
+            item.name;
 
-  } catch(error) {
+        const date =
+            document.createElement("div");
 
-    console.error(error);
+        date.className =
+            "comment-date";
 
-  }
+        date.textContent =
+            new Date(item.date)
+                .toLocaleDateString("bn-BD");
+
+        const stars =
+            document.createElement("div");
+
+        stars.className =
+            "comment-stars";
+
+        stars.textContent =
+            "★★★★★";
+
+        const text =
+            document.createElement("div");
+
+        text.className =
+            "comment-text";
+
+        text.textContent =
+            item.comment;
+
+        card.appendChild(name);
+        card.appendChild(date);
+        card.appendChild(stars);
+        card.appendChild(text);
+
+        commentsDiv.appendChild(card);
+    });
+
+    const btn =
+        document.getElementById("loadMoreBtn");
+
+    btn.style.display =
+        visibleCount >= allComments.length
+            ? "none"
+            : "inline-block";
 }
 
-// Load comments when page opens
-loadComments();  
+document
+    .getElementById("loadMoreBtn")
+    .addEventListener("click", () => {
+
+        visibleCount += 4;
+
+        renderComments();
+});
+
+loadComments();
+
 //COMMENT Code ════  - Sanjoy 25May - end  
   
 </script>
