@@ -322,8 +322,7 @@ footer a{color:var(--gold-l);text-decoration:none}
 /* ===== Comment Cards ===== */
 
 .comment-card{
-    padding:10px 0;
-    border-bottom:1px solid #ddd;
+    padding:8px 0;
 }
 
 .comment-card:last-child{
@@ -331,9 +330,7 @@ footer a{color:var(--gold-l);text-decoration:none}
 }
 
 .comment-name{
-    font-weight:700;
-    font-size:1rem;
-    margin-bottom:2px;
+    margin-bottom:1px;
 }
 
 .comment-date{
@@ -343,14 +340,11 @@ footer a{color:var(--gold-l);text-decoration:none}
 }
 
 .comment-stars{
-    color:#f5a623;
-    font-size:.85rem;
-    margin-bottom:4px;
+    margin-bottom:3px;
 }
 
 .comment-text{
-    font-size:.9rem;
-    line-height:1.45;
+    line-height:1.4;
 }
 
 /* ===== Load More ===== */
