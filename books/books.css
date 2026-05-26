@@ -397,15 +397,16 @@ footer a{color:var(--gold-l);text-decoration:none}
 }
 
 #reader-comments #ratingSummary{
-    margin-top:4px;
+    margin-top:6px;
+    text-align:center;
 }
 
 #reader-comments .rating-stars{
-    font-size:.8rem;
+    font-size:0.9rem;
     font-weight:600;
 }
 
 #reader-comments .rating-count{
-    font-size:.8rem;
-    opacity:.9;
+    font-size:0.8rem;
+    margin-top:2px;
 }

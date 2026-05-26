@@ -1293,17 +1293,14 @@ function renderRatingSummary() {
         "★".repeat(rounded) +
         "☆".repeat(5 - rounded);
 
-    document.getElementById("ratingSummary").innerHTML = `
-        <div class="rating-summary">
-            <div class="rating-stars">
-                ${stars} ${average}/5
-            </div>
-
-            <div class="rating-count">
-                (${allComments.length} জন পাঠকের মতামত)
-            </div>
-        </div>
-    `;
+document.getElementById("ratingSummary").innerHTML = `
+    <div class="rating-stars">
+        ${stars} ${average}/5
+    </div>
+    <div class="rating-count">
+        (${allComments.length} জন পাঠকের মতামত)
+    </div>
+`;
 }
 
 function renderComments() {
