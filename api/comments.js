@@ -52,7 +52,7 @@ if (req.method === "GET") {
       });
     }
     
-    if (comment.length > 150) {
+    if (comment.length > 300) {
       return res.status(400).json({
         success: false,
         message: "Comment cannot exceed 150 characters"
