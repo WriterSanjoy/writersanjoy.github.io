@@ -29,7 +29,7 @@ if (req.method === "GET") {
 
   try {
 
-    const { name, comment, website } = req.body;
+    const { name, comment, rating, website } = req.body;
     
     if (website) {
       return res.status(403).json({
@@ -49,6 +49,13 @@ if (req.method === "GET") {
       return res.status(400).json({
         success: false,
         message: "Name cannot exceed 50 characters"
+      });
+    }
+
+    if (!rating) {
+      return res.status(400).json({
+      success: false,
+      message: "Rating required"
       });
     }
     
@@ -82,6 +89,7 @@ if (req.method === "GET") {
     comments.unshift({
       name,
       comment,
+      rating,
       date: new Date().toISOString()
     });
 
