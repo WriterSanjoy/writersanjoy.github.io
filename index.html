@@ -1315,7 +1315,7 @@ function setupEmailJS() {
     const message = formData.get("message").trim();
 
     // Build message block
-    let messageBlock = `
+    const messageBlock = `
       Message Confirmation Details:
       cust_name: ${name}
       cust_Mobile: ${mobile}
@@ -1343,15 +1343,26 @@ function setupEmailJS() {
 
       spinner.style.display = "none";
 
-      if (result.success) {
+      //if (result.success) {
+      //  successMsg.style.display = "block";
+      //  form.reset(); // ✅ Clear form after success
+      //} else {
+      //  errorMsg.style.display = "block";
+      //  console.error("FAILED...", result.details);
+      //}
+      if (result.error) {
+        errorMsg.textContent = "❌ " + result.error;
+        errorMsg.style.display = "block";
+        //console.error("FAILED...", result.error, result.details);
+      } else {
+        successMsg.textContent = "✅ " + result.message;
         successMsg.style.display = "block";
         form.reset(); // ✅ Clear form after success
-      } else {
-        errorMsg.style.display = "block";
-        console.error("FAILED...", result.details);
       }
+
     } catch (err) {
       spinner.style.display = "none";
+      errorMsg.textContent = "❌ Network error: " + err.message;
       errorMsg.style.display = "block";
       console.error("Error calling backend:", err);
     }

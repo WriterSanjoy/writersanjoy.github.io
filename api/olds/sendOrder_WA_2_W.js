@@ -23,12 +23,7 @@ export default async function handler(req, res) {
         to_name: orderParams.customer_name,
         to_email: orderParams.customer_email,
         header: orderParams.book_title,
-        book_icon: orderParams.book_icon,
-        message_block: `Order Confirmation Details:\n
-          Book: ${orderParams.book_title}\n
-          Price: ${orderParams.book_price}\n
-          Type: ${orderParams.order_type}\n
-          Date: ${orderParams.order_date}`
+        message_block: `Order Confirmation Details:\nBook: ${orderParams.book_title}\nPrice: ${orderParams.book_price}\nType: ${orderParams.order_type}\nDate: ${orderParams.order_date}`
       },
       {
         publicKey: process.env.EMAILJS_PUBLIC_KEY,

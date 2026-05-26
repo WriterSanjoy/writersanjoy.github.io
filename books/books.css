@@ -246,40 +246,74 @@ footer a{color:var(--gold-l);text-decoration:none}
 @media(max-width:640px){#reader-modal{margin:.5rem;border-radius:var(--r-lg) var(--r-lg) 0 0;max-height:96vh}#reader-body{padding:1.5rem 1.25rem}#reader-toolbar{padding:.65rem 1rem}}
 
 /* ══ INPUT Error ══ */ 
-input, textarea {
-  border: 1px solid #ccc;
-  padding: 8px;
-  border-radius: 4px;
-  outline: none;
-}
+.msg { font-size: 0.8rem; color: red; display: none; }
+.valid-check { color: green; margin-left: 6px; }
 
-input.valid, textarea.valid {
-  border-color: green;
-}
-
-input.invalid, textarea.invalid {
-  border-color: red;
-}
-
-.error {
-  color: red;
-  font-size: 0.9em;
-  display: none; /* hidden until validation fails */
-}
-
-.success {
-  color: green;
-  font-size: 1.2em;
-  margin-left: 6px;
+#success-hard {
   display: none;
+  background: #e6f9e6;
+  border: 1px solid #2e8b57;
+  color: #2e8b57;
+  padding: .75rem;
+  border-radius: 4px;
+  font-family: 'Hind Siliguri', sans-serif;
 }
 
-/* ═══════════════════════════════════════════════
-   STYLES For Published files
-═══════════════════════════════════════════════ */
+/* ══ Added after books_Rebased_Modified_3_Working ══ */ 
+/* ══
+.hint {
+  font-size: 0.75rem;
+  color: #666;
+  display: block;
+  margin-top: 2px;
+}
 
+.msg {
+  font-size: 0.8rem;
+  color: red;
+  display: none;
+} ══ */ 
 
+.msg {
+  font-size: 0.8rem;
+  display: block;
+  margin-top: 2px;
+}
+.hint { color: #666; }       /* default grey hint */
+.error { color: red; }       /* invalid */
+.valid { color: green; }     /* ✅ valid */
 
-/* ═══════════════════════════════════════════════
-   STYLES For Blog files
-═══════════════════════════════════════════════ */
+/* ══ For WhatsApp ══ */ 
+.error-box {
+  background: #ffe5e5;
+  border: 1px solid #cc0000;
+  color: #a00;
+  padding: 8px 12px;
+  margin-top: 8px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-family: 'Hind Siliguri', sans-serif;
+}
+
+/* ══ For Message Module by CHatGPT ══ */ 
+.comment-card{
+    border:1px solid #ddd;
+    border-radius:8px;
+    padding:12px;
+    margin-top:12px;
+}
+
+.comment-name{
+    font-weight:bold;
+}
+
+.comment-date{
+    font-size:12px;
+    color:#666;
+    margin-bottom:8px;
+}
+
+.comment-text{
+    line-height:1.5;
+}
+

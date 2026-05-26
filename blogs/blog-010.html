@@ -1,84 +1,20 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>সারমেয় সংবাদ — সঞ্জয় মণ্ডল</title>
-<meta name="description" content="সারমেয় সংবাদ — সঞ্জয় মণ্ডলের প্রতিবেদন">
-<meta property="og:title" content="সারমেয় সংবাদ — সঞ্জয় মণ্ডল">
-<meta property="og:type" content="article">
-<meta property="og:image" content="https://writersanjoy.github.io/images/blogimages/blog-010-cover.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Baloo+Da+2:wght@400;500;600;700&family=Tiro+Bangla:ital@0;1&family=Noto+Serif+Bengali:wght@300;400;500;600;700&family=Noto+Sans+Bengali:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--ink:#1a1208;--ink-lt:#3d3020;--ink-md:#6b5a45;--ink-mu:#9a8a76;--paper:#faf8f4;--paper-w:#f5f1e8;--paper-d:#ede8de;--gold:#b8860b;--gold-l:#d4a017;--gold-p:#fdf4d8;--red:#8b1a1a;--teal:#1a5f5a;--teal-p:#e8f5f4;--bdr:rgba(26,18,8,.12);--bdr-s:rgba(26,18,8,.22);--r:4px;--r-lg:8px;}
-html{scroll-behavior:smooth}
-body{font-family:'Hind Siliguri','Noto Sans Bengali',sans-serif;background:var(--paper);color:var(--ink);line-height:1.8;font-size:16px}
-nav{background:var(--ink);padding:0 2.5rem;position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;height:58px;box-shadow:0 2px 16px rgba(0,0,0,.35)}
-.nbrand{font-family:'Noto Serif Bengali',serif;font-size:1.05rem;font-weight:700;color:var(--gold-l);text-decoration:none}
-.nlinks{display:flex;list-style:none}
-.nlinks li a{font-family:'Hind Siliguri',sans-serif;font-size:.82rem;color:rgba(255,255,255,.62);text-decoration:none;padding:.4rem 1rem;display:block;transition:color .2s;border-bottom:2px solid transparent}
-.nlinks li a:hover{color:#fff}.nlinks li a.act{color:var(--gold-l);border-bottom-color:var(--gold-l)}
-.nburg{display:none;background:none;border:none;color:#fff;font-size:1.4rem;cursor:pointer;padding:.3rem}
-.mmenu{display:none;background:#0e0c08;position:fixed;top:58px;left:0;right:0;z-index:199;border-top:1px solid rgba(255,255,255,.08)}
-.mmenu.open{display:block}
-.mmenu a{display:block;font-family:'Hind Siliguri',sans-serif;font-size:.95rem;color:rgba(255,255,255,.72);text-decoration:none;padding:.7rem 1.75rem;border-bottom:1px solid rgba(255,255,255,.05)}
-.breadcrumb{background:var(--paper-w);border-bottom:1px solid var(--bdr);padding:.65rem 2rem;font-family:'Hind Siliguri',sans-serif;font-size:.78rem;color:var(--ink-mu)}
-.breadcrumb a{color:var(--ink-md);text-decoration:none}.breadcrumb a:hover{color:var(--red)}
-.breadcrumb span{margin:0 .4rem}
-.post-wrap{max-width:780px;margin:0 auto;padding:2.5rem 2rem 5rem}
-.back-btn{display:inline-flex;align-items:center;gap:.4rem;font-family:'Hind Siliguri',sans-serif;font-size:.82rem;color:var(--ink-md);background:none;border:1px solid var(--bdr-s);border-radius:var(--r);padding:.4rem .9rem;text-decoration:none;margin-bottom:1.5rem;transition:all .18s}
-.back-btn:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
-.post-cat{font-family:'Hind Siliguri',sans-serif;font-size:.72rem;font-weight:600;padding:.25rem .85rem;border-radius:100px;letter-spacing:.04em;display:inline-block;margin-bottom:.9rem}
-.c-rep{background:#fef3e8;color:#7a4500}.c-sto{background:#e8f4fd;color:#0a4a7a}
-.c-mic{background:#e8fdf0;color:#0a5a2a}.c-bih{background:#f0e8fd;color:#4a0a7a}.c-poem{background:#fdf0f8;color:#7a0a5a}
-.post-title{font-family:'Noto Serif Bengali',serif;font-size:clamp(1.7rem,4vw,2.5rem);font-weight:700;line-height:1.3;margin-bottom:1rem}
-.post-meta{display:flex;flex-wrap:wrap;gap:1.5rem;padding:1rem 0;border-top:1px solid var(--bdr);border-bottom:2px solid var(--bdr-s);margin-bottom:2rem}
-.meta-item{display:flex;flex-direction:column;gap:2px}
-.meta-label{font-family:'Hind Siliguri',sans-serif;font-size:.68rem;color:var(--ink-mu);text-transform:uppercase;letter-spacing:.08em;font-weight:500}
-.meta-value{font-family:'Hind Siliguri',sans-serif;font-size:.82rem;font-weight:600;color:var(--ink-lt)}
-.post-body{font-family:'Noto Serif Bengali',serif;font-size:1.05rem;line-height:2.05;color:var(--ink-lt)}
-.post-body p{margin-bottom:1.2rem}
-.post-body blockquote{border-left:4px solid var(--gold);padding:1rem 1.5rem;margin:1.5rem 0;background:var(--gold-p);font-style:italic;color:var(--ink-lt);border-radius:0 var(--r) var(--r) 0}
-.share-section{margin-top:3rem;padding:1.5rem;background:var(--paper-w);border:1px solid var(--bdr);border-radius:var(--r-lg);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
-.share-text{font-family:'Noto Serif Bengali',serif;font-size:.95rem;color:var(--ink-lt)}
-.share-btns{display:flex;gap:.5rem}
-.share-btn{font-family:'Hind Siliguri',sans-serif;font-size:.78rem;font-weight:600;padding:.4rem 1rem;border-radius:100px;border:none;cursor:pointer;text-decoration:none;display:inline-block}
-.share-btn.fb{background:#1877f2;color:#fff}.share-btn.tw{background:#000;color:#fff}
-.post-nav{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
-.pnav-card{background:#fff;border:1px solid var(--bdr);border-radius:var(--r-lg);padding:1rem 1.25rem;text-decoration:none;transition:all .2s;display:block}
-.pnav-card:hover{border-color:var(--gold);box-shadow:0 3px 12px rgba(26,18,8,.08)}
-.pnav-dir{font-family:'Hind Siliguri',sans-serif;font-size:.7rem;color:var(--ink-mu);letter-spacing:.06em;margin-bottom:.3rem}
-.pnav-title{font-family:'Noto Serif Bengali',serif;font-size:.9rem;font-weight:600;color:var(--ink-lt);line-height:1.4}
-.post-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.5rem}
-.tag{font-family:'Hind Siliguri',sans-serif;font-size:.72rem;padding:.22rem .75rem;border-radius:100px;border:1px solid var(--bdr-s);background:var(--paper-w);color:var(--ink-md)}
-#settings-btn{position:fixed;bottom:2rem;right:2rem;z-index:500;width:48px;height:48px;border-radius:50%;background:var(--ink);color:var(--gold-l);display:flex;align-items:center;justify-content:center;font-size:1.3rem;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.3);transition:all .2s;border:2px solid rgba(255,255,255,.1)}
-#settings-btn:hover{transform:rotate(45deg) scale(1.1)}
-#settings-overlay{display:none;position:fixed;inset:0;z-index:499;background:rgba(0,0,0,.4)}
-#settings-overlay.open{display:block}
-#settings-panel{position:fixed;right:-340px;top:0;bottom:0;width:320px;z-index:500;background:var(--paper);border-left:1px solid var(--bdr-s);box-shadow:-8px 0 40px rgba(0,0,0,.2);transition:right .3s cubic-bezier(.4,0,.2,1);overflow-y:auto}
-#settings-panel.open{right:0}
-.sp-header{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 1.4rem;background:var(--ink);font-family:'Hind Siliguri',sans-serif;font-size:1rem;font-weight:600;color:var(--gold-l);position:sticky;top:0}
-.sp-header button{background:none;border:none;color:rgba(255,255,255,.6);font-size:1.2rem;cursor:pointer}
-.sp-section{padding:1.1rem 1.4rem;border-bottom:1px solid var(--bdr)}
-.sp-label{font-family:'Hind Siliguri',sans-serif;font-size:.8rem;font-weight:600;color:var(--ink-mu);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.75rem}
-.sp-grid{display:grid;grid-template-columns:1fr 1fr;gap:.45rem}
-.theme-btn,.font-btn{font-family:'Hind Siliguri',sans-serif;font-size:.78rem;padding:.5rem .6rem;border:1.5px solid var(--bdr-s);border-radius:var(--r);background:var(--paper-w);color:var(--ink);cursor:pointer;transition:all .18s;text-align:left}
-.theme-btn:hover,.theme-btn.active,.font-btn:hover,.font-btn.active{border-color:var(--gold);background:var(--gold-p);font-weight:700}
-.sp-font-list,.sp-size-row{display:flex;flex-direction:column;gap:.4rem}
-.sp-size-row{flex-direction:row;flex-wrap:wrap}
-.font-btn{display:flex;align-items:center;gap:.6rem}
-.font-preview{font-size:1.1rem;min-width:40px}
-.size-btn{font-family:'Hind Siliguri',sans-serif;font-size:.78rem;padding:.42rem .8rem;border:1.5px solid var(--bdr-s);border-radius:100px;background:var(--paper-w);color:var(--ink);cursor:pointer;transition:all .18s}
-.size-btn.active{border-color:var(--gold);background:var(--gold);color:#fff;font-weight:700}
-.reset-btn{width:100%;font-family:'Hind Siliguri',sans-serif;font-size:.82rem;padding:.6rem;border:1.5px solid var(--bdr-s);border-radius:var(--r);background:transparent;color:var(--ink-md);cursor:pointer;transition:all .18s}
-.reset-btn:hover{background:var(--red);color:#fff;border-color:var(--red)}
-footer{background:var(--ink);color:rgba(255,255,255,.32);font-family:'Hind Siliguri',sans-serif;font-size:.75rem;text-align:center;padding:1.75rem 2rem}
-footer a{color:var(--gold-l);text-decoration:none}
-@media(max-width:680px){nav{padding:0 1.2rem}.nlinks{display:none}.nburg{display:block}.post-wrap{padding:1.5rem 1rem 4rem}.post-nav{grid-template-columns:1fr}.share-section{flex-direction:column}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>সারমেয় সংবাদ — সঞ্জয় মণ্ডল</title>
+  <meta name="description" content="সারমেয় সংবাদ — সঞ্জয় মণ্ডলের প্রতিবেদন">
+  <meta property="og:title" content="সারমেয় সংবাদ — সঞ্জয় মণ্ডল">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://writersanjoy.github.io/images/blogimages/blog-010-cover.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Baloo+Da+2:wght@400;500;600;700&family=Tiro+Bangla:ital@0;1&family=Noto+Serif+Bengali:wght@300;400;500;600;700&family=Noto+Sans+Bengali:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Linking style.css -->
+  <link rel="stylesheet" href="blogs.css">
+  
 </head>
 <body>
 <!-- মূল পোস্ট: https://sanjoyisonline.blogspot.com/ -->
