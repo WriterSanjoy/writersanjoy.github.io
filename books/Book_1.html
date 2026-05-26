@@ -296,6 +296,19 @@
             </div>
 
             <div class="bf">
+              <label for="rating">রেটিং *</label>
+
+              <select id="rating" required>
+                <option value="">রেটিং নির্বাচন করুন</option>
+                <option value="5">★★★★★ (5)</option>
+                <option value="4">★★★★☆ (4)</option>
+                <option value="3">★★★☆☆ (3)</option>
+                <option value="2">★★☆☆☆ (2)</option>
+                <option value="1">★☆☆☆☆ (1)</option>
+              </select>
+            </div>            
+            
+            <div class="bf">
               <label for="ccomm">মতামত *</label>
               <textarea id="ccomm" placeholder="আপনার মতামত লিখুন..." maxlength="300" required></textarea>
             </div>
@@ -1176,6 +1189,9 @@ document
 
     const name =
       document.getElementById("cname").value.trim();
+  
+    const rating =
+      document.getElementById("rating").value;
 
     const comment =
       document.getElementById("ccomm").value.trim();
@@ -1185,6 +1201,11 @@ document
   
     if (!name || !comment) {
     alert("নাম ও মতামত লিখুন");
+    return;
+    }
+  
+    if (!rating) {
+    alert("রেটিং নির্বাচন করুন");
     return;
     }
 
@@ -1202,6 +1223,7 @@ document
           body: JSON.stringify({
             name,
             comment,
+            rating,
             website
           })
         });
@@ -1278,9 +1300,9 @@ function renderComments() {
         date.className =
             "comment-date";
 
-        date.textContent =
-            new Date(item.date)
-                .toLocaleDateString("bn-BD");
+        stars.textContent =
+          "★".repeat(Number(item.rating)) +
+          "☆".repeat(5 - Number(item.rating));
 
         const stars =
             document.createElement("div");
