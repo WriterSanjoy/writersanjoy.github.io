@@ -320,31 +320,30 @@ footer a{color:var(--gold-l);text-decoration:none}
 }
 */
 /* ===== Comment Cards ===== */
-
-.comment-card{
-    padding:8px 0;
-}
-
 .comment-card:last-child{
     border-bottom:none;
 }
 
-.comment-name{
-    margin-bottom:1px;
+.comment-card{
+    padding:10px 0;
+    border-bottom:1px solid #ddd;
 }
 
-.comment-date{
-    font-size:.8rem;
-    color:#777;
-    margin-bottom:8px;
+.comment-name{
+    font-weight:700;
+    font-size:1rem;
+    margin-bottom:2px;
 }
 
 .comment-stars{
-    margin-bottom:3px;
+    color:#f5a623;
+    font-size:.85rem;
+    margin-bottom:4px;
 }
 
 .comment-text{
-    line-height:1.4;
+    font-size:.9rem;
+    line-height:1.45;
 }
 
 /* ===== Load More ===== */
