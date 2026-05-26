@@ -1,11 +1,31 @@
 export default async function handler(req, res) {
 
-  if (req.method !== "POST") {
-    return res.status(405).json({
-      success: false,
-      message: "Method not allowed"
-    });
-  }
+const owner = process.env.GITHUB_OWNER;
+const repo = process.env.GITHUB_REPO;
+const token = process.env.GITHUB_TOKEN;
+
+const path = "comments/books/book1.json";
+
+if (req.method === "GET") {
+
+  const response = await fetch(
+    `https://api.github.com/repos/${owner}/${repo}/contents/${path}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: "application/vnd.github+json"
+      }
+    }
+  );
+
+  const fileData = await response.json();
+
+  const comments = JSON.parse(
+    Buffer.from(fileData.content, "base64").toString()
+  );
+
+  return res.status(200).json(comments);
+}
 
   try {
 
