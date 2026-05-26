@@ -396,17 +396,22 @@ footer a{color:var(--gold-l);text-decoration:none}
     font-weight:700;
 }
 
-#reader-comments #ratingSummary{
-    margin-top:6px;
+#reader-comments .section-head{
+    flex-direction:column;
+    align-items:center;
     text-align:center;
 }
 
+#reader-comments #ratingSummary{
+    margin-top:4px;
+}
+
 #reader-comments .rating-stars{
-    font-size:0.9rem;
+    font-size:.9rem;
     font-weight:600;
 }
 
 #reader-comments .rating-count{
-    font-size:0.8rem;
-    margin-top:2px;
+    font-size:.8rem;
+    color:#666;
 }
