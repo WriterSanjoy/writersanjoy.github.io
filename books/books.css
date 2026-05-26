@@ -325,13 +325,13 @@ footer a{color:var(--gold-l);text-decoration:none}
 }
 
 .comment-card{
-    padding:10px 0;
+    padding:8px 0;
     border-bottom:1px solid #ddd;
 }
 
 .comment-name{
     font-weight:700;
-    font-size:1rem;
+    font-size:.8rem;
     margin-bottom:2px;
 }
 
@@ -342,7 +342,7 @@ footer a{color:var(--gold-l);text-decoration:none}
 }
 
 .comment-text{
-    font-size:.9rem;
+    font-size:.8rem;
     line-height:1.45;
 }
 
