@@ -219,36 +219,24 @@ footer a{color:var(--gold-l);text-decoration:none}
 /* #reader-overlay{display:none;position:fixed;inset:0;z-index:2000;animation:rdrFadeIn .25s ease}*/
 /* #reader-overlay.open{display:flex;align-items:stretch;justify-content:center}*/
 #reader-overlay{
-
   display:none;
-
   position:fixed;
-
   inset:0;
+  z-index:2000;
 
-  z-index:9999;
+  background:rgba(10,8,4,.96);
+}
 
-  background:#111;
-
-  overflow:hidden;
+#reader-overlay.open{
+  display:flex;
+  align-items:stretch;
+  justify-content:center;
 }
 
 #reader-overlay.open{
   display:flex;
 }
 
-#reader-modal{
-
-  width:100%;
-
-  height:100%;
-
-  background:#111;
-
-  display:flex;
-
-  flex-direction:column;
-}
 /* OPEN STATE */
 #reader-overlay.open{
   display:flex;
@@ -467,14 +455,6 @@ footer a{color:var(--gold-l);text-decoration:none}
 
 /* ===== 4. Add Premium Reader Typography  ===== */
 #reader-body{
-
-  flex:1;
-
-  overflow-y:auto;
-
-  background:#111;
-
-  color:#eee;
 
   font-family:'Hind Siliguri',sans-serif;
 
