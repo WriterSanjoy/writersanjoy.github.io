@@ -366,11 +366,11 @@ function renderComments() {
         name.textContent =
             item.name;
       
-        //const stars =
-        //    document.createElement("div");
+        const stars =
+            document.createElement("div");
       
-        //stars.className =
-        //    "comment-stars";
+        stars.className =
+            "comment-stars";
       
         //const rating = Math.min(
         //    5,
@@ -380,9 +380,9 @@ function renderComments() {
         //    )
         //);
 
-        //stars.textContent =
-        //  "★".repeat(Number(item.rating)) +
-        //  "☆".repeat(5 - Number(item.rating));
+        stars.textContent =
+          "★".repeat(Number(item.rating)) +
+          "☆".repeat(5 - Number(item.rating));
 
         const text =
             document.createElement("div");
@@ -394,7 +394,7 @@ function renderComments() {
             item.comment;
 
         card.appendChild(name);
-        //card.appendChild(stars);
+        card.appendChild(stars);
         card.appendChild(text);
 
         commentsDiv.appendChild(card);
