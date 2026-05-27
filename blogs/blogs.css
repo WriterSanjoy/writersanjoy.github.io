@@ -67,3 +67,20 @@ nav{background:var(--ink);padding:0 2.5rem;position:sticky;top:0;z-index:200;dis
 footer{background:var(--ink);color:rgba(255,255,255,.32);font-family:'Hind Siliguri',sans-serif;font-size:.75rem;text-align:center;padding:1.75rem 2rem}
 footer a{color:var(--gold-l);text-decoration:none}
 @media(max-width:680px){nav{padding:0 1.2rem}.nlinks{display:none}.nburg{display:block}.post-wrap{padding:1.5rem 1rem 4rem}.post-nav{grid-template-columns:1fr}.share-section{flex-direction:column}}
+
+
+/* ── CONTENT SECTIONS ── */
+.section{background:#fff;border:1px solid var(--bdr);border-radius:var(--r-lg);margin-bottom:1.5rem;overflow:hidden}
+.section-head{padding:.75rem 1.4rem;background:var(--paper-w);border-bottom:1px solid var(--bdr);font-family:'Hind Siliguri',sans-serif;font-size:.88rem;font-weight:700;color:var(--ink);display:flex;align-items:center;gap:.5rem}
+.section-body{padding:1.4rem}
+section-head{padding:.75rem 1.4rem;background:var(--paper-w);border-bottom:1px solid var(--bdr);font-family:'Hind Siliguri',sans-serif;font-size:.88rem;font-weight:700;color:var(--ink);display:flex;align-items:center;gap:.5rem}
+.section-body{padding:1.4rem}
+/* Fields inside pane */
+.bf{margin-bottom:.75rem}
+.bf label{display:block;font-family:'Hind Siliguri',sans-serif;font-size:.74rem;font-weight:600;color:var(--ink-lt);margin-bottom:.28rem}
+.bf input,.bf textarea,.bf select{width:100%;padding:.52rem .8rem;border:1px solid var(--bdr-s);border-radius:var(--r);font-family:'Hind Siliguri',sans-serif;font-size:.85rem;background:var(--paper-w);color:var(--ink);outline:none;transition:border-color .18s}
+.bf input:focus,.bf textarea:focus,.bf select:focus{border-color:var(--red);background:#fff}
+.bf textarea{min-height:70px;resize:vertical}
+.bf-hint{font-family:'Hind Siliguri',sans-serif;font-size:.68rem;color:var(--ink-mu);margin-top:.2rem;line-height:1.5}
+.buy-submit{width:100%;padding:.72rem;background:var(--red);color:#fff;border:none;border-radius:var(--r);font-family:'Hind Siliguri',sans-serif;font-size:.92rem;font-weight:700;cursor:pointer;transition:all .18s;margin-top:.25rem;letter-spacing:.02em}
+.buy-submit:hover{background:#6e1414;transform:translateY(-1px)}
