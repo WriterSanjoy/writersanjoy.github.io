@@ -464,9 +464,10 @@ footer a{color:var(--gold-l);text-decoration:none}
 
   letter-spacing:.01em;
 
-  -webkit-font-smoothing:antialiased;
+  /*-webkit-font-smoothing:antialiased;*/
 
-  text-rendering:optimizeLegibility;
+  /*text-rendering:optimizeLegibility;*/
+  /*text-rendering:auto;*/
 
   scroll-behavior:smooth;
 }
@@ -507,6 +508,7 @@ footer a{color:var(--gold-l);text-decoration:none}
 }
 
 /* ===== 8. Add Fade Edge Like Kindle  ===== */
+/*
 #reader-body{
 
   mask-image:linear-gradient(
@@ -517,7 +519,7 @@ footer a{color:var(--gold-l);text-decoration:none}
     transparent
   );
 }
-
+*/
 /* =========================================
    Preview Ending
 ========================================= */
@@ -534,7 +536,7 @@ footer a{color:var(--gold-l);text-decoration:none}
 }
 
 /* Blur/Fade Area */
-
+/*
 .preview-fade{
 
   position:absolute;
@@ -555,7 +557,7 @@ footer a{color:var(--gold-l);text-decoration:none}
 
   pointer-events:none;
 }
-
+*/
 /* Card */
 
 .preview-end-card{
@@ -572,7 +574,7 @@ footer a{color:var(--gold-l);text-decoration:none}
 
   padding:2.4rem 1.6rem;
 
-  backdrop-filter:blur(14px);
+  /*backdrop-filter:blur(14px);*/
 
   box-shadow:
     0 10px 40px rgba(0,0,0,.35);
