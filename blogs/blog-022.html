@@ -101,8 +101,8 @@
   </div>
   <!-- ═════════ COMMENTS ═════════ -->
   <!--<section class="blog-comments"> -->
-    <!--COMMENT PANEL ════  - MeSanjoy 25May-->
-    <div class="section">
+  <!--COMMENT Entry PANEL ════  - MeSanjoy 25May-->
+  <div class="section">
       <div class="section-head">অনুগ্রহ করে আপনার মূল্যবান মতামত দিন</div>
         <div class="section-body">
           <form id="reviewForm">
@@ -144,12 +144,9 @@
             <!-- Submit button -->
             <button class="buy-submit" type="submit">পাঠিয়ে দিন 🙏</button>
           </form>
-
-        <!-- Display comments -->
-        <!--<div id="comments"></div>-->
       </div>
     </div>
-  <!-- ═════════ COMMENTS ═════════ end-->
+  
   <!-- Reader Comments Section -->
   <div class="section" id="reader-comments">
     <div class="section-head">
@@ -166,6 +163,7 @@
       </div>
     </div>
   </div>
+  <!-- ═════════ COMMENTS ═════════ end-->
   
 </div>
 <div id="settings-btn" onclick="toggleSettings()">⚙</div>
@@ -253,7 +251,8 @@ document
           },
 
           body: JSON.stringify({
-            bookId,  
+            type,
+            contentId,  
             name,
             comment,
             rating,
@@ -278,7 +277,9 @@ document
 
 });
 
-const bookId = "blog22"; //Change 
+//const bookId = "blog22"; //Change //old
+const type = "blogs";
+const contentId = "blog22";
   
 let allComments = [];
 let visibleCount = 4;
@@ -289,7 +290,8 @@ async function loadComments() {
 
         const response =
             //await fetch("/api/comments");
-            await fetch(`/api/comments?bookId=${bookId}`);
+            //await fetch(`/api/comments?book=${bookId}`);
+            fetch(`/api/comments?type=${type}&id=${contentId}`)
 
         allComments =
             await response.json();
