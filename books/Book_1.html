@@ -691,7 +691,7 @@ async function openReader(){
   const content = document.getElementById('chapter-content');
 
   /* Open modal */
-  overlay.classList.add('show');
+  overlay.classList.add('open');
 
   document.body.style.overflow = 'hidden';
 
@@ -728,9 +728,11 @@ async function openReader(){
 }
 
 function closeReader(){
-  var ov=document.getElementById('reader-overlay');
-  if(ov) ov.classList.remove('open');
-  document.body.style.overflow='';
+  document
+    .getElementById('reader-overlay')
+    .classList.remove('open');
+
+  document.body.style.overflow = '';
 }
 function updateReaderProgress(){
   var b=document.getElementById('reader-body');
