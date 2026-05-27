@@ -692,9 +692,7 @@ async function openReader(){
 
   /* Open modal */
   overlay.classList.add('open');
-
-  //document.body.style.overflow = 'hidden';
-  document.body.classList.add('reader-open');
+  document.body.style.overflow='hidden';
 
   /* Loading */
   content.innerHTML = `
@@ -736,9 +734,7 @@ function closeReader(){
     .getElementById('reader-overlay')
     .classList.remove('open');
 
-  //document.body.style.overflow = '';
-  //document.body.style.overflowY = 'auto';
-  document.body.classList.remove('reader-open');
+  document.body.style.overflow='';
 }
 function updateReaderProgress(){
 
