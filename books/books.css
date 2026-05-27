@@ -217,7 +217,7 @@ footer a{color:var(--gold-l);text-decoration:none}
 /* ══ READING MODAL ══ */
 /* #reader-overlay{display:none;position:fixed;inset:0;z-index:2000;background:rgba(10,8,4,.82);backdrop-filter:blur(6px);animation:rdrFadeIn .25s ease}
 */
-#reader-overlay{display:none;position:fixed;inset:0;z-index:2000;animation:rdrFadeIn .25s ease}
+/*#reader-overlay{display:none;position:fixed;inset:0;z-index:2000;animation:rdrFadeIn .25s ease}*/
 /*#reader-overlay.open{display:flex;align-items:stretch;justify-content:center}*/
 #reader-overlay{
   display:none;
