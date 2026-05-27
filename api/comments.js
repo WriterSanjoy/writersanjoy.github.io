@@ -1,4 +1,14 @@
 export default async function handler(req, res) {
+    
+if (
+  req.method !== "GET" &&
+  req.method !== "POST"
+) {
+  return res.status(405).json({
+    success:false,
+    message:"Method not allowed"
+  });
+}
 
 const owner = process.env.GITHUB_OWNER;
 const repo = process.env.GITHUB_REPO;
@@ -14,7 +24,7 @@ const contentId =
         ? req.query.id
         : req.body.contentId;
 
-const path =
+const filePath =
     `comments/${type}/${contentId}.json`;
 
 if(
@@ -53,7 +63,7 @@ if(
 if (req.method === "GET") {
 
   const response = await fetch(
-    `https://api.github.com/repos/${owner}/${repo}/contents/${path}`,
+    `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -63,6 +73,13 @@ if (req.method === "GET") {
   );
 
   const fileData = await response.json();
+    if (!response.ok || !fileData.content) {
+
+        return res.status(404).json({
+        success:false,
+        message:"Comments file not found"
+        });
+    }
 
   const comments = JSON.parse(
     Buffer.from(fileData.content, "base64").toString()
@@ -106,14 +123,14 @@ if (req.method === "GET") {
     if (comment.length > 300) {
       return res.status(400).json({
         success: false,
-        message: "Comment cannot exceed 150 characters"
+        message: "Comment cannot exceed 300 characters"
       });
     }
     
     // Read existing file
 
     const getResponse = await fetch(
-      `https://api.github.com/repos/${owner}/${repo}/contents/${path}`,
+      `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -123,6 +140,13 @@ if (req.method === "GET") {
     );
 
     const fileData = await getResponse.json();
+    if (!response.ok || !fileData.content) {
+
+        return res.status(404).json({
+        success:false,
+        message:"Comments file not found"
+        });
+    }
 
     const comments = JSON.parse(
       Buffer.from(fileData.content, "base64").toString()
@@ -144,7 +168,7 @@ if (req.method === "GET") {
       .toString("base64");
 
     const saveResponse = await fetch(
-      `https://api.github.com/repos/${owner}/${repo}/contents/${path}`,
+      `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`,
       {
         method: "PUT",
         headers: {
