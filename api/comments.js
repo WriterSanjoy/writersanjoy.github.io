@@ -15,7 +15,7 @@ const path =
 const allowedBooks = [
     "book1",
     "book2",
-    "book3"
+    "book3",
     "blog22"
 ];
 
