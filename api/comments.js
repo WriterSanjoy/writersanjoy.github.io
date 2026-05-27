@@ -16,6 +16,7 @@ const allowedBooks = [
     "book1",
     "book2",
     "book3"
+    "blog22"
 ];
 
 if (!allowedBooks.includes(bookId)) {
