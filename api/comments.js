@@ -62,30 +62,47 @@ if(
 
 if (req.method === "GET") {
 
-  const response = await fetch(
-    `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`,
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        Accept: "application/vnd.github+json"
+  try {
+
+    const response = await fetch(
+      `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/vnd.github+json"
+        }
       }
-    }
-  );
+    );
 
-  const fileData = await response.json();
-    if (!getResponse.ok || !fileData.content) {
+    const fileData = await response.json();
 
-        return res.status(404).json({
+    if (!response.ok) {
+
+      return res.status(404).json({
         success:false,
-        message:"Comments file not found"
-        });
+        message:fileData.message || "Comments file not found"
+      });
     }
 
-  const comments = JSON.parse(
-    Buffer.from(fileData.content, "base64").toString()
-  );
+    const rawContent =
+      Buffer
+        .from(fileData.content, "base64")
+        .toString();
 
-  return res.status(200).json(comments);
+    const comments =
+      rawContent.trim()
+        ? JSON.parse(rawContent)
+        : [];
+
+    return res.status(200).json(comments);
+
+  } catch(error) {
+
+    return res.status(500).json({
+      success:false,
+      message:error.message
+    });
+  }
 }
 
   try {
