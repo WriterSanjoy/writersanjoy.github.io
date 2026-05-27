@@ -1295,7 +1295,8 @@ document
           },
 
           body: JSON.stringify({
-            bookId,  
+            type,
+            contentId,  
             name,
             comment,
             rating,
@@ -1320,7 +1321,9 @@ document
 
 });
 
-const bookId = "book1"; //Change 
+//const bookId = "book1"; //old
+const type = "books"; //change
+const contentId = "book1"; //change
   
 let allComments = [];
 let visibleCount = 4;
@@ -1331,7 +1334,8 @@ async function loadComments() {
 
         const response =
             //await fetch("/api/comments");
-            await fetch(`/api/comments?bookId=${bookId}`);
+            //await fetch(`/api/comments?book=${bookId}`);
+            await fetch(`/api/comments?type=${type}&id=${contentId}`)
 
         allComments =
             await response.json();
