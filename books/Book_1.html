@@ -105,7 +105,7 @@
           <div class="price-item">
             <div class="price-label">ডিজিটাল</div>
             <span class="price-chip price-digital">
-              <del>₹ ৮৫০</del> ₹ ৮০৫
+              <del>₹৪৫০</del> ₹৩৫৯
             </span>
           </div>
 
@@ -142,20 +142,6 @@
           <p>পদোন্নতির সিঁড়ি বেয়ে তারা কোথায় একটা যেন পৌঁছাতে চায়। কিন্তু চাকরির সাথে তাল মেলাতে গিয়ে জীবনের দিকে ফিরে তাকানোর সময় নেই। দিবারাত্র নিজেদের নিংড়ে দেবার পরে অন্য কোনো সত্তা যে আদৌ বেঁচে আছে, সেটাও বুঝতে পারে না।</p>
           <p>তবু ভালোবাসা আসে। প্রেম, প্রিয়জন, পরিবার — সবাই অপেক্ষা করে। আর সেই অপেক্ষার মাঝে, চাপের মাঝে, হারিয়ে যাওয়ার মাঝে — এই উপন্যাস খোঁজে এক প্রজন্মের মুখ।</p>
         </div>
-      </div>
-    </div>
-
-    <!-- ── CHAPTER PREVIEW ── -->
-    <div class="section">
-      <div class="section-head">👁 প্রথম অধ্যায় পড়ুন (বিনামূল্যে)</div>
-      <div class="section-body">
-        <!-- Short teaser — always visible -->
-        <div class="preview-fade">
-          <div class="preview-content" id="preview-text">
-            <p>লোকে বলে SDF। সরকারি নাম নবদিগন্ত। কলকাতা মহানগরীর পূর্ব প্রান্তে দিগন্ত বিস্তৃত এক লবণাক্ত জলাভূমিতে গড়ে উঠেছে তথ্যপ্রযুক্তি শিল্প।</p>
-            <p>প্রতি বছর হাজার হাজার তরুণ-তরুণী সেইসব সফটওয়্যার কারখানায় চাকরি শুরু করে। তারপর "কেরিয়ার" নামের অদৃশ্য সাপ-লুডো খেলায় খেলতে নেমে তারা কেমন থাকে?</p>
-          </div>
-        </div>
         <!-- Opens full reading modal -->
         <div class="preview-more">
           <button onclick="openReader()">📖 প্রথম অধ্যায় পড়ুন</button>
@@ -163,6 +149,23 @@
       </div>
     </div>
 
+    <!-- ── CHAPTER PREVIEW ── -->
+     <!--
+    <div class="section">
+      <div class="section-head">👁 প্রথম অধ্যায় পড়ুন (বিনামূল্যে)</div>
+      <div class="section-body">
+        <div class="preview-fade">
+          <div class="preview-content" id="preview-text">
+            <p>লোকে বলে SDF। সরকারি নাম নবদিগন্ত। কলকাতা মহানগরীর পূর্ব প্রান্তে দিগন্ত বিস্তৃত এক লবণাক্ত জলাভূমিতে গড়ে উঠেছে তথ্যপ্রযুক্তি শিল্প।</p>
+            <p>প্রতি বছর হাজার হাজার তরুণ-তরুণী সেইসব সফটওয়্যার কারখানায় চাকরি শুরু করে। তারপর "কেরিয়ার" নামের অদৃশ্য সাপ-লুডো খেলায় খেলতে নেমে তারা কেমন থাকে?</p>
+          </div>
+        </div>
+        <div class="preview-more">
+          <button onclick="openReader()">📖 প্রথম অধ্যায় পড়ুন</button>
+        </div>
+      </div>
+    </div>
+    -->
     <!-- ══════════════════════════════════════════════════
          READING MODAL — full first chapter goes here
          HOW TO ADD YOUR CHAPTER TEXT:
@@ -250,7 +253,7 @@
             <td style="padding:.55rem .5rem;font-weight:600;color:var(--ink-lt)">6KU2ET80A31 978-93-5917-169-2</td>
           </tr>
           <tr>
-            <td style="padding:.55rem .5rem;color:var(--ink-mu)">ISBN (বাঁধানো)</td>
+            <td style="padding:.55rem .5rem;color:var(--ink-mu)">ISBN (বাঁধানো বই)</td>
             <td style="padding:.55rem .5rem;font-weight:600;color:var(--ink-lt)">978-81-932050-5-1</td>
           </tr>
         </table>
@@ -341,12 +344,12 @@
         <div class="buy-tab" id="btab-digital" onclick="switchBuyTab('digital')">
           <span class="bt-icon">📱</span>
           <span class="bt-label">ডিজিটাল</span>
-          <span class="bt-price"><del>₹ ৪৫০</del> ₹ ৩৫৯</span> <!-- CHANGE -->
+          <span class="bt-price"><del>₹৪৫০</del> ₹৩৫৯</span> <!-- CHANGE -->
         </div>
         <div class="buy-tab active" id="btab-hard" onclick="switchBuyTab('hard')">
           <span class="bt-icon">📗</span>
           <span class="bt-label">হার্ডবাইন্ড</span>
-          <span class="bt-price"><del>₹ ৪৫০</del> ₹ ৪০৫</span> <!-- CHANGE -->
+          <span class="bt-price"><del>₹৪৫০</del> ₹৪০৫</span> <!-- CHANGE -->
         </div>
       </div>
 
@@ -934,11 +937,11 @@ function buildOrderParams() {
 function sendOrder(orderParams, btn, sending) {
   // 🔜Send to your backend API
   // 👇 For Local Testing: 1. success test 2 & 3 Failure test   
-  return fetch("https://jsonplaceholder.typicode.com/posts", {
+  //return fetch("https://jsonplaceholder.typicode.com/posts", {
   //return fetch("https://jsonplaceholder.typicode.com/404", {  
   //return fetch("https://invalid.example.com", {
   // 👇 Production/real call
-  //return fetch("/api/sendOrder", {
+  return fetch("/api/sendOrder", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(orderParams)
