@@ -4,25 +4,49 @@ const owner = process.env.GITHUB_OWNER;
 const repo = process.env.GITHUB_REPO;
 const token = process.env.GITHUB_TOKEN;
 
-const bookId =
+const type =
     req.method === "GET"
-        ? req.query.bookId
-        : req.body.bookId;
+        ? req.query.type
+        : req.body.type;
+
+const contentId =
+    req.method === "GET"
+        ? req.query.id
+        : req.body.contentId;
 
 const path =
-    `comments/books/${bookId}.json`;
+    `comments/${type}/${contentId}.json`;
+
+if(
+  !['books','blogs'].includes(type)
+){
+  return res.status(400).json({
+    error:'Invalid type'
+  });
+}
   
-const allowedBooks = [
+const allowedContent = {
+
+  books: [
     "book1",
     "book2",
-    "book3",
-    "blog22"
-];
+    "book3"
+  ],
 
-if (!allowedBooks.includes(bookId)) {
+  blogs: [
+    "blog22",
+    "blog23"
+  ]
+
+};
+
+if(
+  !allowedContent[type] ||
+  !allowedContent[type].includes(contentId)
+) {
     return res.status(400).json({
         success: false,
-        message: "Invalid book"
+        message: "Invalid content"
     });
 }
 
