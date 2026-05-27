@@ -88,7 +88,7 @@
       <div class="hero-quick-meta">
         <div class="hqm"><span class="hqm-label">প্রকাশকাল</span>
           <span class="hqm-val">দ্বিতীয় মুদ্রণ ২০২৬</span>
-          <p>প্রথম মুদ্রণ ২০১৯</p>
+          <span class="hqm-val">প্রথম মুদ্রণ ২০১৯</span>
         </div> <!-- CHANGE -->
         <div class="hqm"><span class="hqm-label">ভাষা</span><span class="hqm-val">বাংলা</span></div>
         <div class="hqm"><span class="hqm-label">পৃষ্ঠা</span><span class="hqm-val">৩৯২</span></div> <!-- CHANGE -->
@@ -96,15 +96,30 @@
       </div>
 
       <div class="hero-price-row">
-        <div>
-          <div class="price-label">ডিজিটাল</div>
-          <span class="price-chip price-digital"><del>₹ ৪৫০</del> ₹ ৩৫৯</span> <!-- CHANGE -->
-        </div>
-        <div>
-          <div class="price-label">হার্ডবাইন্ড</div>
-          <span class="price-chip price-hard"><del>₹ ৪৫০</del>₹ ৪০৫</span> <!-- CHANGE -->
-        </div>
+        
+          <div class="price-item">
+            <div class="price-label">হার্ডকপি</div>
+            <span class="price-chip price-hard"><del>₹ ৪৫০</del>₹ ৪০৫</span> <!-- CHANGE -->
+          </div>  
+        
+          <div class="price-item">
+            <div class="price-label">ডিজিটাল</div>
+            <span class="price-chip price-digital">
+              <del>₹ ৮৫০</del> ₹ ৮০৫
+            </span>
+          </div>
+
+          <!-- NEW BUTTON -->
+          <div class="price-item">
+            <div class="price-label">&nbsp;</div>
+
+            <button class="price-chip price-read"
+                    onclick="openReader()">
+              📖 প্রথম অধ্যায় পড়ুন
+            </button>
+          </div> <!-- CHANGE -->
       </div>
+      
     </div>
   </div>
 </div>
@@ -180,34 +195,10 @@
 
         <div id="reader-body" onscroll="updateReaderProgress()">
           <div id="chapter-content">
-
             <!-- ═══════════════════════════════════════
-                 PASTE YOUR FULL FIRST CHAPTER HERE
-                 Replace / add paragraphs below
-            ═══════════════════════════════════════ -->
-
-            <p>লোকে বলে SDF। সরকারি নাম নবদিগন্ত। কলকাতা মহানগরীর পূর্ব প্রান্তে দিগন্ত বিস্তৃত এক লবণাক্ত জলাভূমিতে গড়ে উঠেছে তথ্যপ্রযুক্তি শিল্প। প্রতি বছর হাজার হাজার তরুণ-তরুণী সেইসব সফটওয়্যার কারখানায় চাকরি শুরু করে।</p>
-
-            <p>তারপর "কেরিয়ার" নামের অদৃশ্য সাপ-লুডো খেলায় খেলতে নেমে তারা কেমন থাকে? পদোন্নতির সিঁড়ি বেয়ে তারা কোথায় একটা যেন পৌঁছতে চায়। এদিকে চাকরির সাথে তাল মেলাতে গিয়ে জীবনের দিকে ফিরে তাকানোর সময় নেই।</p>
-
-            <blockquote>দিবারাত্র নিজেদের নিংড়ে দেবার পরে অন্য কোনো সত্তা যে আদৌ বেঁচে আছে, সেটাও বুঝতে পারে না।</blockquote>
-
-            <p>এই উপন্যাসের গল্প সেই মানুষগুলোর — যারা পর্দার সামনে বসে কোড লেখে, কিন্তু নিজের জীবনের কোড লিখতে ভুলে যায়।</p>
-
-            <div class="rdr-divider">
-              <div class="rdr-divider-line"></div>
-              <div class="rdr-divider-dot">✦ ✦ ✦</div>
-              <div class="rdr-divider-line"></div>
-            </div>
-
-            <!-- ADD MORE PARAGRAPHS BELOW THIS LINE -->
-            <!-- <p>পরবর্তী অনুচ্ছেদ...</p> -->
-
-            <!-- End of chapter -->
-            <div style="text-align:center;padding:2rem 0 1rem;font-family:'Hind Siliguri',sans-serif;font-size:.8rem;color:var(--ink-mu);border-top:1px dashed var(--bdr-s);margin-top:2rem">
-              ⋯ প্রথম অধ্যায় সমাপ্ত ⋯
-            </div>
-
+                 Huge Text
+                ═══════════════════════════════════════ -->
+            <!-- Dynamic chapter loads here -->
           </div>
         </div>
 
@@ -689,15 +680,53 @@ function switchBuyTab(tab){
 }
 
 // ── READING MODAL ──
-function openReader(){
-  var ov=document.getElementById('reader-overlay');
-  if(!ov)return;
-  ov.classList.add('open');
-  document.body.style.overflow='hidden';
-  var rb=document.getElementById('reader-body');
-  if(rb) rb.scrollTop=0;
-  updateReaderProgress();
+
+//async function openReader(
+//  bookSlug = 'nabadigonter-abhimanyura',
+//  chapter = 'chapter-1'
+//){
+  
+async function openReader(){
+  const overlay = document.getElementById('reader-overlay');
+  const content = document.getElementById('chapter-content');
+
+  /* Open modal */
+  overlay.classList.add('show');
+
+  document.body.style.overflow = 'hidden';
+
+  /* Loading */
+  content.innerHTML = `
+    <div class="reader-loading">
+      অধ্যায় লোড হচ্ছে...
+    </div>
+  `;
+
+  try{
+  
+  //Change for each book
+  const response = await fetch(
+    `/books/book1_chapter1.html`
+  );
+
+    const html = await response.text();
+
+    content.innerHTML = html;
+
+    updateReaderProgress();
+
+  }catch(err){
+
+    content.innerHTML = `
+      <div class="reader-error">
+        অধ্যায় লোড করা যায়নি
+      </div>
+    `;
+
+    console.error(err);
+  }
 }
+
 function closeReader(){
   var ov=document.getElementById('reader-overlay');
   if(ov) ov.classList.remove('open');

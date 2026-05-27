@@ -56,10 +56,13 @@ nav{background:var(--ink);padding:0 2.5rem;position:sticky;top:0;z-index:200;dis
 .hqm-label{font-family:'Hind Siliguri',sans-serif;font-size:.65rem;color:var(--gold-l);text-transform:uppercase;letter-spacing:.09em;font-weight:600}
 .hqm-val{font-family:'Hind Siliguri',sans-serif;font-size:.88rem;font-weight:600;color:rgba(255,255,255,.85)}
 .hero-price-row{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
-.price-chip{font-family:'Hind Siliguri',sans-serif;font-size:1.1rem;font-weight:700;padding:.2rem 1.1rem;border-radius:100px}
+.price-chip{font-family:'Hind Siliguri',sans-serif;font-size:.9rem;font-weight:700;padding:.2rem 1.1rem;border-radius:100px}
 .price-digital{background:var(--red);color:#fff}
 .price-hard{background:rgba(255,255,255,.12);color:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.2)}
 .price-label{font-family:'Hind Siliguri',sans-serif;font-size:.7rem;color:rgba(255,255,255,.7)}
+/* New prominent button for reading book added later Sanjoy */
+/* using Existing .price-label also*/
+.price-read{background:var(--red);color:yellow;cursor:pointer}
 
 /* ── MAIN LAYOUT ── */
 .book-main{max-width:1000px;margin:0 auto;padding:2.5rem 2rem 5rem;display:grid;grid-template-columns:1fr 300px;gap:2.5rem;align-items:start}
@@ -407,4 +410,16 @@ footer a{color:var(--gold-l);text-decoration:none}
 #reader-comments .rating-count{
     font-size:.8rem;
     color:#666;
+}
+/* ===== for new Reader ===== */
+#reader-overlay.show{
+  display:flex;
+}
+
+.reader-loading,
+.reader-error{
+  padding:3rem 1rem;
+  text-align:center;
+  font-family:'Hind Siliguri',sans-serif;
+  color:#bbb;
 }
