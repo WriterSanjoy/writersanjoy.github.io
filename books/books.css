@@ -647,3 +647,7 @@ footer a{color:var(--gold-l);text-decoration:none}
 
 }
 
+/* breadcrumb fix */
+body.reader-open{
+  overflow:hidden;
+}
