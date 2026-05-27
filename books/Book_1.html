@@ -712,6 +712,7 @@ async function openReader(){
     const html = await response.text();
 
     content.innerHTML = html;
+    restoreReaderPosition();
 
     updateReaderProgress();
 
@@ -728,6 +729,8 @@ async function openReader(){
 }
 
 function closeReader(){
+  saveReaderPosition();
+  
   document
     .getElementById('reader-overlay')
     .classList.remove('open');
@@ -735,12 +738,49 @@ function closeReader(){
   document.body.style.overflow = '';
 }
 function updateReaderProgress(){
-  var b=document.getElementById('reader-body');
-  if(!b)return;
-  var pct=b.scrollTop/(b.scrollHeight-b.clientHeight)*100;
-  var bar=document.getElementById('reader-progress-bar');
-  if(bar) bar.style.width=Math.min(pct,100)+'%';
+
+  const body = document.getElementById('reader-body');
+
+  const progressBar =
+    document.getElementById('reader-progress-bar');
+
+  const scrollTop = body.scrollTop;
+
+  const scrollHeight =
+    body.scrollHeight - body.clientHeight;
+
+  const progress =
+    (scrollTop / scrollHeight) * 100;
+
+  progressBar.style.width = progress + '%';
 }
+
+function saveReaderPosition(){
+
+  const body = document.getElementById('reader-body');
+
+  localStorage.setItem(
+    'book1_chapter1_scroll',
+    body.scrollTop
+  );
+}
+
+function restoreReaderPosition(){
+
+  const body = document.getElementById('reader-body');
+
+  const saved = localStorage.getItem(
+    'book1_chapter1_scroll'
+  );
+
+  if(saved){
+
+    setTimeout(()=>{
+      body.scrollTop = parseInt(saved);
+    },100);
+  }
+}
+  
 function setRdrFont(size,btn){
   var b=document.getElementById('reader-body');
   if(!b)return;

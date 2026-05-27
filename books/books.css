@@ -423,3 +423,72 @@ footer a{color:var(--gold-l);text-decoration:none}
   font-family:'Hind Siliguri',sans-serif;
   color:#bbb;
 }
+/* ===== updateReaderProgress  ===== */
+#reader-progress-bar{
+  transition:width .12s linear;
+}
+
+/* ===== 4. Add Premium Reader Typography  ===== */
+#reader-body{
+
+  font-family:'Hind Siliguri',sans-serif;
+
+  font-size:1.08rem;
+
+  line-height:2.05;
+
+  letter-spacing:.01em;
+
+  -webkit-font-smoothing:antialiased;
+
+  text-rendering:optimizeLegibility;
+
+  scroll-behavior:smooth;
+}
+
+/* ===== 5. Add Proper Paragraph Spacing  ===== */
+#chapter-content p{
+  margin:0 0 1.5rem;
+}
+
+/* ===== 6. Add Beautiful Blockquote Style  ===== */
+#chapter-content blockquote{
+
+  margin:2rem 0;
+
+  padding:1rem 1.2rem;
+
+  border-left:3px solid rgba(255,255,255,.18);
+
+  background:rgba(255,255,255,.03);
+
+  border-radius:12px;
+
+  font-style:italic;
+
+  color:#ddd;
+}
+
+/* ===== 7. Add Reading Width Control (CRITICAL)  ===== */
+#chapter-content{
+
+  width:100%;
+
+  max-width:720px;
+
+  margin:auto;
+
+  padding:3rem 1.4rem 6rem;
+}
+
+/* ===== 8. Add Fade Edge Like Kindle  ===== */
+#reader-body{
+
+  mask-image:linear-gradient(
+    to bottom,
+    transparent,
+    black 24px,
+    black calc(100% - 24px),
+    transparent
+  );
+}
