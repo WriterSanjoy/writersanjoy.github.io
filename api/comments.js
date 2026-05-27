@@ -73,7 +73,7 @@ if (req.method === "GET") {
   );
 
   const fileData = await response.json();
-    if (!response.ok || !fileData.content) {
+    if (!getResponse.ok || !fileData.content) {
 
         return res.status(404).json({
         success:false,
