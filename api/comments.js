@@ -14,15 +14,19 @@ const owner = process.env.GITHUB_OWNER;
 const repo = process.env.GITHUB_REPO;
 const token = process.env.GITHUB_TOKEN;
 console.log(fileData);
-const type =
-    req.method === "GET"
-        ? req.query.type
-        : req.body.type;
+let type;
+let contentId;
 
-const contentId =
-    req.method === "GET"
-        ? req.query.id
-        : req.body.contentId;
+if(req.method === "GET"){
+
+  type = req.query.type;
+  contentId = req.query.id;
+
+}else{
+
+  type = req.body?.type;
+  contentId = req.body?.contentId;
+}
 
 const filePath =
     `comments/${type}/${contentId}.json`;
