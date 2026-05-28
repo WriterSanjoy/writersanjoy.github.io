@@ -1,4 +1,3 @@
-```js
 export default async function handler(req,res){
 
   const adminPassword =
@@ -109,4 +108,3 @@ export default async function handler(req,res){
     message:'Invalid request'
   });
 }
-```
