@@ -1333,7 +1333,39 @@ function renderComments() {
         card.appendChild(name);
         card.appendChild(stars);
         card.appendChild(text);
+      
+        if(item.authorReply){
 
+            const replyWrap =
+                document.createElement('div');
+
+            replyWrap.className =
+                'author-reply';
+
+            const replyLabel =
+                document.createElement('div');
+
+            replyLabel.className =
+                'author-reply-label';
+
+            replyLabel.textContent =
+                'লেখকের উত্তর';
+
+            const replyText =
+                document.createElement('div');
+
+            replyText.className =
+                'author-reply-text';
+
+            replyText.textContent =
+                item.authorReply;
+
+            replyWrap.appendChild(replyLabel);
+            replyWrap.appendChild(replyText);
+
+            card.appendChild(replyWrap);
+        }
+      
         commentsDiv.appendChild(card);
     });
 

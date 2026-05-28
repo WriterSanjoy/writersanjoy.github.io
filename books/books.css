@@ -660,3 +660,38 @@ footer a{color:var(--gold-l);text-decoration:none}
 
 /* breadcrumb fix  deleted*/
 
+/* Writer's Auto Reply */
+.author-reply{
+
+  margin-top:1rem;
+
+  padding:1rem 1.1rem;
+
+  border-left:3px solid #ffcf33;
+
+  background:rgba(255,255,255,.03);
+
+  border-radius:0 14px 14px 0;
+}
+
+.author-reply-label{
+
+  font-size:.82rem;
+
+  font-weight:700;
+
+  color:#ffcf33;
+
+  margin-bottom:.45rem;
+
+  font-family:'Hind Siliguri',sans-serif;
+}
+
+.author-reply-text{
+
+  line-height:1.8;
+
+  color:rgba(255,255,255,.82);
+}
+
+
