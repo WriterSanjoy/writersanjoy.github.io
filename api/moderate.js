@@ -13,9 +13,100 @@ export default async function handler(req,res){
     });
   }
 
-  return res.status(200).json({
-    success:true,
-    message:'Authorized'
+  const owner = process.env.GITHUB_OWNER;
+  const repo = process.env.GITHUB_REPO;
+  const token = process.env.GITHUB_TOKEN;
+
+  // ═══════════════════════════════
+  // LIST PENDING COMMENTS
+  // ═══════════════════════════════
+
+  if(
+    req.method === 'GET' &&
+    req.query.action === 'list'
+  ){
+
+    try{
+
+      const sources = [
+
+        {
+          type:'books',
+          ids:['book1','book2','book3']
+        },
+
+        {
+          type:'blogs',
+          ids:['blog22','blog23']
+        }
+
+      ];
+
+      let pendingComments = [];
+
+      for(const source of sources){
+
+        for(const contentId of source.ids){
+
+          const filePath =
+            `comments/${source.type}/${contentId}.json`;
+
+          const response = await fetch(
+            `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`,
+            {
+              headers:{
+                Authorization:`Bearer ${token}`,
+                Accept:'application/vnd.github+json'
+              }
+            }
+          );
+
+          if(!response.ok){
+            continue;
+          }
+
+          const fileData = await response.json();
+
+          const comments = JSON.parse(
+            Buffer
+              .from(fileData.content,'base64')
+              .toString()
+          );
+
+          comments.forEach(comment=>{
+
+            if(comment.approved === false){
+
+              pendingComments.push({
+
+                ...comment,
+
+                type:source.type,
+                contentId
+
+              });
+            }
+          });
+        }
+      }
+
+      return res.status(200).json({
+        success:true,
+        comments:pendingComments
+      });
+
+    }catch(error){
+
+      return res.status(500).json({
+        success:false,
+        message:error.message
+      });
+    }
+  }
+
+  return res.status(400).json({
+    success:false,
+    message:'Invalid request'
   });
 }
 ```
