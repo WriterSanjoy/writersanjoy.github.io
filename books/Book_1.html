@@ -1330,6 +1330,10 @@ function renderComments() {
         text.textContent =
             item.comment;
 
+        const authorReply = document.createElement("div");
+        authorReply.className = "comment-reply";
+        authorReply.textContent = "অনেক ধন্যবাদ। আপনার মতামত আমার কাছে মূল্যবান।";
+
         card.appendChild(name);
         card.appendChild(stars);
         card.appendChild(text);
@@ -1341,7 +1345,7 @@ function renderComments() {
 
           const replyLabel = document.createElement('div');
           replyLabel.className = 'author-reply-label';
-          replyLabel.textContent = 'লেখকের উত্তর';
+          replyLabel.textContent = 'সঞ্জয় মণ্ডল';
 
           const replyText = document.createElement('div');
           replyText.className = 'author-reply-text';
