@@ -171,11 +171,13 @@ export default async function handler(req, res) {
         .toString()
     );
 
+    const DEFAULT_REPLY = "অনেক ধন্যবাদ। আপনার মতামত আমার কাছে মূল্যবান।";
     comments.unshift({
       name,
       comment,
       rating,
       approved:false,
+      authorReply: DEFAULT_REPLY
       date:new Date().toISOString()
     });
 
