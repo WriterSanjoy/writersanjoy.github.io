@@ -177,7 +177,7 @@ export default async function handler(req, res) {
       comment,
       rating,
       approved:false,
-      authorReply: DEFAULT_REPLY
+      authorReply: DEFAULT_REPLY,
       date:new Date().toISOString()
     });
 
