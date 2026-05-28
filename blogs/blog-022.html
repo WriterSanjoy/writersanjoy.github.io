@@ -289,9 +289,9 @@ async function loadComments() {
     try {
 
         const response =
-            //await fetch("/api/comments");
-            //await fetch(`/api/comments?book=${bookId}`);
-            fetch(`/api/comments?type=${type}&id=${contentId}`)
+            await fetch(
+              `/api/comments?type=${type}&id=${contentId}`
+            )
 
         allComments =
             await response.json();
