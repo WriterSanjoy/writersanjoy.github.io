@@ -1,12 +1,5 @@
 [
   {
-    "name": "Pampa Mondal",
-    "comment": "testing after fix",
-    "rating": "3",
-    "approved": false,
-    "date": "2026-05-27T20:57:40.256Z"
-  },
-  {
     "name": "অমিত মুখোপাধ্যায়",
     "rating": 4,
     "approved": true,
