@@ -1330,14 +1330,9 @@ function renderComments() {
         text.textContent =
             item.comment;
 
-        const authorReply = document.createElement("div");
-        authorReply.className = "comment-reply";
-        authorReply.textContent = "অনেক ধন্যবাদ। আপনার মতামত আমার কাছে মূল্যবান।";
-
         card.appendChild(name);
         card.appendChild(stars);
         card.appendChild(text);
-        card.appendChild(authorReply);
       
         if (item.authorReply && isWithin3Days(item.date)) {
 
