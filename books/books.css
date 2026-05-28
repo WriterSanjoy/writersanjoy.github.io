@@ -663,11 +663,11 @@ footer a{color:var(--gold-l);text-decoration:none}
 /* Writer's Auto Reply */
 .author-reply{
 
-  margin-top:.75rem;
+  margin-top:.65rem;
 
   padding:.7rem .9rem;
 
-  border-left:3px solid #ffcf33;
+  border-left:3px solid #8b1a1a;
 
   background:rgba(255,207,51,.06);
 
@@ -682,7 +682,7 @@ footer a{color:var(--gold-l);text-decoration:none}
 
   font-weight:700;
 
-  color:#d89d00;
+  color:#8b1a1a;
 
   margin-bottom:.22rem;
 
@@ -693,7 +693,7 @@ footer a{color:var(--gold-l);text-decoration:none}
 
   font-family:'Hind Siliguri',sans-serif;
 
-  font-size:.98rem;
+  font-size:.70rem;
 
   line-height:1.65;
 
