@@ -175,6 +175,7 @@ export default async function handler(req, res) {
       name,
       comment,
       rating,
+      approved:false,
       date:new Date().toISOString()
     });
 
