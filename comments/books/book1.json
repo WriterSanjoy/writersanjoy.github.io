@@ -3,41 +3,41 @@
     "name": "Pampa Mondal",
     "comment": "testing after fix",
     "rating": "3",
-    "approved": false
+    "approved": false,
     "date": "2026-05-27T20:57:40.256Z"
   },
   {
     "name": "অমিত মুখোপাধ্যায়",
     "rating": 4,
-    "approved": true
+    "approved": true,
     "comment": "আপনার বইটি সমসাময়িক জীবন, সমাজ ও কর্মক্ষেত্রের একটি ছবি আমাদের সামনে এমন ভাবে এনে দিয়েছে, যা স্বীকার করতে কষ্ট হচ্ছে, তবে এটাই কঠিন বাস্তব।",
     "date": "2026-05-26T12:17:06.655Z"
   },
   {
     "name": "Amitava Gupta",
     "rating": 5,
-    "approved": true
+    "approved": true,
     "comment": "A compelling narrative of the Information Technology Services industry and the characters, though fictional and the story, though having an element of drama, are very relatable. The story, the personas and the characterization of the industry will resonate with anyone who has been associated directly or indirectly with this industry.",
     "date": "2026-05-26T10:49:47.921Z"
   },
   {
     "name": "মণিদীপা মজুমদার",
     "rating": 5,
-    "approved": true
+    "approved": true,
     "comment": "বেশ ভাল লাগলো। একটা কঠিন বাস্তবকে খুব সুন্দরভাবে তুলে ধরা হয়েছে। তথ্যপ্রযুক্তি শিল্প তুলনামূলক ভাবে নবীন। তার ঝা চকচকে অন্দরে যে কত মলিনতা, সেটা নিপুন ও সাবলীল ভাবে লেখক তুলে ধরেছেন। বিশ্বায়ন ও যান্ত্রিক স্বয়ংক্রিয়তার যুগে গল্পের প্রাসাঙ্গিকতা অন্ত্যন্ত গুরুত্বপূর্ণ।",
     "date": "2026-05-26T10:30:36.322Z"
   },
   {
     "name": "অনুশ্রী বিশ্বাস",
     "rating": 5,
-    "approved": false
+    "approved": false,
     "comment": "খুব খুব ভাল লাগলো। অনেক অনেক ধন্যবাদ আপনাকে এমন একটি উপন্যাসের জন্য।",
     "date": "2026-05-26T10:49:26.921Z"
   },
   {
     "name": "রাহুল দাশগুপ্ত",
     "rating": 4,
-    "approved": true
+    "approved": true,
     "comment": "চরিত্রগুলো এত জীবন্ত যে মনে হয় পাশের বাড়ির মানুষ। ভাষা সহজ কিন্তু গভীর। একটানে পড়ে ফেললাম। শেষ হয়ে যাওয়ার পরেও মাথায় ঘুরতে থাকে।",
     "date": "2026-05-26T10:30:16.322Z"
   }
