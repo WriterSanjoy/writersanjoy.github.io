@@ -673,14 +673,14 @@ footer a{color:var(--gold-l);text-decoration:none}
 
   border-radius:0 10px 10px 0;
 }
-
+/* .82 700 */
 .author-reply-label{
 
   font-family:'Hind Siliguri',sans-serif;
 
-  font-size:.82rem;
+  font-size:.75rem;
 
-  font-weight:700;
+  font-weight:500;
 
   color:#8b1a1a;
 
