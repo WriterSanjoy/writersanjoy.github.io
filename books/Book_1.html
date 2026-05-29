@@ -1181,14 +1181,6 @@ document
 
       const response =
         await fetch("/api/comments", {
-          
-        const data = await response.json();
-        if(!response.ok){
-
-          throw new Error(
-            `${response.status} ${data.message}`
-          );
-        }
 
           method: "POST",
 
@@ -1206,31 +1198,38 @@ document
           })
         });
 
-        const result =
-          await response.json();
+      const data =
+        await response.json();
+      if(!response.ok){
+        throw new Error(
+          `${response.status} ${data.message}`
+        ); 
+      } 
+      alert( "মন্তব্য সফলভাবে পাঠানো হয়েছে।" 
+      );
 
-        alert(result.message);
-        visibleCount += 1;
-        loadComments();
-        document.getElementById("reviewForm").reset();
+      //alert(result.message);
+      visibleCount += 1;
+      loadComments();
+      document.getElementById("reviewForm").reset();
 
-        } catch(error) {
-          console.error(error);
-          //alert("Error submitting comment");
-          if(
-              error.message &&
-              error.message.includes('429')
-          ){
-            alert(
-              "আবার মন্তব্য করার আগে ৫ মিনিট অপেক্ষা করুন।"
-            );
-          }else{
-            alert(
-              "মন্তব্য পাঠাতে সমস্যা হয়েছে। ৫ মিনিট অপেক্ষা করুন।"
-            );
-          }
-        }
+    } catch(error) {
 
+      console.error(error);
+      if(
+        error.message && 
+        error.message.includes('429') 
+      ){
+        alert(
+          "অনুগ্রহ করে আবার মন্তব্য করার আগে ৫ মিনিট অপেক্ষা করুন।" 
+        );
+      }else{
+        alert( 
+          "মন্তব্য পাঠাতে সমস্যা হয়েছে।" 
+        ); 
+      } 
+      alert("Error submitting comment");
+    }
 });
 
 //Change for every book/blog
