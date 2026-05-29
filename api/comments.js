@@ -16,8 +16,102 @@ export default async function handler(req, res) {
     const repo = process.env.GITHUB_REPO;
     const token = process.env.GITHUB_TOKEN;
 
+    const RATE_LIMIT_SECONDS = 300;
+
     let type;
     let contentId;
+
+    // ═══════════════════════
+    // RATE LIMITING
+    // ═══════════════════════
+
+    const forwarded =
+        req.headers['x-forwarded-for'];
+
+    const ip = forwarded
+        ? forwarded.split(',')[0]
+        : req.socket.remoteAddress;
+
+    const ratePath =
+        'tmp/rate-limit.json';
+
+    // load existing rate data
+
+    const rateResponse = await fetch(
+      `https://api.github.com/repos/${owner}/${repo}/contents/${ratePath}`,
+      {
+        headers:{
+          Authorization:`Bearer ${token}`,
+          Accept:'application/vnd.github+json'
+        }
+      }
+    );
+
+    const rateFile =
+        await rateResponse.json();
+
+    const rateData = JSON.parse(
+      Buffer
+        .from(rateFile.content,'base64')
+        .toString()
+    );
+
+    const now = Date.now();
+
+    if(
+
+      rateData[ip] &&
+
+      (
+        now - rateData[ip]
+      ) < RATE_LIMIT_SECONDS * 1000
+
+    ){
+
+      return res.status(429).json({
+
+        success:false,
+
+        message:
+          'Please wait before posting again.'
+
+      });
+    }
+
+    // update timestamp
+
+    rateData[ip] = now;
+
+    // save updated rate data
+
+    const updatedRateContent = Buffer
+      .from(
+        JSON.stringify(rateData,null,2)
+      )
+      .toString('base64');
+
+    await fetch(
+      `https://api.github.com/repos/${owner}/${repo}/contents/${ratePath}`,
+      {
+        method:'PUT',
+
+        headers:{
+          Authorization:`Bearer ${token}`,
+          Accept:'application/vnd.github+json',
+          'Content-Type':'application/json'
+        },
+
+        body:JSON.stringify({
+
+          message:'Update rate limit',
+
+          content:updatedRateContent,
+
+          sha:rateFile.sha
+        })
+      }
+    );
+    // continue normal comment logic...
 
     if(req.method === "GET"){
 
