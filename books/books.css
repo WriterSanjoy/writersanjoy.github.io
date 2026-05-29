@@ -700,4 +700,82 @@ footer a{color:var(--gold-l);text-decoration:none}
   color:#111;
 }
 
+/* ══ for custom toast notification system ════ */
+#toast{
 
+  position:fixed;
+
+  left:50%;
+  bottom:28px;
+
+  transform:
+    translateX(-50%)
+    translateY(20px);
+
+  background:#111;
+
+  color:#fff;
+
+  padding:.9rem 1.2rem;
+
+  border-radius:14px;
+
+  font-family:'Hind Siliguri',sans-serif;
+
+  font-size:.95rem;
+
+  line-height:1.5;
+
+  box-shadow:
+    0 10px 35px rgba(0,0,0,.28);
+
+  z-index:99999;
+
+  opacity:0;
+
+  pointer-events:none;
+
+  transition:
+    opacity .28s ease,
+    transform .28s ease;
+
+  max-width:92vw;
+
+  text-align:center;
+}
+
+#toast.show{
+
+  opacity:1;
+
+  transform:
+    translateX(-50%)
+    translateY(0);
+}
+
+#toast.success{
+
+  background:#17351f;
+
+  color:#d7ffd9;
+
+  border:1px solid rgba(120,255,140,.18);
+}
+
+#toast.error{
+
+  background:#3a1717;
+
+  color:#ffdede;
+
+  border:1px solid rgba(255,120,120,.16);
+}
+
+#toast.warning{
+
+  background:#3b2c11;
+
+  color:#ffe7b3;
+
+  border:1px solid rgba(255,207,51,.18);
+}
