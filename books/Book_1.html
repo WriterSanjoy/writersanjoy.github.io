@@ -282,7 +282,7 @@
     
     <!--COMMENT PANEL ════  - MeSanjoy 25May-->
     <div class="section">
-      <div class="section-head">অনুগ্রহ করে আপনার মূল্যবান মতামত দিন</div>
+      <div class="section-head">✍🏻 অনুগ্রহ করে আপনার মূল্যবান মতামত দিন</div>
         <div class="section-body">
           <form id="reviewForm">
             <div class="bf">
@@ -912,6 +912,8 @@ document.getElementById("h-addr").onblur = validateAddr;
 function buildOrderParams() {
   const BOOK_TITLE       = 'নবদিগন্তের অভিমন্যুরা';
   const BOOK_PRICE       = '₹৪০৫';
+  const PUBLISHER_EMAIL  = 'sencool69@gmail.com';
+  
   
   // ✅ Collect values from form fields
   const name  = document.getElementById("h-name").value.trim();
@@ -926,6 +928,7 @@ function buildOrderParams() {
     customer_name: name,
     customer_phone: phone,
     customer_email: email,
+    pub_email: PUBLISHER_EMAIL,
     customer_address: addr,
     order_date: new Date().toLocaleString("bn-IN"),
     //pub_icon: pubIcon || "",
