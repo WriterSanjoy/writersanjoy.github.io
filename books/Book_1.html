@@ -1362,6 +1362,15 @@ function renderComments() {
         card.appendChild(stars);
         card.appendChild(text);
       
+        // Render Button
+        const helpful =
+          document.createElement('button');
+        helpful.className =
+          'helpful-btn';
+        helpful.textContent =
+          `👍 সহায়ক (${item.likes || 0})`;
+        card.appendChild(helpful);      
+      
         if (item.authorReply && isWithin3Days(item.date)) {
 
           const replyWrap = document.createElement('div');

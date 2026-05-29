@@ -779,3 +779,28 @@ footer a{color:var(--gold-l);text-decoration:none}
 
   border:1px solid rgba(255,207,51,.18);
 }
+
+/* Render Button */
+.helpful-btn{
+
+  margin-top:.8rem;
+
+  border:none;
+
+  background:transparent;
+
+  color:#777;
+
+  font-family:'Hind Siliguri',sans-serif;
+
+  font-size:.85rem;
+
+  cursor:pointer;
+
+  padding:0;
+}
+
+.helpful-btn:hover{
+
+  color:#111;
+}
