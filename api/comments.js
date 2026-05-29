@@ -270,20 +270,17 @@ await fetch(
       numericRating >= 3;
     
     comments.unshift({
-    
       name,
-    
       comment,
-    
       rating:numericRating,
-    
       approved:autoApproved,
-    
+      
+      likes:0,
+      
       authorReply:
         type === "books"
           ? DEFAULT_REPLY
           : "",
-    
       date:new Date().toISOString()
     });
 
