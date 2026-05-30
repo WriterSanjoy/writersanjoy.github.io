@@ -1,14 +1,5 @@
 [
   {
-    "name": "new man",
-    "comment": "You are idiot",
-    "rating": 5,
-    "approved": false,
-    "likes": 0,
-    "authorReply": "অনেক ধন্যবাদ। আপনার মতামত আমার কাছে মূল্যবান।",
-    "date": "2026-05-30T15:36:48.269Z"
-  },
-  {
     "name": "Add Profanity 2",
     "comment": "after profanity high rating. shd be auto approved",
     "rating": 5,
