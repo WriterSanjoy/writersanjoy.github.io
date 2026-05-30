@@ -1,7 +1,5 @@
 export default async function handler(req, res) {
 
-//const bannedWords = require("../data/bannedWords");
-
   if (
     req.method !== "GET" &&
     req.method !== "POST"
@@ -101,7 +99,7 @@ export default async function handler(req, res) {
       return res.status(200).json(comments);
     }
 
-    // ═ POST ═
+    // ═════════ POST ═════════
 
     const {
       name,
@@ -109,7 +107,7 @@ export default async function handler(req, res) {
       rating,
       website
     } = req.body;
-// ═ RATE LIMIT ═ Start 
+// ═════════ RATE LIMIT ═ Start ════════
 
 const RATE_LIMIT_SECONDS = 300;
 
@@ -199,7 +197,7 @@ await fetch(
   }
 );
 
-// ═ RATE LIMIT ═ End 
+// ═════════ RATE LIMIT ═ End ════════
 
     if (website) {
       return res.status(403).json({
@@ -268,38 +266,8 @@ await fetch(
     const numericRating =
       Number(rating);
     
-    let autoApproved =
+    const autoApproved =
       numericRating >= 3;
-    
-    //═ profanity filter - Start ════════
-    let autoApproved =
-      numericRating >= 3;
-
-    const allBannedWords = [
-
-      ...bannedWords.english,
-    
-      ...bannedWords.bengali
-    
-    ];
-    
-    const lowerComment =
-      comment.toLowerCase();
-    
-    const containsBadWord =
-      allBannedWords.some(
-        word =>
-          lowerComment.includes(
-            word.toLowerCase()
-          )
-      );
-    
-    if(containsBadWord){
-    
-      autoApproved = false;
-    
-    }
-    //═════════ profanity filter - End ════════
     
     comments.unshift({
       name,
