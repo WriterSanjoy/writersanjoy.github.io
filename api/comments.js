@@ -273,19 +273,16 @@ await fetch(
     
     //═ profanity filter - Start ════════
 
+    let autoApproved =
+      numericRating >= 3;
+
     const allBannedWords = [
-    
       ...bannedWordsData.english,
-    
       ...bannedWordsData.bengali
-    
     ];
     
     const lowerComment =
       comment.toLowerCase();
-    
-    let approved =
-      Number(rating) >= 3;
     
     const containsBadWord =
       allBannedWords.some(
@@ -297,12 +294,6 @@ await fetch(
  
     if(containsBadWord){
       autoApproved = false;
-    }
-    
-    if(
-      containsBadWord
-    ){
-      approved = false;
     }
     
     //═════════ profanity filter - End ════════
