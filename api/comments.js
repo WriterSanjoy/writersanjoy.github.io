@@ -268,7 +268,7 @@ await fetch(
     const numericRating =
       Number(rating);
     
-    const autoApproved =
+    let autoApproved =
       numericRating >= 3;
     
     //═ profanity filter - Start ════════
@@ -294,6 +294,10 @@ await fetch(
             word.toLowerCase()
           )
       );
+ 
+    if(containsBadWord){
+      autoApproved = false;
+    }
     
     if(
       containsBadWord
