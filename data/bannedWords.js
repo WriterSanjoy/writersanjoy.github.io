@@ -1,0 +1,17 @@
+module.exports = {
+
+  english: [
+    "idiot",
+    "fuck",
+    "bitch",
+    "stupid"
+  ],
+
+  bengali: [
+    "শুয়োর",
+    "গাধা",
+    "বাঁদর",
+    "হারামি"
+  ]
+
+};
