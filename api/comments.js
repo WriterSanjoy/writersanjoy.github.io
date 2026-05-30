@@ -1,6 +1,7 @@
 export default async function handler(req, res) {
 
   const bannedWords = require("../data/bannedWords");
+  console.log(bannedWords.english.length);
 
   if (
     req.method !== "GET" &&
