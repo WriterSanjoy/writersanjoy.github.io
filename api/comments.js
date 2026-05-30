@@ -1,6 +1,6 @@
 export default async function handler(req, res) {
 
-  const bannedWords = require("../data/bannedWords");
+  //const bannedWords = require("../data/bannedWords");
   console.log(bannedWords.english.length);
 
   if (
@@ -271,8 +271,9 @@ await fetch(
     
     let autoApproved
 
-// Profanity
-
+// Profanity start
+    const bannedWords = require("../data/bannedWords");
+    
     let autoApproved =
       numericRating >= 3;
     
