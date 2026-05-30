@@ -1380,11 +1380,18 @@ function renderComments() {
               localStorage.getItem(likeKey)
             ){
               showToast(
-                'আপনি ইতিমধ্যে এই মন্তব্যটিকে সহায়ক হিসেবে চিহ্নিত করেছেন।',
+                'আপনি ইতিমধ্যে এই মন্তব্যটিকে পছন্দ করেছেন।',
                 'warning'
               );
               return;
             }
+            // Save immediately
+            localStorage.setItem(
+              likeKey,
+              'pending'
+            );
+
+            helpful.disabled = true;
             
             try{
               const response =
@@ -1407,7 +1414,7 @@ function renderComments() {
                       date:item.date
                     })
                   }
-                );
+              );
 
               const data =
                 await response.json();
@@ -1418,15 +1425,26 @@ function renderComments() {
                   data.message
                 );
               }
-
+              
+              localStorage.setItem(
+                likeKey,
+                'true'
+              );
+              
               loadComments();
 
             }catch(error){
+              
+              // Undo if API failed
+              localStorage.removeItem(
+                likeKey
+              );
 
+              helpful.disabled = false;
               console.error(error);
 
               showToast(
-                'লাইক সংরক্ষণ করা যায়নি',
+                'পছন্দ সংরক্ষণ করা যায়নি',
                 'error'
               );
             }
