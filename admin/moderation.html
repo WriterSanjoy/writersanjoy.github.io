@@ -153,19 +153,12 @@ async function loadPendingComments(){
 
   const data = await response.json();
 
-  const title =
-    document.getElementById(
-      'moderation-title'
-    );
-  
-  if(title){
-  
-    title.textContent =
-      data.comments.length
-        ? `Comment Moderation (${data.comments.length})`
-        : 'Comment Moderation ✓';
-  
-  }
+document.getElementById(
+  'moderation-title'
+).textContent =
+  data.comments.length
+    ? `Comment Moderation (${data.comments.length})`
+    : 'Comment Moderation ✓';
 
   const container =
     document.getElementById('comments-container');
