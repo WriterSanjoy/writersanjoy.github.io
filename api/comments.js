@@ -271,6 +271,10 @@ await fetch(
     
     const autoApproved =
       numericRating >= 3;
+
+// Profanity
+    const containsBadWord =
+  ...
     
     comments.unshift({
       name,
