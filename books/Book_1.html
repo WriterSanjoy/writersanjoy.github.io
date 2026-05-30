@@ -1368,15 +1368,25 @@ function renderComments() {
         helpful.className =
           'helpful-btn';
         helpful.textContent =
-          `👍 সহায়ক (${item.likes || 0})`;
+          `👍 পছন্দ (${item.likes || 0})`;
         card.appendChild(helpful);   
       
         helpful.addEventListener(
           'click',
           async function(){
-
+            
+            const likeKey = `liked-${type}-${contentId}-${item.date}`;
+            if(
+              localStorage.getItem(likeKey)
+            ){
+              showToast(
+                'আপনি ইতিমধ্যে এই মন্তব্যটিকে সহায়ক হিসেবে চিহ্নিত করেছেন।',
+                'warning'
+              );
+              return;
+            }
+            
             try{
-
               const response =
                 await fetch(
                   '/api/like-comment',
