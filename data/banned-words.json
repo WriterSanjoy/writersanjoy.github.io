@@ -1,4 +1,4 @@
-export const bannedWords = {
+module.exports = {
   
   "english": [
     "idiot",
@@ -14,4 +14,4 @@ export const bannedWords = {
     "হারামি"
   ]
   
-}
+};
