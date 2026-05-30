@@ -110,7 +110,7 @@ button{
 <div class="admin-wrap">
   <div id="admin-toast"></div>
 
-  <h2 id="moderationTitle">
+  <h2 id="moderation-title">
     Comment Moderation
   </h2
 
@@ -153,12 +153,19 @@ async function loadPendingComments(){
 
   const data = await response.json();
 
-  document.getElementById(
-    'moderation-title'
-  ).textContent =
-    data.comments.length
-      ? `Comment Moderation (${data.comments.length})`
-      : 'Comment Moderation ✓';
+  const title =
+    document.getElementById(
+      'moderation-title'
+    );
+  
+  if(title){
+  
+    title.textContent =
+      data.comments.length
+        ? `Comment Moderation (${data.comments.length})`
+        : 'Comment Moderation ✓';
+  
+  }
 
   const container =
     document.getElementById('comments-container');
