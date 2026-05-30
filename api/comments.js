@@ -1,5 +1,7 @@
 export default async function handler(req, res) {
 
+  import bannedWordsData from "../data/banned-words.json";
+
   if (
     req.method !== "GET" &&
     req.method !== "POST"
@@ -99,7 +101,7 @@ export default async function handler(req, res) {
       return res.status(200).json(comments);
     }
 
-    // ═════════ POST ═════════
+    // ═ POST ═
 
     const {
       name,
@@ -107,7 +109,7 @@ export default async function handler(req, res) {
       rating,
       website
     } = req.body;
-// ═════════ RATE LIMIT ═ Start ════════
+// ═ RATE LIMIT ═ Start 
 
 const RATE_LIMIT_SECONDS = 300;
 
@@ -197,7 +199,7 @@ await fetch(
   }
 );
 
-// ═════════ RATE LIMIT ═ End ════════
+// ═ RATE LIMIT ═ End 
 
     if (website) {
       return res.status(403).json({
@@ -269,30 +271,38 @@ await fetch(
     const autoApproved =
       numericRating >= 3;
     
-    ═════════ profanity filter - Start ════════
+    //═ profanity filter - Start ════════
 
-    const bannedWords = [
-      "idiot",
-      "stupid",
-      "fuck",
-      "shit"
+    const allBannedWords = [
+    
+      ...bannedWordsData.english,
+    
+      ...bannedWordsData.bengali
+    
     ];
     
     const lowerComment =
       comment.toLowerCase();
     
+    let approved =
+      Number(rating) >= 3;
+    
+    const containsBadWord =
+      allBannedWords.some(
+        word =>
+          lowerComment.includes(
+            word.toLowerCase()
+          )
+      );
+    
     if(
-      bannedWords.some(
-        word => lowerComment.includes(word)
-      )
+      containsBadWord
     ){
-      return res.status(400).json({
-        success:false,
-        message:"Please use respectful language."
-      });
+      approved = false;
     }
     
-    ═════════ profanity filter - End ════════
+    //═════════ profanity filter - End ════════
+
     
     comments.unshift({
       name,
