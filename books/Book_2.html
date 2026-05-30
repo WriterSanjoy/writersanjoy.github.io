@@ -41,7 +41,7 @@
     <li><a href="../blog-list.html">ব্লগবার্তা</a></li>
     <li><a href="../index.html" class="act">বইটই</a></li>
     <li><a href="../published.html">প্রকাশিত</a></li>
-    <li><a href="../index.html">গল্পের আসর</a></li>
+    <!--<li><a href="../index.html">গল্পের আসর</a></li>-->
     <li><a href="../index.html">যোগাযোগ</a></li>
   </ul>
   <button class="nburg" onclick="document.getElementById('mm').classList.toggle('open')">☰</button>
@@ -713,7 +713,7 @@ async function openReader(){
   
   //Change for each book
   const response = await fetch(
-    `/books/book1_chapter1.html`
+    `/books/book2_chapter1.html`
   );
 
     const html = await response.text();
@@ -767,7 +767,7 @@ function saveReaderPosition(){
   const body = document.getElementById('reader-body');
 
   localStorage.setItem(
-    'book1_chapter1_scroll',
+    'book2_chapter1_scroll',
     body.scrollTop
   );
 }
@@ -777,7 +777,7 @@ function restoreReaderPosition(){
   const body = document.getElementById('reader-body');
 
   const saved = localStorage.getItem(
-    'book1_chapter1_scroll'
+    'book2_chapter1_scroll'
   );
 
   if(saved){
@@ -1243,7 +1243,7 @@ document
 
 //Change for every book/blog
 const type = "books"; //change
-const contentId = "book1"; //change
+const contentId = "book2"; //change
   
 let allComments = [];
 let visibleCount = 4;
