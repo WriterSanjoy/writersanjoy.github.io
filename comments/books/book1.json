@@ -27,14 +27,6 @@
     "date": "2026-05-30T12:20:09.532Z"
   },
   {
-    "name": "Amol T",
-    "comment": "rating 2 - Should NOT be approved automatically",
-    "rating": 2,
-    "approved": false,
-    "authorReply": "অনেক ধন্যবাদ। আপনার মতামত আমার কাছে মূল্যবান।",
-    "date": "2026-05-29T17:25:54.694Z"
-  },
-  {
     "name": "Amol R",
     "comment": "rating 4 - shd be approved automatically",
     "rating": 4,
