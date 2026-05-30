@@ -269,6 +269,31 @@ await fetch(
     const autoApproved =
       numericRating >= 3;
     
+    ═════════ profanity filter - Start ════════
+
+    const bannedWords = [
+      "idiot",
+      "stupid",
+      "fuck",
+      "shit"
+    ];
+    
+    const lowerComment =
+      comment.toLowerCase();
+    
+    if(
+      bannedWords.some(
+        word => lowerComment.includes(word)
+      )
+    ){
+      return res.status(400).json({
+        success:false,
+        message:"Please use respectful language."
+      });
+    }
+    
+    ═════════ profanity filter - End ════════
+    
     comments.unshift({
       name,
       comment,
