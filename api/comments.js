@@ -2,8 +2,6 @@ export default async function handler(req, res) {
 
 const bannedWords =
   require("../data/bannedWords");
-  
-  console.log(bannedWords);
 
   if (
     req.method !== "GET" &&
@@ -275,11 +273,34 @@ await fetch(
       numericRating >= 3;
     
     //═ profanity filter - Start ════════
+    let autoApproved =
+      numericRating >= 3;
 
+    const allBannedWords = [
 
+      ...bannedWords.english,
     
+      ...bannedWords.bengali
+    
+    ];
+    
+    const lowerComment =
+      comment.toLowerCase();
+    
+    const containsBadWord =
+      allBannedWords.some(
+        word =>
+          lowerComment.includes(
+            word.toLowerCase()
+          )
+      );
+    
+    if(containsBadWord){
+    
+      autoApproved = false;
+    
+    }
     //═════════ profanity filter - End ════════
-
     
     comments.unshift({
       name,
