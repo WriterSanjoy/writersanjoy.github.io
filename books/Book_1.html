@@ -1369,7 +1369,59 @@ function renderComments() {
           'helpful-btn';
         helpful.textContent =
           `👍 সহায়ক (${item.likes || 0})`;
-        card.appendChild(helpful);      
+        card.appendChild(helpful);   
+      
+        helpful.addEventListener(
+          'click',
+          async function(){
+
+            try{
+
+              const response =
+                await fetch(
+                  '/api/like-comment',
+                  {
+                    method:'POST',
+
+                    headers:{
+                      'Content-Type':
+                        'application/json'
+                    },
+
+                    body:JSON.stringify({
+
+                      type,
+
+                      contentId,
+
+                      date:item.date
+                    })
+                  }
+                );
+
+              const data =
+                await response.json();
+
+              if(!response.ok){
+
+                throw new Error(
+                  data.message
+                );
+              }
+
+              loadComments();
+
+            }catch(error){
+
+              console.error(error);
+
+              showToast(
+                'লাইক সংরক্ষণ করা যায়নি',
+                'error'
+              );
+            }
+          }
+        );
       
         if (item.authorReply && isWithin3Days(item.date)) {
 
