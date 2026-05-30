@@ -269,12 +269,39 @@ await fetch(
     const numericRating =
       Number(rating);
     
-    const autoApproved =
-      numericRating >= 3;
+    let autoApproved
 
 // Profanity
+
+    let autoApproved =
+      numericRating >= 3;
+    
+    const allBannedWords = [
+    
+      ...bannedWords.english,
+    
+      ...bannedWords.bengali
+    
+    ];
+    
+    const lowerComment =
+      comment.toLowerCase();
+    
     const containsBadWord =
-  ...
+      allBannedWords.some(
+        word =>
+          lowerComment.includes(
+            word.toLowerCase()
+          )
+      );
+    
+    if(containsBadWord){
+    
+      autoApproved = false;
+    
+    }
+
+    // Profinity
     
     comments.unshift({
       name,
