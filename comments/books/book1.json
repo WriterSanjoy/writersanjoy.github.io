@@ -1,5 +1,14 @@
 [
   {
+    "name": "Add Profanity 2",
+    "comment": "after profanity high rating. shd be auto approved",
+    "rating": 5,
+    "approved": true,
+    "likes": 0,
+    "authorReply": "অনেক ধন্যবাদ। আপনার মতামত আমার কাছে মূল্যবান।",
+    "date": "2026-05-30T15:31:45.976Z"
+  },
+  {
     "name": "Add Profanity 1",
     "comment": "after profanity low rating. shd be not auto proved",
     "rating": 2,
